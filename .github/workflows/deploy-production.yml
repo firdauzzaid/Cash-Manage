@@ -1,0 +1,64 @@
+name: Deploy production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cash-flow-production
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run format:check
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-24.04
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.CASHFLOW_DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.CASHFLOW_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+      - name: Copy release to VPS
+        env:
+          DEPLOY_HOST: ${{ secrets.CASHFLOW_DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.CASHFLOW_DEPLOY_USER }}
+        run: |
+          rsync -az \
+            --exclude '.env*' \
+            --exclude .git \
+            --exclude node_modules \
+            --exclude apps/mobile/dist \
+            --exclude .expo \
+            --exclude backups \
+            --exclude test-results \
+            --exclude playwright-report \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:/opt/apps/cash-flow/"
+      - name: Deploy release
+        env:
+          DEPLOY_HOST: ${{ secrets.CASHFLOW_DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.CASHFLOW_DEPLOY_USER }}
+        run: |
+          ssh -o BatchMode=yes "$DEPLOY_USER@$DEPLOY_HOST" \
+            'cd /opt/apps/cash-flow && bash scripts/deploy-production.sh'

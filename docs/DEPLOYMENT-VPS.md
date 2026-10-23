@@ -48,6 +48,30 @@ docker compose -f compose.production.yml logs --tail=100 api
 
 Uji pendaftaran dan email verifikasi sebelum memberi APK kepada tester. Sebelum pilot, konfigurasikan backup terenkripsi ke lokasi di luar VPS dan uji restore pada database terpisah.
 
+## Deploy otomatis dari GitHub
+
+Workflow `.github/workflows/deploy-production.yml` berjalan pada setiap push ke branch `main`. Ia memasang dependency, menjalankan typecheck dan pemeriksaan format, lalu menyalin source ke VPS dengan SSH/rsync. Environment `.env`, backup, dan artefak build lokal dikecualikan dari salinan.
+
+Di VPS, jadikan skrip deploy dapat dijalankan dan siapkan folder backup terlebih dahulu:
+
+```bash
+cd /opt/apps/cash-flow
+mkdir -p backups
+chmod 700 backups
+```
+
+Tambahkan public key khusus GitHub Actions ke `~/.ssh/authorized_keys` milik pengguna deployment. Simpan private key pasangannya sebagai GitHub repository secret. Tambahkan empat repository secret berikut di GitHub: `CASHFLOW_DEPLOY_SSH_KEY`, `CASHFLOW_DEPLOY_KNOWN_HOSTS`, `CASHFLOW_DEPLOY_HOST`, dan `CASHFLOW_DEPLOY_USER`.
+
+`CASHFLOW_DEPLOY_KNOWN_HOSTS` harus berisi host key VPS yang telah diverifikasi, bukan hasil host key yang diambil tanpa verifikasi saat workflow berjalan. Contoh pengambilannya dari komputer tepercaya:
+
+```bash
+ssh-keyscan -H nama-host-vps
+```
+
+Workflow tidak mengirim `.env` atau secret aplikasi ke GitHub. Setiap deploy memvalidasi Compose, membangun image API, menunggu PostgreSQL siap, membuat backup sebelum migration, menjalankan migration forward-only, menyalakan API, dan menunggu readiness berhasil.
+
+Backup default berada di `/opt/apps/cash-flow/backups`; atur `CASHFLOW_BACKUP_DIR` saat menjalankan skrip bila memakai lokasi lain. Lokasi ini harus disalin secara terenkripsi ke penyimpanan di luar VPS sebelum pilot publik.
+
 ## Catatan proxy
 
 API saat ini belum mempercayai header proxy. Sebelum pilot publik, trust proxy harus dibatasi pada subnet network Traefik yang sebenarnya; jangan mengaktifkan `trustProxy` untuk semua sumber atau mempercayai header dari internet secara langsung.
