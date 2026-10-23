@@ -689,10 +689,16 @@
     "ast_hash": "9e3154b086d69e326942eec29c8bd3d7",
     "semantic_hash": ""
   },
-  ".eas-npm-cache/_npx/1165c3a7792ee1ca/package.json": {
-    "mtime": 1792725955.9874527,
-    "seen": 1792727272.294422,
-    "ast_hash": "17134085d9d073bbe1c3a3e68c3e3322",
+  "compose.production.yml": {
+    "mtime": 1792729130.9671793,
+    "seen": 1792729155.0497067,
+    "ast_hash": "aad4548fe3891f404a0f8e9688edca89",
+    "semantic_hash": ""
+  },
+  "docs/DEPLOYMENT-VPS.md": {
+    "mtime": 1792729132.129795,
+    "seen": 1792729155.0497203,
+    "ast_hash": "53ab68d885247534a53cf0a7cdedb6b9",
     "semantic_hash": ""
   }
 }

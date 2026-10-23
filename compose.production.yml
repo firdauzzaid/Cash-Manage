@@ -1,0 +1,84 @@
+name: cash-flow
+
+x-api: &api
+  build: .
+  image: cash-flow-api:production
+  env_file: .env
+  init: true
+
+services:
+  db:
+    image: postgres:18-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873
+    environment:
+      POSTGRES_DB: cashflow
+      POSTGRES_USER: cashflow_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?APP_DB_PASSWORD is required}
+    volumes:
+      - cashflow_data:/var/lib/postgresql
+      - ./docker/db-init.sh:/docker-entrypoint-initdb.d/10-runtime-role.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cashflow_admin -d cashflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+    networks: [cashflow-internal]
+
+  api:
+    <<: *api
+    environment:
+      NODE_ENV: production
+      PORT: 4310
+      DATABASE_URL: postgres://cashflow_app:${APP_DB_PASSWORD:?APP_DB_PASSWORD is required}@db:5432/cashflow
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks: [cashflow-internal, traefik]
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: ${TRAEFIK_NETWORK:?TRAEFIK_NETWORK is required}
+      traefik.http.middlewares.cashflow-api-https.redirectscheme.scheme: https
+      traefik.http.routers.cashflow-api-http.entrypoints: web
+      traefik.http.routers.cashflow-api-http.middlewares: cashflow-api-https
+      traefik.http.routers.cashflow-api-http.rule: Host(`${CASHFLOW_API_HOST:?CASHFLOW_API_HOST is required}`)
+      traefik.http.routers.cashflow-api.entrypoints: websecure
+      traefik.http.routers.cashflow-api.rule: Host(`${CASHFLOW_API_HOST:?CASHFLOW_API_HOST is required}`)
+      traefik.http.routers.cashflow-api.tls: "true"
+      traefik.http.routers.cashflow-api.tls.certresolver: letsencrypt
+      traefik.http.services.cashflow-api.loadbalancer.server.port: "4310"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:4310/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  migrate:
+    <<: *api
+    profiles: [tools]
+    restart: "no"
+    command: ["node", "apps/api/dist/migrate.js"]
+    environment:
+      NODE_ENV: production
+      MIGRATION_DATABASE_URL: postgres://cashflow_admin:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@db:5432/cashflow
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [cashflow-internal]
+
+networks:
+  cashflow-internal:
+    internal: true
+  traefik:
+    external: true
+    name: ${TRAEFIK_NETWORK:?TRAEFIK_NETWORK is required}
+
+volumes:
+  cashflow_data:
