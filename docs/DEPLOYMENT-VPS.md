@@ -24,6 +24,29 @@ Salin `.env.production.example` menjadi `.env`, lalu isi seluruh placeholder den
 chmod 600 .env
 ```
 
+## Email produksi dengan Resend
+
+Untuk pilot, gunakan Resend melalui SMTP. Backend sudah memakai Nodemailer, sehingga tidak perlu menambah SDK atau mengubah source. Tambahkan domain pengirim khusus yang Anda kontrol, misalnya `mail.cashflow.kotagedejewellery.tech`, pada dashboard Resend. Salin record DNS SPF dan DKIM yang ditampilkan Resend persis ke DNS provider, lalu tunggu status domain menjadi terverifikasi. Jangan mengganti atau menambahkan record SPF sendiri bila domain tersebut telah memiliki email aktif.
+
+Buat API key Resend khusus production, lalu simpan hanya di `.env` VPS:
+
+```dotenv
+SMTP_HOST=smtp.resend.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=resend
+SMTP_PASSWORD=<Resend API key>
+SMTP_FROM=Cash Flow <no-reply@mail.cashflow.kotagedejewellery.tech>
+```
+
+Restart API saja agar environment baru termuat, tanpa menyentuh PostgreSQL:
+
+```bash
+docker compose -f compose.production.yml --env-file .env up -d --no-deps --force-recreate api
+```
+
+Uji dengan mendaftarkan alamat email baru dan menyelesaikan verifikasi, lalu periksa log API dan activity feed Resend. Referensi: [SMTP Resend](https://resend.com/docs/send-with-smtp) dan [verifikasi domain Resend](https://resend.com/docs/dashboard/domains/introduction).
+
 ## Deploy pertama
 
 ```bash

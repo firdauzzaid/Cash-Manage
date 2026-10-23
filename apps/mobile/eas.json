@@ -3,6 +3,9 @@
   "build": {
     "preview": {
       "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://cashflow-api.kotagedejewellery.tech"
+      },
       "android": { "buildType": "apk" }
     },
     "production": { "autoIncrement": true }
