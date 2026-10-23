@@ -288,6 +288,7 @@ export function Card({
 
 export function Button({
   label,
+  accessibilityLabel = label,
   onPress,
   secondary = false,
   danger = false,
@@ -295,6 +296,7 @@ export function Button({
   icon,
 }: {
   label: string;
+  accessibilityLabel?: string;
   onPress: () => void;
   secondary?: boolean;
   danger?: boolean;
@@ -307,7 +309,7 @@ export function Button({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={label}
+      accessibilityLabel={accessibilityLabel}
       accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
@@ -447,7 +449,12 @@ export function Choice({
 }: {
   label: string;
   value: string;
-  options: { id: string; name: string }[];
+  options: {
+    id: string;
+    name: string;
+    description?: string;
+    icon?: React.ComponentProps<typeof Ionicons>["name"];
+  }[];
   onChange: (v: string) => void;
   disabled?: boolean;
 }) {
@@ -488,7 +495,14 @@ export function Choice({
             justifyContent: "flex-end",
           }}
         >
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`Tutup pilihan ${label}`}
+            onPress={() => setOpen(false)}
+            style={StyleSheet.absoluteFill}
+          />
           <SafeAreaView
+            accessibilityViewIsModal
             style={{
               backgroundColor: c.surface,
               maxHeight: "82%",
@@ -507,13 +521,33 @@ export function Choice({
                 alignSelf: "center",
               }}
             />
-            <Title>{label}</Title>
+            <View style={styles.between}>
+              <Title>{label}</Title>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={`Tutup pilihan ${label}`}
+                onPress={() => setOpen(false)}
+                hitSlop={8}
+                style={({ pressed }) => ({
+                  width: 40,
+                  height: 40,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 20,
+                  backgroundColor: pressed ? c.soft : "transparent",
+                })}
+              >
+                <Ionicons name="close" size={23} color={c.text} />
+              </Pressable>
+            </View>
             <ScrollView>
               {options.map((o) => (
                 <Pressable
                   key={o.id}
                   accessibilityRole="radio"
-                  accessibilityLabel={o.name}
+                  accessibilityLabel={
+                    o.description ? `${o.name}, ${o.description}` : o.name
+                  }
                   accessibilityState={{ selected: o.id === value }}
                   onPress={() => {
                     onChange(o.id);
@@ -522,23 +556,38 @@ export function Choice({
                   style={({ pressed }) => [
                     styles.between,
                     {
+                      flexDirection: "row",
+                      alignItems: "center",
                       paddingVertical: 17,
+                      paddingHorizontal: 12,
+                      marginHorizontal: -4,
+                      gap: 12,
+                      borderRadius: 14,
                       borderBottomWidth: 1,
                       borderBottomColor: c.border,
+                      backgroundColor:
+                        o.id === value ? c.successBg : "transparent",
                       opacity: pressed ? 0.65 : 1,
                     },
                   ]}
                 >
-                  <Text
-                    style={{
-                      color: c.text,
-                      fontSize: 17,
-                      flex: 1,
-                      fontWeight: o.id === value ? "700" : "400",
-                    }}
-                  >
-                    {o.name}
-                  </Text>
+                  {o.icon && <IconTile name={o.icon} />}
+                  <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+                    <Text
+                      style={{
+                        color: c.text,
+                        fontSize: 17,
+                        fontWeight: o.id === value ? "700" : "400",
+                      }}
+                    >
+                      {o.name}
+                    </Text>
+                    {o.description && (
+                      <Copy muted size={14}>
+                        {o.description}
+                      </Copy>
+                    )}
+                  </View>
                   <Ionicons
                     name={
                       o.id === value ? "checkmark-circle" : "ellipse-outline"
@@ -549,7 +598,6 @@ export function Choice({
                 </Pressable>
               ))}
             </ScrollView>
-            <Button label="Selesai" secondary onPress={() => setOpen(false)} />
           </SafeAreaView>
         </View>
       </Modal>
@@ -584,6 +632,7 @@ export function DateField({
       <Text style={[styles.label, { color: c.text }]}>{label}</Text>
       <Button
         label={value}
+        accessibilityLabel={`${label}, ${value}`}
         secondary
         icon="calendar-outline"
         onPress={() => setOpen(true)}

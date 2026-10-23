@@ -80,6 +80,24 @@ test("signup, verify, household, account, expense and CSV through the real UI", 
   await page
     .getByRole("button", { name: "Tambah rekening", exact: true })
     .click();
+  await page
+    .getByRole("button", { name: "Jenis rekening, Bank", exact: true })
+    .click();
+  await page
+    .getByRole("radio", {
+      name: "Tunai, Uang fisik yang dicatat manual",
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Jenis rekening, Tunai", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Selesai", exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByLabel("Tanggal saldo awal (YYYY-MM-DD)", { exact: true }),
+  ).toBeVisible();
   await page.getByLabel("Nama rekening", { exact: true }).fill("Bank QA");
   await page.getByLabel("Saldo awal", { exact: true }).fill("1000000");
   await page
@@ -197,6 +215,14 @@ test("signup, verify, household, account, expense and CSV through the real UI", 
   await page
     .getByRole("button", { name: "Pilih household", exact: true })
     .click();
+  await page
+    .getByRole("button", { name: "Periksa undangan", exact: true })
+    .click();
+  await expect(
+    page.getByText("Tidak ada undangan aktif untuk akun Anda.", {
+      exact: true,
+    }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Akun saya", exact: true }).click();
   await expect(page.getByText(email, { exact: true })).toBeVisible();
   await page
@@ -210,6 +236,34 @@ test("signup, verify, household, account, expense and CSV through the real UI", 
     .click();
   await expect(
     page.getByText("Rp974.000", { exact: true }).first(),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Transaksi", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Atur periode & filter", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Jenis, Semua jenis", exact: true })
+    .click();
+  await page.getByRole("radio", { name: "Pengeluaran", exact: true }).click();
+  await page.getByRole("button", { name: "Tutup filter", exact: true }).click();
+  await expect(
+    page.getByRole("button", {
+      name: "1 filter aktif · Ubah filter",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", {
+      name: "1 filter aktif · Ubah filter",
+      exact: true,
+    })
+    .click();
+  await page
+    .getByRole("button", { name: "Hapus semua filter", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Tutup filter", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Atur periode & filter", exact: true }),
   ).toBeVisible();
   expect(errors).toEqual([]);
 });

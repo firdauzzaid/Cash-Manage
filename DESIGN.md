@@ -47,6 +47,8 @@ Versi 0.4 · Quiet Ledger · 23 Oktober 2026.
 
 Cash Flow adalah ruang keuangan bersama yang terasa tenang dan tepercaya. Desain memprioritaskan angka, konteks household, dan tindakan berikutnya. Nama produk masih merupakan nama kerja. Aturan produk tetap mengikuti [PRD](docs/PRD.md) dan alur tetap mengikuti [UI/UX](docs/UI-UX.md).
 
+Mark Cash Flow menyatukan atap rumah dan dua aliran keuangan bersama dalam emerald, mint, dan brass. Pada layar gelap, mark berada di atas ubin mineral-putih agar tetap jelas; gunakan versi opaque untuk app icon iOS dan foreground ber-padding untuk adaptive icon Android.
+
 ## Arah visual
 
 Gunakan emerald gelap sebagai jangkar untuk momen orientasi: masuk, memilih household, saldo, dan konteks keluarga. Latar mineral-putih menjaga layar data tetap ringan. Aksi utama memakai emerald; aksi pendukung memakai permukaan hijau pucat; brass dipakai hemat untuk penanda merek, bukan status finansial.

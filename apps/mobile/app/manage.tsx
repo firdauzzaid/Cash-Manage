@@ -161,6 +161,11 @@ function Manage() {
           onChangeText={set("name")}
           maxLength={80}
           editable={!save.locked}
+          placeholder={
+            type === "accounts"
+              ? "Contoh: Rekening Mandiri"
+              : "Contoh: Belanja rumah"
+          }
         />
       )}{" "}
       {type === "accounts" ? (
@@ -170,9 +175,24 @@ function Manage() {
             value={form.kind}
             onChange={set("kind")}
             options={[
-              { id: "bank", name: "Bank" },
-              { id: "cash", name: "Tunai" },
-              { id: "ewallet", name: "Dompet digital" },
+              {
+                id: "bank",
+                name: "Bank",
+                description: "Rekening pada bank",
+                icon: "business-outline",
+              },
+              {
+                id: "cash",
+                name: "Tunai",
+                description: "Uang fisik yang dicatat manual",
+                icon: "cash-outline",
+              },
+              {
+                id: "ewallet",
+                name: "Dompet digital",
+                description: "Saldo pada aplikasi pembayaran",
+                icon: "phone-portrait-outline",
+              },
             ]}
             disabled={save.locked}
           />

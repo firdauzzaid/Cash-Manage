@@ -6,11 +6,16 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/brand/cash-flow-app-icon-v1.png",
     "ios": {
       "bundleIdentifier": "com.cashflow.household",
       "supportsTablet": true
     },
     "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/brand/cash-flow-adaptive-foreground-v1.png",
+        "backgroundColor": "#F3F5F0"
+      },
       "package": "com.cashflow.household"
     },
     "web": {

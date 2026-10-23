@@ -8,7 +8,10 @@ export default function Reset() {
       error?: string;
     }>(),
     [password, setPassword] = useState(""),
-    [message, setMessage] = useState(""),
+    [message, setMessage] = useState<{
+      text: string;
+      error: boolean;
+    } | null>(null),
     [busy, setBusy] = useState(false),
     [done, setDone] = useState(false);
   return (
@@ -32,7 +35,11 @@ export default function Reset() {
             autoComplete="new-password"
             editable={!busy && !done}
           />
-          {message !== "" && <Notice>{message}</Notice>}
+          {message && (
+            <Notice error={message.error} success={!message.error}>
+              {message.text}
+            </Notice>
+          )}
           <Button
             label={busy ? "Menyimpan…" : "Simpan kata sandi baru"}
             disabled={busy || done || password.length < 12}
@@ -44,16 +51,23 @@ export default function Reset() {
                   newPassword: password,
                 });
                 if (r.error)
-                  setMessage(
-                    "Tautan tidak valid atau tidak dapat digunakan lagi. Minta tautan baru.",
-                  );
+                  setMessage({
+                    error: true,
+                    text: "Tautan tidak valid atau tidak dapat digunakan lagi. Minta tautan baru.",
+                  });
                 else {
                   setDone(true);
                   setPassword("");
-                  setMessage("Kata sandi diperbarui. Silakan masuk kembali.");
+                  setMessage({
+                    error: false,
+                    text: "Kata sandi diperbarui. Silakan masuk kembali.",
+                  });
                 }
               } catch {
-                setMessage("Tidak dapat terhubung. Coba kembali.");
+                setMessage({
+                  error: true,
+                  text: "Tidak dapat terhubung. Coba kembali.",
+                });
               } finally {
                 setBusy(false);
               }

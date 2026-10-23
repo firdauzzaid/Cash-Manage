@@ -25,6 +25,7 @@
   "23": "deploy-production.sh",
   "24": "api/tsconfig.json",
   "25": "mobile/tsconfig.json",
+  "26": "Instruksi Agen — Aplikasi Keuangan Rumah Tangga",
   "27": "Paket Desain — Ruang Bersama",
   "28": "Panduan Desain — Cash Flow",
   "29": "Operasi Cash Flow",
@@ -34,5 +35,6 @@
   "36": "002_permissions.sql",
   "37": "seed-demo.sql",
   "38": "PRODUCT.md",
-  "40": "css.d.ts"
+  "40": "css.d.ts",
+  "41": "(tabs)/_layout.tsx"
 }

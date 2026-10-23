@@ -16,6 +16,7 @@ import {
   focusManager,
   onlineManager,
 } from "@tanstack/react-query";
+import type { QueryObserverResult } from "@tanstack/react-query";
 import type { Household } from "@cashflow/contracts";
 import { authClient, onAccessLost, request } from "./client";
 export type Me = {
@@ -41,7 +42,7 @@ type State = {
   me: Me | null;
   household: Household | null;
   select: (id: string | null) => void;
-  refresh: () => Promise<unknown>;
+  refresh: () => Promise<QueryObserverResult<Me, Error>>;
   signout: () => Promise<void>;
   ready: boolean;
   error: Error | null;

@@ -2,6 +2,7 @@ import { withHousehold } from "../../src/household-screen";
 import React, { useState } from "react";
 import { Share, Text, View } from "react-native";
 import * as Linking from "expo-linking";
+import * as Clipboard from "expo-clipboard";
 import { router } from "expo-router";
 import type { Invitation, Member } from "@cashflow/contracts";
 import { useApp, useHouseholdQuery } from "../../src/state";
@@ -31,8 +32,40 @@ function Family() {
     [name, setName] = useState(h.name),
     [confirmName, setConfirmName] = useState(""),
     [link, setLink] = useState(""),
+    [sharing, setSharing] = useState(false),
+    [shareMessage, setShareMessage] = useState<{
+      text: string;
+      error: boolean;
+    } | null>(null),
     s = useSave(),
     c = useColors();
+  async function shareInvitation(message: string) {
+    if (sharing) return;
+    setSharing(true);
+    setShareMessage(null);
+    try {
+      await Share.share({ message });
+    } catch {
+      setShareMessage({
+        error: true,
+        text: "Undangan belum dapat dibagikan. Coba kembali.",
+      });
+    } finally {
+      setSharing(false);
+    }
+  }
+  async function copyInvitation(value: string) {
+    setShareMessage(null);
+    try {
+      await Clipboard.setStringAsync(value);
+      setShareMessage({ error: false, text: "Tautan undangan disalin." });
+    } catch {
+      setShareMessage({
+        error: true,
+        text: "Tautan belum dapat disalin. Coba kembali.",
+      });
+    }
+  }
   return (
     <Screen title={h.name}>
       <Card style={{ backgroundColor: c.hero }}>
@@ -140,10 +173,16 @@ function Family() {
                   (r) => {
                     setLink(Linking.createURL("invite/" + r.id));
                     setEmail("");
+                    setShareMessage(null);
                   },
                 )
               }
             />
+            {shareMessage && (
+              <Notice error={shareMessage.error} success={!shareMessage.error}>
+                {shareMessage.text}
+              </Notice>
+            )}
             {link !== "" && (
               <>
                 <Notice>
@@ -151,12 +190,18 @@ function Family() {
                 </Notice>
                 <Copy size={14}>{link}</Copy>
                 <Button
-                  label="Bagikan undangan"
+                  label={sharing ? "Membuka pilihan…" : "Bagikan undangan"}
+                  disabled={sharing}
                   onPress={() =>
-                    void Share.share({
-                      message: `Bergabung dengan ${h.name} di Cash Flow. Semua catatan keuangan terlihat oleh anggota keluarga. ${link}`,
-                    })
+                    void shareInvitation(
+                      `Bergabung dengan ${h.name} di Cash Flow. Semua catatan keuangan terlihat oleh anggota keluarga. ${link}`,
+                    )
                   }
+                />
+                <Button
+                  label="Salin tautan"
+                  secondary
+                  onPress={() => void copyInvitation(link)}
                 />
               </>
             )}
@@ -177,11 +222,17 @@ function Family() {
                   </Copy>
                   <Button
                     secondary
-                    label="Bagikan tautan"
+                    label={sharing ? "Membuka pilihan…" : "Bagikan tautan"}
+                    disabled={sharing}
                     onPress={() =>
-                      void Share.share({
-                        message: Linking.createURL("invite/" + i.id),
-                      })
+                      void shareInvitation(Linking.createURL("invite/" + i.id))
+                    }
+                  />
+                  <Button
+                    secondary
+                    label="Salin tautan"
+                    onPress={() =>
+                      void copyInvitation(Linking.createURL("invite/" + i.id))
                     }
                   />
                   <Action

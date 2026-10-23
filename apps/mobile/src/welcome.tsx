@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
+  Image,
   Platform,
   Pressable,
   Text,
@@ -22,11 +23,14 @@ export function AuthScreen() {
     [showPassword, setShowPassword] = useState(false),
     [name, setName] = useState(""),
     [busy, setBusy] = useState(false),
-    [message, setMessage] = useState("");
+    [message, setMessage] = useState<{
+      text: string;
+      error: boolean;
+    } | null>(null);
   async function submit() {
     if (busy) return;
     setBusy(true);
-    setMessage("");
+    setMessage(null);
     try {
       const result =
         mode === "signin"
@@ -43,24 +47,33 @@ export function AuthScreen() {
                 redirectTo: Linking.createURL("reset-password"),
               });
       if (result.error)
-        setMessage(
-          result.error.code === "EMAIL_NOT_VERIFIED"
-            ? "Email belum terverifikasi. Periksa inbox atau kirim ulang tautan."
-            : result.error.code === "INVALID_EMAIL_OR_PASSWORD"
-              ? "Email atau kata sandi tidak sesuai."
-              : (result.error.message ?? "Permintaan gagal. Coba kembali."),
-        );
+        setMessage({
+          error: true,
+          text:
+            result.error.code === "EMAIL_NOT_VERIFIED"
+              ? "Email belum terverifikasi. Periksa inbox atau kirim ulang tautan."
+              : result.error.code === "INVALID_EMAIL_OR_PASSWORD"
+                ? "Email atau kata sandi tidak sesuai."
+                : (result.error.message ?? "Permintaan gagal. Coba kembali."),
+        });
       else if (mode === "signup") {
-        setMessage("Akun dibuat. Buka tautan verifikasi di email, lalu masuk.");
+        setMessage({
+          error: false,
+          text: "Akun dibuat. Buka tautan verifikasi di email, lalu masuk.",
+        });
         setMode("signin");
         setPassword("");
       } else if (mode === "reset") {
-        setMessage(
-          "Jika alamat terdaftar, tautan atur ulang dikirim ke email Anda.",
-        );
+        setMessage({
+          error: false,
+          text: "Jika alamat terdaftar, tautan atur ulang dikirim ke email Anda.",
+        });
       }
     } catch {
-      setMessage("Tidak dapat terhubung. Periksa koneksi lalu coba lagi.");
+      setMessage({
+        error: true,
+        text: "Tidak dapat terhubung. Periksa koneksi lalu coba lagi.",
+      });
     } finally {
       setBusy(false);
     }
@@ -71,10 +84,6 @@ export function AuthScreen() {
       : mode === "reset"
         ? "Atur ulang kata sandi"
         : "Selamat datang kembali";
-  const messageIsError =
-    message.includes("tidak sesuai") ||
-    message.includes("Tidak dapat") ||
-    message.includes("gagal");
   return (
     <SafeAreaView
       edges={["top", "left", "right", "bottom"]}
@@ -108,15 +117,21 @@ export function AuthScreen() {
             >
               <View
                 style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 11,
-                  backgroundColor: c.primary,
+                  width: 38,
+                  height: 38,
+                  borderRadius: 13,
+                  backgroundColor: c.bg,
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <Ionicons name="wallet-outline" size={18} color={c.onPrimary} />
+                <Image
+                  accessible
+                  accessibilityLabel="Logo Cash Flow"
+                  source={require("../assets/brand/cash-flow-mark-v1.png")}
+                  style={{ width: 30, height: 30 }}
+                  resizeMode="contain"
+                />
               </View>
               <Text
                 style={{
@@ -222,8 +237,10 @@ export function AuthScreen() {
                   }
                 />
               )}
-              {message !== "" && (
-                <Notice error={messageIsError}>{message}</Notice>
+              {message && (
+                <Notice error={message.error} success={!message.error}>
+                  {message.text}
+                </Notice>
               )}
               <Button
                 label={
@@ -261,7 +278,7 @@ export function AuthScreen() {
                   disabled={busy}
                   onPress={() => {
                     setMode(mode === "signup" ? "signin" : "signup");
-                    setMessage("");
+                    setMessage(null);
                   }}
                 />
               </View>
@@ -279,7 +296,7 @@ export function AuthScreen() {
                       disabled={busy}
                       onPress={() => {
                         setMode("reset");
-                        setMessage("");
+                        setMessage(null);
                       }}
                     />
                     <AuthLink
@@ -292,13 +309,15 @@ export function AuthScreen() {
                             email: email.trim(),
                             callbackURL: Linking.createURL("/"),
                           });
-                          setMessage(
-                            "Jika akun belum terverifikasi, tautan verifikasi dikirim ke email Anda.",
-                          );
+                          setMessage({
+                            error: false,
+                            text: "Jika akun belum terverifikasi, tautan verifikasi dikirim ke email Anda.",
+                          });
                         } catch {
-                          setMessage(
-                            "Belum dapat mengirim email. Coba kembali.",
-                          );
+                          setMessage({
+                            error: true,
+                            text: "Belum dapat mengirim email. Coba kembali.",
+                          });
                         } finally {
                           setBusy(false);
                         }

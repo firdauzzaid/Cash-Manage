@@ -44,7 +44,7 @@ function Budgets() {
           Sepakati batas kebutuhan keluarga. Biaya transfer ikut dihitung
           sebagai pengeluaran kategorinya.
         </Text>
-        <Period month={month} onChange={setMonth} />
+        <Period month={month} onChange={setMonth} loading={q.isFetching} />
       </Card>
       <Button
         label="Tambah anggaran"

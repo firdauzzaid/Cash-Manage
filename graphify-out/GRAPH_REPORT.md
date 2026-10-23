@@ -1,23 +1,23 @@
 # Graph Report - cash-flow  (2026-10-23)
 
 ## Corpus Check
-- 99 files · ~728,053 words
+- 99 files · ~839,845 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 4, .example 2, .css 1)
 
 ## Summary
-- 642 nodes · 1472 edges · 43 communities (36 shown, 7 thin omitted)
+- 650 nodes · 1485 edges · 44 communities (37 shown, 7 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 22 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `85601c67`
+- Built from commit: `cb2df1a8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - ui.tsx
-- fail
+- app.ts
 - package.json
 - mobile/package.json
 - 001_domain.sql
@@ -47,23 +47,24 @@
 - Panduan Desain — Cash Flow
 - Operasi Cash Flow
 - dependencies
-- scripts
+- access.ts
 - Status implementasi Cash Flow
 - Cash Flow
-- preview.mjs
+- finance.ts
 - db-init.sh
 - PRODUCT.md
-- ref_node_url
+- reports.ts
 - css.d.ts
 - (tabs)/_layout.tsx
-- devDependencies
+- fail
+- ref_node_crypto
 
 ## God Nodes (most connected - your core abstractions)
 1. `useColors()` - 39 edges
-2. `fail()` - 35 edges
-3. `useApp()` - 34 edges
-4. `Copy()` - 34 edges
-5. `Button()` - 34 edges
+2. `useApp()` - 36 edges
+3. `fail()` - 35 edges
+4. `Copy()` - 35 edges
+5. `Button()` - 33 edges
 6. `Screen()` - 27 edges
 7. `react` - 25 edges
 8. `LoadState()` - 24 edges
@@ -73,27 +74,27 @@
 ## Surprising Connections (you probably didn't know these)
 - ``transactions`` --references--> `transactions()`  [INFERRED]
   docs/DATABASE.md → apps/api/src/reports.ts
+- `3. Konvensi` --references--> `uuid()`  [INFERRED]
+  docs/DATABASE.md → apps/api/src/validation.ts
 - ``categories`` --references--> `version()`  [INFERRED]
   docs/DATABASE.md → apps/api/src/validation.ts
 - ``financial_accounts`` --references--> `version()`  [INFERRED]
   docs/DATABASE.md → apps/api/src/validation.ts
 - ``household_invitations`` --references--> `version()`  [INFERRED]
   docs/DATABASE.md → apps/api/src/validation.ts
-- ``household_members`` --references--> `version()`  [INFERRED]
-  docs/DATABASE.md → apps/api/src/validation.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (43 total, 7 thin omitted)
+## Communities (44 total, 7 thin omitted)
 
 ### Community 0 - "ui.tsx"
 Cohesion: 0.09
-Nodes (95): AuditField, AuditScreen(), entities, fields(), kinds, names, value(), apps_mobile_app_global (+87 more)
+Nodes (97): AuditField, AuditScreen(), entities, fields(), kinds, names, value(), apps_mobile_app_global (+89 more)
 
-### Community 1 - "fail"
-Cohesion: 0.07
-Nodes (66): access(), Actor, audit(), canonical(), Context, existing(), mutate(), owner() (+58 more)
+### Community 1 - "app.ts"
+Cohesion: 0.19
+Nodes (13): Config, configFromEnv(), createAuth(), Mail, apps_api_src_db_database, { Pool }, pool, pool (+5 more)
 
 ### Community 2 - "package.json"
 Cohesion: 0.06
@@ -113,27 +114,27 @@ Nodes (25): budgets(), version(), 10. Index awal dan migrasi, 11. Validasi desai
 
 ### Community 6 - "dependencies"
 Cohesion: 0.08
-Nodes (25): dependencies, better-auth, @better-auth/expo, @cashflow/contracts, expo, expo-constants, expo-crypto, expo-file-system (+17 more)
+Nodes (26): dependencies, better-auth, @better-auth/expo, @cashflow/contracts, expo, expo-clipboard, expo-constants, expo-crypto (+18 more)
 
 ### Community 7 - "index.ts"
 Cohesion: 0.11
 Nodes (13): Account, Audit, Budget, Category, Household, Invitation, Kind, MAX_MONEY (+5 more)
 
 ### Community 8 - "expo"
-Cohesion: 0.08
-Nodes (23): package, web, projectId, expo, android, extra, ios, name (+15 more)
+Cohesion: 0.07
+Nodes (27): backgroundColor, foregroundImage, adaptiveIcon, package, web, projectId, expo, android (+19 more)
 
 ### Community 9 - "api/package.json"
-Cohesion: 0.12
-Nodes (15): better-auth, @better-auth/expo, @cashflow/contracts, name, private, type, version, fastify (+7 more)
+Cohesion: 0.11
+Nodes (17): devDependencies, @types/nodemailer, @types/pg, better-auth, @better-auth/expo, @cashflow/contracts, name, private (+9 more)
 
 ### Community 10 - "Product Requirements Document — Cash Flow"
 Cohesion: 0.15
 Nodes (13): 10. Skenario verifikasi wajib, 11. Urutan implementasi dan release gate, 12. Referensi, 1. Tujuan dan status keputusan, 2. Pengguna dan pekerjaan utama, 3. Scope MVP, 4. Permission, 5. Business rule (+5 more)
 
 ### Community 11 - "backup.mjs"
-Cohesion: 0.15
-Nodes (8): ref_node_child_process, ref_node_fs, @playwright/test, directory, output, root, stamp, target
+Cohesion: 0.12
+Nodes (13): target, ref_node_child_process, ref_node_http, ref_node_path, node-pg-migrate, ref_node_url, directory, output (+5 more)
 
 ### Community 12 - "Arsitektur Sistem — Cash Flow"
 Cohesion: 0.17
@@ -196,12 +197,12 @@ Cohesion: 0.33
 Nodes (6): Backup dan pemulihan, Lingkungan dan kredensial, Migration dan startup, Observabilitas dan batas operasi, Operasi Cash Flow, Penghapusan akun
 
 ### Community 30 - "dependencies"
-Cohesion: 0.18
-Nodes (11): dependencies, better-auth, @better-auth/expo, @cashflow/contracts, fastify, @fastify/cors, @fastify/rate-limit, @fastify/swagger (+3 more)
+Cohesion: 0.10
+Nodes (18): dependencies, better-auth, @better-auth/expo, @cashflow/contracts, fastify, @fastify/cors, @fastify/rate-limit, @fastify/swagger (+10 more)
 
-### Community 31 - "scripts"
-Cohesion: 0.29
-Nodes (7): scripts, build, dev, migrate, start, test, typecheck
+### Community 31 - "access.ts"
+Cohesion: 0.26
+Nodes (14): access(), Actor, canonical(), mutate(), read(), transaction(), createApp(), actor() (+6 more)
 
 ### Community 32 - "Status implementasi Cash Flow"
 Cohesion: 0.40
@@ -211,44 +212,48 @@ Nodes (5): Fitur yang tersedia, Gate sebelum publik, Implementasi yang lebih sed
 Cohesion: 0.40
 Nodes (5): Cash Flow, Menjalankan lokal, Pemeriksaan, Pratinjau browser, Struktur
 
-### Community 34 - "preview.mjs"
-Cohesion: 0.33
-Nodes (5): ref_node_http, ref_node_path, root, server, types
+### Community 34 - "finance.ts"
+Cohesion: 0.30
+Nodes (14): audit(), existing(), owner(), reference(), remove(), saveAccount(), saveBudget(), saveCategory() (+6 more)
 
 ### Community 38 - "PRODUCT.md"
 Cohesion: 0.29
 Nodes (4): Artefak untuk ditinjau, Eksplorasi visual Cash Flow, Keuangan Rumah Tangga, Language
 
-### Community 39 - "ref_node_url"
-Cohesion: 0.50
-Nodes (3): target, node-pg-migrate, ref_node_url
+### Community 39 - "reports.ts"
+Cohesion: 0.19
+Nodes (13): Context, accounts(), csv(), csvCell(), period(), summary(), transactions(), call() (+5 more)
 
 ### Community 41 - "(tabs)/_layout.tsx"
 Cohesion: 0.50
 Nodes (4): HouseholdTabBar(), HouseholdTabBarProps, tabItems, TabsLayout()
 
-### Community 42 - "devDependencies"
-Cohesion: 0.67
-Nodes (3): devDependencies, @types/nodemailer, @types/pg
+### Community 42 - "fail"
+Cohesion: 0.27
+Nodes (11): fail(), HttpError, amount(), body, date(), email(), month(), oneOf() (+3 more)
+
+### Community 43 - "ref_node_crypto"
+Cohesion: 0.33
+Nodes (4): ref_node_crypto, ref_node_fs, @playwright/test, target
 
 ## Knowledge Gaps
-- **296 isolated node(s):** `name`, `version`, `private`, `type`, `build` (+291 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 323 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **300 isolated node(s):** `name`, `version`, `private`, `type`, `build` (+295 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 329 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Desain Database — Cash Flow` connect `Desain Database — Cash Flow` to `fail`, `README.md`?**
-  _High betweenness centrality (0.233) - this node is a cross-community bridge._
-- **Why does `3. Konvensi` connect `fail` to `Desain Database — Cash Flow`?**
-  _High betweenness centrality (0.218) - this node is a cross-community bridge._
+- **Why does `Desain Database — Cash Flow` connect `Desain Database — Cash Flow` to `fail`?**
+  _High betweenness centrality (0.230) - this node is a cross-community bridge._
+- **Why does `3. Konvensi` connect `fail` to `Desain Database — Cash Flow`, `access.ts`?**
+  _High betweenness centrality (0.215) - this node is a cross-community bridge._
+- **Why does `uuid()` connect `access.ts` to `finance.ts`, `fail`?**
+  _High betweenness centrality (0.110) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `private` to the rest of the system?**
-  _296 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _300 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ui.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.09135483870967742 - nodes in this community are weakly interconnected._
-- **Should `fail` be split into smaller, more focused modules?**
-  _Cohesion score 0.07046070460704607 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08672480620155039 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
 - **Should `mobile/package.json` be split into smaller, more focused modules?**

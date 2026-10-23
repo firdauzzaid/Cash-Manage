@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Redirect, router } from "expo-router";
@@ -18,11 +25,33 @@ import {
 } from "./ui";
 
 export function HouseholdChooser() {
-  const { me, household, select, refresh, signout, notice } = useApp();
+  const { me, household, select, refresh, signout, notice, notify } = useApp();
   const c = useColors();
   const [name, setName] = useState("");
   const [timezone, setTimezone] = useState("Asia/Jakarta");
+  const [checkingInvitations, setCheckingInvitations] = useState(false);
+  const [invitationCheckError, setInvitationCheckError] = useState("");
   const save = useSave();
+  const checkInvitations = async () => {
+    if (checkingInvitations) return;
+    setInvitationCheckError("");
+    setCheckingInvitations(true);
+    const result = await refresh();
+    setCheckingInvitations(false);
+    if (result.error) {
+      setInvitationCheckError(
+        "Undangan belum dapat diperiksa. Periksa koneksi Anda, lalu coba lagi.",
+      );
+      return;
+    }
+    const count = result.data?.invitations.length ?? 0;
+    notify(
+      count
+        ? `${count} undangan tersedia di bagian Undangan untuk Anda.`
+        : "Tidak ada undangan aktif untuk akun Anda.",
+      count ? "success" : "info",
+    );
+  };
   if (household) return <Redirect href="/(tabs)/home" />;
   return (
     <SafeAreaView
@@ -53,10 +82,16 @@ export function HouseholdChooser() {
                 borderRadius: 14,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "rgba(255,255,255,0.12)",
+                backgroundColor: c.bg,
               }}
             >
-              <Ionicons name="wallet-outline" size={22} color={c.onHero} />
+              <Image
+                accessible
+                accessibilityLabel="Logo Cash Flow"
+                source={require("../assets/brand/cash-flow-mark-v1.png")}
+                style={{ width: 34, height: 34 }}
+                resizeMode="contain"
+              />
             </View>
             <Text style={{ color: c.onHero, fontSize: 15, fontWeight: "700" }}>
               Cash Flow
@@ -237,60 +272,76 @@ export function HouseholdChooser() {
               />
             </View>
           </View>
-          <View style={{ borderTopWidth: 1, borderTopColor: c.border }}>
-            {[
-              {
-                label: "Perbarui undangan",
-                icon: "refresh-outline" as const,
-                onPress: () => void refresh(),
-              },
-              {
-                label: "Akun saya",
-                icon: "person-outline" as const,
-                onPress: () => router.push("/profile"),
-              },
-              {
-                label: "Keluar dari akun",
-                icon: "log-out-outline" as const,
-                onPress: () => void signout(),
-              },
-            ].map((action) => (
-              <Pressable
-                key={action.label}
-                accessibilityRole="button"
-                accessibilityLabel={action.label}
-                onPress={action.onPress}
-                style={({ pressed }) => ({
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: 12,
-                  minHeight: 54,
-                  borderBottomWidth: 1,
-                  borderBottomColor: c.border,
-                  opacity: pressed ? 0.62 : 1,
-                })}
-              >
-                <Ionicons
-                  name={action.icon}
-                  size={20}
-                  color={
-                    action.label === "Keluar dari akun" ? c.expense : c.primary
-                  }
-                />
-                <Text
-                  style={{
-                    color:
-                      action.label === "Keluar dari akun" ? c.expense : c.text,
-                    flex: 1,
-                    fontSize: 15,
-                    fontWeight: "700",
-                  }}
+          <View style={{ gap: 10 }}>
+            <View style={{ borderTopWidth: 1, borderTopColor: c.border }}>
+              {[
+                {
+                  id: "check-invitations",
+                  label: checkingInvitations
+                    ? "Memeriksa undangan…"
+                    : "Periksa undangan",
+                  icon: "refresh-outline" as const,
+                  onPress: () => void checkInvitations(),
+                  disabled: checkingInvitations,
+                },
+                {
+                  id: "profile",
+                  label: "Akun saya",
+                  icon: "person-outline" as const,
+                  onPress: () => router.push("/profile"),
+                  disabled: false,
+                },
+                {
+                  id: "signout",
+                  label: "Keluar dari akun",
+                  icon: "log-out-outline" as const,
+                  onPress: () => void signout(),
+                  disabled: false,
+                },
+              ].map((action) => (
+                <Pressable
+                  key={action.id}
+                  accessibilityRole="button"
+                  accessibilityLabel={action.label}
+                  accessibilityState={{ disabled: action.disabled }}
+                  disabled={action.disabled}
+                  onPress={action.onPress}
+                  style={({ pressed }) => ({
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: 12,
+                    minHeight: 54,
+                    borderBottomWidth: 1,
+                    borderBottomColor: c.border,
+                    opacity: action.disabled ? 0.65 : pressed ? 0.62 : 1,
+                  })}
                 >
-                  {action.label}
-                </Text>
-                <Ionicons name="chevron-forward" size={18} color={c.muted} />
-              </Pressable>
-            ))}
+                  {action.id === "check-invitations" && checkingInvitations ? (
+                    <ActivityIndicator size="small" color={c.primary} />
+                  ) : (
+                    <Ionicons
+                      name={action.icon}
+                      size={20}
+                      color={action.id === "signout" ? c.expense : c.primary}
+                    />
+                  )}
+                  <Text
+                    style={{
+                      color: action.id === "signout" ? c.expense : c.text,
+                      flex: 1,
+                      fontSize: 15,
+                      fontWeight: "700",
+                    }}
+                  >
+                    {action.label}
+                  </Text>
+                  <Ionicons name="chevron-forward" size={18} color={c.muted} />
+                </Pressable>
+              ))}
+            </View>
+            {invitationCheckError && (
+              <Notice error>{invitationCheckError}</Notice>
+            )}
           </View>
         </View>
       </ScrollView>

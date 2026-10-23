@@ -36,7 +36,7 @@ Pencatatan dilakukan setelah menerima atau membelanjakan uang, sering kali dari 
 
 ## Brand Commitments
 
-Nama kerja: Cash Flow. Bahasa produk awal: Indonesia. Pengguna memilih arah visual **C — Ruang Bersama** pada 20 Oktober 2026: permukaan hangat, kartu putih, aksen teal, dan identitas anggota keluarga. Logo serta nama komersial final belum ditentukan. Rancangan tetap memprioritaskan kejelasan angka dan kenyamanan pencatatan bersama.
+Nama kerja: Cash Flow. Bahasa produk awal: Indonesia. Pengguna memilih arah visual **C — Ruang Bersama** pada 20 Oktober 2026: permukaan hangat, kartu putih, aksen teal, dan identitas anggota keluarga. Mark aplikasi berupa atap rumah dengan dua aliran keuangan bersama berwarna emerald, mint, dan brass. Nama komersial final belum ditentukan. Rancangan tetap memprioritaskan kejelasan angka dan kenyamanan pencatatan bersama.
 
 ## Evidence on Hand
 

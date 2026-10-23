@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import type { Account, Category, Member } from "@cashflow/contracts";
 import { Choice, DateField, Field, Button } from "./ui";
-import { useHouseholdQuery } from "./state";
+import { useApp, useHouseholdQuery } from "./state";
 import { currentMonth, monthAfter } from "./period";
 export type Filters = {
   from: string;
@@ -38,9 +38,14 @@ export function FilterPanel({
   onChange: (f: Filters) => void;
 }) {
   const [open, setOpen] = useState(false),
+    { household } = useApp(),
     a = useHouseholdQuery<Account[]>("accounts"),
     c = useHouseholdQuery<Category[]>("categories"),
-    m = useHouseholdQuery<Member[]>("recorders");
+    m = useHouseholdQuery<Member[]>("recorders"),
+    defaults = initialFilters(household!.timezone),
+    activeCount = (Object.keys(value) as (keyof Filters)[]).filter(
+      (key) => value[key] !== defaults[key],
+    ).length;
   const set = (key: keyof Filters) => (v: string) =>
     onChange({ ...value, [key]: v });
   return (
@@ -53,7 +58,13 @@ export function FilterPanel({
         maxLength={100}
       />
       <Button
-        label={open ? "Tutup filter" : "Atur periode & filter"}
+        label={
+          open
+            ? "Tutup filter"
+            : activeCount
+              ? `${activeCount} filter aktif · Ubah filter`
+              : "Atur periode & filter"
+        }
         secondary
         onPress={() => setOpen(!open)}
       />
@@ -116,6 +127,13 @@ export function FilterPanel({
               })),
             ]}
           />
+          {activeCount > 0 && (
+            <Button
+              label="Hapus semua filter"
+              secondary
+              onPress={() => onChange(defaults)}
+            />
+          )}
         </>
       )}
     </View>

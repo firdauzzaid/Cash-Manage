@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1792723613.4343157,
-    "seen": 1792723750.5745766,
-    "ast_hash": "47649fb253d63334b823b206254a6184",
+    "mtime": 1792744011.3973746,
+    "seen": 1792744087.5752234,
+    "ast_hash": "dfb8cfcbc0d95917f2e6bd5a4e62bbfd",
     "semantic_hash": ""
   },
   "GLOSSARY.md": {
@@ -54,9 +54,9 @@
     "semantic_hash": ""
   },
   "PRODUCT.md": {
-    "mtime": 1792476192.559795,
-    "seen": 1792476756.1356254,
-    "ast_hash": "a501bae7b4890432c75c4ad5166c2ce2",
+    "mtime": 1792744010.450233,
+    "seen": 1792744087.575227,
+    "ast_hash": "e091440bb7ffcbcc178b3a6851d1e6ec",
     "semantic_hash": ""
   },
   "README.md": {
@@ -330,9 +330,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app.json": {
-    "mtime": 1792727212.0412018,
-    "seen": 1792727272.2945688,
-    "ast_hash": "36c4e1e9aa04bd190d747878afde9050",
+    "mtime": 1792744007.8966858,
+    "seen": 1792744087.5751138,
+    "ast_hash": "c76c433e3bf7f55f07f7504369d535b5",
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/_layout.tsx": {
@@ -342,21 +342,21 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/budgets.tsx": {
-    "mtime": 1792721459.8647032,
-    "seen": 1792721620.9346519,
-    "ast_hash": "7fce91d5d45f859f61590b7805401d41",
+    "mtime": 1792747502.6714735,
+    "seen": 1792747878.1555512,
+    "ast_hash": "6a41dabf6e9213e73496c2608049912d",
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/family.tsx": {
-    "mtime": 1792721460.5402346,
-    "seen": 1792721620.9346554,
-    "ast_hash": "e05e77c19f9eab9173711d53f8f07e29",
+    "mtime": 1792747591.1431735,
+    "seen": 1792747878.1555548,
+    "ast_hash": "ba6c276749878c94fa6670a0b812b3fb",
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/home.tsx": {
-    "mtime": 1792721529.968709,
-    "seen": 1792721620.9346585,
-    "ast_hash": "93c181a423c5fa9e890f910a128059b6",
+    "mtime": 1792747502.1415298,
+    "seen": 1792747878.1555576,
+    "ast_hash": "6265cb06d2e62cbe4ad26e142505d544",
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/transactions.tsx": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/manage.tsx": {
-    "mtime": 1792721397.1806564,
-    "seen": 1792721620.934681,
-    "ast_hash": "61f265283617328dfa5f4c58d2287e1e",
+    "mtime": 1792746256.2708306,
+    "seen": 1792746411.5609078,
+    "ast_hash": "795882ba2517186d6d6ea905d8128172",
     "semantic_hash": ""
   },
   "apps/mobile/app/profile.tsx": {
@@ -414,9 +414,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/reset-password.tsx": {
-    "mtime": 1792478427.6134548,
-    "seen": 1792480845.7993565,
-    "ast_hash": "2628921cdda02f62c283f156dd219f1b",
+    "mtime": 1792747606.8131895,
+    "seen": 1792747878.1555896,
+    "ast_hash": "ac86906410cdf5860f7560a49a139c8c",
     "semantic_hash": ""
   },
   "apps/mobile/app/sign-in.tsx": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/package.json": {
-    "mtime": 1792739948.4078693,
-    "seen": 1792740002.768144,
-    "ast_hash": "b5f753184dda38c96d7b03812b491a80",
+    "mtime": 1792747443.0752392,
+    "seen": 1792747878.1556058,
+    "ast_hash": "22e607a899ab0259888a8f9667cc13e4",
     "semantic_hash": ""
   },
   "apps/mobile/src/action.tsx": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/filters.tsx": {
-    "mtime": 1792724558.551198,
-    "seen": 1792724621.4917965,
-    "ast_hash": "fd050fe3e752eba553e5c0cd3ef1ab6a",
+    "mtime": 1792747500.904588,
+    "seen": 1792747878.155618,
+    "ast_hash": "cd06c6be00478e3e51f17444be0c3422",
     "semantic_hash": ""
   },
   "apps/mobile/src/household-screen.tsx": {
@@ -474,9 +474,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/period.tsx": {
-    "mtime": 1792718736.140323,
-    "seen": 1792719375.610732,
-    "ast_hash": "b9b75398744e0d48c5567d89755cc0ea",
+    "mtime": 1792747501.433977,
+    "seen": 1792747878.1556273,
+    "ast_hash": "f6663210b0e5eb451411b99253b4f773",
     "semantic_hash": ""
   },
   "apps/mobile/src/save.ts": {
@@ -486,9 +486,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/state.tsx": {
-    "mtime": 1792721347.986075,
-    "seen": 1792721620.934733,
-    "ast_hash": "5f93e754e59a6384a80873f2c8aae7f2",
+    "mtime": 1792744613.7539175,
+    "seen": 1792744970.2646382,
+    "ast_hash": "e59f566aa9ea5f54fb02e326bebe6d85",
     "semantic_hash": ""
   },
   "apps/mobile/src/transaction-row.tsx": {
@@ -498,15 +498,15 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/ui.tsx": {
-    "mtime": 1792723066.6754713,
-    "seen": 1792723383.3688064,
-    "ast_hash": "4a2a5dbcb8464c2a931e24b019bbf02b",
+    "mtime": 1792747500.3852108,
+    "seen": 1792747878.1556396,
+    "ast_hash": "c10ee55ccc35a4260f27ea2608e00150",
     "semantic_hash": ""
   },
   "apps/mobile/src/welcome.tsx": {
-    "mtime": 1792723621.8710756,
-    "seen": 1792723750.574538,
-    "ast_hash": "b5536bbfcbe14ad513a36b2a59bf29fd",
+    "mtime": 1792747579.2600784,
+    "seen": 1792747878.155642,
+    "ast_hash": "cab8e29aac068b2adfd7c6f9ba25f2f0",
     "semantic_hash": ""
   },
   "apps/mobile/tsconfig.json": {
@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "tests/ui/finance.spec.ts": {
-    "mtime": 1792723066.8922715,
-    "seen": 1792723383.3688984,
-    "ast_hash": "b367f963470b7a99b45cecfb9fe4826c",
+    "mtime": 1792747792.999601,
+    "seen": 1792747878.1557233,
+    "ast_hash": "48730384a22bacea85e57e68e6b84ad4",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -636,26 +636,26 @@
     "semantic_hash": ""
   },
   ".impeccable/review/web-auth.png": {
-    "mtime": 1792724760.748892,
-    "seen": 1792724762.1029916,
-    "ast_hash": "6aadfbbdd203fbd2f58c8fb7fa48a968",
+    "mtime": 1792747802.011912,
+    "seen": 1792747878.1558287,
+    "ast_hash": "10165c3f0a11a9f147d0f701b5fd24ed",
     "semantic_hash": ""
   },
   ".impeccable/review/web-home-dark.png": {
-    "mtime": 1792724771.4686787,
-    "seen": 1792724871.1356785,
+    "mtime": 1792747812.3387215,
+    "seen": 1792747878.1558316,
     "ast_hash": "9a7efb2998701dcabc77e300eb90beec",
     "semantic_hash": ""
   },
   ".impeccable/review/web-home-light.png": {
-    "mtime": 1792724771.3937345,
-    "seen": 1792724871.1356828,
+    "mtime": 1792747812.2837274,
+    "seen": 1792747878.1558344,
     "ast_hash": "4559bc8415058fdd1a0b89d563af04bb",
     "semantic_hash": ""
   },
   ".impeccable/review/web-transaction.png": {
-    "mtime": 1792724771.1455333,
-    "seen": 1792724871.1356893,
+    "mtime": 1792747812.0600998,
+    "seen": 1792747878.1558397,
     "ast_hash": "8abc1840264307787bce6f0d82ac4abb",
     "semantic_hash": ""
   },
@@ -666,15 +666,15 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/household-chooser.tsx": {
-    "mtime": 1792721376.5136254,
-    "seen": 1792721620.9347198,
-    "ast_hash": "07c13efe7115c7182eccdf45455c9df9",
+    "mtime": 1792744640.6331944,
+    "seen": 1792744970.2646232,
+    "ast_hash": "9fa283aad649b7abf391eb4f32f9d9c3",
     "semantic_hash": ""
   },
   ".impeccable/review/web-household-chooser.png": {
-    "mtime": 1792724762.2553153,
-    "seen": 1792724871.1356862,
-    "ast_hash": "585556c34469081fc8cb403d4f98a5e4",
+    "mtime": 1792747803.3557072,
+    "seen": 1792747878.1558373,
+    "ast_hash": "416958c50fe9f99914e1302176094d99",
     "semantic_hash": ""
   },
   "apps/mobile/css.d.ts": {
@@ -717,6 +717,24 @@
     "mtime": 1792737597.0320413,
     "seen": 1792740002.7681975,
     "ast_hash": "f7f47607b20da5393dfc037f112390a1",
+    "semantic_hash": ""
+  },
+  "apps/mobile/assets/brand/cash-flow-adaptive-foreground-v1.png": {
+    "mtime": 1792743893.0460236,
+    "seen": 1792744087.5752904,
+    "ast_hash": "d3b23b07b2d3bff89b360fd1f4098337",
+    "semantic_hash": ""
+  },
+  "apps/mobile/assets/brand/cash-flow-app-icon-v1.png": {
+    "mtime": 1792743923.6449716,
+    "seen": 1792744087.575292,
+    "ast_hash": "81b9ee655c7f8e18173026cd936ec759",
+    "semantic_hash": ""
+  },
+  "apps/mobile/assets/brand/cash-flow-mark-v1.png": {
+    "mtime": 1792743656.5850127,
+    "seen": 1792744087.5752938,
+    "ast_hash": "7fd6059f6bc0aafb033fc7ae28e018b5",
     "semantic_hash": ""
   }
 }

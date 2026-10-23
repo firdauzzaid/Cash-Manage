@@ -272,7 +272,12 @@ function Home() {
               </Pressable>
             </View>
           </View>
-          <Period month={month} onChange={setMonth} inverse />
+          <Period
+            month={month}
+            onChange={setMonth}
+            inverse
+            loading={summary.isFetching}
+          />
           <View
             style={{ height: 1, backgroundColor: c.accent, opacity: 0.8 }}
           />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Pressable } from "react-native";
+import { ActivityIndicator, Text, View, Pressable } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { today } from "@cashflow/contracts";
 import { Copy, useColors } from "./ui";
@@ -18,10 +18,12 @@ export function Period({
   month,
   onChange,
   inverse = false,
+  loading = false,
 }: {
   month: string;
   onChange: (m: string) => void;
   inverse?: boolean;
+  loading?: boolean;
 }) {
   const c = useColors();
   const foreground = inverse ? c.onHero : c.primary;
@@ -41,14 +43,17 @@ export function Period({
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Bulan sebelumnya"
+        accessibilityState={{ disabled: loading }}
+        disabled={loading}
         onPress={() => onChange(monthAfter(month, -1))}
-        style={{
+        style={({ pressed }) => ({
           minWidth: 46,
           minHeight: 46,
           borderRadius: 12,
           alignItems: "center",
           justifyContent: "center",
-        }}
+          opacity: loading ? 0.45 : pressed ? 0.65 : 1,
+        })}
       >
         <Ionicons name="chevron-back" size={21} color={foreground} />
       </Pressable>
@@ -61,7 +66,11 @@ export function Period({
           gap: 8,
         }}
       >
-        <Ionicons name="calendar-outline" size={17} color={foreground} />
+        {loading ? (
+          <ActivityIndicator size="small" color={foreground} />
+        ) : (
+          <Ionicons name="calendar-outline" size={17} color={foreground} />
+        )}
         <Text style={{ color: foreground, fontSize: 14, fontWeight: "700" }}>
           {new Intl.DateTimeFormat("id-ID", {
             month: "long",
@@ -73,14 +82,17 @@ export function Period({
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Bulan berikutnya"
+        accessibilityState={{ disabled: loading }}
+        disabled={loading}
         onPress={() => onChange(monthAfter(month, 1))}
-        style={{
+        style={({ pressed }) => ({
           minWidth: 46,
           minHeight: 46,
           borderRadius: 12,
           alignItems: "center",
           justifyContent: "center",
-        }}
+          opacity: loading ? 0.45 : pressed ? 0.65 : 1,
+        })}
       >
         <Ionicons name="chevron-forward" size={21} color={foreground} />
       </Pressable>
