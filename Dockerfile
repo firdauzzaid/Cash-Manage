@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY apps/api/package.json apps/api/package.json
 COPY packages/contracts/package.json packages/contracts/package.json
-RUN npm ci --workspace @cashflow/api --workspace @cashflow/contracts --include-workspace-root
+RUN npm ci --fetch-retries=5 --fetch-retry-mintimeout=10000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --workspace @cashflow/api --workspace @cashflow/contracts --include-workspace-root
 COPY tsconfig.json ./
 COPY packages/contracts packages/contracts
 COPY apps/api apps/api
@@ -15,7 +15,7 @@ WORKDIR /app
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/apps/api/package.json apps/api/package.json
 COPY --from=build /app/packages/contracts/package.json packages/contracts/package.json
-RUN npm ci --omit=dev --workspace @cashflow/api --workspace @cashflow/contracts --ignore-scripts
+RUN npm ci --fetch-retries=5 --fetch-retry-mintimeout=10000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --omit=dev --workspace @cashflow/api --workspace @cashflow/contracts --ignore-scripts
 COPY --from=build /app/apps/api/dist apps/api/dist
 COPY --from=build /app/packages/contracts/dist packages/contracts/dist
 COPY migrations migrations
