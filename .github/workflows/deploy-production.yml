@@ -31,6 +31,8 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
+      - name: Stamp release
+        run: printf '%s\n' "$GITHUB_SHA" > .release-version
       - name: Configure SSH
         env:
           DEPLOY_KEY: ${{ secrets.CASHFLOW_DEPLOY_SSH_KEY }}

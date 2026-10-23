@@ -70,6 +70,13 @@ ssh-keyscan -H nama-host-vps
 
 Workflow tidak mengirim `.env` atau secret aplikasi ke GitHub. Setiap deploy memvalidasi Compose, membangun image API, menunggu PostgreSQL siap, membuat backup sebelum migration, menjalankan migration forward-only, menyalakan API, dan menunggu readiness berhasil.
 
+Setiap deployment juga menyalin file `.release-version` berisi SHA commit GitHub yang dipasang. Bandingkan nilainya di VPS dengan SHA pada workflow GitHub untuk memastikan source release sama:
+
+```bash
+cd /opt/apps/cash-flow
+cat .release-version
+```
+
 Backup default berada di `/opt/apps/cash-flow/backups`; atur `CASHFLOW_BACKUP_DIR` saat menjalankan skrip bila memakai lokasi lain. Lokasi ini harus disalin secara terenkripsi ke penyimpanan di luar VPS sebelum pilot publik.
 
 ## Catatan proxy
