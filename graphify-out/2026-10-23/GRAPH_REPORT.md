@@ -1,17 +1,17 @@
 # Graph Report - cash-flow  (2026-10-23)
 
 ## Corpus Check
-- 97 files · ~727,285 words
+- 99 files · ~727,791 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 4, .example 2, .css 1)
 
 ## Summary
-- 635 nodes · 1467 edges · 36 communities (31 shown, 5 thin omitted)
+- 640 nodes · 1470 edges · 36 communities (29 shown, 7 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 22 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4653c6ff`
+- Built from commit: `a8660313`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -32,14 +32,14 @@
 - Rancangan UI/UX — Cash Flow
 - README.md
 - 000_auth.sql
-- Instruksi Agen — Aplikasi Keuangan Rumah Tangga
+- backup-production.sh
 - contracts/package.json
 - Cash Flow
 - Deployment pilot di VPS dengan Traefik
 - compilerOptions
 - Tech Stack — Cash Flow
 - contracts/tsconfig.json
-- (tabs)/_layout.tsx
+- deploy-production.sh
 - api/tsconfig.json
 - mobile/tsconfig.json
 - Paket Desain — Ruang Bersama
@@ -78,15 +78,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (36 total, 5 thin omitted)
+## Communities (36 total, 7 thin omitted)
 
 ### Community 0 - "ui.tsx"
-Cohesion: 0.09
-Nodes (97): AuditField, AuditScreen(), entities, fields(), kinds, names, value(), apps_mobile_app_global (+89 more)
+Cohesion: 0.08
+Nodes (103): AuditField, AuditScreen(), entities, fields(), kinds, names, value(), apps_mobile_app_global (+95 more)
 
 ### Community 1 - "fail"
 Cohesion: 0.07
-Nodes (66): access(), Actor, audit(), canonical(), Context, existing(), mutate(), owner() (+58 more)
+Nodes (65): access(), Actor, audit(), canonical(), Context, existing(), mutate(), owner() (+57 more)
 
 ### Community 2 - "package.json"
 Cohesion: 0.06
@@ -94,7 +94,7 @@ Nodes (35): devDependencies, @playwright/test, prettier, tsx, @types/node, types
 
 ### Community 3 - "mobile/package.json"
 Cohesion: 0.07
-Nodes (27): devDependencies, @types/react, better-auth, @better-auth/expo, @cashflow/contracts, main, name, private (+19 more)
+Nodes (26): devDependencies, @types/react, better-auth, @better-auth/expo, @cashflow/contracts, main, name, private (+18 more)
 
 ### Community 4 - "001_domain.sql"
 Cohesion: 0.17
@@ -121,8 +121,8 @@ Cohesion: 0.05
 Nodes (36): dependencies, better-auth, @better-auth/expo, @cashflow/contracts, fastify, @fastify/cors, @fastify/rate-limit, @fastify/swagger (+28 more)
 
 ### Community 10 - "Product Requirements Document — Cash Flow"
-Cohesion: 0.15
-Nodes (13): 10. Skenario verifikasi wajib, 11. Urutan implementasi dan release gate, 12. Referensi, 1. Tujuan dan status keputusan, 2. Pengguna dan pekerjaan utama, 3. Scope MVP, 4. Permission, 5. Business rule (+5 more)
+Cohesion: 0.08
+Nodes (23): Aturan keuangan dan household, Batas perubahan, Handoff, Instruksi Agen — Aplikasi Keuangan Rumah Tangga, Klarifikasi dan konteks proyek, Konteks proyek, Perbaikan bug, Perlindungan data dan database (+15 more)
 
 ### Community 11 - "backup.mjs"
 Cohesion: 0.09
@@ -140,10 +140,6 @@ Nodes (12): 10. Empty, loading, error, dan data ekstrem, 11. Kriteria tinjauan d
 Cohesion: 0.36
 Nodes (8): "auth_accounts", auth_accounts_userId_idx, "auth_rate_limits", "auth_sessions", auth_sessions_userId_idx, "auth_users", "auth_verifications", auth_verifications_identifier_idx
 
-### Community 16 - "Instruksi Agen — Aplikasi Keuangan Rumah Tangga"
-Cohesion: 0.18
-Nodes (10): Aturan keuangan dan household, Batas perubahan, Handoff, Instruksi Agen — Aplikasi Keuangan Rumah Tangga, Klarifikasi dan konteks proyek, Konteks proyek, Perbaikan bug, Perlindungan data dan database (+2 more)
-
 ### Community 17 - "contracts/package.json"
 Cohesion: 0.20
 Nodes (9): main, name, private, scripts, build, typecheck, type, types (+1 more)
@@ -153,8 +149,8 @@ Cohesion: 0.20
 Nodes (10): Brand Commitments, Capabilities and Constraints, Cash Flow, Evidence on Hand, Operating Context, Platform, Product Principles, Product Purpose (+2 more)
 
 ### Community 19 - "Deployment pilot di VPS dengan Traefik"
-Cohesion: 0.29
-Nodes (6): Catatan proxy, Deploy pertama, Deployment pilot di VPS dengan Traefik, Konfigurasi environment, Pemeriksaan, Prasyarat
+Cohesion: 0.25
+Nodes (7): Catatan proxy, Deploy otomatis dari GitHub, Deploy pertama, Deployment pilot di VPS dengan Traefik, Konfigurasi environment, Pemeriksaan, Prasyarat
 
 ### Community 20 - "compilerOptions"
 Cohesion: 0.22
@@ -167,10 +163,6 @@ Nodes (8): 1. Keputusan dan batas, 2. Stack yang direkomendasikan, 3. Kebijakan 
 ### Community 22 - "contracts/tsconfig.json"
 Cohesion: 0.25
 Nodes (7): compilerOptions, declaration, outDir, rootDir, extends, include, ../../tsconfig.json
-
-### Community 23 - "(tabs)/_layout.tsx"
-Cohesion: 0.50
-Nodes (4): HouseholdTabBar(), HouseholdTabBarProps, tabItems, TabsLayout()
 
 ### Community 24 - "api/tsconfig.json"
 Cohesion: 0.29
@@ -205,24 +197,24 @@ Cohesion: 0.29
 Nodes (4): Artefak untuk ditinjau, Eksplorasi visual Cash Flow, Keuangan Rumah Tangga, Language
 
 ## Knowledge Gaps
-- **291 isolated node(s):** `name`, `version`, `private`, `type`, `build` (+286 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 316 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **294 isolated node(s):** `name`, `version`, `private`, `type`, `build` (+289 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 321 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Desain Database — Cash Flow` connect `Desain Database — Cash Flow` to `fail`?**
-  _High betweenness centrality (0.238) - this node is a cross-community bridge._
+- **Why does `Desain Database — Cash Flow` connect `Desain Database — Cash Flow` to `fail`, `README.md`?**
+  _High betweenness centrality (0.234) - this node is a cross-community bridge._
 - **Why does `3. Konvensi` connect `fail` to `Desain Database — Cash Flow`?**
-  _High betweenness centrality (0.222) - this node is a cross-community bridge._
+  _High betweenness centrality (0.219) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `private` to the rest of the system?**
-  _291 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _294 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ui.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08886389201349831 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08136011670968465 - nodes in this community are weakly interconnected._
 - **Should `fail` be split into smaller, more focused modules?**
-  _Cohesion score 0.07046070460704607 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07191358024691358 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
 - **Should `mobile/package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._

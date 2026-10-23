@@ -696,9 +696,27 @@
     "semantic_hash": ""
   },
   "docs/DEPLOYMENT-VPS.md": {
-    "mtime": 1792729132.129795,
-    "seen": 1792729155.0497203,
-    "ast_hash": "53ab68d885247534a53cf0a7cdedb6b9",
+    "mtime": 1792729657.052922,
+    "seen": 1792729677.6434157,
+    "ast_hash": "9c44b10fe6fa786b8694412ca974d7d4",
+    "semantic_hash": ""
+  },
+  "scripts/backup-production.sh": {
+    "mtime": 1792729623.066835,
+    "seen": 1792729677.6433306,
+    "ast_hash": "9189ecf7e3c56a3e3071666d9b8b2115",
+    "semantic_hash": ""
+  },
+  "scripts/deploy-production.sh": {
+    "mtime": 1792729727.402848,
+    "seen": 1792729742.963037,
+    "ast_hash": "c7ec367748db834c1d5a5a5194837d2c",
+    "semantic_hash": ""
+  },
+  ".github/workflows/deploy-production.yml": {
+    "mtime": 1792729727.9813735,
+    "seen": 1792729742.963061,
+    "ast_hash": "ad9ff728fd9dd7836667586c1662f836",
     "semantic_hash": ""
   }
 }

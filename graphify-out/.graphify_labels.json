@@ -25,14 +25,21 @@
   "23": "deploy-production.sh",
   "24": "api/tsconfig.json",
   "25": "mobile/tsconfig.json",
+  "26": "Instruksi Agen — Aplikasi Keuangan Rumah Tangga",
   "27": "Paket Desain — Ruang Bersama",
   "28": "Panduan Desain — Cash Flow",
   "29": "Operasi Cash Flow",
+  "30": "dependencies",
+  "31": "scripts",
   "32": "Status implementasi Cash Flow",
   "33": "Cash Flow",
+  "34": "preview.mjs",
   "35": "db-init.sh",
   "36": "002_permissions.sql",
   "37": "seed-demo.sql",
   "38": "PRODUCT.md",
-  "40": "css.d.ts"
+  "39": "ref_node_url",
+  "40": "css.d.ts",
+  "41": "(tabs)/_layout.tsx",
+  "42": "devDependencies"
 }
