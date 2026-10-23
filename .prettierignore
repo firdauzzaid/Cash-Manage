@@ -1,0 +1,8 @@
+**/dist/
+**/node_modules/
+**/.npm-cache/
+**/.expo/
+graphify-out/
+.impeccable/
+backups/
+test-results/

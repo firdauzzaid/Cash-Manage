@@ -1,0 +1,87 @@
+name: cash-flow
+x-api: &api
+  build: .
+  image: cash-flow-api:local
+  env_file: .env
+  environment: &api-env
+    NODE_ENV: development
+    DATABASE_URL: postgres://cashflow_app:${APP_DB_PASSWORD:?Run scripts/setup-env.ps1}@db:5432/cashflow
+    SMTP_HOST: mailpit
+    SMTP_PORT: 1025
+  init: true
+  restart: unless-stopped
+services:
+  db:
+    image: postgres:18-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873
+    environment:
+      POSTGRES_DB: cashflow
+      POSTGRES_USER: cashflow_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/setup-env.ps1}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Run scripts/setup-env.ps1}
+    ports: ["127.0.0.1:54387:5432"]
+    volumes:
+      - cashflow_data:/var/lib/postgresql
+      - ./docker/db-init.sh:/docker-entrypoint-initdb.d/10-runtime-role.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cashflow_admin -d cashflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+  mailpit:
+    image: axllent/mailpit:v1.31.6
+    ports: ["127.0.0.1:8027:8025", "127.0.0.1:1027:1025"]
+    restart: unless-stopped
+  api:
+    <<: *api
+    ports: ["4310:4310"]
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:4310/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+  migrate:
+    <<: *api
+    profiles: ["tools"]
+    restart: "no"
+    environment:
+      <<: *api-env
+      MIGRATION_DATABASE_URL: postgres://cashflow_admin:${POSTGRES_PASSWORD}@db:5432/cashflow
+    command: ["node", "apps/api/dist/migrate.js"]
+    depends_on:
+      db: { condition: service_healthy }
+  maintenance:
+    <<: *api
+    profiles: ["tools"]
+    restart: "no"
+    command: ["node", "apps/api/dist/maintenance.js"]
+    depends_on:
+      db: { condition: service_healthy }
+  test-db:
+    profiles: ["test"]
+    image: postgres:18-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873
+    environment:
+      POSTGRES_DB: cashflow_test
+      POSTGRES_USER: cashflow_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/setup-env.ps1}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Run scripts/setup-env.ps1}
+    ports: ["127.0.0.1:54388:5432"]
+    volumes:
+      - cashflow_test_data:/var/lib/postgresql
+      - ./docker/db-init.sh:/docker-entrypoint-initdb.d/10-runtime-role.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cashflow_admin -d cashflow_test"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+volumes:
+  cashflow_data:
+  cashflow_test_data:

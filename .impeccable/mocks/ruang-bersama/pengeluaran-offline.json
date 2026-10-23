@@ -1,0 +1,9 @@
+{
+  "surface": "Cash Flow / pengeluaran-offline",
+  "tool": "built-in imagegen",
+  "status": "draft screen following selected direction C",
+  "approved": false,
+  "reference": ".impeccable/mocks/ruang-bersama/pengeluaran.png",
+  "source": "C:\\Users\\marke\\.codex\\generated_images\\01a1577a-7f25-70a2-8709-24053f91b600\\exec-63577acc-274d-467b-b126-f48127e616f4.png",
+  "prompt": "Use case: precise-object-edit, native UI error-state mockup. The attached Cash Flow expense form is the EDIT TARGET and layout/style reference. Create its OFFLINE BEFORE SUBMIT state, preserving all entered fields and exact amounts: Rp325.000, Bank Keluarga, Belanja, 20 Oktober 2026, Belanja kebutuhan mingguan, and Keluarga Budi. Keep the approved warm white cards and teal UI. In the lower part, replace the existing 'Dicatat oleh / Sari' white panel with one clear compact warning panel: heading 'Belum tersimpan' and body 'Tidak ada koneksi internet. Isian tetap ada di formulir.' Under that panel, show 'Dicatat oleh Sari' as small plain read-only attribution without chevron or selectable-field styling. Replace the main button label with 'Coba lagi' and retain its solid teal look. Keep all existing upper field labels and inputs visible, and retain the Data contoh label. Remove the duplicate bottom 'Belum tersimpan' helper if it would repeat the warning heading. No bottom tabs, no success message, no claim queued offline sync or permanent draft persistence. Use a readable amber warning icon paired with text, not color alone. This is a synthetic design mockup; preserve portrait aspect and safe areas."
+}

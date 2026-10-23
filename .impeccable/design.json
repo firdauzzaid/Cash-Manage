@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20",
+  "title": "Design System: Cash Flow — Ruang Bersama",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Teal interaktif"
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Latar hangat"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Kartu putih"
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Teks hijau arang"
+      },
+      "dark-primary": {
+        "role": "primary",
+        "displayName": "Teal terang mode gelap"
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Permukaan hijau arang"
+      }
+    }
+  },
+  "components": [],
+  "narrative": {
+    "northStar": "Ruang Bersama",
+    "overview": "Arah C dipilih pengguna pada 20 Oktober 2026. Keuangan keluarga disajikan melalui permukaan hangat, kartu lapang, aksen teal, font sistem, dan identitas anggota. Implementasi React Native tersedia; nilai token existing tetap berada di frontmatter DESIGN.md. Capture React Native Web dengan data QA tidak menggantikan validasi Android/iOS; disposisi review native tetap recapture. Drift ukuran source terhadap baseline dicatat di DESIGN.md tanpa mengubah token atau persetujuan visual.",
+    "keyCharacteristics": [
+      "Angka dan status simpan jelas",
+      "Identitas household selalu terbaca",
+      "Kontrol native sesuai OS",
+      "Light/dark dengan kontras terukur pada token"
+    ],
+    "rules": [
+      {
+        "name": "Satu sumber token",
+        "body": "Warna, typography, radius, spacing, dan component primitives berada pada frontmatter DESIGN.md.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Pertahankan saldo saat ini terpisah dari arus kas periode.",
+      "Tampilkan pencatat sebagai identitas read-only.",
+      "Gunakan PNG hanya sebagai referensi desain."
+    ],
+    "donts": [
+      "Jangan menyimpulkan permission atau validasi backend dari tampilan.",
+      "Jangan menjadikan satu PNG sebagai layar aplikasi produksi."
+    ]
+  }
+}

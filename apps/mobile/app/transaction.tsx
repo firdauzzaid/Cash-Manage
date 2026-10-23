@@ -1,0 +1,337 @@
+import { withHousehold } from "../src/household-screen";
+import React, { useEffect, useRef, useState } from "react";
+import { View } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+import { useQuery } from "@tanstack/react-query";
+import {
+  today,
+  money,
+  type Account,
+  type Category,
+  type Transaction,
+  type TransactionInput,
+} from "@cashflow/contracts";
+import { ApiError, request } from "../src/client";
+import { useApp, useHouseholdQuery } from "../src/state";
+import { useSave } from "../src/save";
+import { useDraftGuard } from "../src/draft";
+import {
+  AmountField,
+  Button,
+  Choice,
+  Copy,
+  DateField,
+  Field,
+  LoadState,
+  Notice,
+  SaveState,
+  Screen,
+  Title,
+  confirm,
+} from "../src/ui";
+const fields = (t: Transaction): TransactionInput => ({
+  type: t.type,
+  account_id: t.account_id,
+  destination_account_id: t.destination_account_id,
+  category_id: t.category_id,
+  amount_minor: t.amount_minor,
+  fee_minor: t.fee_minor,
+  fee_category_id: t.fee_category_id,
+  occurred_on: t.occurred_on,
+  note: t.note,
+});
+function TransactionForm() {
+  const { id } = useLocalSearchParams<{ id?: string }>(),
+    { household, me } = useApp(),
+    a = useHouseholdQuery<Account[]>("accounts"),
+    c = useHouseholdQuery<Category[]>("categories"),
+    s = useSave(),
+    [version, setVersion] = useState(1),
+    [saved, setSaved] = useState(false),
+    initial = useRef("");
+  const [form, setForm] = useState<TransactionInput>({
+    type: "expense",
+    account_id: "",
+    destination_account_id: null,
+    category_id: null,
+    amount_minor: "",
+    fee_minor: "0",
+    fee_category_id: null,
+    occurred_on: today(household!.timezone),
+    note: "",
+  });
+  const detail = useQuery({
+    queryKey: ["household", me!.id, household!.id, "transaction", id],
+    queryFn: () =>
+      request<Transaction>(`/households/${household!.id}/transactions/${id}`),
+    enabled: !!id,
+    refetchInterval: false,
+  });
+  useEffect(() => {
+    if (id && detail.data && !initial.current) {
+      const f = fields(detail.data);
+      setForm(f);
+      setVersion(detail.data.version);
+      initial.current = JSON.stringify(f);
+    } else if (!id && !initial.current) {
+      initial.current = JSON.stringify(form);
+    }
+  }, [detail.data]);
+  const dirty =
+    !saved && (s.uncertain || JSON.stringify(form) !== initial.current);
+  useDraftGuard(dirty, s.uncertain);
+  useEffect(() => {
+    if (saved) router.back();
+  }, [saved]);
+  const set = <K extends keyof TransactionInput>(
+    key: K,
+    value: TransactionInput[K],
+  ) => setForm((f) => ({ ...f, [key]: value }));
+  const activeAccounts = (a.data ?? [])
+    .filter(
+      (x) =>
+        !x.archived_at ||
+        x.id === detail.data?.account_id ||
+        x.id === detail.data?.destination_account_id,
+    )
+    .map((x) => ({
+      id: x.id,
+      name: x.name + (x.archived_at ? " · Diarsipkan" : ""),
+    }));
+  const categories = (kind: "income" | "expense", old?: string | null) =>
+    (c.data ?? [])
+      .filter((x) => x.kind === kind && (!x.archived_at || x.id === old))
+      .map((x) => ({
+        id: x.id,
+        name: x.name + (x.archived_at ? " · Diarsipkan" : ""),
+      }));
+  if (a.isPending || c.isPending || (id && detail.isPending))
+    return (
+      <Screen>
+        <LoadState loading error={null} retry={() => {}} />
+      </Screen>
+    );
+  if (a.error || c.error || detail.error)
+    return (
+      <Screen>
+        <LoadState
+          loading={false}
+          error={a.error ?? c.error ?? detail.error}
+          retry={() => {
+            void a.refetch();
+            void c.refetch();
+            if (id) void detail.refetch();
+          }}
+        />
+      </Screen>
+    );
+  const conflict =
+    s.error instanceof ApiError && s.error.code === "VERSION_CONFLICT"
+      ? (s.error.details?.current as Transaction)
+      : null;
+  return (
+    <Screen title={id ? "Rincian & koreksi transaksi" : "Catat untuk keluarga"}>
+      <Copy muted>{household!.name} · IDR</Copy>
+      {activeAccounts.length === 0 ? (
+        <>
+          <Notice>
+            Tambahkan rekening terlebih dahulu untuk mencatat transaksi.
+          </Notice>
+          <Button
+            label="Tambah rekening"
+            onPress={() =>
+              router.replace({
+                pathname: "/manage",
+                params: { type: "accounts", create: "1" },
+              })
+            }
+          />
+        </>
+      ) : (
+        <>
+          <Choice
+            label="Jenis transaksi"
+            value={form.type}
+            disabled={s.locked}
+            options={[
+              { id: "expense", name: "Pengeluaran" },
+              { id: "income", name: "Pemasukan" },
+              { id: "transfer", name: "Transfer rekening" },
+            ]}
+            onChange={(type) =>
+              setForm((f) => ({
+                ...f,
+                type: type as TransactionInput["type"],
+                category_id: null,
+                destination_account_id: null,
+                fee_minor: "0",
+                fee_category_id: null,
+              }))
+            }
+          />
+          <AmountField
+            label={form.type === "transfer" ? "Nominal transfer" : "Nominal"}
+            value={form.amount_minor}
+            onChange={(n) => set("amount_minor", n)}
+            disabled={s.locked}
+          />
+          <Choice
+            label={form.type === "transfer" ? "Dari rekening" : "Rekening"}
+            value={form.account_id}
+            options={activeAccounts}
+            onChange={(n) => set("account_id", n)}
+            disabled={s.locked}
+          />
+          {form.type === "transfer" ? (
+            <>
+              <Choice
+                label="Ke rekening"
+                value={form.destination_account_id ?? ""}
+                options={activeAccounts.filter((x) => x.id !== form.account_id)}
+                onChange={(n) => set("destination_account_id", n)}
+                disabled={s.locked}
+              />
+              <AmountField
+                label="Biaya transfer"
+                value={form.fee_minor}
+                onChange={(n) => {
+                  set("fee_minor", n);
+                  if (n === "0") set("fee_category_id", null);
+                }}
+                disabled={s.locked}
+              />
+              {form.fee_minor !== "" && form.fee_minor !== "0" && (
+                <Choice
+                  label="Kategori biaya"
+                  value={form.fee_category_id ?? ""}
+                  options={categories("expense", detail.data?.fee_category_id)}
+                  onChange={(n) => set("fee_category_id", n)}
+                  disabled={s.locked}
+                />
+              )}
+              <Copy muted>
+                Pokok transfer tidak dihitung sebagai pemasukan atau
+                pengeluaran. Biaya mengurangi rekening asal.
+              </Copy>
+              {/^\d+$/.test(form.amount_minor) &&
+                /^\d+$/.test(form.fee_minor) && (
+                  <Notice>
+                    Rekening asal berkurang{" "}
+                    {money(
+                      (
+                        BigInt(form.amount_minor) + BigInt(form.fee_minor)
+                      ).toString(),
+                    )}
+                    . Rekening tujuan bertambah {money(form.amount_minor)}.
+                  </Notice>
+                )}
+            </>
+          ) : (
+            <Choice
+              label="Kategori"
+              value={form.category_id ?? ""}
+              options={categories(form.type, detail.data?.category_id)}
+              onChange={(n) => set("category_id", n)}
+              disabled={s.locked}
+            />
+          )}
+          <DateField
+            label="Tanggal transaksi"
+            value={form.occurred_on}
+            onChange={(n) => set("occurred_on", n)}
+            disabled={s.locked}
+          />
+          <Field
+            label="Catatan (opsional)"
+            value={form.note}
+            onChangeText={(n) => set("note", n)}
+            maxLength={500}
+            multiline
+            editable={!s.locked}
+          />
+          <Copy muted size={14}>
+            Dicatat oleh {detail.data?.actor_name ?? me!.display_name}
+            {detail.data
+              ? " · Dibuat " +
+                new Date(detail.data.created_at).toLocaleString("id-ID")
+              : ""}
+          </Copy>
+          <SaveState
+            state={s}
+            label={
+              id
+                ? "Simpan koreksi"
+                : `Simpan ${form.type === "transfer" ? "transfer" : form.type === "income" ? "pemasukan" : "pengeluaran"}`
+            }
+            onPress={() =>
+              void s.save(
+                `/households/${household!.id}/transactions${id ? "/" + id : ""}`,
+                { ...form, ...(id ? { expected_version: version } : {}) },
+                id ? "PUT" : "POST",
+                () => setSaved(true),
+                `${id ? "Koreksi transaksi" : form.type === "transfer" ? "Transfer" : form.type === "income" ? "Pemasukan" : "Pengeluaran"} berhasil disimpan.`,
+              )
+            }
+          />
+          {conflict && (
+            <View style={{ gap: 12 }}>
+              <Title>Bandingkan perubahan</Title>
+              <Copy>
+                Server: {money(conflict.amount_minor)} · {conflict.occurred_on}{" "}
+                · {conflict.note || "Tanpa catatan"}
+              </Copy>
+              <Copy>
+                Isian Anda:{" "}
+                {/^[0-9]+$/.test(form.amount_minor)
+                  ? money(form.amount_minor)
+                  : form.amount_minor}{" "}
+                · {form.occurred_on} · {form.note || "Tanpa catatan"}
+              </Copy>
+              <Button
+                secondary
+                label="Muat versi server"
+                onPress={() => {
+                  setForm(fields(conflict));
+                  setVersion(conflict.version);
+                  initial.current = JSON.stringify(fields(conflict));
+                  s.reset();
+                }}
+              />
+              <Copy muted size={14}>
+                Rekening, kategori, jenis, dan biaya juga mungkin telah berubah.
+                Muat versi server, lalu lakukan koreksi kembali agar perubahan
+                anggota lain tidak tertimpa.
+              </Copy>
+            </View>
+          )}
+          {id && (
+            <Button
+              danger
+              label="Hapus transaksi"
+              disabled={s.locked}
+              onPress={async () => {
+                if (
+                  await confirm(
+                    "Hapus transaksi " + money(detail.data!.amount_minor) + "?",
+                    "Saldo dan anggaran akan diperbarui. Riwayat perubahan tetap disimpan.",
+                    "Hapus transaksi",
+                    true,
+                  )
+                )
+                  void s.save(
+                    `/households/${household!.id}/transactions/${id}`,
+                    { expected_version: version },
+                    "DELETE",
+                    () => setSaved(true),
+                    "Transaksi berhasil dihapus.",
+                  );
+              }}
+            />
+          )}
+        </>
+      )}
+    </Screen>
+  );
+}
+
+export default withHousehold(TransactionForm);

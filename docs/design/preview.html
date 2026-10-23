@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Cash Flow — Ruang Bersama</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #202936; background: #f2f3f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    ::selection { background: #c8d8f9; color: #172235; }
+    a { color: #204eb3; text-underline-offset: .2em; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #2455bd; outline-offset: 4px; }
+    .layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: 100vh; }
+    aside { padding: 32px 24px; background: #fff; border-right: 1px solid #d9dde4; }
+    h1 { margin: 0 0 12px; font-size: 26px; letter-spacing: -.02em; }
+    p { margin: 0 0 20px; line-height: 1.6; }
+    nav { display: grid; gap: 8px; margin: 24px 0; }
+    nav a { display: block; padding: 12px; border: 1px solid #d9dde4; border-radius: 10px; text-decoration: none; color: inherit; min-height: 48px; }
+    nav a:hover { background: #f3f6fc; }
+    nav a[aria-current="true"] { background: #eaf0fc; border-color: #2455bd; color: #183e8d; }
+    h2 { margin: 28px 0 8px; font-size: 18px; }
+    .note { font-size: 14px; color: #4e5c70; }
+    .state { font-size: 13px; font-variant-numeric: tabular-nums; }
+    .screen-picker { margin: 24px 0; }
+    .screen-picker label { display: block; margin-bottom: 8px; font-weight: 600; }
+    .screen-picker select { width: 100%; min-height: 48px; border: 1px solid #76877f; border-radius: 10px; background: #fff; color: #202936; padding: 10px; font: inherit; }
+    select:focus-visible { outline: 3px solid #2455bd; outline-offset: 4px; }
+    main { padding: 28px 24px 120px; }
+    figure { max-width: 390px; margin: 0 auto; }
+    img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid #d9dde4; }
+    figcaption { font-size: 13px; line-height: 1.6; color: #4e5c70; margin-top: 12px; }
+    .switcher { position: fixed; bottom: max(16px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 8px; background: #202936; color: #fff; border-radius: 14px; max-width: calc(100vw - 24px); }
+    .switcher button { width: 48px; height: 48px; flex: 0 0 48px; border: 0; border-radius: 8px; background: #3b4658; color: #fff; cursor: pointer; }
+    .switcher button:hover { background: #4b5970; }
+    .switcher button svg { width: 20px; height: 20px; }
+    #variant-label { font-size: 14px; text-align: center; min-width: 155px; }
+    @media (max-width: 720px) {
+      .layout { display: block; }
+      aside { padding: 24px 20px; border-right: 0; border-bottom: 1px solid #d9dde4; }
+      nav { grid-template-columns: 1fr 1fr; margin: 20px 0; }
+      nav a { font-size: 14px; }
+      main { padding: 20px 12px 120px; }
+    }
+    @media print { .switcher { display: none; } .layout { display: block; } aside { border: 0; } }
+  </style>
+</head>
+<body>
+  <!-- Pembanding mockup: C dipilih pengguna. ?variant=C&screen=home|expense|transfer|transactions|budgets|dark|offline. Bukan aplikasi produksi. -->
+  <div class="layout">
+    <aside>
+      <h1>Cash Flow · Ruang Bersama</h1>
+      <p>Arah C sudah dipilih. Jelajahi layar inti dan contoh kondisi di bawah. Ini gambar desain; tombol di dalam gambar belum interaktif.</p>
+      <div id="screen-picker" class="screen-picker">
+        <label for="screen-select">Layar / kondisi</label>
+        <select id="screen-select">
+          <option value="home">Beranda terang</option>
+          <option value="expense">Tambah pengeluaran</option>
+          <option value="transfer">Transfer dan biaya</option>
+          <option value="transactions">Daftar transaksi</option>
+          <option value="budgets">Anggaran</option>
+          <option value="dark">Beranda gelap</option>
+          <option value="offline">Pengeluaran offline</option>
+        </select>
+      </div>
+      <nav aria-label="Pilihan arah desain">
+        <a href="?variant=A" data-variant="A">A · Ringkasan Bulanan</a>
+        <a href="?variant=B" data-variant="B">B · Buku Kas</a>
+        <a href="?variant=C" data-variant="C" aria-current="true">C · Ruang Bersama · dipilih</a>
+        <a href="?variant=D" data-variant="D">D · Format Standar</a>
+      </nav>
+      <h2 id="direction-title">Beranda terang</h2>
+      <p id="direction-summary">Referensi pilihan pengguna: saldo saat ini, arus kas periode, anggaran, dan aktivitas keluarga.</p>
+      <p class="note" id="direction-risk">Arah visual terpilih; gambar bukan bukti aplikasi berjalan atau hasil pengujian perangkat.</p>
+      <p class="state" id="prototype-state" aria-live="polite">C · Beranda · IDR · Oktober 2026 · Data contoh · Arah dipilih</p>
+      <p class="note">Pada arah C, panah mengganti layar. Alternatif A, B, dan D tetap tersedia sebagai arsip. Salin URL untuk membuka tampilan yang sama.</p>
+      <p class="note"><a href="RUANG-BERSAMA.md">Paket desain dan prompt</a> · <a href="EXPLORATIONS.md">Riwayat eksplorasi</a> · <a href="../UI-UX.md">Alur UI/UX</a></p>
+    </aside>
+    <main>
+      <figure>
+        <img id="design-image" src="../../.impeccable/mocks/decision/ruang-bersama.png" alt="Beranda Cash Flow arah C yang dipilih pengguna, dengan saldo tercatat Rp12.672.500 dan data contoh." decoding="async">
+        <figcaption>Mockup dibuat dengan imagegen, bukan screenshot aplikasi native. Arah C sudah dipilih; layar turunannya merupakan rancangan untuk ditinjau. Data sintetis mengikuti dokumen UI/UX.</figcaption>
+      </figure>
+    </main>
+  </div>
+  <div class="switcher" role="group" aria-label="Pembanding prototype, bukan navigasi aplikasi">
+    <button id="previous" type="button" aria-label="Lihat layar atau arah sebelumnya"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 6-6 6 6 6"/></svg></button>
+    <span id="variant-label">C · Beranda · 1/7</span>
+    <button id="next" type="button" aria-label="Lihat layar atau arah berikutnya"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m10 6 6 6-6 6"/></svg></button>
+  </div>
+  <noscript><p>JavaScript tidak aktif. Buka gambar: <a href="../../.impeccable/mocks/decision/ringkasan.png">A</a>, <a href="../../.impeccable/mocks/decision/buku-kas.png">B</a>, <a href="../../.impeccable/mocks/decision/ruang-bersama.png">C</a>, <a href="../../.impeccable/mocks/decision/standar.png">D</a>.</p></noscript>
+  <script>
+    const variants = [
+      { key: 'A', name: 'Ringkasan Bulanan', file: 'ringkasan.png', summary: 'Saldo besar dan kolom arus kas yang sejajar dalam satu ringkasan bergaris.', risk: 'Tampil lebih formal; bahasa dan identitas keluarga menjaga kehangatannya.' },
+      { key: 'B', name: 'Buku Kas', file: 'buku-kas.png', summary: 'Rekening di bagian atas, ringkasan bulan yang ringkas, lalu jurnal transaksi dengan tanggal dan pencatat.', risk: 'Terasa akrab; jurnal harus tetap mudah dipakai sebagai layar mobile.' },
+      { key: 'C', name: 'Ruang Bersama', file: 'ruang-bersama.png', summary: 'Identitas anggota, kartu saldo, indikator arus kas, dan anggaran yang lebih menonjol.', risk: 'Lebih banyak kartu dapat memanjangkan scroll; angka tetap perlu mempunyai prioritas jelas.' },
+      { key: 'D', name: 'Format Standar', file: 'standar.png', summary: 'Kartu saldo biru dengan ringkasan bulan dan daftar aktivitas yang familiar.', risk: 'Mudah dikenali, tetapi lebih mirip aplikasi keuangan pada umumnya.' }
+    ];
+    const screens = [
+      { key: 'home', name: 'Beranda terang', short: 'Beranda', file: 'decision/ruang-bersama.png', summary: 'Referensi pilihan pengguna: saldo saat ini, arus kas periode, anggaran, dan aktivitas keluarga.' },
+      { key: 'expense', name: 'Tambah pengeluaran', short: 'Pengeluaran', file: 'ruang-bersama/pengeluaran-v2.png', summary: 'Nominal, rekening, kategori, tanggal, dan catatan; identitas pencatat bersifat read-only.' },
+      { key: 'transfer', name: 'Transfer dan biaya', short: 'Transfer', file: 'ruang-bersama/transfer.png', summary: 'Pokok Rp500.000 dan biaya Rp2.500: bank berkurang Rp502.500, e-wallet bertambah Rp500.000.' },
+      { key: 'transactions', name: 'Daftar transaksi', short: 'Transaksi', file: 'ruang-bersama/transaksi.png', summary: 'Filter periode dan pencarian; satu transfer tetap satu kejadian dengan rincian biaya.' },
+      { key: 'budgets', name: 'Anggaran', short: 'Anggaran', file: 'ruang-bersama/anggaran.png', summary: 'Total batas Rp1.550.000, terpakai Rp327.500, dan sisa anggaran Rp1.222.500.' },
+      { key: 'dark', name: 'Beranda gelap', short: 'Mode gelap', file: 'ruang-bersama/beranda-gelap.png', summary: 'Struktur dan data Beranda yang sama dengan permukaan gelap dan tint teal terang.' },
+      { key: 'offline', name: 'Pengeluaran offline', short: 'Gagal simpan', file: 'ruang-bersama/pengeluaran-offline.png', summary: 'Gagal sebelum submit: isian tetap ada, status belum tersimpan, dan tindakan coba lagi.' }
+    ];
+    const params = new URLSearchParams(location.search);
+    const requestedVariant = variants.findIndex(item => item.key === params.get('variant'));
+    let current = requestedVariant < 0 ? 2 : requestedVariant;
+    let currentScreen = Math.max(0, screens.findIndex(item => item.key === params.get('screen')));
+    function showVariant(index, updateUrl = true) {
+      current = (index + variants.length) % variants.length;
+      const variant = variants[current];
+      const chosen = variant.key === 'C';
+      const screen = screens[currentScreen];
+      document.querySelector('#screen-picker').hidden = !chosen;
+      document.querySelector('#screen-select').value = screen.key;
+      document.querySelector('#design-image').src = '../../.impeccable/mocks/' + (chosen ? screen.file : 'decision/' + variant.file);
+      document.querySelector('#design-image').alt = chosen ? 'Cash Flow Ruang Bersama: ' + screen.name + ', mockup dengan data contoh.' : 'Arsip arah ' + variant.key + ': ' + variant.name + ', Beranda dengan data contoh.';
+      document.querySelector('#direction-title').textContent = chosen ? screen.name : variant.name;
+      document.querySelector('#direction-summary').textContent = chosen ? screen.summary : variant.summary;
+      document.querySelector('#direction-risk').textContent = chosen ? 'Arah visual terpilih; layar turunan merupakan rancangan, belum diuji pada perangkat native.' : variant.risk;
+      document.querySelector('#variant-label').textContent = chosen ? 'C · ' + screen.short + ' · ' + (currentScreen + 1) + '/' + screens.length : variant.key + ' · ' + variant.name;
+      document.querySelector('#prototype-state').textContent = chosen ? 'C · ' + screen.name + ' · IDR · Oktober 2026 · Data contoh · Arah dipilih' : 'Arsip ' + variant.key + ' · Beranda · IDR · Oktober 2026 · Tidak dipilih';
+      document.querySelectorAll('[data-variant]').forEach(link => {
+        if (link.dataset.variant === variant.key) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+      if (updateUrl) {
+        const url = new URL(location.href);
+        url.searchParams.set('variant', variant.key);
+        if (chosen) url.searchParams.set('screen', screen.key);
+        else url.searchParams.delete('screen');
+        history.replaceState(null, '', url);
+      }
+    }
+    function step(direction) {
+      if (variants[current].key === 'C') {
+        currentScreen = (currentScreen + direction + screens.length) % screens.length;
+        showVariant(current);
+      } else showVariant(current + direction);
+    }
+    document.querySelector('#screen-select').addEventListener('change', event => {
+      currentScreen = screens.findIndex(item => item.key === event.target.value);
+      showVariant(current);
+    });
+    document.querySelector('#previous').addEventListener('click', () => step(-1));
+    document.querySelector('#next').addEventListener('click', () => step(1));
+    document.querySelectorAll('[data-variant]').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      showVariant(variants.findIndex(item => item.key === link.dataset.variant));
+    }));
+    addEventListener('keydown', event => {
+      if (event.target.closest('input, textarea, select, [contenteditable]')) return;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        step(event.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+    showVariant(current, false);
+  </script>
+</body>
+</html>

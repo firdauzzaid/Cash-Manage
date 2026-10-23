@@ -1,0 +1,9 @@
+{
+  "surface": "Cash Flow / beranda-gelap",
+  "tool": "built-in imagegen",
+  "status": "draft screen following selected direction C",
+  "approved": false,
+  "reference": ".impeccable/mocks/decision/ruang-bersama.png",
+  "source": "C:\\Users\\marke\\.codex\\generated_images\\01a1577a-7f25-70a2-8709-24053f91b600\\exec-74d3c1c7-008a-4ea3-819f-7bff7eaee3e1.png",
+  "prompt": "Use case: ui-mockup. Edit the attached Cash Flow HOME SCREEN mockup into its DARK MODE version. The input is the edit target and the approved light-mode layout reference. Change only theme colors. Preserve the exact layout topology, all text, all labels, all numeric values, all rows, avatars, button and tab positions, portrait aspect, safe areas and native typography. Dark background #101B19; card surfaces #1A2A26; primary text #EDF5F1; secondary text #B0C2B8; teal interactive tint #7FD9C6 with very dark on-tint text #0E332B; subtle outlines #3C5149. Keep readable semantic expense and income icon hints without neon glow. Exact balance Rp12.672.500, Bank Keluarga Rp12.172.500, E-wallet Rp500.000, income Rp8.000.000, expense Rp327.500, cashflow Rp7.672.500, budget spending Rp325.000 dari Rp1.500.000 and remaining Rp1.175.000. Keep 'Data contoh', household Keluarga Budi, month Oktober 2026, all 3 activity rows and bottom tabs. No new content, no layout redesign, no photography, no illustration. This is a dark-theme design mockup, not a screenshot of a running app."
+}

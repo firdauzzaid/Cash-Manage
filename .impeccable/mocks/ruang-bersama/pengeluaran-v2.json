@@ -1,0 +1,9 @@
+{
+  "surface": "Cash Flow / pengeluaran-v2",
+  "tool": "built-in imagegen",
+  "status": "draft screen following selected direction C",
+  "approved": false,
+  "reference": ".impeccable/mocks/ruang-bersama/pengeluaran.png",
+  "source": "C:\\Users\\marke\\.codex\\generated_images\\01a1577a-7f25-70a2-8709-24053f91b600\\exec-c56bb663-9b24-4983-93d9-cfed23c02dc6.png",
+  "prompt": "Use case: precise-object-edit, native UI mockup. The attached Cash Flow expense form is the EDIT TARGET. Make exactly one correction: remove the right-facing chevron from the bottom 'Dicatat oleh / Sari' attribution panel. That identity is read-only and must not look like a selectable person field. Keep the panel, attribution words, every other field, all amounts (Rp325.000), the date 20 Oktober 2026, all layout positions, colors, typography, segmented control, notes, save button, and portrait aspect exactly unchanged. Preserve the opaque background. No added content or controls."
+}

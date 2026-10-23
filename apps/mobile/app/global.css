@@ -1,0 +1,17 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fbfcf9 inset !important;
+  -webkit-text-fill-color: #112d28 !important;
+  caret-color: #126a59;
+}
+
+@media (prefers-color-scheme: dark) {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #1a302d inset !important;
+    -webkit-text-fill-color: #f4f7f2 !important;
+    caret-color: #86e0c6;
+  }
+}

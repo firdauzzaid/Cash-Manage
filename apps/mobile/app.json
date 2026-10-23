@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Cash Flow",
+    "slug": "cash-flow",
+    "scheme": "cashflow",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.cashflow.household",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.cashflow.household"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-web-browser",
+      "expo-sharing",
+      "expo-status-bar",
+      "@react-native-community/datetimepicker"
+    ],
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "20288902-43f6-4680-a043-441d8a92298a"
+      }
+    },
+    "owner": "znonymous"
+  }
+}

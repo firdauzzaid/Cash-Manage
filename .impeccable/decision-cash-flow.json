@@ -1,0 +1,213 @@
+{
+  "title": "Arah desain Cash Flow",
+  "question": "Bandingkan Beranda dengan data contoh yang sama. Pilih arah yang ingin dilanjutkan ke layar transaksi dan anggaran.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "A — Ringkasan Bulanan",
+      "kicker": "ARAH AWAL",
+      "lineage": "Lembar ringkasan tagihan bulanan, diterjemahkan menjadi catatan keuangan keluarga",
+      "thesis": "Satu ringkasan yang tenang, dengan angka besar dan rincian yang langsung dapat ditelusuri.",
+      "palette": [
+        "#F5F7FB",
+        "#FFFFFF",
+        "#172235",
+        "#214AD7"
+      ],
+      "materials": [
+        "permukaan bersih",
+        "garis pemisah presisi"
+      ],
+      "viewport": "Saldo utama di atas, pemasukan/pengeluaran dalam kolom sejajar, lalu anggaran dan transaksi terbaru.",
+      "risk": "Tampilan lebih formal; bahasa dan identitas keluarga perlu menjaga kehangatannya.",
+      "comp": ".impeccable/mocks/decision/ringkasan.png",
+      "raised": [
+        {
+          "from": "Referensi beranotasi",
+          "raise": "Setiap angka memakai label eksplisit dan penjajaran yang konsisten."
+        },
+        {
+          "from": "Katalog terindeks",
+          "raise": "Daftar tetap mudah dipindai tanpa mengecilkan teks atau target sentuh."
+        },
+        {
+          "from": "Peta transit",
+          "raise": "Asal dan tujuan transfer selalu dibaca sebagai satu alur."
+        },
+        {
+          "from": "Identitas katalog",
+          "raise": "Saldo menjadi satu fokus utama tanpa elemen dekoratif yang bersaing."
+        },
+        {
+          "from": "Rekam eksposur",
+          "raise": "Konflik dan status tidak bergantung pada warna saja."
+        }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "B — Buku Kas",
+      "kicker": "ALTERNATIF",
+      "lineage": "Buku kas keluarga dan ritme catatan harian",
+      "thesis": "Transaksi menjadi pusat perhatian dalam lembar catatan yang hangat dan teratur.",
+      "palette": [
+        "#F7F4ED",
+        "#FFFFFF",
+        "#173B34",
+        "#176B52"
+      ],
+      "materials": [
+        "latar hangat datar",
+        "baris bergaris"
+      ],
+      "viewport": "Saldo ringkas disusul rekening dan jurnal transaksi dengan nominal rata kanan.",
+      "risk": "Bentuk buku kas cukup familiar; rincian harus tetap terasa seperti aplikasi native.",
+      "comp": ".impeccable/mocks/decision/buku-kas.png"
+    },
+    {
+      "id": "challenger-warm",
+      "label": "C — Ruang Bersama",
+      "verdict": "competitive",
+      "lineage": "Aplikasi konsumen dengan kontrol sentuh yang lapang",
+      "thesis": "Kartu ringkas dan bahasa yang ramah membuat keuangan bersama mudah didekati.",
+      "palette": [
+        "#F7F3F0",
+        "#FFFFFF",
+        "#243731",
+        "#116C61"
+      ],
+      "materials": [
+        "kartu lembut",
+        "permukaan hangat"
+      ],
+      "viewport": "Kartu saldo, dua ringkasan arus kas, progress anggaran, dan daftar aktivitas keluarga.",
+      "case": "Lebih akrab bagi pengguna aplikasi sehari-hari; ketepatan pembacaan angka harus dijaga dari terlalu banyak kartu.",
+      "risk": "Kartu dapat memanjangkan scroll jika terlalu banyak informasi diberi bobot sama.",
+      "comp": ".impeccable/mocks/decision/ruang-bersama.png",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-warm-consumer-app-surface-hero.webp"
+    },
+    {
+      "id": "rw-centre-rail-reference-setting",
+      "label": "Referensi Beranotasi",
+      "verdict": "declined",
+      "lineage": "Eksplorasi visual pembanding",
+      "thesis": "Sudah dipertimbangkan untuk data keuangan keluarga.",
+      "palette": [
+        "#E8E0CF",
+        "#201D19"
+      ],
+      "materials": [
+        "sistem visual pembanding"
+      ],
+      "viewport": "Data saldo dan transaksi dengan struktur referensi tersebut.",
+      "case": "Dua kolom anotasi mempersulit pemindaian saldo dan input dengan satu tangan.",
+      "kept": "Label eksplisit dan penjajaran angka.",
+      "risk": "Dua kolom anotasi mempersulit pemindaian saldo dan input dengan satu tangan.",
+      "hero": "https://impeccable.style/worlds/cards/rw-centre-rail-reference-setting-hero.webp"
+    },
+    {
+      "id": "pop-culture-shelf-doujin-event-catalog",
+      "label": "Katalog Terindeks",
+      "verdict": "declined",
+      "lineage": "Eksplorasi visual pembanding",
+      "thesis": "Sudah dipertimbangkan untuk data keuangan keluarga.",
+      "palette": [
+        "#EBE8DF",
+        "#222222"
+      ],
+      "materials": [
+        "sistem visual pembanding"
+      ],
+      "viewport": "Data saldo dan transaksi dengan struktur referensi tersebut.",
+      "case": "Grid padat tidak membantu keluarga memahami saldo dan menambah transaksi.",
+      "kept": "Daftar terindeks yang konsisten tanpa teks kecil.",
+      "risk": "Grid padat tidak membantu keluarga memahami saldo dan menambah transaksi.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-doujin-event-catalog-hero.webp"
+    },
+    {
+      "id": "wayfinding-cartography-signage-midnight-transit-diagram",
+      "label": "Peta Transit",
+      "verdict": "declined",
+      "lineage": "Eksplorasi visual pembanding",
+      "thesis": "Sudah dipertimbangkan untuk data keuangan keluarga.",
+      "palette": [
+        "#111F3B",
+        "#F1F3F7"
+      ],
+      "materials": [
+        "sistem visual pembanding"
+      ],
+      "viewport": "Data saldo dan transaksi dengan struktur referensi tersebut.",
+      "case": "Jaringan rute menambah metafora yang tidak dibutuhkan pada ringkasan keuangan.",
+      "kept": "Asal dan tujuan transfer terbaca sebagai satu kejadian.",
+      "risk": "Jaringan rute menambah metafora yang tidak dibutuhkan pada ringkasan keuangan.",
+      "hero": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-midnight-transit-diagram-hero.webp"
+    },
+    {
+      "id": "brand-identity-canon-saville-catalog-sleeve",
+      "label": "Identitas Katalog",
+      "verdict": "declined",
+      "lineage": "Eksplorasi visual pembanding",
+      "thesis": "Sudah dipertimbangkan untuk data keuangan keluarga.",
+      "palette": [
+        "#151515",
+        "#EEEEEE"
+      ],
+      "materials": [
+        "sistem visual pembanding"
+      ],
+      "viewport": "Data saldo dan transaksi dengan struktur referensi tersebut.",
+      "case": "Kode warna dan nomor menggantikan label yang harus langsung dimengerti.",
+      "kept": "Satu fokus utama yang kuat.",
+      "risk": "Kode warna dan nomor menggantikan label yang harus langsung dimengerti.",
+      "hero": "https://impeccable.style/worlds/cards/brand-identity-canon-saville-catalog-sleeve-hero.webp"
+    },
+    {
+      "id": "operate-b-exposure-record-zone-sheets",
+      "label": "Rekam Eksposur",
+      "verdict": "declined",
+      "lineage": "Eksplorasi visual pembanding",
+      "thesis": "Sudah dipertimbangkan untuk data keuangan keluarga.",
+      "palette": [
+        "#232323",
+        "#F4F4F4"
+      ],
+      "materials": [
+        "sistem visual pembanding"
+      ],
+      "viewport": "Data saldo dan transaksi dengan struktur referensi tersebut.",
+      "case": "Lapisan miring dan skala eksposur mengganggu kenyamanan pencatatan keluarga.",
+      "kept": "Status dan konflik tetap terbaca tanpa warna.",
+      "risk": "Lapisan miring dan skala eksposur mengganggu kenyamanan pencatatan keluarga.",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp"
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "buildPath": {
+    "value": "comp",
+    "toggle": true
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "Format aplikasi keuangan yang familiar",
+    "thesis": "Pola saldo, kartu ringkasan, dan navigasi bawah yang mudah dikenali.",
+    "palette": [
+      "#FFFFFF",
+      "#142136",
+      "#2563EB"
+    ],
+    "materials": [
+      "permukaan putih",
+      "kartu ringkasan"
+    ],
+    "viewport": "Kartu saldo biru, ringkasan bulan, aktivitas terbaru, dan empat tab native.",
+    "risk": "Terlihat serupa dengan banyak aplikasi keuangan lain.",
+    "comp": ".impeccable/mocks/decision/standar.png"
+  },
+  "steer": true
+}
