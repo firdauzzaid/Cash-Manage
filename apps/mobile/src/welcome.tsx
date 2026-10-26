@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Image,
-  Platform,
-  Pressable,
-  Text,
-  View,
-} from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Linking from "expo-linking";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { authClient } from "./client";
 import { useApp } from "./state";
-import { Button, Copy, Field, Notice, Title, useColors } from "./ui";
+import {
+  Button,
+  Copy,
+  Field,
+  KeyboardScrollView,
+  Notice,
+  Title,
+  useColors,
+} from "./ui";
 
 export function AuthScreen() {
   const { notice } = useApp();
@@ -89,278 +90,271 @@ export function AuthScreen() {
       edges={["top", "left", "right", "bottom"]}
       style={{ flex: 1, backgroundColor: c.hero }}
     >
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+      <KeyboardScrollView
+        bounces={false}
+        contentContainerStyle={{
+          flexGrow: 1,
+          width: "100%",
+          maxWidth: 520,
+          alignSelf: "center",
+          backgroundColor: c.hero,
+        }}
+        showsVerticalScrollIndicator={false}
       >
         <View
           style={{
             flex: 1,
-            width: "100%",
-            maxWidth: 520,
-            alignSelf: "center",
-            backgroundColor: c.hero,
+            minHeight: 220,
+            paddingHorizontal: 24,
+            paddingVertical: 20,
+            justifyContent: "center",
+            gap: 12,
           }}
         >
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 9 }}>
+            <View
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: 13,
+                backgroundColor: c.bg,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                accessible
+                accessibilityLabel="Logo Cash Flow"
+                source={require("../assets/brand/cash-flow-mark-v1.png")}
+                style={{ width: 30, height: 30 }}
+                resizeMode="contain"
+              />
+            </View>
+            <Text
+              style={{
+                fontSize: 14,
+                color: c.accent,
+                fontWeight: "700",
+                letterSpacing: 0.8,
+              }}
+            >
+              CASH FLOW
+            </Text>
+          </View>
+          <Text
+            accessibilityRole="header"
+            style={{
+              fontSize: 30,
+              lineHeight: 36,
+              fontWeight: "700",
+              letterSpacing: -0.3,
+              color: c.onHero,
+            }}
+          >
+            Keuangan bersama, tanpa merasa sendirian.
+          </Text>
+          <Text
+            style={{
+              color: c.onHero,
+              opacity: 0.74,
+              fontSize: 15,
+              lineHeight: 22,
+            }}
+          >
+            Catat, pahami, dan putuskan bersama pada satu ruang keuangan.
+          </Text>
+        </View>
+        <View
+          style={{
+            backgroundColor: c.bg,
+            borderTopLeftRadius: 28,
+            borderTopRightRadius: 28,
+            paddingHorizontal: 20,
+            paddingTop: 22,
+            paddingBottom: 16,
+            gap: 14,
+          }}
+        >
+          {notice && <Notice>{notice}</Notice>}
           <View
             style={{
-              flex: 1,
-              minHeight: 220,
-              paddingHorizontal: 24,
-              paddingVertical: 20,
-              justifyContent: "center",
               gap: 12,
             }}
           >
-            <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 9 }}
-            >
-              <View
-                style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: 13,
-                  backgroundColor: c.bg,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Image
-                  accessible
-                  accessibilityLabel="Logo Cash Flow"
-                  source={require("../assets/brand/cash-flow-mark-v1.png")}
-                  style={{ width: 30, height: 30 }}
-                  resizeMode="contain"
-                />
-              </View>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: c.accent,
-                  fontWeight: "700",
-                  letterSpacing: 0.8,
-                }}
-              >
-                CASH FLOW
-              </Text>
-            </View>
-            <Text
-              accessibilityRole="header"
-              style={{
-                fontSize: 30,
-                lineHeight: 36,
-                fontWeight: "700",
-                letterSpacing: -0.3,
-                color: c.onHero,
-              }}
-            >
-              Keuangan bersama, tanpa merasa sendirian.
-            </Text>
-            <Text
-              style={{
-                color: c.onHero,
-                opacity: 0.74,
-                fontSize: 15,
-                lineHeight: 22,
-              }}
-            >
-              Catat, pahami, dan putuskan bersama pada satu ruang keuangan.
-            </Text>
-          </View>
-          <View
-            style={{
-              backgroundColor: c.bg,
-              borderTopLeftRadius: 28,
-              borderTopRightRadius: 28,
-              paddingHorizontal: 20,
-              paddingTop: 22,
-              paddingBottom: 16,
-              gap: 14,
-            }}
-          >
-            {notice && <Notice>{notice}</Notice>}
-            <View
-              style={{
-                gap: 12,
-              }}
-            >
-              <Title>{formTitle}</Title>
-              {mode === "signup" && (
-                <Field
-                  label="Nama Anda"
-                  value={name}
-                  onChangeText={setName}
-                  maxLength={80}
-                  autoComplete="name"
-                />
-              )}
+            <Title>{formTitle}</Title>
+            {mode === "signup" && (
               <Field
-                label="Email"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                autoComplete="email"
+                label="Nama Anda"
+                value={name}
+                onChangeText={setName}
+                maxLength={80}
+                autoComplete="name"
               />
-              {mode !== "reset" && (
-                <Field
-                  label="Kata sandi"
-                  value={password}
-                  onChangeText={setPassword}
-                  secureTextEntry={!showPassword}
-                  autoComplete={
-                    mode === "signup" ? "new-password" : "current-password"
-                  }
-                  helper={
-                    mode === "signup"
-                      ? "Minimal 12 karakter. Setiap anggota memakai akun sendiri."
-                      : undefined
-                  }
-                  accessory={
-                    <Pressable
-                      accessibilityRole="button"
-                      accessibilityLabel={
-                        showPassword
-                          ? "Sembunyikan kata sandi"
-                          : "Tampilkan kata sandi"
-                      }
-                      onPress={() => setShowPassword((shown) => !shown)}
-                      hitSlop={8}
-                    >
-                      <Ionicons
-                        name={showPassword ? "eye-off-outline" : "eye-outline"}
-                        color={c.primary}
-                        size={21}
-                      />
-                    </Pressable>
-                  }
-                />
-              )}
-              {message && (
-                <Notice error={message.error} success={!message.error}>
-                  {message.text}
-                </Notice>
-              )}
-              <Button
-                label={
-                  busy
-                    ? "Memproses…"
-                    : mode === "signup"
-                      ? "Buat akun"
-                      : mode === "reset"
-                        ? "Kirim tautan atur ulang"
-                        : "Masuk"
+            )}
+            <Field
+              label="Email"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              autoComplete="email"
+            />
+            {mode !== "reset" && (
+              <Field
+                label="Kata sandi"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword}
+                autoComplete={
+                  mode === "signup" ? "new-password" : "current-password"
                 }
-                disabled={
-                  busy ||
-                  !email ||
-                  (mode !== "reset" && !password) ||
-                  (mode === "signup" && !name)
+                helper={
+                  mode === "signup"
+                    ? "Minimal 12 karakter. Setiap anggota memakai akun sendiri."
+                    : undefined
                 }
-                onPress={() => void submit()}
+                accessory={
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={
+                      showPassword
+                        ? "Sembunyikan kata sandi"
+                        : "Tampilkan kata sandi"
+                    }
+                    onPress={() => setShowPassword((shown) => !shown)}
+                    hitSlop={8}
+                  >
+                    <Ionicons
+                      name={showPassword ? "eye-off-outline" : "eye-outline"}
+                      color={c.primary}
+                      size={21}
+                    />
+                  </Pressable>
+                }
               />
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 5,
+            )}
+            {message && (
+              <Notice error={message.error} success={!message.error}>
+                {message.text}
+              </Notice>
+            )}
+            <Button
+              label={
+                busy
+                  ? "Memproses…"
+                  : mode === "signup"
+                    ? "Buat akun"
+                    : mode === "reset"
+                      ? "Kirim tautan atur ulang"
+                      : "Masuk"
+              }
+              disabled={
+                busy ||
+                !email ||
+                (mode !== "reset" && !password) ||
+                (mode === "signup" && !name)
+              }
+              onPress={() => void submit()}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 5,
+              }}
+            >
+              <Copy muted size={14}>
+                {mode === "signup" ? "Sudah punya akun?" : "Belum punya akun?"}
+              </Copy>
+              <AuthLink
+                label={mode === "signup" ? "Masuk" : "Daftar"}
+                disabled={busy}
+                onPress={() => {
+                  setMode(mode === "signup" ? "signin" : "signup");
+                  setMessage(null);
                 }}
-              >
-                <Copy muted size={14}>
-                  {mode === "signup"
-                    ? "Sudah punya akun?"
-                    : "Belum punya akun?"}
-                </Copy>
-                <AuthLink
-                  label={mode === "signup" ? "Masuk" : "Daftar"}
-                  disabled={busy}
-                  onPress={() => {
-                    setMode(mode === "signup" ? "signin" : "signup");
-                    setMessage(null);
-                  }}
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  gap: 12,
-                }}
-              >
-                {mode === "signin" ? (
-                  <>
-                    <AuthLink
-                      label="Lupa kata sandi"
-                      disabled={busy}
-                      onPress={() => {
-                        setMode("reset");
-                        setMessage(null);
-                      }}
-                    />
-                    <AuthLink
-                      label="Kirim ulang verifikasi email"
-                      disabled={busy || !email}
-                      onPress={async () => {
-                        setBusy(true);
-                        try {
-                          await authClient.sendVerificationEmail({
-                            email: email.trim(),
-                            callbackURL: Linking.createURL("/"),
-                          });
-                          setMessage({
-                            error: false,
-                            text: "Jika akun belum terverifikasi, tautan verifikasi dikirim ke email Anda.",
-                          });
-                        } catch {
-                          setMessage({
-                            error: true,
-                            text: "Belum dapat mengirim email. Coba kembali.",
-                          });
-                        } finally {
-                          setBusy(false);
-                        }
-                      }}
-                    />
-                  </>
-                ) : (
-                  <AuthLink
-                    label="Kembali ke masuk"
-                    disabled={busy}
-                    onPress={() => setMode("signin")}
-                  />
-                )}
-              </View>
-              {mode === "signin" && !email && (
-                <Copy muted size={12}>
-                  Isi email untuk mengirim ulang verifikasi.
-                </Copy>
-              )}
+              />
             </View>
             <View
               style={{
                 flexDirection: "row",
-                gap: 8,
-                alignItems: "center",
-                paddingTop: 12,
-                borderTopWidth: 1,
-                borderTopColor: c.border,
+                justifyContent: "space-between",
+                gap: 12,
               }}
             >
-              <Ionicons
-                name="shield-checkmark-outline"
-                color={c.primary}
-                size={18}
-              />
-              <Copy muted size={12}>
-                Setiap anggota memakai akun sendiri; catatan hanya dibagikan
-                kepada keluarga.
-              </Copy>
+              {mode === "signin" ? (
+                <>
+                  <AuthLink
+                    label="Lupa kata sandi"
+                    disabled={busy}
+                    onPress={() => {
+                      setMode("reset");
+                      setMessage(null);
+                    }}
+                  />
+                  <AuthLink
+                    label="Kirim ulang verifikasi email"
+                    disabled={busy || !email}
+                    onPress={async () => {
+                      setBusy(true);
+                      try {
+                        await authClient.sendVerificationEmail({
+                          email: email.trim(),
+                          callbackURL: Linking.createURL("/"),
+                        });
+                        setMessage({
+                          error: false,
+                          text: "Jika akun belum terverifikasi, tautan verifikasi dikirim ke email Anda.",
+                        });
+                      } catch {
+                        setMessage({
+                          error: true,
+                          text: "Belum dapat mengirim email. Coba kembali.",
+                        });
+                      } finally {
+                        setBusy(false);
+                      }
+                    }}
+                  />
+                </>
+              ) : (
+                <AuthLink
+                  label="Kembali ke masuk"
+                  disabled={busy}
+                  onPress={() => setMode("signin")}
+                />
+              )}
             </View>
+            {mode === "signin" && !email && (
+              <Copy muted size={12}>
+                Isi email untuk mengirim ulang verifikasi.
+              </Copy>
+            )}
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              alignItems: "center",
+              paddingTop: 12,
+              borderTopWidth: 1,
+              borderTopColor: c.border,
+            }}
+          >
+            <Ionicons
+              name="shield-checkmark-outline"
+              color={c.primary}
+              size={18}
+            />
+            <Copy muted size={12}>
+              Setiap anggota memakai akun sendiri; catatan hanya dibagikan
+              kepada keluarga.
+            </Copy>
           </View>
         </View>
-      </KeyboardAvoidingView>
+      </KeyboardScrollView>
     </SafeAreaView>
   );
 }

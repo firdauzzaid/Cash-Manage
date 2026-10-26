@@ -1,5 +1,7 @@
 import { withHousehold } from "../src/household-screen";
 import React, { useEffect, useRef, useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Pressable, Text, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { currentMonth } from "../src/period";
 import {
@@ -23,12 +25,108 @@ import {
   Screen,
   Title,
   confirm,
+  styles,
+  useColors,
 } from "../src/ui";
+
+function CategoryList({
+  title,
+  items,
+  month,
+}: {
+  title: string;
+  items: Category[];
+  month: string;
+}) {
+  const c = useColors();
+  if (!items.length) return null;
+  return (
+    <View style={{ gap: 8 }}>
+      <Text style={[styles.label, { color: c.muted }]}>{title}</Text>
+      <View
+        style={{
+          borderWidth: 1,
+          borderColor: c.border,
+          borderRadius: 16,
+          overflow: "hidden",
+          backgroundColor: c.surface,
+        }}
+      >
+        {items.map((category, index) => {
+          const archived = !!category.archived_at;
+          return (
+            <Pressable
+              key={category.id}
+              accessibilityRole="button"
+              accessibilityLabel={`${category.name}, ${category.kind === "expense" ? "pengeluaran" : "pemasukan"}, ${archived ? "diarsipkan" : "aktif"}`}
+              onPress={() =>
+                router.push({
+                  pathname: "/manage",
+                  params: { type: "categories", id: category.id, month },
+                })
+              }
+              style={({ pressed }) => ({
+                minHeight: 68,
+                paddingHorizontal: 16,
+                paddingVertical: 12,
+                opacity: pressed ? 0.7 : 1,
+                borderTopWidth: index ? 1 : 0,
+                borderTopColor: c.border,
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 12,
+              })}
+            >
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 14,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor:
+                    category.kind === "expense" ? c.dangerBg : c.successBg,
+                }}
+              >
+                <Ionicons
+                  name={
+                    category.kind === "expense"
+                      ? "arrow-down-outline"
+                      : "arrow-up-outline"
+                  }
+                  color={category.kind === "expense" ? c.expense : c.income}
+                  size={20}
+                />
+              </View>
+              <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+                <Text
+                  numberOfLines={1}
+                  style={{ color: c.text, fontSize: 16, fontWeight: "700" }}
+                >
+                  {category.name}
+                </Text>
+                <Text style={{ color: c.muted, fontSize: 13, lineHeight: 18 }}>
+                  {category.kind === "expense" ? "Pengeluaran" : "Pemasukan"}
+                  {archived
+                    ? " · Tidak dipilih untuk transaksi baru"
+                    : " · Dapat dipilih untuk transaksi baru"}
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={19} color={c.muted} />
+            </Pressable>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
 function Manage() {
   const params = useLocalSearchParams<{
       type?: string;
       id?: string;
       create?: string;
+      kind?: string;
       month?: string;
     }>(),
     type = ["accounts", "categories", "budgets"].includes(params.type ?? "")
@@ -44,7 +142,12 @@ function Manage() {
     save = useSave(),
     [form, setForm] = useState<Record<string, any>>({
       name: "",
-      kind: type === "accounts" ? "bank" : "expense",
+      kind:
+        type === "accounts"
+          ? "bank"
+          : params.kind === "income"
+            ? "income"
+            : "expense",
       opening_balance_minor: "0",
       opening_date: today(household!.timezone),
       category_id: "",
@@ -98,6 +201,10 @@ function Manage() {
       : type === "categories"
         ? "kategori"
         : "anggaran";
+  const archived =
+    type !== "budgets" &&
+    !!(row as Account | Category | undefined)?.archived_at;
+  const categoryItems = (q.data ?? []) as Category[];
   if (q.isPending || categories.isPending || q.error || categories.error)
     return (
       <Screen>
@@ -121,7 +228,9 @@ function Manage() {
     return (
       <Screen title={`Kelola ${label}`}>
         <Copy muted>
-          Tambah, tinjau, atau arsipkan data yang dipakai bersama keluarga.
+          {type === "categories"
+            ? "Kategori aktif dapat dipilih saat mencatat transaksi. Arsipkan bila tidak lagi digunakan tanpa menghapus histori."
+            : "Tambah, tinjau, atau arsipkan data yang dipakai bersama keluarga."}
         </Copy>
         <Button
           label={`Tambah ${label}`}
@@ -134,25 +243,44 @@ function Manage() {
           }
         />
         {q.data?.length === 0 && <Copy muted>Belum ada {label}.</Copy>}
-        {q.data?.map((r: any) => (
-          <Button
-            key={r.id}
-            secondary
-            label={`${r.name ?? r.category_name}${r.archived_at ? " · Diarsipkan" : ""}`}
-            onPress={() =>
-              router.push({
-                pathname: "/manage",
-                params: { type, id: r.id, month },
-              })
-            }
-          />
-        ))}
+        {type === "categories" ? (
+          <>
+            <CategoryList
+              title={`AKTIF (${categoryItems.filter((item) => !item.archived_at).length})`}
+              items={categoryItems.filter((item) => !item.archived_at)}
+              month={month}
+            />
+            <CategoryList
+              title={`DIARSIPKAN (${categoryItems.filter((item) => item.archived_at).length})`}
+              items={categoryItems.filter((item) => item.archived_at)}
+              month={month}
+            />
+          </>
+        ) : (
+          q.data?.map((r: any) => (
+            <Button
+              key={r.id}
+              secondary
+              label={`${r.name ?? r.category_name}${r.archived_at ? " · Diarsipkan" : ""}`}
+              onPress={() =>
+                router.push({
+                  pathname: "/manage",
+                  params: { type, id: r.id, month },
+                })
+              }
+            />
+          ))
+        )}
       </Screen>
     );
   return (
     <Screen title={`${params.id ? "Ubah" : "Tambah"} ${label}`}>
       <Copy muted>
-        Perubahan langsung terlihat bagi anggota keluarga yang memiliki akses.
+        {type === "categories" && archived
+          ? "Kategori ini tidak dapat dipilih untuk transaksi baru. Histori transaksi tetap menggunakan kategori ini."
+          : type === "categories"
+            ? "Kategori aktif dapat dipilih saat mencatat transaksi. Jenis kategori tidak dapat diubah setelah dibuat."
+            : "Perubahan langsung terlihat bagi anggota keluarga yang memiliki akses."}
       </Copy>
       {type !== "budgets" && (
         <Field
@@ -292,19 +420,47 @@ function Manage() {
           }}
         />
       )}
-      {params.id && !(row as Account)?.archived_at && (
+      {params.id && type === "categories" && archived && (
+        <Button
+          label="Aktifkan kembali kategori"
+          secondary
+          disabled={save.locked}
+          onPress={() =>
+            void save.save(
+              `/households/${household!.id}/categories/${params.id}`,
+              { ...form, expected_version: version, restore: true },
+              "PUT",
+              () => setDone(true),
+              "Kategori kembali aktif dan dapat dipilih untuk transaksi baru.",
+            )
+          }
+        />
+      )}
+      {params.id && !archived && (
         <Button
           danger
-          label={type === "budgets" ? "Hapus anggaran" : `Arsipkan ${label}`}
+          label={
+            type === "budgets"
+              ? "Hapus anggaran"
+              : type === "categories"
+                ? "Nonaktifkan kategori"
+                : `Arsipkan ${label}`
+          }
           disabled={save.locked}
           onPress={async () => {
             if (
               await confirm(
-                `${type === "budgets" ? "Hapus" : "Arsipkan"} ${label}?`,
+                `${type === "budgets" ? "Hapus" : type === "categories" ? "Nonaktifkan" : "Arsipkan"} ${label}?`,
                 type === "budgets"
                   ? "Batas anggaran ini dihapus. Transaksi dan riwayat tetap disimpan."
-                  : "Histori dan saldo dipertahankan. Item ini tidak dapat dipilih untuk transaksi baru.",
-                type === "budgets" ? "Hapus anggaran" : `Arsipkan ${label}`,
+                  : type === "categories"
+                    ? "Kategori tidak lagi dapat dipilih untuk transaksi baru. Transaksi dan anggaran yang sudah ada tetap tersimpan."
+                    : "Histori dan saldo dipertahankan. Item ini tidak dapat dipilih untuk transaksi baru.",
+                type === "budgets"
+                  ? "Hapus anggaran"
+                  : type === "categories"
+                    ? "Nonaktifkan kategori"
+                    : `Arsipkan ${label}`,
                 true,
               )
             )
@@ -313,7 +469,7 @@ function Manage() {
                 { expected_version: version },
                 "DELETE",
                 () => setDone(true),
-                `${type === "budgets" ? "Anggaran" : label} berhasil ${type === "budgets" ? "dihapus" : "diarsipkan"}.`,
+                `${type === "budgets" ? "Anggaran" : label} berhasil ${type === "budgets" ? "dihapus" : type === "categories" ? "dinonaktifkan" : "diarsipkan"}.`,
               );
           }}
         />

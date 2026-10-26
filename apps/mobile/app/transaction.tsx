@@ -105,6 +105,11 @@ function TransactionForm() {
         id: x.id,
         name: x.name + (x.archived_at ? " · Diarsipkan" : ""),
       }));
+  const addCategory = (kind: "income" | "expense") =>
+    router.push({
+      pathname: "/manage",
+      params: { type: "categories", create: "1", kind },
+    });
   if (a.isPending || c.isPending || (id && detail.isPending))
     return (
       <Screen>
@@ -201,13 +206,34 @@ function TransactionForm() {
                 disabled={s.locked}
               />
               {form.fee_minor !== "" && form.fee_minor !== "0" && (
-                <Choice
-                  label="Kategori biaya"
-                  value={form.fee_category_id ?? ""}
-                  options={categories("expense", detail.data?.fee_category_id)}
-                  onChange={(n) => set("fee_category_id", n)}
-                  disabled={s.locked}
-                />
+                <>
+                  <Choice
+                    label="Kategori biaya"
+                    value={form.fee_category_id ?? ""}
+                    options={categories(
+                      "expense",
+                      detail.data?.fee_category_id,
+                    )}
+                    onChange={(n) => set("fee_category_id", n)}
+                    addLabel="Tambah kategori pengeluaran"
+                    onAdd={() => addCategory("expense")}
+                    disabled={s.locked}
+                  />
+                  {categories("expense", detail.data?.fee_category_id)
+                    .length === 0 && (
+                    <>
+                      <Notice>
+                        Buat kategori pengeluaran untuk mencatat biaya transfer.
+                      </Notice>
+                      <Button
+                        label="Tambah kategori pengeluaran"
+                        secondary
+                        icon="add-outline"
+                        onPress={() => addCategory("expense")}
+                      />
+                    </>
+                  )}
+                </>
               )}
               <Copy muted>
                 Pokok transfer tidak dihitung sebagai pemasukan atau
@@ -227,13 +253,36 @@ function TransactionForm() {
                 )}
             </>
           ) : (
-            <Choice
-              label="Kategori"
-              value={form.category_id ?? ""}
-              options={categories(form.type, detail.data?.category_id)}
-              onChange={(n) => set("category_id", n)}
-              disabled={s.locked}
-            />
+            <>
+              <Choice
+                label="Kategori"
+                value={form.category_id ?? ""}
+                options={categories(form.type, detail.data?.category_id)}
+                onChange={(n) => set("category_id", n)}
+                addLabel={`Tambah kategori ${form.type === "income" ? "pemasukan" : "pengeluaran"}`}
+                onAdd={() =>
+                  addCategory(form.type === "income" ? "income" : "expense")
+                }
+                disabled={s.locked}
+              />
+              {categories(form.type, detail.data?.category_id).length === 0 && (
+                <>
+                  <Notice>
+                    Belum ada kategori{" "}
+                    {form.type === "income" ? "pemasukan" : "pengeluaran"}. Form
+                    transaksi ini tetap tersedia saat Anda kembali.
+                  </Notice>
+                  <Button
+                    label={`Tambah kategori ${form.type === "income" ? "pemasukan" : "pengeluaran"}`}
+                    secondary
+                    icon="add-outline"
+                    onPress={() =>
+                      addCategory(form.type === "income" ? "income" : "expense")
+                    }
+                  />
+                </>
+              )}
+            </>
           )}
           <DateField
             label="Tanggal transaksi"

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
-  KeyboardAvoidingView,
+  Keyboard,
   Modal,
   Platform,
   Pressable,
@@ -20,6 +20,46 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { money } from "@cashflow/contracts";
 import type { useSave } from "./save";
+
+const FocusedFieldContext = createContext<((target: number) => void) | null>(
+  null,
+);
+
+type KeyboardScrollResponder = Pick<
+  React.ComponentRef<typeof ScrollView>,
+  "scrollResponderScrollNativeHandleToKeyboard"
+>;
+
+export function scrollFocusedField(
+  responder: KeyboardScrollResponder | null | undefined,
+  target: number,
+) {
+  requestAnimationFrame(() =>
+    responder?.scrollResponderScrollNativeHandleToKeyboard(target, 16, true),
+  );
+}
+
+export function KeyboardScrollView({
+  children,
+  ...props
+}: React.ComponentProps<typeof ScrollView>) {
+  const ref = useRef<React.ComponentRef<typeof ScrollView>>(null);
+  return (
+    <FocusedFieldContext.Provider
+      value={(target) => scrollFocusedField(ref.current, target)}
+    >
+      <ScrollView
+        ref={ref}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode={Platform.OS === "ios" ? "interactive" : "on-drag"}
+        automaticallyAdjustKeyboardInsets={Platform.OS === "ios"}
+        {...props}
+      >
+        {children}
+      </ScrollView>
+    </FocusedFieldContext.Provider>
+  );
+}
 
 export function useColors() {
   const dark = useColorScheme() === "dark";
@@ -242,21 +282,13 @@ export function Screen({
       }
       style={{ flex: 1, backgroundColor: c.bg }}
     >
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-      >
-        {scroll ? (
-          <ScrollView
-            keyboardShouldPersistTaps="handled"
-            contentContainerStyle={{ flexGrow: 1 }}
-          >
-            {content}
-          </ScrollView>
-        ) : (
-          content
-        )}
-      </KeyboardAvoidingView>
+      {scroll ? (
+        <KeyboardScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          {content}
+        </KeyboardScrollView>
+      ) : (
+        content
+      )}
     </SafeAreaView>
   );
 }
@@ -353,7 +385,8 @@ export function Field({
   accessory?: React.ReactNode;
 }) {
   const c = useColors(),
-    [focused, setFocused] = useState(false);
+    [focused, setFocused] = useState(false),
+    scrollFocusedField = useContext(FocusedFieldContext);
   return (
     <View style={{ gap: 7 }}>
       <Text style={[styles.label, { color: focused ? c.primary : c.text }]}>
@@ -366,6 +399,8 @@ export function Field({
           selectionColor={c.primary}
           onFocus={(event) => {
             setFocused(true);
+            if (typeof event.target === "number")
+              scrollFocusedField?.(event.target);
             onFocus?.(event);
           }}
           onBlur={(event) => {
@@ -445,6 +480,8 @@ export function Choice({
   value,
   options,
   onChange,
+  addLabel,
+  onAdd,
   disabled = false,
 }: {
   label: string;
@@ -456,6 +493,8 @@ export function Choice({
     icon?: React.ComponentProps<typeof Ionicons>["name"];
   }[];
   onChange: (v: string) => void;
+  addLabel?: string;
+  onAdd?: () => void;
   disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false),
@@ -468,7 +507,10 @@ export function Choice({
         accessibilityRole="button"
         accessibilityLabel={`${label}, ${selected}`}
         disabled={disabled}
-        onPress={() => setOpen(true)}
+        onPress={() => {
+          Keyboard.dismiss();
+          setOpen(true);
+        }}
         style={({ pressed }) => [
           styles.field,
           styles.between,
@@ -598,6 +640,17 @@ export function Choice({
                 </Pressable>
               ))}
             </ScrollView>
+            {onAdd && (
+              <Button
+                label={addLabel ?? "Tambah pilihan"}
+                secondary
+                icon="add-outline"
+                onPress={() => {
+                  setOpen(false);
+                  onAdd();
+                }}
+              />
+            )}
           </SafeAreaView>
         </View>
       </Modal>
@@ -635,7 +688,10 @@ export function DateField({
         accessibilityLabel={`${label}, ${value}`}
         secondary
         icon="calendar-outline"
-        onPress={() => setOpen(true)}
+        onPress={() => {
+          Keyboard.dismiss();
+          setOpen(true);
+        }}
         disabled={disabled}
       />
       {open && (

@@ -586,6 +586,91 @@ test(
       },
     );
     await t.test(
+      "category archive keeps historical transactions and explains duplicate names on restore",
+      async () => {
+        const name = "Kategori histori";
+        const created = await call(b.cookie, "POST", path + "/categories", {
+          name,
+          kind: "expense",
+        });
+        assert.equal(created.statusCode, 200, created.body);
+        const categoryId = created.json().id;
+        const record = await call(b.cookie, "POST", path + "/transactions", {
+          type: "expense",
+          account_id: source,
+          category_id: categoryId,
+          amount_minor: "10",
+          occurred_on: on,
+        });
+        assert.equal(record.statusCode, 200, record.body);
+        const transactionId = record.json().id;
+        const archived = await call(
+          b.cookie,
+          "DELETE",
+          path + "/categories/" + categoryId,
+          { expected_version: 1 },
+        );
+        assert.equal(archived.statusCode, 200, archived.body);
+        const historical = await call(
+          b.cookie,
+          "GET",
+          path + "/transactions" + range + "&search=Kategori%20histori",
+        );
+        assert.equal(historical.statusCode, 200, historical.body);
+        assert.deepEqual(
+          historical.json().items.map((item: any) => item.id),
+          [transactionId],
+        );
+        const duplicate = await call(b.cookie, "POST", path + "/categories", {
+          name,
+          kind: "expense",
+        });
+        assert.equal(duplicate.statusCode, 200, duplicate.body);
+        const conflict = await call(
+          b.cookie,
+          "PUT",
+          path + "/categories/" + categoryId,
+          { name, kind: "expense", expected_version: 2, restore: true },
+        );
+        assert.equal(conflict.statusCode, 409, conflict.body);
+        assert.equal(conflict.json().code, "CATEGORY_NAME");
+        const renamed = await call(
+          b.cookie,
+          "PUT",
+          path + "/categories/" + categoryId,
+          {
+            name: "Kategori histori lama",
+            kind: "expense",
+            expected_version: 2,
+          },
+        );
+        assert.equal(renamed.statusCode, 200, renamed.body);
+        const restored = await call(
+          b.cookie,
+          "PUT",
+          path + "/categories/" + categoryId,
+          {
+            name: "Kategori histori lama",
+            kind: "expense",
+            expected_version: 3,
+            restore: true,
+          },
+        );
+        assert.equal(restored.statusCode, 200, restored.body);
+        const category = (await call(b.cookie, "GET", path + "/categories"))
+          .json()
+          .find((item: any) => item.id === categoryId);
+        assert.equal(category.archived_at, null);
+        const history = await call(
+          b.cookie,
+          "GET",
+          path + "/transactions/" + transactionId,
+        );
+        assert.equal(history.statusCode, 200, history.body);
+        assert.equal(history.json().category_id, categoryId);
+      },
+    );
+    await t.test(
       "password reset revokes previous sessions and logout revokes the new session",
       async () => {
         const nextPassword = "Reset-" + randomUUID();

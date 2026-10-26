@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "apps/api/src/finance.ts": {
-    "mtime": 1792724681.8416033,
-    "seen": 1792724762.1027014,
-    "ast_hash": "0636d62facad427bfa46522ca5279599",
+    "mtime": 1792988407.7471404,
+    "seen": 1792988551.7826676,
+    "ast_hash": "7871f3c7e9d462ebbbcf4bd7cdb1dde5",
     "semantic_hash": ""
   },
   "apps/api/src/households.ts": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "apps/api/test/integration.test.ts": {
-    "mtime": 1792724573.23888,
-    "seen": 1792724621.4917517,
-    "ast_hash": "57500d9053250d5db0d7eb1282242df6",
+    "mtime": 1792988466.0353065,
+    "seen": 1792988551.7827063,
+    "ast_hash": "d432067e0e82eb72e3dde0c815992cf3",
     "semantic_hash": ""
   },
   "apps/api/tsconfig.json": {
@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/_layout.tsx": {
-    "mtime": 1792718829.3285582,
-    "seen": 1792719375.610675,
-    "ast_hash": "ebd46dd59226628692a15bf8b6760053",
+    "mtime": 1792988481.7990403,
+    "seen": 1792988551.7827392,
+    "ast_hash": "5a299c41e900920e805f34531cbc54b4",
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/budgets.tsx": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/family.tsx": {
-    "mtime": 1792747591.1431735,
-    "seen": 1792747878.1555548,
-    "ast_hash": "ba6c276749878c94fa6670a0b812b3fb",
+    "mtime": 1792987134.1683128,
+    "seen": 1792987308.327418,
+    "ast_hash": "050f5173d08b07f38629ea400b083d77",
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/home.tsx": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/(tabs)/transactions.tsx": {
-    "mtime": 1792721459.1702473,
-    "seen": 1792721620.9346614,
-    "ast_hash": "700ecb88b31f15f24d51547e040c8723",
+    "mtime": 1792986157.2756624,
+    "seen": 1792986197.9097931,
+    "ast_hash": "1c5492e1bfa51d78aaf6108f910a21e9",
     "semantic_hash": ""
   },
   "apps/mobile/app/_layout.tsx": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/manage.tsx": {
-    "mtime": 1792746256.2708306,
-    "seen": 1792746411.5609078,
-    "ast_hash": "795882ba2517186d6d6ea905d8128172",
+    "mtime": 1792987263.1923687,
+    "seen": 1792987308.327445,
+    "ast_hash": "1feb2d2263c807177a7c53359e77f1bd",
     "semantic_hash": ""
   },
   "apps/mobile/app/profile.tsx": {
@@ -426,9 +426,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/transaction.tsx": {
-    "mtime": 1792721396.6883073,
-    "seen": 1792721620.9346967,
-    "ast_hash": "d060cdc8b6c03582db49d76e22d5ac3e",
+    "mtime": 1792988407.7527406,
+    "seen": 1792988551.7828102,
+    "ast_hash": "ad335bdeccfa0565e7125d0578343f57",
     "semantic_hash": ""
   },
   "apps/mobile/eas.json": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/filters.tsx": {
-    "mtime": 1792747500.904588,
-    "seen": 1792747878.155618,
-    "ast_hash": "cd06c6be00478e3e51f17444be0c3422",
+    "mtime": 1792986124.7545514,
+    "seen": 1792986197.9098518,
+    "ast_hash": "38abff33b58b7b219f42ddccec6ce68b",
     "semantic_hash": ""
   },
   "apps/mobile/src/household-screen.tsx": {
@@ -498,15 +498,15 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/ui.tsx": {
-    "mtime": 1792747500.3852108,
-    "seen": 1792747878.1556396,
-    "ast_hash": "c10ee55ccc35a4260f27ea2608e00150",
+    "mtime": 1792988407.7488286,
+    "seen": 1792988551.782868,
+    "ast_hash": "ef2035d6ef8fa90e87081bfd8e22f7bb",
     "semantic_hash": ""
   },
   "apps/mobile/src/welcome.tsx": {
-    "mtime": 1792747579.2600784,
-    "seen": 1792747878.155642,
-    "ast_hash": "cab8e29aac068b2adfd7c6f9ba25f2f0",
+    "mtime": 1792986157.3345916,
+    "seen": 1792986197.909868,
+    "ast_hash": "86622720decce26145828175abf72366",
     "semantic_hash": ""
   },
   "apps/mobile/tsconfig.json": {
@@ -666,9 +666,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/household-chooser.tsx": {
-    "mtime": 1792744640.6331944,
-    "seen": 1792744970.2646232,
-    "ast_hash": "9fa283aad649b7abf391eb4f32f9d9c3",
+    "mtime": 1792984818.2071178,
+    "seen": 1792984845.3441503,
+    "ast_hash": "140ca0e3e545a9131a6a3b6c016e4f65",
     "semantic_hash": ""
   },
   ".impeccable/review/web-household-chooser.png": {

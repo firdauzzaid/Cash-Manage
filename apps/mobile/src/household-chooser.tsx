@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  ActivityIndicator,
-  Image,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, Image, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Redirect, router } from "expo-router";
@@ -18,6 +11,7 @@ import {
   Copy,
   Field,
   IconTile,
+  KeyboardScrollView,
   Notice,
   SaveState,
   Title,
@@ -58,10 +52,7 @@ export function HouseholdChooser() {
       edges={["top", "left", "right"]}
       style={{ flex: 1, backgroundColor: c.hero }}
     >
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
-        keyboardShouldPersistTaps="handled"
-      >
+      <KeyboardScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View
           style={{
             width: "100%",
@@ -172,7 +163,11 @@ export function HouseholdChooser() {
                   <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
                     <Text
                       numberOfLines={1}
-                      style={{ color: c.text, fontSize: 16, fontWeight: "700" }}
+                      style={{
+                        color: c.text,
+                        fontSize: 16,
+                        fontWeight: "700",
+                      }}
                     >
                       {h.name}
                     </Text>
@@ -344,7 +339,7 @@ export function HouseholdChooser() {
             )}
           </View>
         </View>
-      </ScrollView>
+      </KeyboardScrollView>
     </SafeAreaView>
   );
 }

@@ -27,7 +27,7 @@ function HouseholdTabBar({
     return (
       <Pressable
         key={route.key}
-        accessibilityRole="button"
+        accessibilityRole="tab"
         accessibilityLabel={item.label}
         accessibilityState={{ selected: focused }}
         onPress={() => !focused && navigateToTab(route.key)}
@@ -60,6 +60,7 @@ function HouseholdTabBar({
   const [home, transactions, budgets, family] = state.routes;
   return (
     <View
+      accessibilityRole="tablist"
       style={{
         flexDirection: "row",
         alignItems: "flex-start",
@@ -79,6 +80,7 @@ function HouseholdTabBar({
           minHeight: 56,
           alignItems: "center",
           justifyContent: "center",
+          gap: 2,
         }}
       >
         <Pressable
@@ -103,6 +105,16 @@ function HouseholdTabBar({
         >
           <Ionicons name="add" size={29} color={c.onPrimary} />
         </Pressable>
+        <Text
+          style={{
+            color: c.primary,
+            fontSize: 10,
+            lineHeight: 12,
+            fontWeight: "700",
+          }}
+        >
+          Catat
+        </Text>
       </View>
       {tab(budgets)}
       {tab(family)}

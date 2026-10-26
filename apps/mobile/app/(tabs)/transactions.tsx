@@ -1,7 +1,7 @@
 import { withHousehold } from "../../src/household-screen";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
-import { FlatList, View } from "react-native";
+import { FlatList, Platform, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import type { Transaction } from "@cashflow/contracts";
@@ -15,6 +15,7 @@ import {
   LoadState,
   SectionTitle,
   Title,
+  scrollFocusedField,
   useColors,
 } from "../../src/ui";
 import { TransactionRow } from "../../src/transaction-row";
@@ -26,6 +27,7 @@ function Transactions() {
   }>();
   const { household, me } = useApp(),
     c = useColors(),
+    list = useRef<FlatList<Transaction>>(null),
     [filters, setFilters] = useState(initialFilters(household!.timezone)),
     params = filterParams(filters);
   useEffect(() => {
@@ -52,6 +54,7 @@ function Transactions() {
       style={{ flex: 1, backgroundColor: c.bg }}
     >
       <FlatList
+        ref={list}
         data={q.data?.pages.flatMap((p) => p.items) ?? []}
         keyExtractor={(x) => x.id}
         renderItem={({ item }) => <TransactionRow item={item} />}
@@ -62,6 +65,9 @@ function Transactions() {
           width: "100%",
           alignSelf: "center",
         }}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode={Platform.OS === "ios" ? "interactive" : "on-drag"}
+        automaticallyAdjustKeyboardInsets={Platform.OS === "ios"}
         refreshing={q.isRefetching && !q.isFetchingNextPage}
         onRefresh={() => void q.refetch()}
         ListHeaderComponent={
@@ -75,7 +81,13 @@ function Transactions() {
             </View>
             <Card style={{ gap: 14 }}>
               <SectionTitle title="Filter transaksi" />
-              <FilterPanel value={filters} onChange={setFilters} />
+              <FilterPanel
+                value={filters}
+                onChange={setFilters}
+                onSearchFocus={(target) =>
+                  scrollFocusedField(list.current?.getScrollResponder(), target)
+                }
+              />
             </Card>
             <LoadState
               loading={q.isPending}

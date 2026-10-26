@@ -30,6 +30,19 @@
       "source_location": "L27"
     },
     {
+      "id": "apps_mobile_app_tabs_layout_householdtabbarprops",
+      "label": "HouseholdTabBarProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "householdtabbarprops",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L14"
+    },
+    {
       "id": "apps_mobile_src_client_apierror",
       "label": "ApiError",
       "_callable": true,
@@ -82,13 +95,52 @@
       "source_location": "L41"
     },
     {
+      "id": "apps_mobile_src_ui_keyboardscrollresponder",
+      "label": "KeyboardScrollResponder",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "keyboardscrollresponder",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L28"
+    },
+    {
+      "id": "apps_api_src_access_actor",
+      "label": "Actor",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "actor",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_api_src_access_context",
+      "label": "Context",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "context",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "apps_api_src_auth_config",
       "label": "Config",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "config",
       "source_file": "apps/api/src/auth.ts",
@@ -101,50 +153,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "mail",
       "source_file": "apps/api/src/auth.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "apps_api_src_access_actor",
-      "label": "Actor",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "actor",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_api_src_access_context",
-      "label": "Context",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "context",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_householdtabbarprops",
-      "label": "HouseholdTabBarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "(tabs)/_layout.tsx",
-      "file_type": "code",
-      "norm_label": "householdtabbarprops",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L14"
     },
     {
       "id": "apps_api_src_errors_httperror",
@@ -152,7 +165,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 42,
+      "community": 1,
       "community_name": "fail",
       "file_type": "code",
       "norm_label": "httperror",
@@ -165,7 +178,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 42,
+      "community": 1,
       "community_name": "fail",
       "file_type": "code",
       "norm_label": "body",
@@ -413,6 +426,18 @@
       "source_location": "L16"
     },
     {
+      "id": "apps_mobile_app_manage_categorylist",
+      "label": "CategoryList()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "categorylist()",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L32"
+    },
+    {
       "id": "apps_mobile_app_manage_manage",
       "label": "Manage()",
       "_callable": true,
@@ -422,7 +447,7 @@
       "file_type": "code",
       "norm_label": "manage()",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L27"
+      "source_location": "L124"
     },
     {
       "id": "apps_mobile_app_manage_manage_load",
@@ -434,7 +459,7 @@
       "file_type": "code",
       "norm_label": "load()",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L58"
+      "source_location": "L161"
     },
     {
       "id": "apps_mobile_app_profile_profile",
@@ -506,7 +531,7 @@
       "file_type": "code",
       "norm_label": "family()",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L24"
+      "source_location": "L82"
     },
     {
       "id": "apps_mobile_app_tabs_family_family_copyinvitation",
@@ -518,7 +543,7 @@
       "file_type": "code",
       "norm_label": "copyinvitation()",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L57"
+      "source_location": "L115"
     },
     {
       "id": "apps_mobile_app_tabs_family_family_shareinvitation",
@@ -530,7 +555,19 @@
       "file_type": "code",
       "norm_label": "shareinvitation()",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L42"
+      "source_location": "L100"
+    },
+    {
+      "id": "apps_mobile_app_tabs_family_managementlink",
+      "label": "ManagementLink()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "managementlink()",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L26"
     },
     {
       "id": "apps_mobile_app_tabs_home_cashflowcolumn",
@@ -569,6 +606,30 @@
       "source_location": "L29"
     },
     {
+      "id": "apps_mobile_app_tabs_layout_householdtabbar",
+      "label": "HouseholdTabBar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "householdtabbar()",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_tabslayout",
+      "label": "TabsLayout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "tabslayout()",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L125"
+    },
+    {
       "id": "apps_mobile_app_tabs_transactions_transactions",
       "label": "Transactions()",
       "_callable": true,
@@ -578,7 +639,7 @@
       "file_type": "code",
       "norm_label": "transactions()",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "apps_mobile_app_transaction_fields",
@@ -722,7 +783,7 @@
       "file_type": "code",
       "norm_label": "householdchooser()",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L27"
+      "source_location": "L21"
     },
     {
       "id": "apps_mobile_src_household_screen_withhousehold",
@@ -878,7 +939,7 @@
       "file_type": "code",
       "norm_label": "amountfield()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L411"
+      "source_location": "L446"
     },
     {
       "id": "apps_mobile_src_ui_button",
@@ -890,7 +951,7 @@
       "file_type": "code",
       "norm_label": "button()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L289"
+      "source_location": "L321"
     },
     {
       "id": "apps_mobile_src_ui_card",
@@ -902,7 +963,7 @@
       "file_type": "code",
       "norm_label": "card()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L264"
+      "source_location": "L296"
     },
     {
       "id": "apps_mobile_src_ui_choice",
@@ -914,7 +975,7 @@
       "file_type": "code",
       "norm_label": "choice()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L443"
+      "source_location": "L478"
     },
     {
       "id": "apps_mobile_src_ui_confirm",
@@ -926,7 +987,7 @@
       "file_type": "code",
       "norm_label": "confirm()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L836"
+      "source_location": "L892"
     },
     {
       "id": "apps_mobile_src_ui_copy",
@@ -938,7 +999,7 @@
       "file_type": "code",
       "norm_label": "copy()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L122"
+      "source_location": "L162"
     },
     {
       "id": "apps_mobile_src_ui_datefield",
@@ -950,7 +1011,7 @@
       "file_type": "code",
       "norm_label": "datefield()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L608"
+      "source_location": "L661"
     },
     {
       "id": "apps_mobile_src_ui_feedbackbanner",
@@ -962,7 +1023,7 @@
       "file_type": "code",
       "norm_label": "feedbackbanner()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L702"
+      "source_location": "L758"
     },
     {
       "id": "apps_mobile_src_ui_field",
@@ -974,7 +1035,7 @@
       "file_type": "code",
       "norm_label": "field()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L342"
+      "source_location": "L374"
     },
     {
       "id": "apps_mobile_src_ui_icontile",
@@ -986,7 +1047,19 @@
       "file_type": "code",
       "norm_label": "icontile()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L177"
+      "source_location": "L217"
+    },
+    {
+      "id": "apps_mobile_src_ui_keyboardscrollview",
+      "label": "KeyboardScrollView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "keyboardscrollview()",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L42"
     },
     {
       "id": "apps_mobile_src_ui_loading",
@@ -998,7 +1071,7 @@
       "file_type": "code",
       "norm_label": "loading()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L763"
+      "source_location": "L819"
     },
     {
       "id": "apps_mobile_src_ui_loadstate",
@@ -1010,7 +1083,7 @@
       "file_type": "code",
       "norm_label": "loadstate()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L774"
+      "source_location": "L830"
     },
     {
       "id": "apps_mobile_src_ui_notice",
@@ -1022,7 +1095,7 @@
       "file_type": "code",
       "norm_label": "notice()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L666"
+      "source_location": "L722"
     },
     {
       "id": "apps_mobile_src_ui_savestate",
@@ -1034,7 +1107,7 @@
       "file_type": "code",
       "norm_label": "savestate()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L804"
+      "source_location": "L860"
     },
     {
       "id": "apps_mobile_src_ui_screen",
@@ -1046,7 +1119,19 @@
       "file_type": "code",
       "norm_label": "screen()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L209"
+      "source_location": "L249"
+    },
+    {
+      "id": "apps_mobile_src_ui_scrollfocusedfield",
+      "label": "scrollFocusedField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "scrollfocusedfield()",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L33"
     },
     {
       "id": "apps_mobile_src_ui_sectiontitle",
@@ -1058,7 +1143,7 @@
       "file_type": "code",
       "norm_label": "sectiontitle()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L156"
+      "source_location": "L196"
     },
     {
       "id": "apps_mobile_src_ui_title",
@@ -1070,7 +1155,7 @@
       "file_type": "code",
       "norm_label": "title()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L147"
+      "source_location": "L187"
     },
     {
       "id": "apps_mobile_src_ui_usecolors",
@@ -1082,7 +1167,7 @@
       "file_type": "code",
       "norm_label": "usecolors()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L24"
+      "source_location": "L64"
     },
     {
       "id": "apps_mobile_src_welcome_authlink",
@@ -1094,7 +1179,7 @@
       "file_type": "code",
       "norm_label": "authlink()",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L368"
+      "source_location": "L362"
     },
     {
       "id": "apps_mobile_src_welcome_authscreen",
@@ -1106,7 +1191,7 @@
       "file_type": "code",
       "norm_label": "authscreen()",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "apps_mobile_src_welcome_authscreen_submit",
@@ -1118,7 +1203,127 @@
       "file_type": "code",
       "norm_label": "submit()",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L30"
+      "source_location": "L31"
+    },
+    {
+      "id": "apps_api_src_access_access",
+      "label": "access()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "access()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "apps_api_src_access_audit",
+      "label": "audit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "audit()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L145"
+    },
+    {
+      "id": "apps_api_src_access_canonical",
+      "label": "canonical()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "canonical()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L80"
+    },
+    {
+      "id": "apps_api_src_access_existing",
+      "label": "existing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "existing()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L167"
+    },
+    {
+      "id": "apps_api_src_access_mutate",
+      "label": "mutate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "mutate()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L92"
+    },
+    {
+      "id": "apps_api_src_access_owner",
+      "label": "owner()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "owner()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "apps_api_src_access_read",
+      "label": "read()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "read()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L72"
+    },
+    {
+      "id": "apps_api_src_access_transaction",
+      "label": "transaction()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "transaction()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_api_src_app_createapp",
+      "label": "createApp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "createapp()",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "apps_api_src_app_createapp_actor",
+      "label": "actor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "actor()",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L110"
     },
     {
       "id": "apps_api_src_auth_configfromenv",
@@ -1126,7 +1331,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "configfromenv()",
       "source_file": "apps/api/src/auth.ts",
@@ -1138,11 +1343,395 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "createauth()",
       "source_file": "apps/api/src/auth.ts",
       "source_location": "L15"
+    },
+    {
+      "id": "apps_api_src_deletion_lockhouseholds",
+      "label": "lockHouseholds()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "lockhouseholds()",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_src_deletion_processdeletions",
+      "label": "processDeletions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "processdeletions()",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "apps_api_src_deletion_requestdeletion",
+      "label": "requestDeletion()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "requestdeletion()",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_api_src_errors_fail",
+      "label": "fail()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "fail()",
+      "source_file": "apps/api/src/errors.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "apps_api_src_errors_httperror_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "apps/api/src/errors.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "apps_api_src_finance_reference",
+      "label": "reference()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "reference()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L107"
+    },
+    {
+      "id": "apps_api_src_finance_remove",
+      "label": "remove()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "remove()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L332"
+    },
+    {
+      "id": "apps_api_src_finance_saveaccount",
+      "label": "saveAccount()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "saveaccount()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "apps_api_src_finance_savebudget",
+      "label": "saveBudget()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "savebudget()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L306"
+    },
+    {
+      "id": "apps_api_src_finance_savecategory",
+      "label": "saveCategory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "savecategory()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "apps_api_src_finance_savetransaction",
+      "label": "saveTransaction()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "savetransaction()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L143"
+    },
+    {
+      "id": "apps_api_src_finance_transactionnames",
+      "label": "transactionNames()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "transactionnames()",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L128"
+    },
+    {
+      "id": "apps_api_src_households_accept",
+      "label": "accept()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "accept()",
+      "source_file": "apps/api/src/households.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "apps_api_src_households_createhousehold",
+      "label": "createHousehold()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "createhousehold()",
+      "source_file": "apps/api/src/households.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_api_src_households_householdaction",
+      "label": "householdAction()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "householdaction()",
+      "source_file": "apps/api/src/households.ts",
+      "source_location": "L95"
+    },
+    {
+      "id": "apps_api_src_households_invite",
+      "label": "invite()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "invite()",
+      "source_file": "apps/api/src/households.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "apps_api_src_reports_accounts",
+      "label": "accounts()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "accounts()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "apps_api_src_reports_csv",
+      "label": "csv()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "csv()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L145"
+    },
+    {
+      "id": "apps_api_src_reports_csvcell",
+      "label": "csvCell()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "csvcell()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L140"
+    },
+    {
+      "id": "apps_api_src_reports_period",
+      "label": "period()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "period()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_api_src_reports_summary",
+      "label": "summary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "summary()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_src_reports_transactions",
+      "label": "transactions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "transactions()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "apps_api_src_validation_amount",
+      "label": "amount()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "amount()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "apps_api_src_validation_date",
+      "label": "date()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "date()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "apps_api_src_validation_email",
+      "label": "email()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "email()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "apps_api_src_validation_month",
+      "label": "month()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "month()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "apps_api_src_validation_oneof",
+      "label": "oneOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "oneof()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "apps_api_src_validation_optionalid",
+      "label": "optionalId()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "optionalid()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "apps_api_src_validation_text",
+      "label": "text()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "text()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "apps_api_src_validation_uuid",
+      "label": "uuid()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "uuid()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_test_integration_test_call",
+      "label": "call()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "call()",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "apps_api_test_integration_test_user",
+      "label": "user()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "user()",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L64"
     },
     {
       "id": "scripts_backup_run",
@@ -1155,534 +1744,6 @@
       "norm_label": "run()",
       "source_file": "scripts/backup.mjs",
       "source_location": "L11"
-    },
-    {
-      "id": "apps_api_src_access_access",
-      "label": "access()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "access()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "apps_api_src_access_canonical",
-      "label": "canonical()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "canonical()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L80"
-    },
-    {
-      "id": "apps_api_src_access_mutate",
-      "label": "mutate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "mutate()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L92"
-    },
-    {
-      "id": "apps_api_src_access_read",
-      "label": "read()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "read()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L72"
-    },
-    {
-      "id": "apps_api_src_access_transaction",
-      "label": "transaction()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "transaction()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "apps_api_src_app_createapp",
-      "label": "createApp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "createapp()",
-      "source_file": "apps/api/src/app.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "apps_api_src_app_createapp_actor",
-      "label": "actor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "actor()",
-      "source_file": "apps/api/src/app.ts",
-      "source_location": "L110"
-    },
-    {
-      "id": "apps_api_src_deletion_lockhouseholds",
-      "label": "lockHouseholds()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "lockhouseholds()",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_api_src_deletion_processdeletions",
-      "label": "processDeletions()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "processdeletions()",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L56"
-    },
-    {
-      "id": "apps_api_src_deletion_requestdeletion",
-      "label": "requestDeletion()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "requestdeletion()",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "apps_api_src_validation_optionalid",
-      "label": "optionalId()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "optionalid()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L60"
-    },
-    {
-      "id": "apps_api_src_validation_uuid",
-      "label": "uuid()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "uuid()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_api_src_access_audit",
-      "label": "audit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "audit()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L145"
-    },
-    {
-      "id": "apps_api_src_access_existing",
-      "label": "existing()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "existing()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L167"
-    },
-    {
-      "id": "apps_api_src_access_owner",
-      "label": "owner()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "owner()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "apps_api_src_finance_reference",
-      "label": "reference()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "reference()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L84"
-    },
-    {
-      "id": "apps_api_src_finance_remove",
-      "label": "remove()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "remove()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L309"
-    },
-    {
-      "id": "apps_api_src_finance_saveaccount",
-      "label": "saveAccount()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "saveaccount()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "apps_api_src_finance_savebudget",
-      "label": "saveBudget()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "savebudget()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L283"
-    },
-    {
-      "id": "apps_api_src_finance_savecategory",
-      "label": "saveCategory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "savecategory()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L59"
-    },
-    {
-      "id": "apps_api_src_finance_savetransaction",
-      "label": "saveTransaction()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "savetransaction()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L120"
-    },
-    {
-      "id": "apps_api_src_finance_transactionnames",
-      "label": "transactionNames()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "transactionnames()",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L105"
-    },
-    {
-      "id": "apps_api_src_households_accept",
-      "label": "accept()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "accept()",
-      "source_file": "apps/api/src/households.ts",
-      "source_location": "L59"
-    },
-    {
-      "id": "apps_api_src_households_createhousehold",
-      "label": "createHousehold()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "createhousehold()",
-      "source_file": "apps/api/src/households.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_api_src_households_householdaction",
-      "label": "householdAction()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "householdaction()",
-      "source_file": "apps/api/src/households.ts",
-      "source_location": "L95"
-    },
-    {
-      "id": "apps_api_src_households_invite",
-      "label": "invite()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "invite()",
-      "source_file": "apps/api/src/households.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "apps_api_src_reports_accounts",
-      "label": "accounts()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "accounts()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "apps_api_src_reports_csv",
-      "label": "csv()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "csv()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L145"
-    },
-    {
-      "id": "apps_api_src_reports_csvcell",
-      "label": "csvCell()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "csvcell()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L140"
-    },
-    {
-      "id": "apps_api_src_reports_period",
-      "label": "period()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "period()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "apps_api_src_reports_summary",
-      "label": "summary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "summary()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "apps_api_src_reports_transactions",
-      "label": "transactions()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "transactions()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L66"
-    },
-    {
-      "id": "apps_api_test_integration_test_call",
-      "label": "call()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "call()",
-      "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L42"
-    },
-    {
-      "id": "apps_api_test_integration_test_user",
-      "label": "user()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
-      "file_type": "code",
-      "norm_label": "user()",
-      "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_householdtabbar",
-      "label": "HouseholdTabBar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "(tabs)/_layout.tsx",
-      "file_type": "code",
-      "norm_label": "householdtabbar()",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_tabslayout",
-      "label": "TabsLayout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "(tabs)/_layout.tsx",
-      "file_type": "code",
-      "norm_label": "tabslayout()",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L113"
-    },
-    {
-      "id": "apps_api_src_errors_fail",
-      "label": "fail()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "fail()",
-      "source_file": "apps/api/src/errors.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "apps_api_src_errors_httperror_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "apps/api/src/errors.ts",
-      "source_location": "L2"
-    },
-    {
-      "id": "apps_api_src_validation_amount",
-      "label": "amount()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "amount()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "apps_api_src_validation_date",
-      "label": "date()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "date()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "apps_api_src_validation_email",
-      "label": "email()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "email()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "apps_api_src_validation_month",
-      "label": "month()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "month()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L54"
-    },
-    {
-      "id": "apps_api_src_validation_oneof",
-      "label": "oneOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "oneof()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "apps_api_src_validation_text",
-      "label": "text()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "text()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L16"
     },
     {
       "id": "apps_api_src_reports_budgets",
@@ -1933,6 +1994,28 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_mobile_app_tabs_layout",
+      "label": "(tabs)/_layout.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "(tabs)/_layout.tsx",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_tabitems",
+      "label": "tabItems",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "tabitems",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L7"
+    },
+    {
       "id": "apps_mobile_app_tabs_transactions",
       "label": "transactions.tsx",
       "_origin": "ast",
@@ -2120,6 +2203,17 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_mobile_src_ui_focusedfieldcontext",
+      "label": "FocusedFieldContext",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "focusedfieldcontext",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L24"
+    },
+    {
       "id": "apps_mobile_src_ui_styles",
       "label": "styles",
       "_origin": "ast",
@@ -2128,7 +2222,7 @@
       "file_type": "code",
       "norm_label": "styles",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L73"
+      "source_location": "L113"
     },
     {
       "id": "apps_mobile_src_welcome",
@@ -2151,17 +2245,6 @@
       "norm_label": "expo-router",
       "source_file": "apps/mobile/package.json",
       "source_location": "L27"
-    },
-    {
-      "id": "ref_expo_secure_store",
-      "label": "expo-secure-store",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "file_type": "concept",
-      "norm_label": "expo-secure-store",
-      "source_file": "apps/mobile/package.json",
-      "source_location": "L28"
     },
     {
       "id": "ref_expo_vector_icons",
@@ -2219,11 +2302,110 @@
       "source_location": "L18"
     },
     {
+      "id": "apps_api_package",
+      "label": "api/package.json",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "api/package.json",
+      "source_file": "apps/api/package.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "apps/api/package.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "apps_api_package_devdependencies_types_nodemailer",
+      "label": "@types/nodemailer",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "@types/nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "apps_api_package_devdependencies_types_pg",
+      "label": "@types/pg",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "@types/pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L27"
+    },
+    {
+      "id": "apps_api_package_name",
+      "label": "name",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "apps/api/package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "apps_api_package_private",
+      "label": "private",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "apps/api/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_api_package_type",
+      "label": "type",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "type",
+      "source_file": "apps/api/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_api_package_version",
+      "label": "version",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "version",
+      "source_file": "apps/api/package.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_api_src_access",
+      "label": "access.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "access.ts",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_api_src_app",
       "label": "app.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "app.ts",
       "source_file": "apps/api/src/app.ts",
@@ -2234,7 +2416,7 @@
       "label": "auth.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "auth.ts",
       "source_file": "apps/api/src/auth.ts",
@@ -2245,7 +2427,7 @@
       "label": "db.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "db.ts",
       "source_file": "apps/api/src/db.ts",
@@ -2256,18 +2438,62 @@
       "label": "{ Pool }",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "{ pool }",
       "source_file": "apps/api/src/db.ts",
       "source_location": "L3"
     },
     {
+      "id": "apps_api_src_deletion",
+      "label": "deletion.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "deletion.ts",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_errors",
+      "label": "errors.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "errors.ts",
+      "source_file": "apps/api/src/errors.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_finance",
+      "label": "finance.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "finance.ts",
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_households",
+      "label": "households.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "households.ts",
+      "source_file": "apps/api/src/households.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_api_src_maintenance",
       "label": "maintenance.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "maintenance.ts",
       "source_file": "apps/api/src/maintenance.ts",
@@ -2278,18 +2504,29 @@
       "label": "pool",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "pool",
       "source_file": "apps/api/src/maintenance.ts",
       "source_location": "L3"
     },
     {
+      "id": "apps_api_src_reports",
+      "label": "reports.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "reports.ts",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_api_src_server",
       "label": "server.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "server.ts",
       "source_file": "apps/api/src/server.ts",
@@ -2300,7 +2537,7 @@
       "label": "pool",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "pool",
       "source_file": "apps/api/src/server.ts",
@@ -2311,7 +2548,7 @@
       "label": "timer",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "timer",
       "source_file": "apps/api/src/server.ts",
@@ -2322,18 +2559,62 @@
       "label": "transport",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "transport",
       "source_file": "apps/api/src/server.ts",
       "source_location": "L12"
     },
     {
+      "id": "apps_api_src_validation",
+      "label": "validation.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "validation.ts",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_validation_uuidpattern",
+      "label": "uuidPattern",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "uuidpattern",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_api_test_finance_test",
+      "label": "finance.test.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "finance.test.ts",
+      "source_file": "apps/api/test/finance.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_test_integration_test",
+      "label": "integration.test.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "integration.test.ts",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "scripts_generate_auth",
       "label": "generate-auth.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "generate-auth.ts",
       "source_file": "scripts/generate-auth.ts",
@@ -2344,22 +2625,144 @@
       "label": "pool",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "code",
       "norm_label": "pool",
       "source_file": "scripts/generate-auth.ts",
       "source_location": "L11"
     },
     {
+      "id": "apps_api_package_json_ref_better_auth",
+      "label": "better-auth",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "better-auth",
+      "source_file": "apps/api/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_package_json_ref_better_auth_expo",
+      "label": "@better-auth/expo",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@better-auth/expo",
+      "source_file": "apps/api/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "apps_api_package_json_ref_cashflow_contracts",
+      "label": "@cashflow/contracts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@cashflow/contracts",
+      "source_file": "apps/api/package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_fastify",
+      "label": "fastify",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "fastify",
+      "source_file": "apps/api/package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "ref_fastify_cors",
+      "label": "@fastify/cors",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@fastify/cors",
+      "source_file": "apps/api/package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "ref_fastify_rate_limit",
+      "label": "@fastify/rate-limit",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@fastify/rate-limit",
+      "source_file": "apps/api/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "ref_fastify_swagger",
+      "label": "@fastify/swagger",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@fastify/swagger",
+      "source_file": "apps/api/package.json",
+      "source_location": "L19"
+    },
+    {
       "id": "ref_nodemailer",
       "label": "nodemailer",
       "_origin": "ast",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "file_type": "concept",
       "norm_label": "nodemailer",
       "source_file": "apps/api/package.json",
       "source_location": "L23"
+    },
+    {
+      "id": "ref_pg",
+      "label": "pg",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "ref_types_nodemailer",
+      "label": "@types/nodemailer",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@types/nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "ref_types_pg",
+      "label": "@types/pg",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "concept",
+      "norm_label": "@types/pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L27"
+    },
+    {
+      "id": "docs_database_3_konvensi",
+      "label": "3. Konvensi",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. konvensi",
+      "source_file": "docs/DATABASE.md",
+      "source_location": "L40"
     },
     {
       "id": "docs_prd_10_skenario_verifikasi_wajib",
@@ -2540,6 +2943,17 @@
       "source_location": "L8"
     },
     {
+      "id": "playwright_config",
+      "label": "playwright.config.ts",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "backup.mjs",
+      "file_type": "code",
+      "norm_label": "playwright.config.ts",
+      "source_file": "playwright.config.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "scripts_backup",
       "label": "backup.mjs",
       "_origin": "ast",
@@ -2650,6 +3064,39 @@
       "source_location": "L6"
     },
     {
+      "id": "scripts_setup_env",
+      "label": "setup-env.mjs",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "backup.mjs",
+      "file_type": "code",
+      "norm_label": "setup-env.mjs",
+      "source_file": "scripts/setup-env.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_setup_env_target",
+      "label": "target",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "backup.mjs",
+      "file_type": "code",
+      "norm_label": "target",
+      "source_file": "scripts/setup-env.mjs",
+      "source_location": "L3"
+    },
+    {
+      "id": "tests_ui_finance_spec",
+      "label": "finance.spec.ts",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "backup.mjs",
+      "file_type": "code",
+      "norm_label": "finance.spec.ts",
+      "source_file": "tests/ui/finance.spec.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "ref_node_pg_migrate",
       "label": "node-pg-migrate",
       "_origin": "ast",
@@ -2659,6 +3106,17 @@
       "norm_label": "node-pg-migrate",
       "source_file": "apps/api/package.json",
       "source_location": "L24"
+    },
+    {
+      "id": "ref_playwright_test",
+      "label": "@playwright/test",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "backup.mjs",
+      "file_type": "concept",
+      "norm_label": "@playwright/test",
+      "source_file": "package.json",
+      "source_location": "L35"
     },
     {
       "id": "docs_architecture_10_operasi_backup_dan_pemulihan",
@@ -2966,6 +3424,18 @@
       "source_location": "L1"
     },
     {
+      "id": "agents",
+      "label": "AGENTS.md",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "agents.md",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
       "id": "docs_architecture",
       "label": "ARCHITECTURE.md",
       "_origin": "ast",
@@ -2975,6 +3445,18 @@
       "node_kind": "page",
       "norm_label": "architecture.md",
       "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_database",
+      "label": "DATABASE.md",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "database.md",
+      "source_file": "docs/DATABASE.md",
       "source_location": "L1"
     },
     {
@@ -3072,105 +3554,6 @@
       "norm_label": "cash-manage",
       "source_file": "README.md",
       "source_location": "L71"
-    },
-    {
-      "id": "migrations_000_auth",
-      "label": "000_auth.sql",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "000_auth.sql",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": null
-    },
-    {
-      "id": "migrations_000_auth_auth_accounts",
-      "label": "\"auth_accounts\"",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_accounts\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L7"
-    },
-    {
-      "id": "migrations_000_auth_auth_accounts_userid_idx",
-      "label": "auth_accounts_userId_idx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "auth_accounts_userid_idx",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L15"
-    },
-    {
-      "id": "migrations_000_auth_auth_rate_limits",
-      "label": "\"auth_rate_limits\"",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_rate_limits\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L11"
-    },
-    {
-      "id": "migrations_000_auth_auth_sessions",
-      "label": "\"auth_sessions\"",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_sessions\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L5"
-    },
-    {
-      "id": "migrations_000_auth_auth_sessions_userid_idx",
-      "label": "auth_sessions_userId_idx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "auth_sessions_userid_idx",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L13"
-    },
-    {
-      "id": "migrations_000_auth_auth_users",
-      "label": "\"auth_users\"",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_users\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L3"
-    },
-    {
-      "id": "migrations_000_auth_auth_verifications",
-      "label": "\"auth_verifications\"",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_verifications\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L9"
-    },
-    {
-      "id": "migrations_000_auth_auth_verifications_identifier_idx",
-      "label": "auth_verifications_identifier_idx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "000_auth.sql",
-      "file_type": "code",
-      "norm_label": "auth_verifications_identifier_idx",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L17"
     },
     {
       "id": "scripts_backup_production",
@@ -4404,18 +4787,6 @@
       "source_location": "L2"
     },
     {
-      "id": "agents",
-      "label": "AGENTS.md",
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Instruksi Agen \u2014 Aplikasi Keuangan Rumah Tangga",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "agents.md",
-      "source_file": "AGENTS.md",
-      "source_location": "L1"
-    },
-    {
       "id": "agents_aturan_keuangan_dan_household",
       "label": "Aturan keuangan dan household",
       "_origin": "ast",
@@ -5006,6 +5377,17 @@
       "source_location": "L26"
     },
     {
+      "id": "ref_expo_secure_store",
+      "label": "expo-secure-store",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "mobile/package.json",
+      "file_type": "concept",
+      "norm_label": "expo-secure-store",
+      "source_file": "apps/mobile/package.json",
+      "source_location": "L28"
+    },
+    {
       "id": "ref_expo_sharing",
       "label": "expo-sharing",
       "_origin": "ast",
@@ -5226,105 +5608,6 @@
       "source_location": "L20"
     },
     {
-      "id": "apps_api_package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "apps/api/package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_api_package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "apps/api/package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "apps_api_package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "apps/api/package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "apps_api_package_scripts_migrate",
-      "label": "migrate",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "migrate",
-      "source_file": "apps/api/package.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "apps_api_package_scripts_start",
-      "label": "start",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "start",
-      "source_file": "apps/api/package.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "apps_api_package_scripts_test",
-      "label": "test",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "test",
-      "source_file": "apps/api/package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "apps_api_package_scripts_typecheck",
-      "label": "typecheck",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "typecheck",
-      "source_file": "apps/api/package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "apps_api_src_access",
-      "label": "access.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "access.ts",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_deletion",
-      "label": "deletion.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "access.ts",
-      "file_type": "code",
-      "norm_label": "deletion.ts",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "docs_implementation_fitur_yang_tersedia",
       "label": "Fitur yang tersedia",
       "_origin": "ast",
@@ -5443,28 +5726,6 @@
       "norm_label": "struktur",
       "source_file": "README.md",
       "source_location": "L59"
-    },
-    {
-      "id": "apps_api_src_finance",
-      "label": "finance.ts",
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "finance.ts",
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_households",
-      "label": "households.ts",
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "finance.ts",
-      "file_type": "code",
-      "norm_label": "households.ts",
-      "source_file": "apps/api/src/households.ts",
-      "source_location": "L1"
     },
     {
       "id": "docker_db_init",
@@ -5603,37 +5864,103 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_api_src_reports",
-      "label": "reports.ts",
+      "id": "migrations_000_auth",
+      "label": "000_auth.sql",
       "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
+      "community": 4,
+      "community_name": "001_domain.sql",
       "file_type": "code",
-      "norm_label": "reports.ts",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L1"
+      "norm_label": "000_auth.sql",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": null
     },
     {
-      "id": "apps_api_test_finance_test",
-      "label": "finance.test.ts",
+      "id": "migrations_000_auth_auth_accounts",
+      "label": "\"auth_accounts\"",
       "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
+      "community": 4,
+      "community_name": "001_domain.sql",
       "file_type": "code",
-      "norm_label": "finance.test.ts",
-      "source_file": "apps/api/test/finance.test.ts",
-      "source_location": "L1"
+      "norm_label": "\"auth_accounts\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L7"
     },
     {
-      "id": "apps_api_test_integration_test",
-      "label": "integration.test.ts",
+      "id": "migrations_000_auth_auth_accounts_userid_idx",
+      "label": "auth_accounts_userId_idx",
       "_origin": "ast",
-      "community": 39,
-      "community_name": "reports.ts",
+      "community": 4,
+      "community_name": "001_domain.sql",
       "file_type": "code",
-      "norm_label": "integration.test.ts",
-      "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L1"
+      "norm_label": "auth_accounts_userid_idx",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L15"
+    },
+    {
+      "id": "migrations_000_auth_auth_rate_limits",
+      "label": "\"auth_rate_limits\"",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "\"auth_rate_limits\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L11"
+    },
+    {
+      "id": "migrations_000_auth_auth_sessions",
+      "label": "\"auth_sessions\"",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "\"auth_sessions\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L5"
+    },
+    {
+      "id": "migrations_000_auth_auth_sessions_userid_idx",
+      "label": "auth_sessions_userId_idx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "auth_sessions_userid_idx",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L13"
+    },
+    {
+      "id": "migrations_000_auth_auth_users",
+      "label": "\"auth_users\"",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "\"auth_users\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L3"
+    },
+    {
+      "id": "migrations_000_auth_auth_verifications",
+      "label": "\"auth_verifications\"",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "\"auth_verifications\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L9"
+    },
+    {
+      "id": "migrations_000_auth_auth_verifications_identifier_idx",
+      "label": "auth_verifications_identifier_idx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "auth_verifications_identifier_idx",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L17"
     },
     {
       "id": "migrations_001_domain",
@@ -5963,140 +6290,6 @@
       "file_type": "code",
       "norm_label": "*.css",
       "source_file": "apps/mobile/css.d.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout",
-      "label": "(tabs)/_layout.tsx",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "(tabs)/_layout.tsx",
-      "file_type": "code",
-      "norm_label": "(tabs)/_layout.tsx",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_tabitems",
-      "label": "tabItems",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "(tabs)/_layout.tsx",
-      "file_type": "code",
-      "norm_label": "tabitems",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "apps_api_src_errors",
-      "label": "errors.ts",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "errors.ts",
-      "source_file": "apps/api/src/errors.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_validation",
-      "label": "validation.ts",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "validation.ts",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_validation_uuidpattern",
-      "label": "uuidPattern",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "uuidpattern",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "docs_database_3_konvensi",
-      "label": "3. Konvensi",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "fail",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. konvensi",
-      "source_file": "docs/DATABASE.md",
-      "source_location": "L40"
-    },
-    {
-      "id": "playwright_config",
-      "label": "playwright.config.ts",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "file_type": "code",
-      "norm_label": "playwright.config.ts",
-      "source_file": "playwright.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_setup_env",
-      "label": "setup-env.mjs",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "file_type": "code",
-      "norm_label": "setup-env.mjs",
-      "source_file": "scripts/setup-env.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_setup_env_target",
-      "label": "target",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "file_type": "code",
-      "norm_label": "target",
-      "source_file": "scripts/setup-env.mjs",
-      "source_location": "L3"
-    },
-    {
-      "id": "tests_ui_finance_spec",
-      "label": "finance.spec.ts",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "file_type": "code",
-      "norm_label": "finance.spec.ts",
-      "source_file": "tests/ui/finance.spec.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_playwright_test",
-      "label": "@playwright/test",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "file_type": "concept",
-      "norm_label": "@playwright/test",
-      "source_file": "package.json",
-      "source_location": "L35"
-    },
-    {
-      "id": "docs_database",
-      "label": "DATABASE.md",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Desain Database \u2014 Cash Flow",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "database.md",
-      "source_file": "docs/DATABASE.md",
       "source_location": "L1"
     },
     {
@@ -6992,202 +7185,81 @@
       "source_location": "L23"
     },
     {
-      "id": "apps_api_package",
-      "label": "api/package.json",
+      "id": "apps_api_package_scripts",
+      "label": "scripts",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "api/package.json",
+      "norm_label": "scripts",
       "source_file": "apps/api/package.json",
-      "source_location": "L1"
+      "source_location": "L6"
     },
     {
-      "id": "apps_api_package_devdependencies",
-      "label": "devDependencies",
+      "id": "apps_api_package_scripts_build",
+      "label": "build",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "devdependencies",
+      "norm_label": "build",
       "source_file": "apps/api/package.json",
-      "source_location": "L26"
+      "source_location": "L7"
     },
     {
-      "id": "apps_api_package_devdependencies_types_nodemailer",
-      "label": "@types/nodemailer",
+      "id": "apps_api_package_scripts_dev",
+      "label": "dev",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "@types/nodemailer",
+      "norm_label": "dev",
       "source_file": "apps/api/package.json",
-      "source_location": "L28"
+      "source_location": "L9"
     },
     {
-      "id": "apps_api_package_devdependencies_types_pg",
-      "label": "@types/pg",
+      "id": "apps_api_package_scripts_migrate",
+      "label": "migrate",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "@types/pg",
+      "norm_label": "migrate",
       "source_file": "apps/api/package.json",
-      "source_location": "L27"
+      "source_location": "L11"
     },
     {
-      "id": "apps_api_package_name",
-      "label": "name",
+      "id": "apps_api_package_scripts_start",
+      "label": "start",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "name",
+      "norm_label": "start",
       "source_file": "apps/api/package.json",
-      "source_location": "L2"
+      "source_location": "L10"
     },
     {
-      "id": "apps_api_package_private",
-      "label": "private",
+      "id": "apps_api_package_scripts_test",
+      "label": "test",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "private",
+      "norm_label": "test",
       "source_file": "apps/api/package.json",
-      "source_location": "L4"
+      "source_location": "L12"
     },
     {
-      "id": "apps_api_package_type",
-      "label": "type",
+      "id": "apps_api_package_scripts_typecheck",
+      "label": "typecheck",
       "_origin": "ast",
       "community": 9,
-      "community_name": "api/package.json",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "type",
+      "norm_label": "typecheck",
       "source_file": "apps/api/package.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_api_package_version",
-      "label": "version",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "code",
-      "norm_label": "version",
-      "source_file": "apps/api/package.json",
-      "source_location": "L3"
-    },
-    {
-      "id": "apps_api_package_json_ref_better_auth",
-      "label": "better-auth",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "better-auth",
-      "source_file": "apps/api/package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "apps_api_package_json_ref_better_auth_expo",
-      "label": "@better-auth/expo",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@better-auth/expo",
-      "source_file": "apps/api/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "apps_api_package_json_ref_cashflow_contracts",
-      "label": "@cashflow/contracts",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@cashflow/contracts",
-      "source_file": "apps/api/package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_fastify",
-      "label": "fastify",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "fastify",
-      "source_file": "apps/api/package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "ref_fastify_cors",
-      "label": "@fastify/cors",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@fastify/cors",
-      "source_file": "apps/api/package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "ref_fastify_rate_limit",
-      "label": "@fastify/rate-limit",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@fastify/rate-limit",
-      "source_file": "apps/api/package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "ref_fastify_swagger",
-      "label": "@fastify/swagger",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@fastify/swagger",
-      "source_file": "apps/api/package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "ref_pg",
-      "label": "pg",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "ref_types_nodemailer",
-      "label": "@types/nodemailer",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@types/nodemailer",
-      "source_file": "apps/api/package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "ref_types_pg",
-      "label": "@types/pg",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "@types/pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L27"
+      "source_location": "L8"
     },
     {
       "id": "apps_mobile_app_global",
@@ -7358,26 +7430,50 @@
       "type": "external"
     },
     {
-      "id": "ref_better_auth_expo",
-      "label": "ref_better_auth_expo",
-      "_origin": "semantic",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_better_auth_expo",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "apps_api_src_db_database",
       "label": "apps_api_src_db_database",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "external": true,
       "file_type": "concept",
       "norm_label": "apps_api_src_db_database",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "apps_api_src_db_poolclient",
+      "label": "apps_api_src_db_poolclient",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "apps_api_src_db_poolclient",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "packages_contracts_dist_index_validdate",
+      "label": "packages_contracts_dist_index_validdate",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "packages_contracts_dist_index_validdate",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "packages_contracts_dist_index_validmoney",
+      "label": "packages_contracts_dist_index_validmoney",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "packages_contracts_dist_index_validmoney",
       "source_file": "",
       "type": "external"
     },
@@ -7386,10 +7482,58 @@
       "label": "ref_better_auth",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "app.ts",
+      "community_name": "fail",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_better_auth",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_better_auth_expo",
+      "label": "ref_better_auth_expo",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_better_auth_expo",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_assert",
+      "label": "ref_node_assert",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_assert",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_crypto",
+      "label": "ref_node_crypto",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_crypto",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_test",
+      "label": "ref_node_test",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_test",
       "source_file": "",
       "type": "external"
     },
@@ -7402,6 +7546,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_child_process",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_fs",
+      "label": "ref_node_fs",
+      "_origin": "semantic",
+      "community": 11,
+      "community_name": "backup.mjs",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_fs",
       "source_file": "",
       "type": "external"
     },
@@ -7438,90 +7594,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_url",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "apps_api_src_db_poolclient",
-      "label": "apps_api_src_db_poolclient",
-      "_origin": "semantic",
-      "community": 31,
-      "community_name": "access.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "apps_api_src_db_poolclient",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "packages_contracts_dist_index_validdate",
-      "label": "packages_contracts_dist_index_validdate",
-      "_origin": "semantic",
-      "community": 39,
-      "community_name": "reports.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "packages_contracts_dist_index_validdate",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "packages_contracts_dist_index_validmoney",
-      "label": "packages_contracts_dist_index_validmoney",
-      "_origin": "semantic",
-      "community": 39,
-      "community_name": "reports.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "packages_contracts_dist_index_validmoney",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_assert",
-      "label": "ref_node_assert",
-      "_origin": "semantic",
-      "community": 39,
-      "community_name": "reports.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_assert",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_test",
-      "label": "ref_node_test",
-      "_origin": "semantic",
-      "community": 39,
-      "community_name": "reports.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_test",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_crypto",
-      "label": "ref_node_crypto",
-      "_origin": "semantic",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_crypto",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_fs",
-      "label": "ref_node_fs",
-      "_origin": "semantic",
-      "community": 43,
-      "community_name": "ref_node_crypto",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_fs",
       "source_file": "",
       "type": "external"
     }
@@ -7848,7 +7920,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L98",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -7860,7 +7932,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L324",
+      "source_location": "L347",
       "weight": 1.0
     },
     {
@@ -7872,7 +7944,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L325",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -7884,7 +7956,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L341",
+      "source_location": "L364",
       "weight": 1.0
     },
     {
@@ -7932,7 +8004,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L285",
+      "source_location": "L308",
       "weight": 1.0
     },
     {
@@ -7944,7 +8016,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L290",
+      "source_location": "L313",
       "weight": 1.0
     },
     {
@@ -7956,7 +8028,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L302",
+      "source_location": "L325",
       "weight": 1.0
     },
     {
@@ -7980,7 +8052,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L66",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -7992,7 +8064,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L78",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -8004,7 +8076,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L122",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -8016,7 +8088,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L134",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -8028,7 +8100,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L135",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -8040,7 +8112,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L197",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -8052,7 +8124,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L269",
+      "source_location": "L292",
       "weight": 1.0
     },
     {
@@ -8752,123 +8824,15 @@
       "weight": 1.0
     },
     {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_screen",
+      "source": "apps_mobile_app_manage_categorylist",
+      "target": "apps_mobile_src_ui_usecolors",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L103",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_loadstate",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L104",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_copy",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L117",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_button",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L126",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_field",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L158",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_choice",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L173",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_amountfield",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L199",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_datefield",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L206",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_savestate",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L260",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_manage_manage",
-      "target": "apps_mobile_src_ui_confirm",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L279",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -8880,7 +8844,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L38",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -8892,7 +8856,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L39",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -8904,7 +8868,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L40",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -8916,7 +8880,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L44",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -8928,7 +8892,139 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L84",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_screen",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L210",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_loadstate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L211",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_copy",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L224",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_button",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L235",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_app_manage_categorylist",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L248",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_field",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L286",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_choice",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L301",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_amountfield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L327",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_datefield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L334",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_savestate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L388",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage_manage",
+      "target": "apps_mobile_src_ui_confirm",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -9437,138 +9533,6 @@
     },
     {
       "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_copy",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L108",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_title",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L111",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_loadstate",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L113",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_action_action",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L130",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_field",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L156",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_savestate",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L165",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_notice",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L182",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_state_useapp",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_state_usehouseholdquery",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_save_usesave",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L40",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
-      "target": "apps_mobile_src_ui_usecolors",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L41",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family_family",
       "target": "apps_mobile_src_ui_screen",
       "relation": "calls",
       "_origin": "ast",
@@ -9576,7 +9540,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L70",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -9588,7 +9552,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L71",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -9600,7 +9564,163 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L96",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_copy",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_title",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L169",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_loadstate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_action_action",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_field",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L214",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_savestate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L223",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_notice",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L240",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_app_tabs_family_managementlink",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L342",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_state_useapp",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_state_usehouseholdquery",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_save_usesave",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_family",
+      "target": "apps_mobile_src_ui_usecolors",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family_managementlink",
+      "target": "apps_mobile_src_ui_usecolors",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -9840,7 +9960,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L114",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -9852,7 +9972,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L122",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_transactions_transactions",
+      "target": "apps_mobile_src_ui_button",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -9864,7 +9996,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -9876,7 +10008,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -9888,7 +10020,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -9900,7 +10032,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -9912,7 +10044,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -9924,36 +10056,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L57",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
       "source": "apps_mobile_app_tabs_transactions_transactions",
       "target": "apps_mobile_src_ui_title",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L70",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_transactions_transactions",
-      "target": "apps_mobile_src_ui_copy",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L71",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_transactions_transactions",
-      "target": "apps_mobile_src_ui_card",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9965,7 +10073,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_transactions_transactions",
-      "target": "apps_mobile_src_ui_sectiontitle",
+      "target": "apps_mobile_src_ui_copy",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9977,6 +10085,30 @@
     },
     {
       "source": "apps_mobile_app_tabs_transactions_transactions",
+      "target": "apps_mobile_src_ui_card",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_transactions_transactions",
+      "target": "apps_mobile_src_ui_sectiontitle",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_transactions_transactions",
       "target": "apps_mobile_src_filters_filterpanel",
       "relation": "calls",
       "_origin": "ast",
@@ -9984,7 +10116,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L78",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_transactions_transactions",
+      "target": "apps_mobile_src_ui_scrollfocusedfield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -9996,19 +10140,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L80",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_transactions_transactions",
-      "target": "apps_mobile_src_ui_button",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L97",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -10020,7 +10152,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L110",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -10032,7 +10164,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L111",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -10044,7 +10176,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L134",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -10056,7 +10188,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L137",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -10068,7 +10200,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L140",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -10080,7 +10212,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L152",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -10092,7 +10224,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L172",
+      "source_location": "L177",
       "weight": 1.0
     },
     {
@@ -10104,7 +10236,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L238",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -10116,7 +10248,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L244",
+      "source_location": "L293",
       "weight": 1.0
     },
     {
@@ -10128,7 +10260,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L259",
+      "source_location": "L308",
       "weight": 1.0
     },
     {
@@ -10140,7 +10272,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L278",
+      "source_location": "L327",
       "weight": 1.0
     },
     {
@@ -10152,7 +10284,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L314",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -10308,7 +10440,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -10320,7 +10452,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -10332,7 +10464,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -10344,7 +10476,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L53",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -10356,7 +10488,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L60",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -10368,7 +10500,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L73",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -10380,7 +10512,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/filters.tsx",
-      "source_location": "L83",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -10416,7 +10548,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L139",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -10428,7 +10560,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L141",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -10440,7 +10572,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L144",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -10452,7 +10584,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L171",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -10464,43 +10596,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L208",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_household_chooser_householdchooser",
-      "target": "apps_mobile_src_ui_field",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L234",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_household_chooser_householdchooser",
-      "target": "apps_mobile_src_ui_choice",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L242",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_household_chooser_householdchooser",
-      "target": "apps_mobile_src_ui_savestate",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L257",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -10512,7 +10608,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L28",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_household_chooser_householdchooser",
+      "target": "apps_mobile_src_ui_field",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/household-chooser.tsx",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -10524,7 +10632,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L29",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_household_chooser_householdchooser",
+      "target": "apps_mobile_src_ui_choice",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/household-chooser.tsx",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_household_chooser_householdchooser",
+      "target": "apps_mobile_src_ui_savestate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/household-chooser.tsx",
+      "source_location": "L252",
       "weight": 1.0
     },
     {
@@ -10536,7 +10668,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L34",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_household_chooser_householdchooser",
+      "target": "apps_mobile_src_ui_keyboardscrollview",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/household-chooser.tsx",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -10752,7 +10896,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L425",
+      "source_location": "L460",
       "weight": 1.0
     },
     {
@@ -10764,7 +10908,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L306",
+      "source_location": "L338",
       "weight": 1.0
     },
     {
@@ -10776,7 +10920,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L268",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -10788,7 +10932,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L462",
+      "source_location": "L501",
       "weight": 1.0
     },
     {
@@ -10800,7 +10944,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L525",
+      "source_location": "L567",
       "weight": 1.0
     },
     {
@@ -10812,7 +10956,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L574",
+      "source_location": "L616",
       "weight": 1.0
     },
     {
@@ -10824,7 +10968,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L586",
+      "source_location": "L628",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui_choice",
+      "target": "apps_mobile_src_ui_button",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L644",
       "weight": 1.0
     },
     {
@@ -10836,7 +10992,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L843",
+      "source_location": "L899",
       "weight": 1.0
     },
     {
@@ -10848,7 +11004,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L132",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -10860,7 +11016,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L620",
+      "source_location": "L673",
       "weight": 1.0
     },
     {
@@ -10872,7 +11028,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L623",
+      "source_location": "L676",
       "weight": 1.0
     },
     {
@@ -10884,7 +11040,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L633",
+      "source_location": "L686",
       "weight": 1.0
     },
     {
@@ -10896,7 +11052,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L711",
+      "source_location": "L767",
       "weight": 1.0
     },
     {
@@ -10908,7 +11064,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L355",
+      "source_location": "L387",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui_field",
+      "target": "apps_mobile_src_ui_scrollfocusedfield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L403",
       "weight": 1.0
     },
     {
@@ -10920,7 +11088,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L403",
+      "source_location": "L438",
       "weight": 1.0
     },
     {
@@ -10932,7 +11100,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L184",
+      "source_location": "L224",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui_keyboardscrollview",
+      "target": "apps_mobile_src_ui_scrollfocusedfield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -10944,7 +11124,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L764",
+      "source_location": "L820",
       "weight": 1.0
     },
     {
@@ -10956,7 +11136,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L768",
+      "source_location": "L824",
       "weight": 1.0
     },
     {
@@ -10968,7 +11148,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L786",
+      "source_location": "L842",
       "weight": 1.0
     },
     {
@@ -10980,7 +11160,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L789",
+      "source_location": "L845",
       "weight": 1.0
     },
     {
@@ -10992,7 +11172,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L794",
+      "source_location": "L850",
       "weight": 1.0
     },
     {
@@ -11004,7 +11184,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L671",
+      "source_location": "L727",
       "weight": 1.0
     },
     {
@@ -11016,7 +11196,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L816",
+      "source_location": "L872",
       "weight": 1.0
     },
     {
@@ -11028,7 +11208,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L822",
+      "source_location": "L878",
       "weight": 1.0
     },
     {
@@ -11040,7 +11220,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L219",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -11052,7 +11232,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L232",
+      "source_location": "L272",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui_screen",
+      "target": "apps_mobile_src_ui_keyboardscrollview",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L286",
       "weight": 1.0
     },
     {
@@ -11064,7 +11256,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L163",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -11076,7 +11268,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L148",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -11088,19 +11280,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L377",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_welcome_authscreen",
-      "target": "apps_mobile_src_state_useapp",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L18",
+      "source_location": "L371",
       "weight": 1.0
     },
     {
@@ -11112,7 +11292,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L181",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -11124,7 +11304,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L187",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -11136,12 +11316,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L189",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
       "source": "apps_mobile_src_welcome_authscreen",
-      "target": "apps_mobile_src_ui_usecolors",
+      "target": "apps_mobile_src_state_useapp",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11153,6 +11333,18 @@
     },
     {
       "source": "apps_mobile_src_welcome_authscreen",
+      "target": "apps_mobile_src_ui_usecolors",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/welcome.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_welcome_authscreen",
       "target": "apps_mobile_src_ui_button",
       "relation": "calls",
       "_origin": "ast",
@@ -11160,7 +11352,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L245",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -11172,7 +11364,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L271",
+      "source_location": "L268",
       "weight": 1.0
     },
     {
@@ -11184,7 +11376,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L276",
+      "source_location": "L271",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_welcome_authscreen",
+      "target": "apps_mobile_src_ui_keyboardscrollview",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/src/welcome.tsx",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -11232,7 +11436,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L58",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -11256,7 +11460,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L42",
+      "source_location": "L100",
       "weight": 1.0
     },
     {
@@ -11268,7 +11472,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L57",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -11280,7 +11484,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L30",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -11316,7 +11520,7 @@
       "confidence_score": 1.0,
       "context": "export",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L404",
+      "source_location": "L398",
       "weight": 1.0
     },
     {
@@ -12468,7 +12672,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -12480,7 +12684,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -12492,7 +12696,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -12504,7 +12708,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -12516,7 +12720,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12528,7 +12732,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12540,7 +12744,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12552,7 +12756,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12564,7 +12768,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12576,7 +12780,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12588,7 +12792,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12600,7 +12804,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12612,7 +12816,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12624,7 +12828,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage",
+      "target": "apps_mobile_src_ui_styles",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12636,7 +12852,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage",
+      "target": "apps_mobile_src_ui_usecolors",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12648,7 +12876,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -12660,7 +12888,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12672,7 +12900,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12684,7 +12912,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12696,7 +12924,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -13337,7 +13565,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_action_action",
+      "target": "apps_mobile_src_save_usesave",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13349,7 +13577,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_ui_button",
+      "target": "apps_mobile_src_action_action",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13357,6 +13585,18 @@
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
       "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family",
+      "target": "apps_mobile_src_ui_button",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13368,7 +13608,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13380,7 +13620,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13392,7 +13632,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13404,7 +13644,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13416,7 +13656,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13428,7 +13668,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13440,7 +13680,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13452,7 +13692,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13464,7 +13704,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13476,7 +13716,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13488,7 +13728,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13500,7 +13740,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13512,24 +13752,12 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
       "source": "apps_mobile_app_tabs_family",
       "target": "apps_mobile_src_state_usehouseholdquery",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_save_usesave",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13877,6 +14105,18 @@
     },
     {
       "source": "apps_mobile_app_tabs_transactions",
+      "target": "apps_mobile_src_ui_scrollfocusedfield",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_transactions",
       "target": "apps_mobile_src_ui_sectiontitle",
       "relation": "imports",
       "_origin": "ast",
@@ -13920,7 +14160,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -14760,7 +15000,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L13",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -14772,7 +15012,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L14",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14784,7 +15024,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -14796,7 +15036,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14808,7 +15048,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14820,7 +15060,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14832,7 +15072,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_household_chooser",
+      "target": "apps_mobile_src_ui_keyboardscrollview",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/household-chooser.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14844,7 +15096,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14856,7 +15108,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14868,7 +15120,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14880,7 +15132,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -15156,7 +15408,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L13",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -15168,7 +15420,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L14",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -15180,7 +15432,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -15192,7 +15444,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -15204,7 +15456,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_welcome",
+      "target": "apps_mobile_src_ui_keyboardscrollview",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/welcome.tsx",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -15216,7 +15480,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -15228,7 +15492,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -15240,7 +15504,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -16411,7 +16675,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -16423,7 +16687,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -16435,7 +16699,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -16447,7 +16711,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -16464,7 +16728,7 @@
     },
     {
       "source": "apps_mobile_app_manage",
-      "target": "ref_expo_router",
+      "target": "ref_expo_vector_icons",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16476,7 +16740,7 @@
     },
     {
       "source": "apps_mobile_app_manage",
-      "target": "apps_mobile_src_period",
+      "target": "ref_react_native",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16488,7 +16752,7 @@
     },
     {
       "source": "apps_mobile_app_manage",
-      "target": "packages_contracts_dist_index",
+      "target": "ref_expo_router",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16496,6 +16760,30 @@
       "context": "import",
       "source_file": "apps/mobile/app/manage.tsx",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage",
+      "target": "apps_mobile_src_period",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_manage",
+      "target": "packages_contracts_dist_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -16860,7 +17148,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_action",
+      "target": "apps_mobile_src_save",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16872,7 +17160,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_action",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16880,6 +17168,18 @@
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
       "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family",
+      "target": "apps_mobile_src_ui",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -16908,7 +17208,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "ref_expo_linking",
+      "target": "ref_expo_vector_icons",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16920,7 +17220,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "ref_expo_clipboard",
+      "target": "ref_expo_linking",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16932,7 +17232,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "ref_expo_router",
+      "target": "ref_expo_clipboard",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16944,7 +17244,7 @@
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "packages_contracts_dist_index",
+      "target": "ref_expo_router",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16952,12 +17252,11 @@
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
       "source_location": "L7",
-      "type_only": true,
       "weight": 1.0
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_state",
+      "target": "packages_contracts_dist_index",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16965,11 +17264,12 @@
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
       "source_location": "L8",
+      "type_only": true,
       "weight": 1.0
     },
     {
       "source": "apps_mobile_app_tabs_family",
-      "target": "apps_mobile_src_save",
+      "target": "apps_mobile_src_state",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17228,7 +17528,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -17655,6 +17955,18 @@
     },
     {
       "source": "apps_mobile_src_household_chooser",
+      "target": "ref_react_native",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/household-chooser.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_household_chooser",
       "target": "ref_react_native_safe_area_context",
       "relation": "imports_from",
       "_origin": "ast",
@@ -17662,7 +17974,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L10",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -17674,7 +17986,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L11",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -17686,7 +17998,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L12",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -17698,7 +18010,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L13",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -17710,7 +18022,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L14",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -17722,7 +18034,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L15",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -17734,19 +18046,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L16",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_household_chooser",
-      "target": "ref_react_native",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L2",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -18162,6 +18462,18 @@
     },
     {
       "source": "apps_mobile_src_welcome",
+      "target": "ref_react_native",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/welcome.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_welcome",
       "target": "ref_expo_vector_icons",
       "relation": "imports_from",
       "_origin": "ast",
@@ -18169,7 +18481,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L10",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -18181,7 +18493,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L11",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -18193,7 +18505,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L12",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -18205,7 +18517,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L13",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -18217,7 +18529,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L14",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -18229,19 +18541,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_welcome",
-      "target": "ref_react_native",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L2",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -18530,7 +18830,7 @@
       "confidence_score": 1.0,
       "context": "re-export",
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L404",
+      "source_location": "L398",
       "weight": 1.0
     },
     {
@@ -19140,13 +19440,24 @@
     },
     {
       "source": "apps_api_src_finance",
+      "target": "apps_api_src_finance_reference",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/finance.ts",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_finance",
       "target": "apps_api_src_finance_transactionnames",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L105",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -19157,7 +19468,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L120",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -19168,7 +19479,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L283",
+      "source_location": "L306",
       "weight": 1.0
     },
     {
@@ -19179,7 +19490,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/finance.ts",
-      "source_location": "L309",
+      "source_location": "L332",
       "weight": 1.0
     },
     {
@@ -19202,17 +19513,6 @@
       "confidence_score": 1.0,
       "source_file": "apps/api/src/finance.ts",
       "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_api_src_finance",
-      "target": "apps_api_src_finance_reference",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/api/src/finance.ts",
-      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -19964,6 +20264,17 @@
       "weight": 1.0
     },
     {
+      "source": "apps_mobile_app_manage",
+      "target": "apps_mobile_app_manage_categorylist",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/app/manage.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
       "source": "apps_mobile_app_profile",
       "target": "apps_mobile_app_profile_profile",
       "relation": "contains",
@@ -19994,6 +20305,17 @@
       "confidence_score": 1.0,
       "source_file": "apps/mobile/app.json",
       "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_tabs_family",
+      "target": "apps_mobile_app_tabs_family_managementlink",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/app/(tabs)/family.tsx",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -20037,7 +20359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L113",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -20642,7 +20964,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/household-chooser.tsx",
-      "source_location": "L27",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -20812,13 +21134,24 @@
     },
     {
       "source": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_ui_styles",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui",
       "target": "apps_mobile_src_ui_copy",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L122",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -20829,7 +21162,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L147",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -20840,7 +21173,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L156",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -20851,23 +21184,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L177",
+      "source_location": "L217",
       "weight": 1.0
     },
     {
       "source": "apps_mobile_src_ui",
-      "target": "apps_mobile_src_ui_screen",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L209",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_ui",
-      "target": "apps_mobile_src_ui_usecolors",
+      "target": "apps_mobile_src_ui_focusedfieldcontext",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -20878,13 +21200,35 @@
     },
     {
       "source": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_ui_screen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L249",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_ui_keyboardscrollresponder",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui",
       "target": "apps_mobile_src_ui_card",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L264",
+      "source_location": "L296",
       "weight": 1.0
     },
     {
@@ -20895,7 +21239,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L289",
+      "source_location": "L321",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_ui_scrollfocusedfield",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -20906,7 +21261,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L342",
+      "source_location": "L374",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_ui_keyboardscrollview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -20917,7 +21283,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L411",
+      "source_location": "L446",
       "weight": 1.0
     },
     {
@@ -20928,7 +21294,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L443",
+      "source_location": "L478",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_ui_usecolors",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/src/ui.tsx",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -20939,7 +21316,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L608",
+      "source_location": "L661",
       "weight": 1.0
     },
     {
@@ -20950,7 +21327,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L666",
+      "source_location": "L722",
       "weight": 1.0
     },
     {
@@ -20961,18 +21338,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L702",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_src_ui",
-      "target": "apps_mobile_src_ui_styles",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L73",
+      "source_location": "L758",
       "weight": 1.0
     },
     {
@@ -20983,7 +21349,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L763",
+      "source_location": "L819",
       "weight": 1.0
     },
     {
@@ -20994,7 +21360,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L774",
+      "source_location": "L830",
       "weight": 1.0
     },
     {
@@ -21005,7 +21371,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L804",
+      "source_location": "L860",
       "weight": 1.0
     },
     {
@@ -21016,7 +21382,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L836",
+      "source_location": "L892",
       "weight": 1.0
     },
     {
@@ -21027,7 +21393,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -21038,7 +21404,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/welcome.tsx",
-      "source_location": "L368",
+      "source_location": "L362",
       "weight": 1.0
     },
     {
@@ -24583,7 +24949,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "apps/mobile/app/manage.tsx",
-      "source_location": "L325",
+      "source_location": "L481",
       "weight": 1.0
     },
     {
@@ -24619,7 +24985,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "apps/mobile/app/(tabs)/family.tsx",
-      "source_location": "L343",
+      "source_location": "L425",
       "weight": 1.0
     },
     {
@@ -24643,7 +25009,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "apps/mobile/app/(tabs)/transactions.tsx",
-      "source_location": "L112",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -24655,7 +25021,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L337",
+      "source_location": "L386",
       "weight": 1.0
     },
     {
@@ -24816,5 +25182,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cb2df1a899789e734d893b6a003de92ae40bd175"
+  "built_at_commit": "92852d0ac9abbcec2f23c7aab05efcfc877f6263"
 }

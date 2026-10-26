@@ -1,6 +1,7 @@
 import { withHousehold } from "../../src/household-screen";
 import React, { useState } from "react";
-import { Share, Text, View } from "react-native";
+import { Pressable, Share, Text, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Linking from "expo-linking";
 import * as Clipboard from "expo-clipboard";
 import { router } from "expo-router";
@@ -21,6 +22,63 @@ import {
   styles,
   useColors,
 } from "../../src/ui";
+
+function ManagementLink({
+  label,
+  description,
+  icon,
+  onPress,
+  last = false,
+}: {
+  label: string;
+  description: string;
+  icon: React.ComponentProps<typeof Ionicons>["name"];
+  onPress: () => void;
+  last?: boolean;
+}) {
+  const c = useColors();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${label}. ${description}`}
+      onPress={onPress}
+      style={({ pressed }) => ({
+        minHeight: 68,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 12,
+        opacity: pressed ? 0.7 : 1,
+        borderBottomWidth: last ? 0 : 1,
+        borderBottomColor: c.border,
+      })}
+    >
+      <View
+        style={{
+          width: 40,
+          height: 40,
+          borderRadius: 14,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: c.soft,
+        }}
+      >
+        <Ionicons name={icon} size={20} color={c.primary} />
+      </View>
+      <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+        <Text style={{ color: c.text, fontSize: 16, fontWeight: "700" }}>
+          {label}
+        </Text>
+        <Text style={{ color: c.muted, fontSize: 13, lineHeight: 18 }}>
+          {description}
+        </Text>
+      </View>
+      <Ionicons name="chevron-forward" size={19} color={c.muted} />
+    </Pressable>
+  );
+}
+
 function Family() {
   const { household, me, select, refresh } = useApp(),
     h = household!,
@@ -268,31 +326,55 @@ function Family() {
         </>
       )}
       <View style={styles.section}>
-        <Title>Kelola bersama</Title>
-        <Button
-          label="Rekening keluarga"
-          secondary
-          onPress={() =>
-            router.push({ pathname: "/manage", params: { type: "accounts" } })
-          }
-        />
-        <Button
-          label="Kategori transaksi"
-          secondary
-          onPress={() =>
-            router.push({ pathname: "/manage", params: { type: "categories" } })
-          }
-        />
-        <Button
-          label="Laporan & ekspor CSV"
-          secondary
-          onPress={() => router.push("/report")}
-        />
-        <Button
-          label="Riwayat perubahan"
-          secondary
-          onPress={() => router.push("/audit")}
-        />
+        <Title>Kelola keuangan</Title>
+        <Copy muted>
+          Atur data yang dipakai bersama sebelum dan saat mencatat transaksi.
+        </Copy>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: c.border,
+            borderRadius: 16,
+            overflow: "hidden",
+            backgroundColor: c.surface,
+          }}
+        >
+          <ManagementLink
+            label="Rekening keluarga"
+            description="Atur bank, tunai, dan dompet digital."
+            icon="wallet-outline"
+            onPress={() =>
+              router.push({
+                pathname: "/manage",
+                params: { type: "accounts" },
+              })
+            }
+          />
+          <ManagementLink
+            label="Kategori transaksi"
+            description="Atur label pemasukan dan pengeluaran."
+            icon="pricetags-outline"
+            onPress={() =>
+              router.push({
+                pathname: "/manage",
+                params: { type: "categories" },
+              })
+            }
+          />
+          <ManagementLink
+            label="Laporan & ekspor CSV"
+            description="Tinjau ringkasan dan bagikan data terfilter."
+            icon="bar-chart-outline"
+            onPress={() => router.push("/report")}
+          />
+          <ManagementLink
+            label="Riwayat perubahan"
+            description="Lihat perubahan yang telah tercatat."
+            icon="time-outline"
+            onPress={() => router.push("/audit")}
+            last
+          />
+        </View>
       </View>
       <View style={styles.section}>
         {h.role === "member" ? (

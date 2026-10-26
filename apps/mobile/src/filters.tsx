@@ -33,9 +33,11 @@ export function filterParams(filters: Filters) {
 export function FilterPanel({
   value,
   onChange,
+  onSearchFocus,
 }: {
   value: Filters;
   onChange: (f: Filters) => void;
+  onSearchFocus?: (target: number) => void;
 }) {
   const [open, setOpen] = useState(false),
     { household } = useApp(),
@@ -54,6 +56,9 @@ export function FilterPanel({
         label="Cari catatan atau kategori"
         value={value.search}
         onChangeText={set("search")}
+        onFocus={({ target }) => {
+          if (typeof target === "number") onSearchFocus?.(target);
+        }}
         placeholder="Contoh: belanja mingguan atau Transportasi"
         maxLength={100}
       />

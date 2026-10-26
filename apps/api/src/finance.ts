@@ -61,24 +61,47 @@ export async function saveCategory(ctx: Context, b: v.Body, id?: string) {
     ? await existing(ctx, "categories", id, v.version(b.expected_version))
     : null;
   const name = v.text(b.name),
-    kind = v.oneOf(b.kind, ["income", "expense"]);
+    kind = v.oneOf(b.kind, ["income", "expense"]),
+    restore = b.restore === true;
+  if (b.restore !== undefined && typeof b.restore !== "boolean")
+    fail(400, "INVALID_INPUT", "Status pemulihan kategori tidak valid.");
   if (old && old.kind !== kind)
     fail(400, "CATEGORY_KIND", "Jenis kategori tidak dapat diubah.");
+  if (restore && (!old || !old.archived_at))
+    fail(400, "CATEGORY_ACTIVE", "Kategori sudah aktif.");
+  if (restore) {
+    const duplicate = await ctx.db.query(
+      "SELECT 1 FROM categories WHERE household_id=$1 AND kind=$2 AND lower(trim(name))=lower(trim($3)) AND archived_at IS NULL AND id<>$4 LIMIT 1",
+      [ctx.household.id, kind, name, id],
+    );
+    if (duplicate.rowCount)
+      fail(
+        409,
+        "CATEGORY_NAME",
+        "Kategori aktif dengan nama dan jenis sama sudah ada. Ubah nama kategori ini sebelum mengaktifkannya kembali.",
+      );
+  }
   const rid = id ?? randomUUID();
   if (old)
     await ctx.db.query(
-      "UPDATE categories SET name=$3,version=version+1 WHERE household_id=$1 AND id=$2",
-      [ctx.household.id, rid, name],
+      "UPDATE categories SET name=$3,archived_at=CASE WHEN $4 THEN NULL ELSE archived_at END,version=version+1 WHERE household_id=$1 AND id=$2",
+      [ctx.household.id, rid, name, restore],
     );
   else
     await ctx.db.query(
       "INSERT INTO categories(id,household_id,name,kind,created_by) VALUES($1,$2,$3,$4,$5)",
       [rid, ctx.household.id, name, kind, ctx.actor.id],
     );
-  await audit(ctx, "category", rid, old ? "updated" : "created", {
-    name,
-    kind,
-  });
+  await audit(
+    ctx,
+    "category",
+    rid,
+    restore ? "restored" : old ? "updated" : "created",
+    {
+      name,
+      kind,
+    },
+  );
   return { id: rid, version: (old?.version ?? 0) + 1 };
 }
 async function reference(
