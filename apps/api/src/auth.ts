@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { expo } from "@better-auth/expo";
 import type { Database } from "./db.js";
+import { gmailConfigFromEnv, type GmailConfig } from "./gmail.js";
 export type Mail = (mail: {
   to: string;
   subject: string;
@@ -11,6 +12,7 @@ export type Config = {
   authSecret: string;
   origins: string[];
   production: boolean;
+  gmail?: GmailConfig;
 };
 export function createAuth(pool: Database, config: Config, sendMail: Mail) {
   return betterAuth({
@@ -84,5 +86,6 @@ export function configFromEnv(): Config {
       .split(",")
       .map((v) => v.trim())
       .filter(Boolean),
+    gmail: gmailConfigFromEnv(),
   };
 }

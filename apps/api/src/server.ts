@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 import { configFromEnv } from "./auth.js";
 import { createApp } from "./app.js";
 import { processDeletions } from "./deletion.js";
+import { syncGmailConnections } from "./gmail.js";
 if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required");
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -17,9 +18,10 @@ const transport = nodemailer.createTransport({
     ? { auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASSWORD } }
     : {}),
 });
+const config = configFromEnv();
 const { app } = await createApp(
   pool,
-  configFromEnv(),
+  config,
   async (mail) => {
     await transport.sendMail({
       ...mail,
@@ -42,8 +44,25 @@ const timer = setInterval(async () => {
   }
 }, 30000);
 timer.unref();
+let syncingGmail = false;
+const gmailTimer = setInterval(
+  async () => {
+    if (syncingGmail || !config.gmail) return;
+    syncingGmail = true;
+    try {
+      await syncGmailConnections(pool, config.gmail);
+    } catch {
+      app.log.error("Gmail synchronization failed");
+    } finally {
+      syncingGmail = false;
+    }
+  },
+  15 * 60 * 1000,
+);
+gmailTimer.unref();
 app.addHook("onClose", async () => {
   clearInterval(timer);
+  clearInterval(gmailTimer);
   transport.close();
   await pool.end();
 });

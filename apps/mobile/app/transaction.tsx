@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
+import * as Clipboard from "expo-clipboard";
 import {
   today,
   money,
@@ -15,6 +16,7 @@ import { ApiError, request } from "../src/client";
 import { useApp, useHouseholdQuery } from "../src/state";
 import { useSave } from "../src/save";
 import { useDraftGuard } from "../src/draft";
+import { notificationDraft } from "../src/transaction-import";
 import {
   AmountField,
   Button,
@@ -41,24 +43,45 @@ const fields = (t: Transaction): TransactionInput => ({
   note: t.note,
 });
 function TransactionForm() {
-  const { id } = useLocalSearchParams<{ id?: string }>(),
+  const {
+      id,
+      candidate_id: candidateId,
+      candidate_amount_minor: candidateAmount,
+      candidate_occurred_on: candidateOccurredOn,
+      candidate_note: candidateNote,
+    } = useLocalSearchParams<{
+      id?: string;
+      candidate_id?: string;
+      candidate_amount_minor?: string;
+      candidate_occurred_on?: string;
+      candidate_note?: string;
+    }>(),
     { household, me } = useApp(),
     a = useHouseholdQuery<Account[]>("accounts"),
     c = useHouseholdQuery<Category[]>("categories"),
     s = useSave(),
     [version, setVersion] = useState(1),
     [saved, setSaved] = useState(false),
+    [importOpen, setImportOpen] = useState(false),
+    [notification, setNotification] = useState(""),
+    [importMessage, setImportMessage] = useState<{
+      text: string;
+      error: boolean;
+    } | null>(null),
+    [candidateDateConfirmed, setCandidateDateConfirmed] = useState(
+      !candidateId || !!candidateOccurredOn,
+    ),
     initial = useRef("");
   const [form, setForm] = useState<TransactionInput>({
     type: "expense",
     account_id: "",
     destination_account_id: null,
     category_id: null,
-    amount_minor: "",
+    amount_minor: candidateAmount ?? "",
     fee_minor: "0",
     fee_category_id: null,
-    occurred_on: today(household!.timezone),
-    note: "",
+    occurred_on: candidateOccurredOn ?? today(household!.timezone),
+    note: candidateNote ?? "",
   });
   const detail = useQuery({
     queryKey: ["household", me!.id, household!.id, "transaction", id],
@@ -87,6 +110,55 @@ function TransactionForm() {
     key: K,
     value: TransactionInput[K],
   ) => setForm((f) => ({ ...f, [key]: value }));
+  const pasteNotification = async () => {
+    try {
+      const text = await Clipboard.getStringAsync();
+      if (!text.trim()) {
+        setImportMessage({
+          text: "Papan klip belum berisi notifikasi.",
+          error: true,
+        });
+        return;
+      }
+      setNotification(text.slice(0, 5000));
+      setImportMessage(null);
+    } catch {
+      setImportMessage({
+        text: "Notifikasi tidak dapat ditempel dari papan klip. Tempelkan secara manual.",
+        error: true,
+      });
+    }
+  };
+  const applyNotification = () => {
+    const draft = notificationDraft(notification);
+    if (draft.blocked) {
+      setImportMessage({
+        text: "Notifikasi ini tidak menunjukkan pembayaran berhasil atau berisi pengembalian dana. Periksa detailnya dan isi transaksi secara manual bila sesuai.",
+        error: true,
+      });
+      return;
+    }
+    const hasNote = !!draft.note && !form.note.trim();
+    if (!draft.amount_minor && !draft.occurred_on && !hasNote) {
+      setImportMessage({
+        text: "Nominal, tanggal, atau nama toko belum dapat dikenali. Isi formulir secara manual.",
+        error: true,
+      });
+      return;
+    }
+    setForm((f) => ({
+      ...f,
+      ...(draft.amount_minor ? { amount_minor: draft.amount_minor } : {}),
+      ...(draft.occurred_on ? { occurred_on: draft.occurred_on } : {}),
+      ...(hasNote ? { note: draft.note! } : {}),
+    }));
+    setNotification("");
+    setImportOpen(false);
+    setImportMessage({
+      text: "Periksa kembali hasilnya, lalu pilih jenis, rekening, dan kategori sebelum menyimpan.",
+      error: false,
+    });
+  };
   const activeAccounts = (a.data ?? [])
     .filter(
       (x) =>
@@ -137,6 +209,54 @@ function TransactionForm() {
   return (
     <Screen title={id ? "Rincian & koreksi transaksi" : "Catat untuk keluarga"}>
       <Copy muted>{household!.name} · IDR</Copy>
+      {!id && (
+        <View style={{ gap: 12 }}>
+          <Button
+            secondary
+            icon="document-text-outline"
+            label="Isi dari notifikasi"
+            disabled={s.locked}
+            onPress={() => {
+              setImportOpen((open) => !open);
+              setImportMessage(null);
+            }}
+          />
+          {importOpen && (
+            <>
+              <Notice>
+                Tempel notifikasi pembayaran untuk mengisi nominal, tanggal,
+                atau nama toko. Teks tidak dikirim atau disimpan.
+              </Notice>
+              <Field
+                label="Notifikasi transaksi"
+                value={notification}
+                onChangeText={setNotification}
+                placeholder="Tempel isi notifikasi di sini"
+                multiline
+                maxLength={5000}
+                editable={!s.locked}
+                style={{ minHeight: 120, textAlignVertical: "top" }}
+              />
+              <Button
+                secondary
+                icon="clipboard-outline"
+                label="Tempel dari papan klip"
+                disabled={s.locked}
+                onPress={() => void pasteNotification()}
+              />
+              <Button
+                icon="arrow-down-outline"
+                label="Gunakan data yang terbaca"
+                disabled={s.locked || !notification.trim()}
+                onPress={applyNotification}
+              />
+            </>
+          )}
+          {importMessage && (
+            <Notice error={importMessage.error}>{importMessage.text}</Notice>
+          )}
+        </View>
+      )}
       {activeAccounts.length === 0 ? (
         <>
           <Notice>
@@ -287,9 +407,18 @@ function TransactionForm() {
           <DateField
             label="Tanggal transaksi"
             value={form.occurred_on}
-            onChange={(n) => set("occurred_on", n)}
+            onChange={(n) => {
+              set("occurred_on", n);
+              setCandidateDateConfirmed(true);
+            }}
             disabled={s.locked}
           />
+          {candidateId && !candidateDateConfirmed && (
+            <Notice error>
+              Tanggal tidak terbaca dari notifikasi. Pilih dan konfirmasi
+              tanggal transaksi sebelum menyimpan.
+            </Notice>
+          )}
           <Field
             label="Catatan (opsional)"
             value={form.note}
@@ -312,15 +441,24 @@ function TransactionForm() {
                 ? "Simpan koreksi"
                 : `Simpan ${form.type === "transfer" ? "transfer" : form.type === "income" ? "pemasukan" : "pengeluaran"}`
             }
-            onPress={() =>
+            onPress={() => {
+              if (candidateId && !candidateDateConfirmed) {
+                setImportMessage({
+                  text: "Pilih tanggal transaksi terlebih dahulu.",
+                  error: true,
+                });
+                return;
+              }
               void s.save(
-                `/households/${household!.id}/transactions${id ? "/" + id : ""}`,
+                candidateId
+                  ? `/households/${household!.id}/gmail-candidates/${candidateId}/transaction`
+                  : `/households/${household!.id}/transactions${id ? "/" + id : ""}`,
                 { ...form, ...(id ? { expected_version: version } : {}) },
                 id ? "PUT" : "POST",
                 () => setSaved(true),
                 `${id ? "Koreksi transaksi" : form.type === "transfer" ? "Transfer" : form.type === "income" ? "Pemasukan" : "Pengeluaran"} berhasil disimpan.`,
-              )
-            }
+              );
+            }}
           />
           {conflict && (
             <View style={{ gap: 12 }}>

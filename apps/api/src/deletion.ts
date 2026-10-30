@@ -113,6 +113,9 @@ export async function processDeletions(pool: Database) {
           "UPDATE household_members SET status='revoked',revoked_at=now(),version=version+1 WHERE profile_id=$1 AND status='active'",
           [profile.id],
         );
+        await db.query("DELETE FROM gmail_connections WHERE profile_id=$1", [
+          profile.id,
+        ]);
         if (authUser) {
           await db.query(
             "UPDATE household_invitations SET email_normalized='deleted-'||id::text,status=CASE WHEN status='pending' THEN 'revoked' ELSE status END,version=version+1 WHERE email_normalized=$1",

@@ -13,6 +13,11 @@ import * as finance from "./finance.js";
 import * as reports from "./reports.js";
 import * as households from "./households.js";
 import { requestDeletion } from "./deletion.js";
+import {
+  beginGmailAuthorization,
+  finishGmailAuthorization,
+  syncGmailConnection,
+} from "./gmail.js";
 export async function createApp(
   pool: Database,
   config: Config,
@@ -149,6 +154,141 @@ export async function createApp(
       properties: { "idempotency-key": { type: "string", format: "uuid" } },
     },
   };
+  const gmail = () => {
+    if (!config.gmail)
+      fail(503, "GMAIL_UNAVAILABLE", "Koneksi Gmail belum dikonfigurasi.");
+    return config.gmail;
+  };
+  app.post(
+    "/me/gmail/authorization",
+    { config: { rateLimit: { max: 5, timeWindow: "15 minutes" } } },
+    async (req) =>
+      beginGmailAuthorization(pool, gmail(), (await actor(req)).id),
+  );
+  app.get("/v1/gmail/oauth/callback", async (req, reply) => {
+    const q = query(req),
+      c = gmail();
+    if (typeof q.state !== "string")
+      fail(
+        400,
+        "GMAIL_OAUTH_FAILED",
+        "Persetujuan Gmail tidak dapat dikonfirmasi.",
+      );
+    if (typeof q.code !== "string") {
+      const denied = new URL(c.mobileReturnURL);
+      denied.searchParams.set(
+        "gmail",
+        typeof q.error === "string" ? "denied" : "failed",
+      );
+      return reply.redirect(denied.toString());
+    }
+    try {
+      await finishGmailAuthorization(pool, c, q.state, q.code);
+      const done = new URL(c.mobileReturnURL);
+      done.searchParams.set("gmail", "connected");
+      return reply.redirect(done.toString());
+    } catch {
+      const failed = new URL(c.mobileReturnURL);
+      failed.searchParams.set("gmail", "failed");
+      return reply.redirect(failed.toString());
+    }
+  });
+  app.get("/me/gmail", async (req) => {
+    const a = await actor(req);
+    if (!config.gmail)
+      return { available: false, connected: false, candidates: 0 };
+    const connection = (
+      await pool.query(
+        "SELECT gmail_address,label_name,status,last_synced_at,last_error_code FROM gmail_connections WHERE profile_id=$1",
+        [a.id],
+      )
+    ).rows[0];
+    if (!connection)
+      return { available: true, connected: false, candidates: 0 };
+    const candidates = await pool.query(
+      "SELECT count(*)::int AS count FROM gmail_candidates c JOIN gmail_connections g ON g.id=c.connection_id WHERE g.profile_id=$1 AND c.status='pending'",
+      [a.id],
+    );
+    return {
+      available: true,
+      connected: true,
+      ...connection,
+      candidates: candidates.rows[0].count,
+    };
+  });
+  app.get("/me/gmail/candidates", async (req) => {
+    const a = await actor(req);
+    return (
+      await pool.query(
+        "SELECT c.id,c.amount_minor,c.occurred_on,c.note,c.created_at FROM gmail_candidates c JOIN gmail_connections g ON g.id=c.connection_id WHERE g.profile_id=$1 AND c.status='pending' ORDER BY c.created_at DESC LIMIT 50",
+        [a.id],
+      )
+    ).rows;
+  });
+  app.post(
+    "/me/gmail/sync",
+    { config: { rateLimit: { max: 4, timeWindow: "15 minutes" } } },
+    async (req) => {
+      const a = await actor(req),
+        c = gmail();
+      const connection = (
+        await pool.query(
+          "SELECT id FROM gmail_connections WHERE profile_id=$1",
+          [a.id],
+        )
+      ).rows[0];
+      if (!connection)
+        fail(404, "GMAIL_NOT_CONNECTED", "Gmail belum terhubung.");
+      return syncGmailConnection(pool, c, connection.id);
+    },
+  );
+  app.post(
+    "/me/gmail/candidates/:id/reject",
+    { schema: mutationSchema },
+    async (req) => {
+      const a = await actor(req),
+        id = v.uuid(params(req).id);
+      return mutate(
+        pool,
+        a,
+        undefined,
+        req.headers["idempotency-key"],
+        `POST /me/gmail/candidates/${id}/reject`,
+        {},
+        async (ctx) => {
+          const result = await ctx.db.query(
+            "UPDATE gmail_candidates c SET status='rejected',resolved_at=now() FROM gmail_connections g WHERE c.connection_id=g.id AND c.id=$1 AND g.profile_id=$2 AND c.status='pending' RETURNING c.id",
+            [id, a.id],
+          );
+          if (!result.rowCount)
+            fail(
+              404,
+              "GMAIL_CANDIDATE_UNAVAILABLE",
+              "Kandidat tidak tersedia.",
+            );
+          return { id, status: "rejected" };
+        },
+      );
+    },
+  );
+  app.delete("/me/gmail", { schema: mutationSchema }, async (req) => {
+    const a = await actor(req);
+    return mutate(
+      pool,
+      a,
+      undefined,
+      req.headers["idempotency-key"],
+      "DELETE /me/gmail",
+      {},
+      async (ctx) => {
+        await ctx.db.query(
+          "DELETE FROM gmail_connections WHERE profile_id=$1",
+          [a.id],
+        );
+        return { disconnected: true };
+      },
+    );
+  });
   app.get("/me", async (req) => {
     const a = await actor(req);
     const profile = (
@@ -327,6 +467,43 @@ export async function createApp(
       return row;
     });
   });
+  app.post(
+    "/households/:hid/gmail-candidates/:id/transaction",
+    { schema: mutationSchema },
+    async (req) => {
+      const a = await actor(req),
+        { hid, id } = params(req),
+        b = v.body(req.body);
+      return mutate(
+        pool,
+        a,
+        v.uuid(hid),
+        req.headers["idempotency-key"],
+        `POST /households/${hid}/gmail-candidates/${id}/transaction`,
+        b,
+        async (ctx) => {
+          const candidate = (
+            await ctx.db.query(
+              "SELECT c.id FROM gmail_candidates c JOIN gmail_connections g ON g.id=c.connection_id WHERE c.id=$1 AND g.profile_id=$2 AND c.status='pending' FOR UPDATE OF c",
+              [v.uuid(id), a.id],
+            )
+          ).rows[0];
+          if (!candidate)
+            fail(
+              404,
+              "GMAIL_CANDIDATE_UNAVAILABLE",
+              "Kandidat tidak tersedia.",
+            );
+          const saved = await finance.saveTransaction(ctx, b);
+          await ctx.db.query(
+            "UPDATE gmail_candidates SET status='accepted',transaction_id=$2,resolved_at=now() WHERE id=$1",
+            [candidate.id, saved.id],
+          );
+          return saved;
+        },
+      );
+    },
+  );
   for (const method of ["POST", "PUT", "DELETE"] as const) {
     app.route({
       method,

@@ -86,6 +86,11 @@ export type TransactionInput = {
   occurred_on: string;
   note: string;
 };
+
+export {
+  notificationDraft,
+  type NotificationDraft,
+} from "./notification-import.js";
 export function money(value: string): string {
   const n = BigInt(value);
   return `${n < 0n ? "−" : ""}Rp${(n < 0n ? -n : n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;

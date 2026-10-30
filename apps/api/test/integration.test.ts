@@ -1,9 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { randomUUID, createHash } from "node:crypto";
+import { randomUUID, createHash, randomBytes } from "node:crypto";
 import { Pool } from "../src/db.js";
 import { createApp } from "../src/app.js";
 import { processDeletions } from "../src/deletion.js";
+import {
+  beginGmailAuthorization,
+  finishGmailAuthorization,
+  type GmailConfig,
+} from "../src/gmail.js";
 const testURL = process.env.TEST_DATABASE_URL;
 test(
   "real PostgreSQL: shared finance, tenant isolation, retries and account deletion",
@@ -20,6 +25,13 @@ test(
     runtimeURL.password = process.env.APP_DB_PASSWORD!;
     const pool = new Pool({ connectionString: runtimeURL.toString(), max: 8 });
     const mail = new Map<string, string>();
+    const gmail: GmailConfig = {
+      clientId: "test-client",
+      redirectURL: "https://cashflow.example/v1/gmail/oauth/callback",
+      encryptionKey: randomBytes(32),
+      labelName: "Cash Flow",
+      mobileReturnURL: "cashflow://profile",
+    };
     const { app } = await createApp(
       pool,
       {
@@ -27,6 +39,7 @@ test(
         authSecret: process.env.BETTER_AUTH_SECRET!,
         origins: ["http://localhost:4310", "cashflow://"],
         production: false,
+        gmail,
       },
       async (m) => {
         mail.set(m.to, m.text);
@@ -112,6 +125,15 @@ test(
       transferId: string;
     const on = "2026-01-15",
       range = "?from=2026-01-01&to=2026-02-01";
+    await t.test("OAuth denial returns control to the mobile app", async () => {
+      const denied = await call(
+        "",
+        "GET",
+        "/v1/gmail/oauth/callback?state=state&error=access_denied",
+      );
+      assert.equal(denied.statusCode, 302, denied.body);
+      assert.equal(denied.headers.location, "cashflow://profile?gmail=denied");
+    });
     await t.test(
       "invite is email-bound; members can join once and owner settings stay private",
       async () => {
@@ -144,7 +166,7 @@ test(
           403,
         );
         const cats = (await call(a.cookie, "GET", path + "/categories")).json();
-        expense = cats.find((c: any) => c.kind === "expense").id;
+        expense = cats.find((c: any) => c.name === "Transportasi").id;
         income = cats.find((c: any) => c.kind === "income").id;
       },
     );
@@ -265,7 +287,7 @@ test(
           await call(b.cookie, "GET", path + "/summary" + range)
         ).json();
         assert.equal(summary.balance_minor, "997600");
-        assert.equal(summary.income_minor, "0");
+        assert.equal(summary.income_minor, "100");
         assert.equal(summary.expense_minor, "2500");
         assert.equal(
           summary.accounts.find((a: any) => a.id === source).balance_minor,
@@ -295,7 +317,7 @@ test(
         const byCategory = await call(
           b.cookie,
           "GET",
-          path + "/transactions" + range + "&search=Transport",
+          path + "/transactions" + range + "&search=Transportasi",
         );
         assert.equal(byCategory.statusCode, 200, byCategory.body);
         assert.deepEqual(
@@ -372,6 +394,120 @@ test(
         );
       },
     );
+    await t.test(
+      "a Gmail candidate belongs to its connector and its id is part of an idempotent transaction",
+      async () => {
+        const connection = randomUUID(),
+          first = randomUUID(),
+          second = randomUUID(),
+          key = randomUUID(),
+          payload = {
+            type: "expense",
+            account_id: source,
+            category_id: expense,
+            amount_minor: "12500",
+            occurred_on: on,
+            note: "Notifikasi Gmail",
+          };
+        await admin.query(
+          "INSERT INTO gmail_connections(id,profile_id,gmail_address,refresh_token_ciphertext) VALUES($1,$2,$3,$4)",
+          [connection, a.profile, `gmail-${randomUUID()}@example.test`, "test"],
+        );
+        for (const id of [first, second])
+          await admin.query(
+            "INSERT INTO gmail_candidates(id,connection_id,gmail_message_id,amount_minor,occurred_on,note) VALUES($1,$2,$3,$4,$5,$6)",
+            [id, connection, randomUUID(), "12500", on, "Notifikasi Gmail"],
+          );
+        assert.deepEqual(
+          (await call(b.cookie, "GET", "/me/gmail/candidates")).json(),
+          [],
+        );
+        const saved = await call(
+          a.cookie,
+          "POST",
+          `${path}/gmail-candidates/${first}/transaction`,
+          payload,
+          key,
+        );
+        assert.equal(saved.statusCode, 200, saved.body);
+        const reused = await call(
+          a.cookie,
+          "POST",
+          `${path}/gmail-candidates/${second}/transaction`,
+          payload,
+          key,
+        );
+        assert.equal(reused.statusCode, 409, reused.body);
+        assert.equal(reused.json().code, "KEY_REUSED");
+        const candidates = await admin.query(
+          "SELECT id,status,transaction_id FROM gmail_candidates WHERE id=ANY($1::uuid[]) ORDER BY CASE WHEN id=$2 THEN 0 ELSE 1 END",
+          [[first, second], first],
+        );
+        assert.deepEqual(
+          candidates.rows.map((row: any) => row.status),
+          ["accepted", "pending"],
+        );
+        assert.ok(candidates.rows[0].transaction_id);
+        assert.equal(candidates.rows[1].transaction_id, null);
+        const rejected = await call(
+          a.cookie,
+          "POST",
+          `/me/gmail/candidates/${second}/reject`,
+          {},
+        );
+        assert.equal(rejected.statusCode, 200, rejected.body);
+        assert.equal(
+          (
+            await admin.query(
+              "SELECT status FROM gmail_candidates WHERE id=$1",
+              [second],
+            )
+          ).rows[0].status,
+          "rejected",
+        );
+        await admin.query(
+          "UPDATE transactions SET deleted_at=now() WHERE id=$1",
+          [candidates.rows[0].transaction_id],
+        );
+      },
+    );
+    await t.test("an OAuth state is claimed only once", async () => {
+      const started = await beginGmailAuthorization(pool, gmail, a.profile);
+      const state = new URL(started.authorization_url).searchParams.get(
+        "state",
+      );
+      assert.ok(state);
+      const originalFetch = globalThis.fetch;
+      globalThis.fetch = (async (url: string | URL) => {
+        const value = String(url);
+        if (value.includes("oauth2.googleapis.com/token"))
+          return new Response(
+            JSON.stringify({
+              access_token: "access",
+              refresh_token: "refresh",
+            }),
+          );
+        return new Response(
+          JSON.stringify({ emailAddress: "gmail@example.test" }),
+        );
+      }) as typeof fetch;
+      try {
+        const results = await Promise.allSettled([
+          finishGmailAuthorization(pool, gmail, state!, "first"),
+          finishGmailAuthorization(pool, gmail, state!, "second"),
+        ]);
+        assert.equal(
+          results.filter((result) => result.status === "fulfilled").length,
+          1,
+        );
+        assert.equal(
+          results.filter((result) => result.status === "rejected").length,
+          1,
+        );
+      } finally {
+        globalThis.fetch = originalFetch;
+      }
+    });
     await t.test(
       "concurrent edits detect conflict; deletion changes all derived figures atomically",
       async () => {
@@ -570,6 +706,15 @@ test(
         );
         assert.equal((await processDeletions(pool)).completed, 1);
         assert.equal((await processDeletions(pool)).completed, 0);
+        assert.equal(
+          (
+            await admin.query(
+              "SELECT count(*)::int AS count FROM gmail_connections WHERE profile_id=$1",
+              [a.profile],
+            )
+          ).rows[0].count,
+          0,
+        );
         assert.equal((await call(a.cookie, "GET", "/me")).statusCode, 401);
         const history = await call(
           b.cookie,

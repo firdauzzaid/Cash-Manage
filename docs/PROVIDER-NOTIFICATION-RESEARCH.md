@@ -1,0 +1,34 @@
+# Riset Sumber Publik untuk Impor Notifikasi Transaksi
+
+Status: riset desain. Tidak ada contoh pesan pribadi, kredensial, atau format yang diklaim sebagai kontrak provider dalam dokumen ini.
+
+## Kesimpulan
+
+Sumber resmi yang tersedia membuktikan bahwa beberapa provider menyediakan riwayat, bukti, atau notifikasi transaksi. Namun, tidak ada yang mempublikasikan body email/push notification konsumen yang stabil dan lengkap untuk GoPay, DANA, OVO, dan BCA. Karena format pesan dapat berubah tanpa pemberitahuan, sumber-sumber ini **tidak cukup** untuk membuat parser text per provider yang aman.
+
+Gunakan hasil ini untuk menentukan field yang boleh menjadi kandidat, bukan untuk menganggap satu pola teks sebagai format produksi. Parser tetap harus menghasilkan draf yang dikonfirmasi pengguna dan tidak boleh membuat transaksi final otomatis.
+
+## Rekap per provider
+
+| Provider | Bukti resmi                                                                                                                                                                                                                                                                                                                                                                                       | Field yang diketahui                                                                                                                                                                                                                                                            | Kelayakan parser body notifikasi                                                                      |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| GoPay    | Bukti pembayaran dapat dikirim ke email terverifikasi; laporan pengeluaran menyediakan tanggal, layanan, dan metode pembayaran. [Bukti bayar GoPay](https://gopay.co.id/bantuan/transfer/bagaimana-cara-membagikan-bukti-bayar), [laporan pengeluaran](https://gopay.co.id/blog/laporan-pengeluaran-aplikasi-gopay)                                                                               | Tanggal, layanan, metode pembayaran; untuk bukti QRIS merchant: nominal, status, tanggal/jam, referensi/RRN, dan acquirer bila ada. [Panduan QRIS GoPay Merchant](https://gopay.co.id/bantuan-merchant/pembayaran-qris/pembayaran-qris-pelanggan-berhasil-namun-tidak-diterima) | Rendah: body email/push konsumen tidak dipublikasikan.                                                |
+| DANA     | Riwayat/Statement mencatat pembayaran, transfer, top up, dan refund; detailnya mencakup tanggal/waktu, nominal, jenis, status, dan penerima/merchant. [Riwayat DANA](https://www.dana.id/blog/riwayat-transaksi-dana/), [detail & status DANA](https://www.dana.id/blog/cara-cek-riwayat-transaksi-dana/)                                                                                         | Tanggal/waktu, nominal, jenis, status, penerima/merchant, ID transaksi bila ada. [Panduan refund DANA](https://www.dana.id/blog/refund-transaksi-dana/)                                                                                                                         | Rendah: tidak ada template email/push konsumen resmi yang dipublikasikan.                             |
+| OVO      | OVO menyatakan dapat mengirim pesan terkait akun/layanan termasuk informasi transaksi; riwayat transaksi merchant tertentu dikirim via email harian. [Kebijakan privasi OVO](https://ovo.id/kebijakan-privasi), [FAQ merchant OVO](https://www.ovo.id/faqmerchant)                                                                                                                                | Informasi transaksi, catatan penyelesaian, barang/layanan dibayar; email yang didokumentasikan adalah laporan merchant, bukan bukti individual pengguna.                                                                                                                        | Tidak layak untuk parser konsumen: tidak ada contoh body dan konteksnya berbeda.                      |
+| BCA      | myBCA dapat mengirim notifikasi email untuk transfer, bayar/isi ulang, QRIS, dan lainnya. [Notifikasi email myBCA](https://www.bca.co.id/id/informasi/edukatips/2026/04/15/09/53/mudahnya-mengatur-notifikasi-transaksi-email-di-mybca). BCA mobile menyimpan bukti transaksi finansial di Inbox yang dapat disalin. [BCA mobile](https://www.bca.co.id/id/Individu/layanan/e-banking/BCA-Mobile) | Jenis transaksi; untuk QRIS, nasabah diminta memeriksa nama merchant dan nominal. [Ketentuan m-BCA](https://www.bca.co.id/-/media/Files/Individu/layanan/e-banking/bca-mobile/20250718-ketentuan-m-bca)                                                                         | Rendah: template email/Inbox tidak dipublikasikan dan satu inbox juga berisi aktivitas non-finansial. |
+
+## Field kandidat dan aturan keselamatan
+
+Field yang dapat diekstrak hanya jika eksplisit pada teks: `amount_minor`, tanggal/waktu, status, merchant/penerima, jenis (`payment`, `transfer`, `top_up`, `refund`), dan ID referensi. Jangan menyimpulkan rekening sumber, kategori, atau arah arus kas dari nama provider saja.
+
+- Status selain berhasil/selesai harus menjadi draf berstatus _perlu ditinjau_, bukan transaksi.
+- Top up dan transfer berpotensi menghasilkan dua notifikasi untuk satu pergerakan uang; jangan mengubahnya menjadi pengeluaran secara otomatis.
+- Nominal ganda (misalnya nominal dan biaya) harus dianggap ambigu.
+- ID referensi dapat dipakai untuk deduplikasi draf per provider, tetapi tidak boleh disimpan sebagai pengganti otorisasi atau bukti akses.
+
+## Rekomendasi langkah berikutnya
+
+1. Pertahankan parser generik yang sudah ada untuk nominal tunggal, tanggal eksplisit, dan label merchant.
+2. Tambahkan parser provider hanya setelah memperoleh contoh nyata yang disamarkan dari pengguna dan membuat test fixture per template.
+3. Simpan versi template, uji ulang saat provider mengubah format, dan turunkan hasil yang tidak cocok menjadi isian manual.
+4. Untuk data yang lebih akurat daripada email/push, gunakan export/statement atau integrasi resmi provider bila tersedia dan disetujui secara terpisah.

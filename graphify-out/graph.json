@@ -17,6 +17,32 @@
       "source_location": "L36"
     },
     {
+      "id": "apps_mobile_app_profile_gmailcandidate",
+      "label": "GmailCandidate",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "gmailcandidate",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "apps_mobile_app_profile_gmailstatus",
+      "label": "GmailStatus",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "gmailstatus",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L26"
+    },
+    {
       "id": "apps_mobile_app_tabs_home_categorytotal",
       "label": "CategoryTotal",
       "_callable": true,
@@ -28,19 +54,6 @@
       "norm_label": "categorytotal",
       "source_file": "apps/mobile/app/(tabs)/home.tsx",
       "source_location": "L27"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_householdtabbarprops",
-      "label": "HouseholdTabBarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "file_type": "code",
-      "norm_label": "householdtabbarprops",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L14"
     },
     {
       "id": "apps_mobile_src_client_apierror",
@@ -144,7 +157,7 @@
       "file_type": "code",
       "norm_label": "config",
       "source_file": "apps/api/src/auth.ts",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "apps_api_src_auth_mail",
@@ -157,7 +170,7 @@
       "file_type": "code",
       "norm_label": "mail",
       "source_file": "apps/api/src/auth.ts",
-      "source_location": "L4"
+      "source_location": "L5"
     },
     {
       "id": "apps_api_src_errors_httperror",
@@ -173,6 +186,45 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_api_src_gmail_gmailconfig",
+      "label": "GmailConfig",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmailconfig",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailconnection",
+      "label": "GmailConnection",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmailconnection",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L203"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailsyncresult",
+      "label": "GmailSyncResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmailsyncresult",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L20"
+    },
+    {
       "id": "apps_api_src_validation_body",
       "label": "body",
       "_callable": true,
@@ -184,6 +236,19 @@
       "norm_label": "body",
       "source_file": "apps/api/src/validation.ts",
       "source_location": "L11"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_householdtabbarprops",
+      "label": "HouseholdTabBarProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "(tabs)/_layout.tsx",
+      "file_type": "code",
+      "norm_label": "householdtabbarprops",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L14"
     },
     {
       "id": "packages_contracts_src_index_account",
@@ -342,6 +407,19 @@
       "source_location": "L3"
     },
     {
+      "id": "packages_contracts_src_notification_import_notificationdraft",
+      "label": "notificationDraft",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "notificationdraft",
+      "source_file": "packages/contracts/src/notification-import.ts",
+      "source_location": "L17"
+    },
+    {
       "id": "apps_mobile_app_audit_auditscreen",
       "label": "AuditScreen()",
       "_callable": true,
@@ -471,7 +549,7 @@
       "file_type": "code",
       "norm_label": "profile()",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L20"
+      "source_location": "L43"
     },
     {
       "id": "apps_mobile_app_report_report",
@@ -606,30 +684,6 @@
       "source_location": "L29"
     },
     {
-      "id": "apps_mobile_app_tabs_layout_householdtabbar",
-      "label": "HouseholdTabBar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "file_type": "code",
-      "norm_label": "householdtabbar()",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_tabslayout",
-      "label": "TabsLayout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "file_type": "code",
-      "norm_label": "tabslayout()",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L125"
-    },
-    {
       "id": "apps_mobile_app_tabs_transactions_transactions",
       "label": "Transactions()",
       "_callable": true,
@@ -651,7 +705,7 @@
       "file_type": "code",
       "norm_label": "fields()",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L32"
+      "source_location": "L34"
     },
     {
       "id": "apps_mobile_app_transaction_transactionform",
@@ -663,7 +717,7 @@
       "file_type": "code",
       "norm_label": "transactionform()",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L43"
+      "source_location": "L45"
     },
     {
       "id": "apps_mobile_src_action_action",
@@ -1311,7 +1365,7 @@
       "file_type": "code",
       "norm_label": "createapp()",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L16"
+      "source_location": "L21"
     },
     {
       "id": "apps_api_src_app_createapp_actor",
@@ -1323,7 +1377,7 @@
       "file_type": "code",
       "norm_label": "actor()",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L110"
+      "source_location": "L115"
     },
     {
       "id": "apps_api_src_auth_configfromenv",
@@ -1335,7 +1389,7 @@
       "file_type": "code",
       "norm_label": "configfromenv()",
       "source_file": "apps/api/src/auth.ts",
-      "source_location": "L71"
+      "source_location": "L73"
     },
     {
       "id": "apps_api_src_auth_createauth",
@@ -1347,7 +1401,7 @@
       "file_type": "code",
       "norm_label": "createauth()",
       "source_file": "apps/api/src/auth.ts",
-      "source_location": "L15"
+      "source_location": "L17"
     },
     {
       "id": "apps_api_src_deletion_lockhouseholds",
@@ -1492,6 +1546,162 @@
       "norm_label": "transactionnames()",
       "source_file": "apps/api/src/finance.ts",
       "source_location": "L128"
+    },
+    {
+      "id": "apps_api_src_gmail_begingmailauthorization",
+      "label": "beginGmailAuthorization()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "begingmailauthorization()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "apps_api_src_gmail_challenge",
+      "label": "challenge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "challenge()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L83"
+    },
+    {
+      "id": "apps_api_src_gmail_decrypt",
+      "label": "decrypt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "decrypt()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "apps_api_src_gmail_digest",
+      "label": "digest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "digest()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L75"
+    },
+    {
+      "id": "apps_api_src_gmail_encrypt",
+      "label": "encrypt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "encrypt()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "apps_api_src_gmail_finishgmailauthorization",
+      "label": "finishGmailAuthorization()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "finishgmailauthorization()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L158"
+    },
+    {
+      "id": "apps_api_src_gmail_gmail",
+      "label": "gmail()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmail()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L146"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailconfigfromenv",
+      "label": "gmailConfigFromEnv()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmailconfigfromenv()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "apps_api_src_gmail_secret",
+      "label": "secret()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "secret()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "apps_api_src_gmail_syncgmailconnection",
+      "label": "syncGmailConnection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "syncgmailconnection()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L209"
+    },
+    {
+      "id": "apps_api_src_gmail_syncgmailconnections",
+      "label": "syncGmailConnections()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "syncgmailconnections()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L290"
+    },
+    {
+      "id": "apps_api_src_gmail_tokenrequest",
+      "label": "tokenRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "tokenrequest()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L119"
+    },
+    {
+      "id": "apps_api_src_gmail_verifier",
+      "label": "verifier()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "verifier()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L79"
     },
     {
       "id": "apps_api_src_households_accept",
@@ -1719,7 +1929,7 @@
       "file_type": "code",
       "norm_label": "call()",
       "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L42"
+      "source_location": "L55"
     },
     {
       "id": "apps_api_test_integration_test_user",
@@ -1731,7 +1941,7 @@
       "file_type": "code",
       "norm_label": "user()",
       "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L64"
+      "source_location": "L77"
     },
     {
       "id": "scripts_backup_run",
@@ -1744,6 +1954,30 @@
       "norm_label": "run()",
       "source_file": "scripts/backup.mjs",
       "source_location": "L11"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_householdtabbar",
+      "label": "HouseholdTabBar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "(tabs)/_layout.tsx",
+      "file_type": "code",
+      "norm_label": "householdtabbar()",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_tabslayout",
+      "label": "TabsLayout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "(tabs)/_layout.tsx",
+      "file_type": "code",
+      "norm_label": "tabslayout()",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L125"
     },
     {
       "id": "apps_api_src_reports_budgets",
@@ -1779,7 +2013,7 @@
       "file_type": "code",
       "norm_label": "money()",
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L89"
+      "source_location": "L94"
     },
     {
       "id": "packages_contracts_src_index_today",
@@ -1791,7 +2025,7 @@
       "file_type": "code",
       "norm_label": "today()",
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L115"
+      "source_location": "L120"
     },
     {
       "id": "packages_contracts_src_index_validdate",
@@ -1803,7 +2037,7 @@
       "file_type": "code",
       "norm_label": "validdate()",
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L106"
+      "source_location": "L111"
     },
     {
       "id": "packages_contracts_src_index_validmoney",
@@ -1815,7 +2049,19 @@
       "file_type": "code",
       "norm_label": "validmoney()",
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L93"
+      "source_location": "L98"
+    },
+    {
+      "id": "packages_contracts_src_notification_import_date",
+      "label": "date()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "date()",
+      "source_file": "packages/contracts/src/notification-import.ts",
+      "source_location": "L8"
     },
     {
       "id": "apps_mobile_app_audit",
@@ -1992,28 +2238,6 @@
       "norm_label": "home.tsx",
       "source_file": "apps/mobile/app/(tabs)/home.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout",
-      "label": "(tabs)/_layout.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "file_type": "code",
-      "norm_label": "(tabs)/_layout.tsx",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_mobile_app_tabs_layout_tabitems",
-      "label": "tabItems",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ui.tsx",
-      "file_type": "code",
-      "norm_label": "tabitems",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L7"
     },
     {
       "id": "apps_mobile_app_tabs_transactions",
@@ -2302,94 +2526,6 @@
       "source_location": "L18"
     },
     {
-      "id": "apps_api_package",
-      "label": "api/package.json",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "api/package.json",
-      "source_file": "apps/api/package.json",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_package_devdependencies",
-      "label": "devDependencies",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "devdependencies",
-      "source_file": "apps/api/package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "apps_api_package_devdependencies_types_nodemailer",
-      "label": "@types/nodemailer",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "@types/nodemailer",
-      "source_file": "apps/api/package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "apps_api_package_devdependencies_types_pg",
-      "label": "@types/pg",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "@types/pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L27"
-    },
-    {
-      "id": "apps_api_package_name",
-      "label": "name",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "name",
-      "source_file": "apps/api/package.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "apps_api_package_private",
-      "label": "private",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "private",
-      "source_file": "apps/api/package.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "apps_api_package_type",
-      "label": "type",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "type",
-      "source_file": "apps/api/package.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_api_package_version",
-      "label": "version",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "version",
-      "source_file": "apps/api/package.json",
-      "source_location": "L3"
-    },
-    {
       "id": "apps_api_src_access",
       "label": "access.ts",
       "_origin": "ast",
@@ -2478,6 +2614,17 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_api_src_gmail",
+      "label": "gmail.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmail.ts",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_api_src_households",
       "label": "households.ts",
       "_origin": "ast",
@@ -2533,6 +2680,28 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_api_src_server_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_src_server_gmailtimer",
+      "label": "gmailTimer",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "gmailtimer",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L48"
+    },
+    {
       "id": "apps_api_src_server_pool",
       "label": "pool",
       "_origin": "ast",
@@ -2541,7 +2710,7 @@
       "file_type": "code",
       "norm_label": "pool",
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L7"
+      "source_location": "L8"
     },
     {
       "id": "apps_api_src_server_timer",
@@ -2552,7 +2721,7 @@
       "file_type": "code",
       "norm_label": "timer",
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L33"
+      "source_location": "L35"
     },
     {
       "id": "apps_api_src_server_transport",
@@ -2563,7 +2732,7 @@
       "file_type": "code",
       "norm_label": "transport",
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L12"
+      "source_location": "L13"
     },
     {
       "id": "apps_api_src_validation",
@@ -2610,6 +2779,28 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_mobile_src_transaction_import",
+      "label": "transaction-import.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "transaction-import.ts",
+      "source_file": "apps/mobile/src/transaction-import.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_mobile_src_transaction_import_test",
+      "label": "transaction-import.test.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "fail",
+      "file_type": "code",
+      "norm_label": "transaction-import.test.ts",
+      "source_file": "apps/mobile/src/transaction-import.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "scripts_generate_auth",
       "label": "generate-auth.ts",
       "_origin": "ast",
@@ -2630,127 +2821,6 @@
       "norm_label": "pool",
       "source_file": "scripts/generate-auth.ts",
       "source_location": "L11"
-    },
-    {
-      "id": "apps_api_package_json_ref_better_auth",
-      "label": "better-auth",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "better-auth",
-      "source_file": "apps/api/package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "apps_api_package_json_ref_better_auth_expo",
-      "label": "@better-auth/expo",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@better-auth/expo",
-      "source_file": "apps/api/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "apps_api_package_json_ref_cashflow_contracts",
-      "label": "@cashflow/contracts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@cashflow/contracts",
-      "source_file": "apps/api/package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_fastify",
-      "label": "fastify",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "fastify",
-      "source_file": "apps/api/package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "ref_fastify_cors",
-      "label": "@fastify/cors",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@fastify/cors",
-      "source_file": "apps/api/package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "ref_fastify_rate_limit",
-      "label": "@fastify/rate-limit",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@fastify/rate-limit",
-      "source_file": "apps/api/package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "ref_fastify_swagger",
-      "label": "@fastify/swagger",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@fastify/swagger",
-      "source_file": "apps/api/package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "ref_nodemailer",
-      "label": "nodemailer",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "nodemailer",
-      "source_file": "apps/api/package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "ref_pg",
-      "label": "pg",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "ref_types_nodemailer",
-      "label": "@types/nodemailer",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@types/nodemailer",
-      "source_file": "apps/api/package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "ref_types_pg",
-      "label": "@types/pg",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "concept",
-      "norm_label": "@types/pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L27"
     },
     {
       "id": "docs_database_3_konvensi",
@@ -3116,7 +3186,7 @@
       "file_type": "concept",
       "norm_label": "@playwright/test",
       "source_file": "package.json",
-      "source_location": "L35"
+      "source_location": "L36"
     },
     {
       "id": "docs_architecture_10_operasi_backup_dan_pemulihan",
@@ -3556,6 +3626,413 @@
       "source_location": "L71"
     },
     {
+      "id": "apps_api_package",
+      "label": "api/package.json",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "api/package.json",
+      "source_file": "apps/api/package.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_package_dependencies",
+      "label": "dependencies",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "dependencies",
+      "source_file": "apps/api/package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_api_package_dependencies_better_auth",
+      "label": "better-auth",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "better-auth",
+      "source_file": "apps/api/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_package_dependencies_better_auth_expo",
+      "label": "@better-auth/expo",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@better-auth/expo",
+      "source_file": "apps/api/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "apps_api_package_dependencies_cashflow_contracts",
+      "label": "@cashflow/contracts",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@cashflow/contracts",
+      "source_file": "apps/api/package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "apps_api_package_dependencies_fastify",
+      "label": "fastify",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "fastify",
+      "source_file": "apps/api/package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "apps_api_package_dependencies_fastify_cors",
+      "label": "@fastify/cors",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@fastify/cors",
+      "source_file": "apps/api/package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "apps_api_package_dependencies_fastify_rate_limit",
+      "label": "@fastify/rate-limit",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@fastify/rate-limit",
+      "source_file": "apps/api/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "apps_api_package_dependencies_fastify_swagger",
+      "label": "@fastify/swagger",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@fastify/swagger",
+      "source_file": "apps/api/package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "apps_api_package_dependencies_node_pg_migrate",
+      "label": "node-pg-migrate",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "node-pg-migrate",
+      "source_file": "apps/api/package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "apps_api_package_dependencies_nodemailer",
+      "label": "nodemailer",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "apps_api_package_dependencies_pg",
+      "label": "pg",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "apps_api_package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "apps/api/package.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "apps_api_package_devdependencies_types_nodemailer",
+      "label": "@types/nodemailer",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@types/nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "apps_api_package_devdependencies_types_pg",
+      "label": "@types/pg",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "@types/pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L27"
+    },
+    {
+      "id": "apps_api_package_name",
+      "label": "name",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "apps/api/package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "apps_api_package_private",
+      "label": "private",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "apps/api/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_api_package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "apps/api/package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "apps/api/package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "apps_api_package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "apps/api/package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "apps_api_package_scripts_migrate",
+      "label": "migrate",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "migrate",
+      "source_file": "apps/api/package.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "apps_api_package_scripts_start",
+      "label": "start",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "start",
+      "source_file": "apps/api/package.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "apps_api_package_scripts_test",
+      "label": "test",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "test",
+      "source_file": "apps/api/package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_api_package_scripts_typecheck",
+      "label": "typecheck",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "typecheck",
+      "source_file": "apps/api/package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "apps_api_package_type",
+      "label": "type",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "type",
+      "source_file": "apps/api/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_api_package_version",
+      "label": "version",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "code",
+      "norm_label": "version",
+      "source_file": "apps/api/package.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_api_package_json_ref_better_auth",
+      "label": "better-auth",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "better-auth",
+      "source_file": "apps/api/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_package_json_ref_better_auth_expo",
+      "label": "@better-auth/expo",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@better-auth/expo",
+      "source_file": "apps/api/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "apps_api_package_json_ref_cashflow_contracts",
+      "label": "@cashflow/contracts",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@cashflow/contracts",
+      "source_file": "apps/api/package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_fastify",
+      "label": "fastify",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "fastify",
+      "source_file": "apps/api/package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "ref_fastify_cors",
+      "label": "@fastify/cors",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@fastify/cors",
+      "source_file": "apps/api/package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "ref_fastify_rate_limit",
+      "label": "@fastify/rate-limit",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@fastify/rate-limit",
+      "source_file": "apps/api/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "ref_fastify_swagger",
+      "label": "@fastify/swagger",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@fastify/swagger",
+      "source_file": "apps/api/package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "ref_nodemailer",
+      "label": "nodemailer",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "ref_pg",
+      "label": "pg",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "ref_types_nodemailer",
+      "label": "@types/nodemailer",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@types/nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "ref_types_pg",
+      "label": "@types/pg",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "api/package.json",
+      "file_type": "concept",
+      "norm_label": "@types/pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L27"
+    },
+    {
       "id": "scripts_backup_production",
       "label": "backup-production.sh",
       "_origin": "ast",
@@ -3943,7 +4420,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L34"
+      "source_location": "L35"
     },
     {
       "id": "package_devdependencies_playwright_test",
@@ -3954,7 +4431,7 @@
       "file_type": "code",
       "norm_label": "@playwright/test",
       "source_file": "package.json",
-      "source_location": "L35"
+      "source_location": "L36"
     },
     {
       "id": "package_devdependencies_prettier",
@@ -3965,7 +4442,7 @@
       "file_type": "code",
       "norm_label": "prettier",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "package_devdependencies_tsx",
@@ -3976,7 +4453,7 @@
       "file_type": "code",
       "norm_label": "tsx",
       "source_file": "package.json",
-      "source_location": "L38"
+      "source_location": "L39"
     },
     {
       "id": "package_devdependencies_types_node",
@@ -3987,7 +4464,7 @@
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L37"
     },
     {
       "id": "package_devdependencies_typescript",
@@ -3998,7 +4475,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L39"
+      "source_location": "L40"
     },
     {
       "id": "package_engines",
@@ -4086,6 +4563,17 @@
       "file_type": "code",
       "norm_label": "xcode",
       "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "package_overrides_zod",
+      "label": "zod",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "zod",
+      "source_file": "package.json",
       "source_location": "L17"
     },
     {
@@ -4108,7 +4596,7 @@
       "file_type": "code",
       "norm_label": "scripts",
       "source_file": "package.json",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "package_scripts_build",
@@ -4119,7 +4607,7 @@
       "file_type": "code",
       "norm_label": "build",
       "source_file": "package.json",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "package_scripts_dev_api",
@@ -4130,7 +4618,7 @@
       "file_type": "code",
       "norm_label": "dev:api",
       "source_file": "package.json",
-      "source_location": "L25"
+      "source_location": "L26"
     },
     {
       "id": "package_scripts_dev_mobile",
@@ -4141,7 +4629,7 @@
       "file_type": "code",
       "norm_label": "dev:mobile",
       "source_file": "package.json",
-      "source_location": "L26"
+      "source_location": "L27"
     },
     {
       "id": "package_scripts_format_check",
@@ -4152,7 +4640,7 @@
       "file_type": "code",
       "norm_label": "format:check",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "package_scripts_migrate",
@@ -4163,7 +4651,7 @@
       "file_type": "code",
       "norm_label": "migrate",
       "source_file": "package.json",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "package_scripts_migrate_test",
@@ -4174,7 +4662,7 @@
       "file_type": "code",
       "norm_label": "migrate:test",
       "source_file": "package.json",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "package_scripts_preview",
@@ -4185,7 +4673,7 @@
       "file_type": "code",
       "norm_label": "preview",
       "source_file": "package.json",
-      "source_location": "L31"
+      "source_location": "L32"
     },
     {
       "id": "package_scripts_setup",
@@ -4196,7 +4684,7 @@
       "file_type": "code",
       "norm_label": "setup",
       "source_file": "package.json",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "package_scripts_test",
@@ -4207,7 +4695,7 @@
       "file_type": "code",
       "norm_label": "test",
       "source_file": "package.json",
-      "source_location": "L24"
+      "source_location": "L25"
     },
     {
       "id": "package_scripts_test_ui",
@@ -4218,7 +4706,7 @@
       "file_type": "code",
       "norm_label": "test:ui",
       "source_file": "package.json",
-      "source_location": "L30"
+      "source_location": "L31"
     },
     {
       "id": "package_scripts_typecheck",
@@ -4229,7 +4717,7 @@
       "file_type": "code",
       "norm_label": "typecheck",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L24"
     },
     {
       "id": "package_type",
@@ -4273,7 +4761,7 @@
       "file_type": "code",
       "norm_label": "uuid",
       "source_file": "package.json",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "ref_prettier",
@@ -4284,7 +4772,7 @@
       "file_type": "concept",
       "norm_label": "prettier",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "ref_tsx",
@@ -4295,7 +4783,7 @@
       "file_type": "concept",
       "norm_label": "tsx",
       "source_file": "package.json",
-      "source_location": "L38"
+      "source_location": "L39"
     },
     {
       "id": "ref_types_node",
@@ -4306,7 +4794,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L37"
     },
     {
       "id": "ref_typescript",
@@ -4317,7 +4805,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L39"
+      "source_location": "L40"
     },
     {
       "id": "tsconfig",
@@ -5487,125 +5975,26 @@
       "source_location": "L40"
     },
     {
-      "id": "apps_api_package_dependencies",
-      "label": "dependencies",
+      "id": "apps_mobile_app_tabs_layout",
+      "label": "(tabs)/_layout.tsx",
       "_origin": "ast",
       "community": 30,
-      "community_name": "dependencies",
+      "community_name": "(tabs)/_layout.tsx",
       "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "apps/api/package.json",
-      "source_location": "L14"
+      "norm_label": "(tabs)/_layout.tsx",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "apps_api_package_dependencies_better_auth",
-      "label": "better-auth",
+      "id": "apps_mobile_app_tabs_layout_tabitems",
+      "label": "tabItems",
       "_origin": "ast",
       "community": 30,
-      "community_name": "dependencies",
+      "community_name": "(tabs)/_layout.tsx",
       "file_type": "code",
-      "norm_label": "better-auth",
-      "source_file": "apps/api/package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "apps_api_package_dependencies_better_auth_expo",
-      "label": "@better-auth/expo",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@better-auth/expo",
-      "source_file": "apps/api/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "apps_api_package_dependencies_cashflow_contracts",
-      "label": "@cashflow/contracts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@cashflow/contracts",
-      "source_file": "apps/api/package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "apps_api_package_dependencies_fastify",
-      "label": "fastify",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "fastify",
-      "source_file": "apps/api/package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "apps_api_package_dependencies_fastify_cors",
-      "label": "@fastify/cors",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@fastify/cors",
-      "source_file": "apps/api/package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "apps_api_package_dependencies_fastify_rate_limit",
-      "label": "@fastify/rate-limit",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@fastify/rate-limit",
-      "source_file": "apps/api/package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "apps_api_package_dependencies_fastify_swagger",
-      "label": "@fastify/swagger",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@fastify/swagger",
-      "source_file": "apps/api/package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "apps_api_package_dependencies_node_pg_migrate",
-      "label": "node-pg-migrate",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "node-pg-migrate",
-      "source_file": "apps/api/package.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "apps_api_package_dependencies_nodemailer",
-      "label": "nodemailer",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "nodemailer",
-      "source_file": "apps/api/package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "apps_api_package_dependencies_pg",
-      "label": "pg",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L20"
+      "norm_label": "tabitems",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L7"
     },
     {
       "id": "docs_implementation_fitur_yang_tersedia",
@@ -5726,6 +6115,78 @@
       "norm_label": "struktur",
       "source_file": "README.md",
       "source_location": "L59"
+    },
+    {
+      "id": "docs_provider_notification_research",
+      "label": "PROVIDER-NOTIFICATION-RESEARCH.md",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "provider-notification-research.md",
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_provider_notification_research_field_kandidat_dan_aturan_keselamatan",
+      "label": "Field kandidat dan aturan keselamatan",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "field kandidat dan aturan keselamatan",
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L20"
+    },
+    {
+      "id": "docs_provider_notification_research_kesimpulan",
+      "label": "Kesimpulan",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "kesimpulan",
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "docs_provider_notification_research_rekap_per_provider",
+      "label": "Rekap per provider",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rekap per provider",
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "docs_provider_notification_research_rekomendasi_langkah_berikutnya",
+      "label": "Rekomendasi langkah berikutnya",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rekomendasi langkah berikutnya",
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "docs_provider_notification_research_riset_sumber_publik_untuk_impor_notifikasi_transaksi",
+      "label": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "riset sumber publik untuk impor notifikasi transaksi",
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L1"
     },
     {
       "id": "docker_db_init",
@@ -5864,103 +6325,76 @@
       "source_location": "L1"
     },
     {
-      "id": "migrations_000_auth",
-      "label": "000_auth.sql",
+      "id": "docs_statement_export_research",
+      "label": "STATEMENT-EXPORT-RESEARCH.md",
       "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "000_auth.sql",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": null
+      "community": 39,
+      "community_name": "Riset Export Statement Provider untuk Impor Transaksi",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "statement-export-research.md",
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L1"
     },
     {
-      "id": "migrations_000_auth_auth_accounts",
-      "label": "\"auth_accounts\"",
+      "id": "docs_statement_export_research_batas_penting",
+      "label": "Batas penting",
       "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_accounts\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L7"
+      "community": 39,
+      "community_name": "Riset Export Statement Provider untuk Impor Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "batas penting",
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L20"
     },
     {
-      "id": "migrations_000_auth_auth_accounts_userid_idx",
-      "label": "auth_accounts_userId_idx",
+      "id": "docs_statement_export_research_kesimpulan",
+      "label": "Kesimpulan",
       "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "auth_accounts_userid_idx",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L15"
-    },
-    {
-      "id": "migrations_000_auth_auth_rate_limits",
-      "label": "\"auth_rate_limits\"",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_rate_limits\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L11"
-    },
-    {
-      "id": "migrations_000_auth_auth_sessions",
-      "label": "\"auth_sessions\"",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_sessions\"",
-      "source_file": "migrations/000_auth.sql",
+      "community": 39,
+      "community_name": "Riset Export Statement Provider untuk Impor Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "kesimpulan",
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
       "source_location": "L5"
     },
     {
-      "id": "migrations_000_auth_auth_sessions_userid_idx",
-      "label": "auth_sessions_userId_idx",
+      "id": "docs_statement_export_research_rekap",
+      "label": "Rekap",
       "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "auth_sessions_userid_idx",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L13"
+      "community": 39,
+      "community_name": "Riset Export Statement Provider untuk Impor Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rekap",
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L11"
     },
     {
-      "id": "migrations_000_auth_auth_users",
-      "label": "\"auth_users\"",
+      "id": "docs_statement_export_research_rekomendasi_produk",
+      "label": "Rekomendasi produk",
       "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_users\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L3"
+      "community": 39,
+      "community_name": "Riset Export Statement Provider untuk Impor Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rekomendasi produk",
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L26"
     },
     {
-      "id": "migrations_000_auth_auth_verifications",
-      "label": "\"auth_verifications\"",
+      "id": "docs_statement_export_research_riset_export_statement_provider_untuk_impor_transaksi",
+      "label": "Riset Export Statement Provider untuk Impor Transaksi",
       "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "\"auth_verifications\"",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L9"
-    },
-    {
-      "id": "migrations_000_auth_auth_verifications_identifier_idx",
-      "label": "auth_verifications_identifier_idx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "001_domain.sql",
-      "file_type": "code",
-      "norm_label": "auth_verifications_identifier_idx",
-      "source_file": "migrations/000_auth.sql",
-      "source_location": "L17"
+      "community": 39,
+      "community_name": "Riset Export Statement Provider untuk Impor Transaksi",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "riset export statement provider untuk impor transaksi",
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L1"
     },
     {
       "id": "migrations_001_domain",
@@ -6271,6 +6705,72 @@
       "source_location": "L2"
     },
     {
+      "id": "migrations_004_gmail_import",
+      "label": "004_gmail_import.sql",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "004_gmail_import.sql",
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": null
+    },
+    {
+      "id": "migrations_004_gmail_import_gmail_candidates",
+      "label": "gmail_candidates",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "gmail_candidates",
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L21"
+    },
+    {
+      "id": "migrations_004_gmail_import_gmail_candidates_pending",
+      "label": "gmail_candidates_pending",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "gmail_candidates_pending",
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L33"
+    },
+    {
+      "id": "migrations_004_gmail_import_gmail_connections",
+      "label": "gmail_connections",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "gmail_connections",
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L2"
+    },
+    {
+      "id": "migrations_004_gmail_import_gmail_oauth_state_expiry",
+      "label": "gmail_oauth_state_expiry",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "gmail_oauth_state_expiry",
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L20"
+    },
+    {
+      "id": "migrations_004_gmail_import_gmail_oauth_states",
+      "label": "gmail_oauth_states",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "001_domain.sql",
+      "file_type": "code",
+      "norm_label": "gmail_oauth_states",
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L13"
+    },
+    {
       "id": "apps_mobile_css_d",
       "label": "css.d.ts",
       "_origin": "ast",
@@ -6290,6 +6790,90 @@
       "file_type": "code",
       "norm_label": "*.css",
       "source_file": "apps/mobile/css.d.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_gmail_transaction_import",
+      "label": "GMAIL-TRANSACTION-IMPORT.md",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "gmail-transaction-import.md",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_gmail_transaction_import_batas_rekomendasi",
+      "label": "Batas rekomendasi",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "batas rekomendasi",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L47"
+    },
+    {
+      "id": "docs_gmail_transaction_import_implikasi_gmail",
+      "label": "Implikasi Gmail",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "implikasi gmail",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L15"
+    },
+    {
+      "id": "docs_gmail_transaction_import_keputusan",
+      "label": "Keputusan",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "keputusan",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "docs_gmail_transaction_import_kriteria_penerimaan_sebelum_rilis",
+      "label": "Kriteria penerimaan sebelum rilis",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "kriteria penerimaan sebelum rilis",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "docs_gmail_transaction_import_rancangan_teknis_bila_tahap_koneksi_gmail_disetujui",
+      "label": "Rancangan teknis bila tahap koneksi Gmail disetujui",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rancangan teknis bila tahap koneksi gmail disetujui",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "label": "Usulan Impor Notifikasi Transaksi Gmail",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "Usulan Impor Notifikasi Transaksi Gmail",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "usulan impor notifikasi transaksi gmail",
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
       "source_location": "L1"
     },
     {
@@ -6877,6 +7461,17 @@
       "source_location": "L1"
     },
     {
+      "id": "packages_contracts_src_notification_import",
+      "label": "notification-import.ts",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "notification-import.ts",
+      "source_file": "packages/contracts/src/notification-import.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_mobile_app",
       "label": "app.json",
       "_origin": "ast",
@@ -7185,81 +7780,103 @@
       "source_location": "L23"
     },
     {
-      "id": "apps_api_package_scripts",
-      "label": "scripts",
+      "id": "migrations_000_auth",
+      "label": "000_auth.sql",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "apps/api/package.json",
-      "source_location": "L6"
+      "norm_label": "000_auth.sql",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": null
     },
     {
-      "id": "apps_api_package_scripts_build",
-      "label": "build",
+      "id": "migrations_000_auth_auth_accounts",
+      "label": "\"auth_accounts\"",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "build",
-      "source_file": "apps/api/package.json",
+      "norm_label": "\"auth_accounts\"",
+      "source_file": "migrations/000_auth.sql",
       "source_location": "L7"
     },
     {
-      "id": "apps_api_package_scripts_dev",
-      "label": "dev",
+      "id": "migrations_000_auth_auth_accounts_userid_idx",
+      "label": "auth_accounts_userId_idx",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "apps/api/package.json",
-      "source_location": "L9"
+      "norm_label": "auth_accounts_userid_idx",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L15"
     },
     {
-      "id": "apps_api_package_scripts_migrate",
-      "label": "migrate",
+      "id": "migrations_000_auth_auth_rate_limits",
+      "label": "\"auth_rate_limits\"",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "migrate",
-      "source_file": "apps/api/package.json",
+      "norm_label": "\"auth_rate_limits\"",
+      "source_file": "migrations/000_auth.sql",
       "source_location": "L11"
     },
     {
-      "id": "apps_api_package_scripts_start",
-      "label": "start",
+      "id": "migrations_000_auth_auth_sessions",
+      "label": "\"auth_sessions\"",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "start",
-      "source_file": "apps/api/package.json",
-      "source_location": "L10"
+      "norm_label": "\"auth_sessions\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L5"
     },
     {
-      "id": "apps_api_package_scripts_test",
-      "label": "test",
+      "id": "migrations_000_auth_auth_sessions_userid_idx",
+      "label": "auth_sessions_userId_idx",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "test",
-      "source_file": "apps/api/package.json",
-      "source_location": "L12"
+      "norm_label": "auth_sessions_userid_idx",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L13"
     },
     {
-      "id": "apps_api_package_scripts_typecheck",
-      "label": "typecheck",
+      "id": "migrations_000_auth_auth_users",
+      "label": "\"auth_users\"",
       "_origin": "ast",
       "community": 9,
-      "community_name": "scripts",
+      "community_name": "000_auth.sql",
       "file_type": "code",
-      "norm_label": "typecheck",
-      "source_file": "apps/api/package.json",
-      "source_location": "L8"
+      "norm_label": "\"auth_users\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L3"
+    },
+    {
+      "id": "migrations_000_auth_auth_verifications",
+      "label": "\"auth_verifications\"",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "000_auth.sql",
+      "file_type": "code",
+      "norm_label": "\"auth_verifications\"",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L9"
+    },
+    {
+      "id": "migrations_000_auth_auth_verifications_identifier_idx",
+      "label": "auth_verifications_identifier_idx",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "000_auth.sql",
+      "file_type": "code",
+      "norm_label": "auth_verifications_identifier_idx",
+      "source_file": "migrations/000_auth.sql",
+      "source_location": "L17"
     },
     {
       "id": "apps_mobile_app_global",
@@ -7450,6 +8067,30 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "apps_api_src_db_poolclient",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "apps_mobile_src_transaction_import_notificationdraft",
+      "label": "apps_mobile_src_transaction_import_notificationdraft",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "apps_mobile_src_transaction_import_notificationdraft",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "packages_contracts_dist_index_notificationdraft",
+      "label": "packages_contracts_dist_index_notificationdraft",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "fail",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "packages_contracts_dist_index_notificationdraft",
       "source_file": "",
       "type": "external"
     },
@@ -7764,7 +8405,55 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L114",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_gmail_begingmailauthorization",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_gmail_gmail",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_gmail_finishgmailauthorization",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_gmail_syncgmailconnection",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -7776,19 +8465,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L176",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_api_src_app_createapp",
-      "target": "apps_api_src_access_read",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/api/src/app.ts",
-      "source_location": "L237",
+      "source_location": "L251",
       "weight": 1.0
     },
     {
@@ -7800,7 +8477,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L28",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_access_read",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L377",
       "weight": 1.0
     },
     {
@@ -7812,7 +8501,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L398",
+      "source_location": "L575",
       "weight": 1.0
     },
     {
@@ -7824,7 +8513,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L114",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_auth_configfromenv",
+      "target": "apps_api_src_gmail_gmailconfigfromenv",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -8128,6 +8829,198 @@
       "weight": 1.0
     },
     {
+      "source": "apps_api_src_gmail_begingmailauthorization",
+      "target": "apps_api_src_gmail_digest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_begingmailauthorization",
+      "target": "apps_api_src_gmail_encrypt",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_begingmailauthorization",
+      "target": "apps_api_src_gmail_challenge",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_begingmailauthorization",
+      "target": "apps_api_src_gmail_verifier",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_begingmailauthorization",
+      "target": "apps_api_src_access_transaction",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_challenge",
+      "target": "apps_api_src_gmail_digest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_digest",
+      "target": "apps_api_src_gmail_digest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_finishgmailauthorization",
+      "target": "apps_api_src_access_transaction",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L164",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_finishgmailauthorization",
+      "target": "apps_api_src_gmail_digest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_finishgmailauthorization",
+      "target": "apps_api_src_gmail_tokenrequest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_finishgmailauthorization",
+      "target": "apps_api_src_gmail_decrypt",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_finishgmailauthorization",
+      "target": "apps_api_src_gmail_encrypt",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_gmailconfigfromenv",
+      "target": "apps_api_src_gmail_secret",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_syncgmailconnection",
+      "target": "apps_api_src_gmail_tokenrequest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_syncgmailconnection",
+      "target": "apps_api_src_gmail_decrypt",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L225",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail_syncgmailconnections",
+      "target": "apps_api_src_gmail_syncgmailconnection",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L301",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_households_accept",
       "target": "apps_api_src_errors_fail",
       "relation": "calls",
@@ -8320,6 +9213,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_api_src_server_gmailtimer",
+      "target": "apps_api_src_gmail_syncgmailconnections",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_server_timer",
       "target": "apps_api_src_deletion_processdeletions",
       "relation": "calls",
@@ -8328,7 +9233,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -8484,7 +9389,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L66",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -9029,26 +9934,14 @@
     },
     {
       "source": "apps_mobile_app_profile_profile",
-      "target": "apps_mobile_src_state_useapp",
+      "target": "apps_mobile_src_ui_confirm",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L21",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_profile_profile",
-      "target": "apps_mobile_src_ui_usecolors",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L24",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -9060,7 +9953,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L27",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -9072,7 +9965,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L28",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -9084,7 +9977,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L33",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -9096,7 +9989,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L35",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -9108,7 +10001,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L56",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -9120,7 +10013,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L72",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -9132,7 +10025,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L75",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -9144,7 +10037,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L85",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -9156,7 +10049,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L91",
+      "source_location": "L344",
       "weight": 1.0
     },
     {
@@ -9168,7 +10061,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L98",
+      "source_location": "L351",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile_profile",
+      "target": "apps_mobile_src_state_useapp",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile_profile",
+      "target": "apps_mobile_src_ui_usecolors",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile_profile",
+      "target": "apps_mobile_src_client_request",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -10145,6 +11074,18 @@
     },
     {
       "source": "apps_mobile_app_transaction_transactionform",
+      "target": "apps_mobile_src_draft_usedraftguard",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction_transactionform",
       "target": "apps_mobile_src_ui_screen",
       "relation": "calls",
       "_origin": "ast",
@@ -10152,7 +11093,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L115",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -10164,7 +11105,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L116",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -10176,19 +11117,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L139",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_transaction_transactionform",
-      "target": "apps_mobile_src_ui_notice",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L142",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -10200,43 +11129,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L145",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
       "source": "apps_mobile_app_transaction_transactionform",
-      "target": "apps_mobile_src_ui_choice",
+      "target": "apps_mobile_src_ui_notice",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L157",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_transaction_transactionform",
-      "target": "apps_mobile_src_ui_amountfield",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L177",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_transaction_transactionform",
-      "target": "apps_mobile_src_ui_datefield",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L287",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -10248,7 +11153,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L293",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction_transactionform",
+      "target": "apps_mobile_src_ui_choice",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L277",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction_transactionform",
+      "target": "apps_mobile_src_ui_amountfield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L297",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction_transactionform",
+      "target": "apps_mobile_src_ui_datefield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -10260,7 +11201,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L308",
+      "source_location": "L437",
       "weight": 1.0
     },
     {
@@ -10272,7 +11213,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L327",
+      "source_location": "L465",
       "weight": 1.0
     },
     {
@@ -10284,7 +11225,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L363",
+      "source_location": "L501",
       "weight": 1.0
     },
     {
@@ -10296,7 +11237,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L45",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -10308,7 +11249,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L46",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -10320,7 +11261,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L48",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -10332,7 +11273,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L66",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -10344,19 +11285,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L72",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_transaction_transactionform",
-      "target": "apps_mobile_src_draft_usedraftguard",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L82",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -11392,6 +12321,18 @@
       "weight": 1.0
     },
     {
+      "source": "packages_contracts_src_notification_import_notificationdraft",
+      "target": "packages_contracts_src_notification_import_date",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "packages/contracts/src/notification-import.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_app_createapp",
       "target": "apps_api_src_app_createapp_actor",
       "relation": "contains",
@@ -11400,7 +12341,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L110",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -11412,7 +12353,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L42",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -11424,7 +12365,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L64",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -11512,6 +12453,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_mobile_src_transaction_import",
+      "target": "packages_contracts_dist_index",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "export",
+      "source_file": "apps/mobile/src/transaction-import.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "apps_mobile_src_welcome",
       "target": "apps_mobile_src_household_chooser",
       "relation": "re_exports",
@@ -11521,6 +12474,18 @@
       "context": "export",
       "source_file": "apps/mobile/src/welcome.tsx",
       "source_location": "L398",
+      "weight": 1.0
+    },
+    {
+      "source": "packages_contracts_src_index",
+      "target": "packages_contracts_src_notification_import",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "export",
+      "source_file": "packages/contracts/src/index.ts",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -11801,6 +12766,42 @@
     },
     {
       "source": "apps_api_src_app",
+      "target": "apps_api_src_gmail_begingmailauthorization",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_gmail_finishgmailauthorization",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_gmail_syncgmailconnection",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
       "target": "apps_api_src_auth_config",
       "relation": "imports",
       "_origin": "ast",
@@ -11881,6 +12882,30 @@
       "context": "import",
       "source_file": "apps/api/src/auth.ts",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_auth",
+      "target": "apps_api_src_gmail_gmailconfig",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_auth",
+      "target": "apps_api_src_gmail_gmailconfigfromenv",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -12013,6 +13038,42 @@
       "context": "import",
       "source_file": "apps/api/src/finance.ts",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_access_transaction",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "packages_contracts_dist_index_notificationdraft",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_db_database",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -12172,6 +13233,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_api_src_server",
+      "target": "apps_api_src_gmail_syncgmailconnections",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_validation",
       "target": "packages_contracts_dist_index_validdate",
       "relation": "imports",
@@ -12289,6 +13362,42 @@
       "context": "import",
       "source_file": "apps/api/test/integration.test.ts",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_test_integration_test",
+      "target": "apps_api_src_gmail_begingmailauthorization",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_test_integration_test",
+      "target": "apps_api_src_gmail_finishgmailauthorization",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_test_integration_test",
+      "target": "apps_api_src_gmail_gmailconfig",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12929,18 +14038,6 @@
     },
     {
       "source": "apps_mobile_app_profile",
-      "target": "apps_mobile_src_state_useapp",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_mobile_app_profile",
       "target": "apps_mobile_src_action_action",
       "relation": "imports",
       "_origin": "ast",
@@ -12948,7 +14045,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L5",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -12960,7 +14057,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -12972,7 +14069,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_ui_confirm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -12984,7 +14093,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -12996,7 +14105,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13008,7 +14117,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13020,7 +14129,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13032,7 +14141,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13044,7 +14153,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13056,7 +14165,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13068,7 +14177,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13080,7 +14189,43 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L6",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "packages_contracts_dist_index_money",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_state_useapp",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_client_request",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14220,7 +15365,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -14232,7 +15377,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -14244,7 +15389,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -14256,7 +15401,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -14268,7 +15413,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -14280,7 +15425,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction",
+      "target": "apps_mobile_src_transaction_import_notificationdraft",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -14292,7 +15449,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14304,7 +15461,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14316,7 +15473,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14328,7 +15485,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14340,7 +15497,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14352,7 +15509,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14364,7 +15521,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14376,7 +15533,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14388,7 +15545,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14400,7 +15557,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14412,7 +15569,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14424,7 +15581,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14436,7 +15593,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14448,7 +15605,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14460,7 +15617,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14472,7 +15629,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14484,7 +15641,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14496,7 +15653,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -15304,6 +16461,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_mobile_src_transaction_import_test",
+      "target": "apps_mobile_src_transaction_import_notificationdraft",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/transaction-import.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "apps_mobile_src_transaction_row",
       "target": "packages_contracts_dist_index_money",
       "relation": "imports",
@@ -15516,7 +16685,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -15528,7 +16697,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -15540,7 +16709,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -15552,7 +16721,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -15564,7 +16733,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -15738,6 +16907,18 @@
     },
     {
       "source": "apps_api_src_app",
+      "target": "apps_api_src_gmail",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
       "target": "ref_fastify_cors",
       "relation": "imports_from",
       "_origin": "ast",
@@ -15871,6 +17052,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_api_src_auth",
+      "target": "apps_api_src_gmail",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_deletion",
       "target": "ref_node_crypto",
       "relation": "imports_from",
@@ -15979,6 +17172,55 @@
       "context": "import",
       "source_file": "apps/api/src/finance.ts",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "ref_node_crypto",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_access",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "packages_contracts_dist_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_db",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L9",
+      "type_only": true,
       "weight": 1.0
     },
     {
@@ -16175,6 +17417,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_api_src_server",
+      "target": "apps_api_src_gmail",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_validation",
       "target": "packages_contracts_dist_index",
       "relation": "imports_from",
@@ -16316,6 +17570,18 @@
       "context": "import",
       "source_file": "apps/api/test/integration.test.ts",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_test_integration_test",
+      "target": "apps_api_src_gmail",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -16800,6 +18066,30 @@
     },
     {
       "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_action",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_ui",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
       "target": "ref_react_native",
       "relation": "imports_from",
       "_origin": "ast",
@@ -16824,7 +18114,7 @@
     },
     {
       "source": "apps_mobile_app_profile",
-      "target": "apps_mobile_src_state",
+      "target": "ref_tanstack_react_query",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16836,7 +18126,7 @@
     },
     {
       "source": "apps_mobile_app_profile",
-      "target": "apps_mobile_src_action",
+      "target": "ref_expo_web_browser",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16848,7 +18138,7 @@
     },
     {
       "source": "apps_mobile_app_profile",
-      "target": "apps_mobile_src_ui",
+      "target": "ref_expo_crypto",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16856,6 +18146,42 @@
       "context": "import",
       "source_file": "apps/mobile/app/profile.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "packages_contracts_dist_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_state",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_src_client",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -17637,7 +18963,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -17649,7 +18975,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -17661,7 +18987,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -17673,19 +18999,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
       "source": "apps_mobile_app_transaction",
-      "target": "apps_mobile_src_ui",
+      "target": "apps_mobile_src_transaction_import",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -17698,6 +19024,18 @@
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction",
+      "target": "apps_mobile_src_ui",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -17738,7 +19076,7 @@
     },
     {
       "source": "apps_mobile_app_transaction",
-      "target": "packages_contracts_dist_index",
+      "target": "ref_expo_clipboard",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17746,6 +19084,18 @@
       "context": "import",
       "source_file": "apps/mobile/app/transaction.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_transaction",
+      "target": "packages_contracts_dist_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/app/transaction.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -18292,6 +19642,42 @@
       "weight": 1.0
     },
     {
+      "source": "apps_mobile_src_transaction_import_test",
+      "target": "ref_node_assert",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/transaction-import.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_transaction_import_test",
+      "target": "ref_node_test",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/transaction-import.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_src_transaction_import_test",
+      "target": "apps_mobile_src_transaction_import",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/mobile/src/transaction-import.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "apps_mobile_src_transaction_row",
       "target": "ref_react",
       "relation": "imports_from",
@@ -18822,6 +20208,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_mobile_src_transaction_import",
+      "target": "packages_contracts_dist_index_notificationdraft",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "re-export",
+      "source_file": "apps/mobile/src/transaction-import.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "apps_mobile_src_welcome",
       "target": "apps_mobile_src_household_chooser_householdchooser",
       "relation": "re_exports",
@@ -18831,6 +20229,18 @@
       "context": "re-export",
       "source_file": "apps/mobile/src/welcome.tsx",
       "source_location": "L398",
+      "weight": 1.0
+    },
+    {
+      "source": "packages_contracts_src_index",
+      "target": "packages_contracts_src_notification_import_notificationdraft",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "re-export",
+      "source_file": "packages/contracts/src/index.ts",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -19336,40 +20746,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L16",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_api_src_auth",
-      "target": "apps_api_src_auth_createauth",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_api_src_auth",
-      "target": "apps_api_src_auth_mail",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_api_src_auth",
-      "target": "apps_api_src_auth_configfromenv",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L71",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -19380,7 +20757,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/auth.ts",
-      "source_location": "L9",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_auth",
+      "target": "apps_api_src_auth_createauth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_auth",
+      "target": "apps_api_src_auth_mail",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_auth",
+      "target": "apps_api_src_auth_configfromenv",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -19513,6 +20923,182 @@
       "confidence_score": 1.0,
       "source_file": "apps/api/src/finance.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_tokenrequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_gmailconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_gmail",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_finishgmailauthorization",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_gmailsyncresult",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_gmailconnection",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L203",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_syncgmailconnection",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_secret",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_syncgmailconnections",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L290",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_gmailconfigfromenv",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_encrypt",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_decrypt",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_digest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_verifier",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_challenge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_gmail",
+      "target": "apps_api_src_gmail_begingmailauthorization",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -19666,7 +21252,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L12",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_server",
+      "target": "apps_api_src_server_config",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -19677,7 +21274,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L33",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_server",
+      "target": "apps_api_src_server_gmailtimer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -19688,7 +21296,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/server.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -20276,13 +21884,35 @@
     },
     {
       "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_app_profile_gmailstatus",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
+      "target": "apps_mobile_app_profile_gmailcandidate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/mobile/app/profile.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_mobile_app_profile",
       "target": "apps_mobile_app_profile_profile",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L20",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -20403,7 +22033,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -22123,6 +23753,72 @@
       "weight": 1.0
     },
     {
+      "source": "docs_gmail_transaction_import",
+      "target": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "target": "docs_gmail_transaction_import_implikasi_gmail",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "target": "docs_gmail_transaction_import_rancangan_teknis_bila_tahap_koneksi_gmail_disetujui",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "target": "docs_gmail_transaction_import_kriteria_penerimaan_sebelum_rilis",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "target": "docs_gmail_transaction_import_batas_rekomendasi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_gmail_transaction_import_usulan_impor_notifikasi_transaksi_gmail",
+      "target": "docs_gmail_transaction_import_keputusan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "docs_implementation",
       "target": "docs_implementation_status_implementasi_cash_flow",
       "relation": "contains",
@@ -22384,6 +24080,116 @@
       "confidence_score": 1.0,
       "source_file": "docs/PRD.md",
       "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_provider_notification_research",
+      "target": "docs_provider_notification_research_riset_sumber_publik_untuk_impor_notifikasi_transaksi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_provider_notification_research_riset_sumber_publik_untuk_impor_notifikasi_transaksi",
+      "target": "docs_provider_notification_research_rekap_per_provider",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_provider_notification_research_riset_sumber_publik_untuk_impor_notifikasi_transaksi",
+      "target": "docs_provider_notification_research_field_kandidat_dan_aturan_keselamatan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_provider_notification_research_riset_sumber_publik_untuk_impor_notifikasi_transaksi",
+      "target": "docs_provider_notification_research_rekomendasi_langkah_berikutnya",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_provider_notification_research_riset_sumber_publik_untuk_impor_notifikasi_transaksi",
+      "target": "docs_provider_notification_research_kesimpulan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PROVIDER-NOTIFICATION-RESEARCH.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_statement_export_research",
+      "target": "docs_statement_export_research_riset_export_statement_provider_untuk_impor_transaksi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_statement_export_research_riset_export_statement_provider_untuk_impor_transaksi",
+      "target": "docs_statement_export_research_rekap",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_statement_export_research_riset_export_statement_provider_untuk_impor_transaksi",
+      "target": "docs_statement_export_research_batas_penting",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_statement_export_research_riset_export_statement_provider_untuk_impor_transaksi",
+      "target": "docs_statement_export_research_rekomendasi_produk",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_statement_export_research_riset_export_statement_provider_untuk_impor_transaksi",
+      "target": "docs_statement_export_research_kesimpulan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/STATEMENT-EXPORT-RESEARCH.md",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -23003,6 +24809,61 @@
       "weight": 1.0
     },
     {
+      "source": "migrations_004_gmail_import",
+      "target": "migrations_004_gmail_import_gmail_oauth_states",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import",
+      "target": "migrations_004_gmail_import_gmail_connections",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import",
+      "target": "migrations_004_gmail_import_gmail_oauth_state_expiry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import",
+      "target": "migrations_004_gmail_import_gmail_candidates",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import",
+      "target": "migrations_004_gmail_import_gmail_candidates_pending",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
       "source": "package",
       "target": "package_engines",
       "relation": "contains",
@@ -23043,7 +24904,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -23065,7 +24926,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -23109,7 +24970,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -23120,7 +24981,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -23131,7 +24992,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -23142,7 +25003,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -23153,7 +25014,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -23202,13 +25063,24 @@
     },
     {
       "source": "package_overrides",
-      "target": "package_overrides_xcode",
+      "target": "package_overrides_zod",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "package_overrides",
+      "target": "package_overrides_xcode",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -23219,7 +25091,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -23230,7 +25102,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -23241,7 +25113,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -23252,7 +25124,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -23263,7 +25135,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -23274,7 +25146,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -23285,7 +25157,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -23296,7 +25168,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -23307,7 +25179,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -23318,7 +25190,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -23329,7 +25201,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -23340,7 +25212,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -23455,17 +25327,6 @@
     },
     {
       "source": "packages_contracts_src_index",
-      "target": "packages_contracts_src_index_validdate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L106",
-      "weight": 1.0
-    },
-    {
-      "source": "packages_contracts_src_index",
       "target": "packages_contracts_src_index_account",
       "relation": "contains",
       "_origin": "ast",
@@ -23477,13 +25338,24 @@
     },
     {
       "source": "packages_contracts_src_index",
+      "target": "packages_contracts_src_index_validdate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/contracts/src/index.ts",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "packages_contracts_src_index",
       "target": "packages_contracts_src_index_today",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L115",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -23615,7 +25487,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L89",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -23626,7 +25498,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "packages/contracts/src/index.ts",
-      "source_location": "L93",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "packages_contracts_src_notification_import",
+      "target": "packages_contracts_src_notification_import_notificationdraft",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/contracts/src/notification-import.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "packages_contracts_src_notification_import",
+      "target": "packages_contracts_src_notification_import_date",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/contracts/src/notification-import.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -24235,6 +26129,28 @@
       "weight": 1.0
     },
     {
+      "source": "migrations_004_gmail_import_gmail_candidates_pending",
+      "target": "migrations_004_gmail_import_gmail_candidates",
+      "relation": "indexes",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import_gmail_oauth_state_expiry",
+      "target": "migrations_004_gmail_import_gmail_oauth_states",
+      "relation": "indexes",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
       "source": "apps_api_src_errors_httperror",
       "target": "apps_api_src_errors_httperror_constructor",
       "relation": "method",
@@ -24763,6 +26679,50 @@
       "weight": 1.0
     },
     {
+      "source": "migrations_004_gmail_import_gmail_candidates",
+      "target": "migrations_001_domain_transactions",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import_gmail_candidates",
+      "target": "migrations_004_gmail_import_gmail_connections",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import_gmail_connections",
+      "target": "migrations_001_domain_profiles",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "migrations_004_gmail_import_gmail_oauth_states",
+      "target": "migrations_001_domain_profiles",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "migrations/004_gmail_import.sql",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
       "source": "product",
       "target": "docs_tech_stack",
       "relation": "references",
@@ -25021,7 +26981,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "apps/mobile/app/transaction.tsx",
-      "source_location": "L386",
+      "source_location": "L524",
       "weight": 1.0
     },
     {
@@ -25046,18 +27006,6 @@
       "context": "budgets",
       "source_file": "docs/DATABASE.md",
       "source_location": "L166",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_database_3_konvensi",
-      "target": "apps_api_src_validation_date",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "date",
-      "source_file": "docs/DATABASE.md",
-      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -25182,5 +27130,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "92852d0ac9abbcec2f23c7aab05efcfc877f6263"
+  "built_at_commit": "45cf3d8c1671f9024a9244caf86d8ca51a681920"
 }
