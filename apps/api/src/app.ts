@@ -18,6 +18,13 @@ import {
   finishGmailAuthorization,
   syncGmailConnection,
 } from "./gmail.js";
+import {
+  accountDeletionPage,
+  homepage,
+  privacyPage,
+  sendPublicPage,
+  termsPage,
+} from "./public-pages.js";
 export async function createApp(
   pool: Database,
   config: Config,
@@ -83,12 +90,13 @@ export async function createApp(
     return { status: "ready" };
   });
   app.get("/openapi.json", async () => app.swagger());
+  app.get("/", async (_req, reply) => sendPublicPage(reply, homepage()));
+  app.get("/privacy", async (_req, reply) =>
+    sendPublicPage(reply, privacyPage()),
+  );
+  app.get("/terms", async (_req, reply) => sendPublicPage(reply, termsPage()));
   app.get("/account-deletion", async (_req, reply) =>
-    reply
-      .type("text/html")
-      .send(
-        '<!doctype html><html lang="id"><meta name="viewport" content="width=device-width"><title>Penghapusan akun Cash Flow</title><main><h1>Penghapusan akun Cash Flow</h1><p>Di aplikasi, buka Keluarga → Akun saya → Hapus akun. Alihkan kepemilikan keluarga atau hapus keluarga yang Anda miliki terlebih dahulu.</p><p>Akun login dan sesi dihapus. Catatan keuangan yang telah dibagikan tetap tersimpan, dengan pencatat bernama “Pengguna dihapus”. Catatan bebas dan file yang pernah diekspor tetap merupakan data bersama.</p><p>Jika tidak dapat masuk, gunakan Atur ulang kata sandi di aplikasi. Kebijakan backup dan kontak dukungan harus ditetapkan sebelum peluncuran publik.</p></main></html>',
-      ),
+    sendPublicPage(reply, accountDeletionPage()),
   );
   app.route({
     method: ["GET", "POST"],

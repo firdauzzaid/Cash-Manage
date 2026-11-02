@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "apps/api/src/app.ts": {
-    "mtime": 1793351948.734417,
-    "seen": 1793351954.2632835,
-    "ast_hash": "054a2ec83e319e20192af9ad01b549c0",
+    "mtime": 1793584122.355759,
+    "seen": 1793584367.2046082,
+    "ast_hash": "e77b137b46d90e6c9ce7dbe62530533e",
     "semantic_hash": ""
   },
   "apps/api/src/auth.ts": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "apps/api/test/integration.test.ts": {
-    "mtime": 1793352248.910716,
-    "seen": 1793352288.9749184,
-    "ast_hash": "cf1521602d1fb85c3c7f9528aea548f7",
+    "mtime": 1793584329.6406224,
+    "seen": 1793584367.2046537,
+    "ast_hash": "726af1470163417cece303d04f4e97a3",
     "semantic_hash": ""
   },
   "apps/api/tsconfig.json": {
@@ -696,9 +696,9 @@
     "semantic_hash": ""
   },
   "docs/DEPLOYMENT-VPS.md": {
-    "mtime": 1792738171.1677153,
-    "seen": 1792740002.7682128,
-    "ast_hash": "d9ffee78c62742bcad22ce6300662dd6",
+    "mtime": 1793584122.3577695,
+    "seen": 1793584367.204855,
+    "ast_hash": "786f2ec1ac8335a300cec4809a59f3de",
     "semantic_hash": ""
   },
   "scripts/backup-production.sh": {
@@ -783,6 +783,12 @@
     "mtime": 1793343835.6953745,
     "seen": 1793344338.0185335,
     "ast_hash": "e035403ba4a38a4a7cb4bdbbe3bf9292",
+    "semantic_hash": ""
+  },
+  "apps/api/src/public-pages.ts": {
+    "mtime": 1793584122.3549626,
+    "seen": 1793584367.2046387,
+    "ast_hash": "37d6cef7a121000aad1e6bccf9e277b9",
     "semantic_hash": ""
   }
 }

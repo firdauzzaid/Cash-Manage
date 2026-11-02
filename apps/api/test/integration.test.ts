@@ -125,6 +125,22 @@ test(
       transferId: string;
     const on = "2026-01-15",
       range = "?from=2026-01-01&to=2026-02-01";
+    await t.test(
+      "public legal pages are available without a session",
+      async () => {
+        for (const [url, title] of [
+          ["/", "Cash Flow"],
+          ["/privacy", "Kebijakan Privasi"],
+          ["/terms", "Ketentuan Layanan"],
+          ["/account-deletion", "Penghapusan Akun"],
+        ]) {
+          const page = await call("", "GET", url);
+          assert.equal(page.statusCode, 200, page.body);
+          assert.match(page.body, new RegExp(`<title>${title}`));
+          assert.equal(page.headers["x-content-type-options"], "nosniff");
+        }
+      },
+    );
     await t.test("OAuth denial returns control to the mobile app", async () => {
       const denied = await call(
         "",

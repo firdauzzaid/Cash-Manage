@@ -71,6 +71,17 @@ docker compose -f compose.production.yml logs --tail=100 api
 
 Uji pendaftaran dan email verifikasi sebelum memberi APK kepada tester. Sebelum pilot, konfigurasikan backup terenkripsi ke lokasi di luar VPS dan uji restore pada database terpisah.
 
+## Halaman publik dan verifikasi Gmail
+
+API juga menyajikan halaman publik yang diperlukan untuk OAuth Google:
+
+- `https://cashflow-api.kotagedejewellery.tech/`
+- `https://cashflow-api.kotagedejewellery.tech/privacy`
+- `https://cashflow-api.kotagedejewellery.tech/terms`
+- `https://cashflow-api.kotagedejewellery.tech/account-deletion`
+
+Masukkan tiga URL pertama ke Google Auth Platform → Branding sebagai homepage, privacy policy, dan terms. Authorized domain tetap `kotagedejewellery.tech`, tanpa path. Kebijakan privasi menjanjikan retensi backup maksimal 90 hari; sebelum publik, jadwalkan backup terenkripsi ke penyimpanan di luar VPS dan hapus backup yang lebih lama dari batas tersebut.
+
 ## Deploy otomatis dari GitHub
 
 Workflow `.github/workflows/deploy-production.yml` berjalan pada setiap push ke branch `main`. Ia memasang dependency, menjalankan typecheck dan pemeriksaan format, lalu menyalin source ke VPS dengan SSH/rsync. Environment `.env`, backup, dan artefak build lokal dikecualikan dari salinan.
