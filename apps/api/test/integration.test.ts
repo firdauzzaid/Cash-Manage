@@ -429,6 +429,9 @@ test(
           "INSERT INTO gmail_connections(id,profile_id,gmail_address,refresh_token_ciphertext) VALUES($1,$2,$3,$4)",
           [connection, a.profile, `gmail-${randomUUID()}@example.test`, "test"],
         );
+        const sync = await call(a.cookie, "POST", "/me/gmail/sync");
+        assert.equal(sync.statusCode, 200, sync.body);
+        assert.deepEqual(sync.json(), { created: 0, reason: "SYNC_FAILED" });
         for (const id of [first, second])
           await admin.query(
             "INSERT INTO gmail_candidates(id,connection_id,gmail_message_id,amount_minor,occurred_on,note) VALUES($1,$2,$3,$4,$5,$6)",

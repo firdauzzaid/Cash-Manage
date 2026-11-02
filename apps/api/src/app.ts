@@ -46,7 +46,7 @@ export async function createApp(
   await app.register(swagger, {
     openapi: { info: { title: "Cash Flow API", version: "0.1.0" } },
   });
-  app.setErrorHandler((e, _req, reply) => {
+  app.setErrorHandler((e, req, reply) => {
     if (e instanceof HttpError)
       return reply
         .status(e.status)
@@ -56,6 +56,16 @@ export async function createApp(
       statusCode?: number;
       validation?: unknown;
     };
+    if (req.method === "POST" && req.url.split("?", 1)[0] === "/me/gmail/sync")
+      app.log.warn(
+        {
+          diagnostic: "DEBUG-gmail-sync",
+          code: err.code ?? "UNKNOWN",
+          status: err.statusCode ?? 500,
+          validation: Boolean(err.validation),
+        },
+        "Gmail sync request rejected",
+      );
     if (err.code === "23505")
       return reply.status(409).send({
         code: "DUPLICATE",
@@ -237,6 +247,10 @@ export async function createApp(
     "/me/gmail/sync",
     { config: { rateLimit: { max: 4, timeWindow: "15 minutes" } } },
     async (req) => {
+      app.log.info(
+        { diagnostic: "DEBUG-gmail-sync" },
+        "Gmail sync request reached handler",
+      );
       const a = await actor(req),
         c = gmail();
       const connection = (
@@ -247,7 +261,16 @@ export async function createApp(
       ).rows[0];
       if (!connection)
         fail(404, "GMAIL_NOT_CONNECTED", "Gmail belum terhubung.");
-      return syncGmailConnection(pool, c, connection.id);
+      const result = await syncGmailConnection(pool, c, connection.id);
+      app.log.info(
+        {
+          diagnostic: "DEBUG-gmail-sync",
+          created: result.created,
+          reason: result.reason ?? "NONE",
+        },
+        "Gmail sync request completed",
+      );
+      return result;
     },
   );
   app.post(

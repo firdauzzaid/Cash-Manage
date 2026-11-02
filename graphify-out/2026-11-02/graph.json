@@ -56,6 +56,19 @@
       "source_location": "L27"
     },
     {
+      "id": "apps_mobile_app_tabs_layout_householdtabbarprops",
+      "label": "HouseholdTabBarProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "householdtabbarprops",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L14"
+    },
+    {
       "id": "apps_mobile_src_client_apierror",
       "label": "ApiError",
       "_callable": true,
@@ -121,58 +134,6 @@
       "source_location": "L28"
     },
     {
-      "id": "apps_api_src_access_actor",
-      "label": "Actor",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "actor",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_api_src_access_context",
-      "label": "Context",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "context",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_api_src_auth_config",
-      "label": "Config",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "apps_api_src_auth_mail",
-      "label": "Mail",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "mail",
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "apps_api_src_errors_httperror",
       "label": "HttpError",
       "_callable": true,
@@ -184,45 +145,6 @@
       "norm_label": "httperror",
       "source_file": "apps/api/src/errors.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_gmail_gmailconfig",
-      "label": "GmailConfig",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmailconfig",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "apps_api_src_gmail_gmailconnection",
-      "label": "GmailConnection",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmailconnection",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L203"
-    },
-    {
-      "id": "apps_api_src_gmail_gmailsyncresult",
-      "label": "GmailSyncResult",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmailsyncresult",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L20"
     },
     {
       "id": "apps_api_src_validation_body",
@@ -238,17 +160,95 @@
       "source_location": "L11"
     },
     {
-      "id": "apps_mobile_app_tabs_layout_householdtabbarprops",
-      "label": "HouseholdTabBarProps",
+      "id": "apps_api_src_auth_config",
+      "label": "Config",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 30,
-      "community_name": "(tabs)/_layout.tsx",
+      "community_name": "app.ts",
       "file_type": "code",
-      "norm_label": "householdtabbarprops",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L14"
+      "norm_label": "config",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "apps_api_src_auth_mail",
+      "label": "Mail",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "mail",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_api_src_access_actor",
+      "label": "Actor",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "actor",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_api_src_access_context",
+      "label": "Context",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "context",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailconfig",
+      "label": "GmailConfig",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "gmailconfig",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailconnection",
+      "label": "GmailConnection",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "gmailconnection",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L203"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailsyncresult",
+      "label": "GmailSyncResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "gmailsyncresult",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L20"
     },
     {
       "id": "packages_contracts_src_index_account",
@@ -682,6 +682,30 @@
       "norm_label": "visiblecategories()",
       "source_file": "apps/mobile/app/(tabs)/home.tsx",
       "source_location": "L29"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_householdtabbar",
+      "label": "HouseholdTabBar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "householdtabbar()",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_tabslayout",
+      "label": "TabsLayout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "tabslayout()",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L125"
     },
     {
       "id": "apps_mobile_app_tabs_transactions_transactions",
@@ -1260,18 +1284,6 @@
       "source_location": "L31"
     },
     {
-      "id": "apps_api_src_access_access",
-      "label": "access()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "access()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L29"
-    },
-    {
       "id": "apps_api_src_access_audit",
       "label": "audit()",
       "_callable": true,
@@ -1282,18 +1294,6 @@
       "norm_label": "audit()",
       "source_file": "apps/api/src/access.ts",
       "source_location": "L145"
-    },
-    {
-      "id": "apps_api_src_access_canonical",
-      "label": "canonical()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "canonical()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L80"
     },
     {
       "id": "apps_api_src_access_existing",
@@ -1308,18 +1308,6 @@
       "source_location": "L167"
     },
     {
-      "id": "apps_api_src_access_mutate",
-      "label": "mutate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "mutate()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L92"
-    },
-    {
       "id": "apps_api_src_access_owner",
       "label": "owner()",
       "_callable": true,
@@ -1332,42 +1320,6 @@
       "source_location": "L64"
     },
     {
-      "id": "apps_api_src_access_read",
-      "label": "read()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "read()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L72"
-    },
-    {
-      "id": "apps_api_src_access_transaction",
-      "label": "transaction()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "transaction()",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "apps_api_src_app_createapp",
-      "label": "createApp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "createapp()",
-      "source_file": "apps/api/src/app.ts",
-      "source_location": "L21"
-    },
-    {
       "id": "apps_api_src_app_createapp_actor",
       "label": "actor()",
       "_callable": true,
@@ -1377,67 +1329,7 @@
       "file_type": "code",
       "norm_label": "actor()",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L115"
-    },
-    {
-      "id": "apps_api_src_auth_configfromenv",
-      "label": "configFromEnv()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "configfromenv()",
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L73"
-    },
-    {
-      "id": "apps_api_src_auth_createauth",
-      "label": "createAuth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "createauth()",
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "apps_api_src_deletion_lockhouseholds",
-      "label": "lockHouseholds()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "lockhouseholds()",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_api_src_deletion_processdeletions",
-      "label": "processDeletions()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "processdeletions()",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L56"
-    },
-    {
-      "id": "apps_api_src_deletion_requestdeletion",
-      "label": "requestDeletion()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "requestdeletion()",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L14"
+      "source_location": "L123"
     },
     {
       "id": "apps_api_src_errors_fail",
@@ -1548,162 +1440,6 @@
       "source_location": "L128"
     },
     {
-      "id": "apps_api_src_gmail_begingmailauthorization",
-      "label": "beginGmailAuthorization()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "begingmailauthorization()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L87"
-    },
-    {
-      "id": "apps_api_src_gmail_challenge",
-      "label": "challenge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "challenge()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L83"
-    },
-    {
-      "id": "apps_api_src_gmail_decrypt",
-      "label": "decrypt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "decrypt()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "apps_api_src_gmail_digest",
-      "label": "digest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "digest()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L75"
-    },
-    {
-      "id": "apps_api_src_gmail_encrypt",
-      "label": "encrypt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "encrypt()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L56"
-    },
-    {
-      "id": "apps_api_src_gmail_finishgmailauthorization",
-      "label": "finishGmailAuthorization()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "finishgmailauthorization()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L158"
-    },
-    {
-      "id": "apps_api_src_gmail_gmail",
-      "label": "gmail()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmail()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L146"
-    },
-    {
-      "id": "apps_api_src_gmail_gmailconfigfromenv",
-      "label": "gmailConfigFromEnv()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmailconfigfromenv()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L32"
-    },
-    {
-      "id": "apps_api_src_gmail_secret",
-      "label": "secret()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "secret()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "apps_api_src_gmail_syncgmailconnection",
-      "label": "syncGmailConnection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "syncgmailconnection()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L209"
-    },
-    {
-      "id": "apps_api_src_gmail_syncgmailconnections",
-      "label": "syncGmailConnections()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "syncgmailconnections()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L290"
-    },
-    {
-      "id": "apps_api_src_gmail_tokenrequest",
-      "label": "tokenRequest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "tokenrequest()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L119"
-    },
-    {
-      "id": "apps_api_src_gmail_verifier",
-      "label": "verifier()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "verifier()",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L79"
-    },
-    {
       "id": "apps_api_src_households_accept",
       "label": "accept()",
       "_callable": true,
@@ -1750,78 +1486,6 @@
       "norm_label": "invite()",
       "source_file": "apps/api/src/households.ts",
       "source_location": "L44"
-    },
-    {
-      "id": "apps_api_src_reports_accounts",
-      "label": "accounts()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "accounts()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "apps_api_src_reports_csv",
-      "label": "csv()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "csv()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L145"
-    },
-    {
-      "id": "apps_api_src_reports_csvcell",
-      "label": "csvCell()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "csvcell()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L140"
-    },
-    {
-      "id": "apps_api_src_reports_period",
-      "label": "period()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "period()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "apps_api_src_reports_summary",
-      "label": "summary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "summary()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "apps_api_src_reports_transactions",
-      "label": "transactions()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "transactions()",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L66"
     },
     {
       "id": "apps_api_src_validation_amount",
@@ -1884,18 +1548,6 @@
       "source_location": "L25"
     },
     {
-      "id": "apps_api_src_validation_optionalid",
-      "label": "optionalId()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "optionalid()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L60"
-    },
-    {
       "id": "apps_api_src_validation_text",
       "label": "text()",
       "_callable": true,
@@ -1906,42 +1558,6 @@
       "norm_label": "text()",
       "source_file": "apps/api/src/validation.ts",
       "source_location": "L16"
-    },
-    {
-      "id": "apps_api_src_validation_uuid",
-      "label": "uuid()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "uuid()",
-      "source_file": "apps/api/src/validation.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_api_test_integration_test_call",
-      "label": "call()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "call()",
-      "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L55"
-    },
-    {
-      "id": "apps_api_test_integration_test_user",
-      "label": "user()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "user()",
-      "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L77"
     },
     {
       "id": "scripts_backup_run",
@@ -1956,28 +1572,484 @@
       "source_location": "L11"
     },
     {
-      "id": "apps_mobile_app_tabs_layout_householdtabbar",
-      "label": "HouseholdTabBar()",
+      "id": "apps_api_src_app_createapp",
+      "label": "createApp()",
       "_callable": true,
       "_origin": "ast",
       "community": 30,
-      "community_name": "(tabs)/_layout.tsx",
+      "community_name": "app.ts",
       "file_type": "code",
-      "norm_label": "householdtabbar()",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L18"
+      "norm_label": "createapp()",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L28"
     },
     {
-      "id": "apps_mobile_app_tabs_layout_tabslayout",
-      "label": "TabsLayout()",
+      "id": "apps_api_src_auth_configfromenv",
+      "label": "configFromEnv()",
       "_callable": true,
       "_origin": "ast",
       "community": 30,
-      "community_name": "(tabs)/_layout.tsx",
+      "community_name": "app.ts",
       "file_type": "code",
-      "norm_label": "tabslayout()",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L125"
+      "norm_label": "configfromenv()",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L73"
+    },
+    {
+      "id": "apps_api_src_auth_createauth",
+      "label": "createAuth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "createauth()",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "apps_api_src_gmail_gmailconfigfromenv",
+      "label": "gmailConfigFromEnv()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "gmailconfigfromenv()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "apps_api_src_gmail_secret",
+      "label": "secret()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "secret()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "apps_api_src_public_pages_accountdeletionpage",
+      "label": "accountDeletionPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "accountdeletionpage()",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "apps_api_src_public_pages_homepage",
+      "label": "homepage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "homepage()",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "apps_api_src_public_pages_page",
+      "label": "page()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "page()",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_src_public_pages_privacypage",
+      "label": "privacyPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "privacypage()",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "apps_api_src_public_pages_sendpublicpage",
+      "label": "sendPublicPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "sendpublicpage()",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "apps_api_src_public_pages_termspage",
+      "label": "termsPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "termspage()",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "apps_api_src_access_access",
+      "label": "access()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "access()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "apps_api_src_access_canonical",
+      "label": "canonical()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "canonical()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L80"
+    },
+    {
+      "id": "apps_api_src_access_mutate",
+      "label": "mutate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "mutate()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L92"
+    },
+    {
+      "id": "apps_api_src_access_read",
+      "label": "read()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "read()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L72"
+    },
+    {
+      "id": "apps_api_src_access_transaction",
+      "label": "transaction()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "transaction()",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_api_src_deletion_lockhouseholds",
+      "label": "lockHouseholds()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "lockhouseholds()",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_src_deletion_processdeletions",
+      "label": "processDeletions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "processdeletions()",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "apps_api_src_deletion_requestdeletion",
+      "label": "requestDeletion()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "requestdeletion()",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_api_src_validation_optionalid",
+      "label": "optionalId()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "optionalid()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "apps_api_src_validation_uuid",
+      "label": "uuid()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "uuid()",
+      "source_file": "apps/api/src/validation.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_api_src_reports_accounts",
+      "label": "accounts()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "accounts()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "apps_api_src_reports_csv",
+      "label": "csv()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "csv()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L145"
+    },
+    {
+      "id": "apps_api_src_reports_csvcell",
+      "label": "csvCell()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "csvcell()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L140"
+    },
+    {
+      "id": "apps_api_src_reports_period",
+      "label": "period()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "period()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_api_src_reports_summary",
+      "label": "summary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "summary()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_src_reports_transactions",
+      "label": "transactions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "transactions()",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "apps_api_src_gmail_begingmailauthorization",
+      "label": "beginGmailAuthorization()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "begingmailauthorization()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "apps_api_src_gmail_challenge",
+      "label": "challenge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "challenge()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L83"
+    },
+    {
+      "id": "apps_api_src_gmail_decrypt",
+      "label": "decrypt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "decrypt()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "apps_api_src_gmail_digest",
+      "label": "digest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "digest()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L75"
+    },
+    {
+      "id": "apps_api_src_gmail_encrypt",
+      "label": "encrypt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "encrypt()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "apps_api_src_gmail_finishgmailauthorization",
+      "label": "finishGmailAuthorization()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "finishgmailauthorization()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L158"
+    },
+    {
+      "id": "apps_api_src_gmail_gmail",
+      "label": "gmail()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "gmail()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L146"
+    },
+    {
+      "id": "apps_api_src_gmail_syncgmailconnection",
+      "label": "syncGmailConnection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "syncgmailconnection()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L209"
+    },
+    {
+      "id": "apps_api_src_gmail_tokenrequest",
+      "label": "tokenRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "tokenrequest()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L119"
+    },
+    {
+      "id": "apps_api_src_gmail_verifier",
+      "label": "verifier()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "verifier()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L79"
+    },
+    {
+      "id": "apps_api_test_integration_test_call",
+      "label": "call()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "call()",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "apps_api_test_integration_test_user",
+      "label": "user()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "user()",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L77"
+    },
+    {
+      "id": "apps_api_src_gmail_syncgmailconnections",
+      "label": "syncGmailConnections()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "syncgmailconnections()",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L290"
     },
     {
       "id": "apps_api_src_reports_budgets",
@@ -2240,6 +2312,28 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_mobile_app_tabs_layout",
+      "label": "(tabs)/_layout.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "(tabs)/_layout.tsx",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_mobile_app_tabs_layout_tabitems",
+      "label": "tabItems",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "code",
+      "norm_label": "tabitems",
+      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "source_location": "L7"
+    },
+    {
       "id": "apps_mobile_app_tabs_transactions",
       "label": "transactions.tsx",
       "_origin": "ast",
@@ -2471,6 +2565,17 @@
       "source_location": "L27"
     },
     {
+      "id": "ref_expo_status_bar",
+      "label": "expo-status-bar",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "ui.tsx",
+      "file_type": "concept",
+      "norm_label": "expo-status-bar",
+      "source_file": "apps/mobile/package.json",
+      "source_location": "L30"
+    },
+    {
       "id": "ref_expo_vector_icons",
       "label": "@expo/vector-icons",
       "_origin": "ast",
@@ -2526,72 +2631,6 @@
       "source_location": "L18"
     },
     {
-      "id": "apps_api_src_access",
-      "label": "access.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "access.ts",
-      "source_file": "apps/api/src/access.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_app",
-      "label": "app.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "app.ts",
-      "source_file": "apps/api/src/app.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_auth",
-      "label": "auth.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "auth.ts",
-      "source_file": "apps/api/src/auth.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_db",
-      "label": "db.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "db.ts",
-      "source_file": "apps/api/src/db.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_db_pool",
-      "label": "{ Pool }",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "{ pool }",
-      "source_file": "apps/api/src/db.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "apps_api_src_deletion",
-      "label": "deletion.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "deletion.ts",
-      "source_file": "apps/api/src/deletion.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_api_src_errors",
       "label": "errors.ts",
       "_origin": "ast",
@@ -2614,17 +2653,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_api_src_gmail",
-      "label": "gmail.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmail.ts",
-      "source_file": "apps/api/src/gmail.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_api_src_households",
       "label": "households.ts",
       "_origin": "ast",
@@ -2634,105 +2662,6 @@
       "norm_label": "households.ts",
       "source_file": "apps/api/src/households.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_maintenance",
-      "label": "maintenance.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "maintenance.ts",
-      "source_file": "apps/api/src/maintenance.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_maintenance_pool",
-      "label": "pool",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "pool",
-      "source_file": "apps/api/src/maintenance.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "apps_api_src_reports",
-      "label": "reports.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "reports.ts",
-      "source_file": "apps/api/src/reports.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_server",
-      "label": "server.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "server.ts",
-      "source_file": "apps/api/src/server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_src_server_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "apps/api/src/server.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "apps_api_src_server_gmailtimer",
-      "label": "gmailTimer",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "gmailtimer",
-      "source_file": "apps/api/src/server.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "apps_api_src_server_pool",
-      "label": "pool",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "pool",
-      "source_file": "apps/api/src/server.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "apps_api_src_server_timer",
-      "label": "timer",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "timer",
-      "source_file": "apps/api/src/server.ts",
-      "source_location": "L35"
-    },
-    {
-      "id": "apps_api_src_server_transport",
-      "label": "transport",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "transport",
-      "source_file": "apps/api/src/server.ts",
-      "source_location": "L13"
     },
     {
       "id": "apps_api_src_validation",
@@ -2755,84 +2684,6 @@
       "norm_label": "uuidpattern",
       "source_file": "apps/api/src/validation.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "apps_api_test_finance_test",
-      "label": "finance.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "finance.test.ts",
-      "source_file": "apps/api/test/finance.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_api_test_integration_test",
-      "label": "integration.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "integration.test.ts",
-      "source_file": "apps/api/test/integration.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_mobile_src_transaction_import",
-      "label": "transaction-import.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "transaction-import.ts",
-      "source_file": "apps/mobile/src/transaction-import.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_mobile_src_transaction_import_test",
-      "label": "transaction-import.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "transaction-import.test.ts",
-      "source_file": "apps/mobile/src/transaction-import.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_generate_auth",
-      "label": "generate-auth.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "generate-auth.ts",
-      "source_file": "scripts/generate-auth.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_generate_auth_pool",
-      "label": "pool",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "code",
-      "norm_label": "pool",
-      "source_file": "scripts/generate-auth.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "docs_database_3_konvensi",
-      "label": "3. Konvensi",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "fail",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. konvensi",
-      "source_file": "docs/DATABASE.md",
-      "source_location": "L40"
     },
     {
       "id": "docs_prd_10_skenario_verifikasi_wajib",
@@ -3494,18 +3345,6 @@
       "source_location": "L1"
     },
     {
-      "id": "agents",
-      "label": "AGENTS.md",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "agents.md",
-      "source_file": "AGENTS.md",
-      "source_location": "L1"
-    },
-    {
       "id": "docs_architecture",
       "label": "ARCHITECTURE.md",
       "_origin": "ast",
@@ -3945,17 +3784,6 @@
       "source_location": "L15"
     },
     {
-      "id": "ref_fastify",
-      "label": "fastify",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "fastify",
-      "source_file": "apps/api/package.json",
-      "source_location": "L16"
-    },
-    {
       "id": "ref_fastify_cors",
       "label": "@fastify/cors",
       "_origin": "ast",
@@ -3987,28 +3815,6 @@
       "norm_label": "@fastify/swagger",
       "source_file": "apps/api/package.json",
       "source_location": "L19"
-    },
-    {
-      "id": "ref_nodemailer",
-      "label": "nodemailer",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "nodemailer",
-      "source_file": "apps/api/package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "ref_pg",
-      "label": "pg",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "api/package.json",
-      "file_type": "concept",
-      "norm_label": "pg",
-      "source_file": "apps/api/package.json",
-      "source_location": "L20"
     },
     {
       "id": "ref_types_nodemailer",
@@ -4314,7 +4120,7 @@
       "node_kind": "heading",
       "norm_label": "catatan proxy",
       "source_file": "docs/DEPLOYMENT-VPS.md",
-      "source_location": "L105"
+      "source_location": "L116"
     },
     {
       "id": "docs_deployment_vps_deploy_otomatis_dari_github",
@@ -4326,7 +4132,7 @@
       "node_kind": "heading",
       "norm_label": "deploy otomatis dari github",
       "source_file": "docs/DEPLOYMENT-VPS.md",
-      "source_location": "L74"
+      "source_location": "L85"
     },
     {
       "id": "docs_deployment_vps_deploy_pertama",
@@ -4363,6 +4169,18 @@
       "norm_label": "email produksi dengan resend",
       "source_file": "docs/DEPLOYMENT-VPS.md",
       "source_location": "L27"
+    },
+    {
+      "id": "docs_deployment_vps_halaman_publik_dan_verifikasi_gmail",
+      "label": "Halaman publik dan verifikasi Gmail",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Deployment pilot di VPS dengan Traefik",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "halaman publik dan verifikasi gmail",
+      "source_file": "docs/DEPLOYMENT-VPS.md",
+      "source_location": "L74"
     },
     {
       "id": "docs_deployment_vps_konfigurasi_environment",
@@ -5275,6 +5093,18 @@
       "source_location": "L2"
     },
     {
+      "id": "agents",
+      "label": "AGENTS.md",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "Instruksi Agen \u2014 Aplikasi Keuangan Rumah Tangga",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "agents.md",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
       "id": "agents_aturan_keuangan_dan_household",
       "label": "Aturan keuangan dan household",
       "_origin": "ast",
@@ -5887,17 +5717,6 @@
       "source_location": "L29"
     },
     {
-      "id": "ref_expo_status_bar",
-      "label": "expo-status-bar",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "mobile/package.json",
-      "file_type": "concept",
-      "norm_label": "expo-status-bar",
-      "source_file": "apps/mobile/package.json",
-      "source_location": "L30"
-    },
-    {
       "id": "ref_expo_web_browser",
       "label": "expo-web-browser",
       "_origin": "ast",
@@ -5975,26 +5794,104 @@
       "source_location": "L40"
     },
     {
-      "id": "apps_mobile_app_tabs_layout",
-      "label": "(tabs)/_layout.tsx",
+      "id": "apps_api_src_app",
+      "label": "app.ts",
       "_origin": "ast",
       "community": 30,
-      "community_name": "(tabs)/_layout.tsx",
+      "community_name": "app.ts",
       "file_type": "code",
-      "norm_label": "(tabs)/_layout.tsx",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
+      "norm_label": "app.ts",
+      "source_file": "apps/api/src/app.ts",
       "source_location": "L1"
     },
     {
-      "id": "apps_mobile_app_tabs_layout_tabitems",
-      "label": "tabItems",
+      "id": "apps_api_src_auth",
+      "label": "auth.ts",
       "_origin": "ast",
       "community": 30,
-      "community_name": "(tabs)/_layout.tsx",
+      "community_name": "app.ts",
       "file_type": "code",
-      "norm_label": "tabitems",
-      "source_file": "apps/mobile/app/(tabs)/_layout.tsx",
-      "source_location": "L7"
+      "norm_label": "auth.ts",
+      "source_file": "apps/api/src/auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_public_pages",
+      "label": "public-pages.ts",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "public-pages.ts",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_generate_auth",
+      "label": "generate-auth.ts",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "generate-auth.ts",
+      "source_file": "scripts/generate-auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_generate_auth_pool",
+      "label": "pool",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "code",
+      "norm_label": "pool",
+      "source_file": "scripts/generate-auth.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "ref_fastify",
+      "label": "fastify",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "app.ts",
+      "file_type": "concept",
+      "norm_label": "fastify",
+      "source_file": "apps/api/package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "apps_api_src_access",
+      "label": "access.ts",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "access.ts",
+      "source_file": "apps/api/src/access.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_deletion",
+      "label": "deletion.ts",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "code",
+      "norm_label": "deletion.ts",
+      "source_file": "apps/api/src/deletion.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_database_3_konvensi",
+      "label": "3. Konvensi",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "access.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. konvensi",
+      "source_file": "docs/DATABASE.md",
+      "source_location": "L40"
     },
     {
       "id": "docs_implementation_fitur_yang_tersedia",
@@ -6793,6 +6690,72 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_api_src_reports",
+      "label": "reports.ts",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "reports.ts",
+      "source_file": "apps/api/src/reports.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_test_finance_test",
+      "label": "finance.test.ts",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "finance.test.ts",
+      "source_file": "apps/api/test/finance.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_mobile_src_transaction_import",
+      "label": "transaction-import.ts",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "transaction-import.ts",
+      "source_file": "apps/mobile/src/transaction-import.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_mobile_src_transaction_import_test",
+      "label": "transaction-import.test.ts",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "reports.ts",
+      "file_type": "code",
+      "norm_label": "transaction-import.test.ts",
+      "source_file": "apps/mobile/src/transaction-import.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_gmail",
+      "label": "gmail.ts",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "gmail.ts",
+      "source_file": "apps/api/src/gmail.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_test_integration_test",
+      "label": "integration.test.ts",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "gmail.ts",
+      "file_type": "code",
+      "norm_label": "integration.test.ts",
+      "source_file": "apps/api/test/integration.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "docs_gmail_transaction_import",
       "label": "GMAIL-TRANSACTION-IMPORT.md",
       "_origin": "ast",
@@ -6875,6 +6838,138 @@
       "norm_label": "usulan impor notifikasi transaksi gmail",
       "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
       "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_db",
+      "label": "db.ts",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "db.ts",
+      "source_file": "apps/api/src/db.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_db_pool",
+      "label": "{ Pool }",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "{ pool }",
+      "source_file": "apps/api/src/db.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_api_src_maintenance",
+      "label": "maintenance.ts",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "maintenance.ts",
+      "source_file": "apps/api/src/maintenance.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_maintenance_pool",
+      "label": "pool",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "pool",
+      "source_file": "apps/api/src/maintenance.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_api_src_server",
+      "label": "server.ts",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "server.ts",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_api_src_server_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_api_src_server_gmailtimer",
+      "label": "gmailTimer",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "gmailtimer",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "apps_api_src_server_pool",
+      "label": "pool",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "pool",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "apps_api_src_server_timer",
+      "label": "timer",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "timer",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "apps_api_src_server_transport",
+      "label": "transport",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "transport",
+      "source_file": "apps/api/src/server.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "ref_nodemailer",
+      "label": "nodemailer",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "concept",
+      "norm_label": "nodemailer",
+      "source_file": "apps/api/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "ref_pg",
+      "label": "pg",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "server.ts",
+      "file_type": "concept",
+      "norm_label": "pg",
+      "source_file": "apps/api/package.json",
+      "source_location": "L20"
     },
     {
       "id": "docs_database_10_index_awal_dan_migrasi",
@@ -8047,138 +8142,6 @@
       "type": "external"
     },
     {
-      "id": "apps_api_src_db_database",
-      "label": "apps_api_src_db_database",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "apps_api_src_db_database",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "apps_api_src_db_poolclient",
-      "label": "apps_api_src_db_poolclient",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "apps_api_src_db_poolclient",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "apps_mobile_src_transaction_import_notificationdraft",
-      "label": "apps_mobile_src_transaction_import_notificationdraft",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "apps_mobile_src_transaction_import_notificationdraft",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "packages_contracts_dist_index_notificationdraft",
-      "label": "packages_contracts_dist_index_notificationdraft",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "packages_contracts_dist_index_notificationdraft",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "packages_contracts_dist_index_validdate",
-      "label": "packages_contracts_dist_index_validdate",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "packages_contracts_dist_index_validdate",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "packages_contracts_dist_index_validmoney",
-      "label": "packages_contracts_dist_index_validmoney",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "packages_contracts_dist_index_validmoney",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_better_auth",
-      "label": "ref_better_auth",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_better_auth",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_better_auth_expo",
-      "label": "ref_better_auth_expo",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_better_auth_expo",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_assert",
-      "label": "ref_node_assert",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_assert",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_crypto",
-      "label": "ref_node_crypto",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_crypto",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_test",
-      "label": "ref_node_test",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "fail",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_test",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_node_child_process",
       "label": "ref_node_child_process",
       "_origin": "semantic",
@@ -8235,6 +8198,138 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_url",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_better_auth",
+      "label": "ref_better_auth",
+      "_origin": "semantic",
+      "community": 30,
+      "community_name": "app.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_better_auth",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_better_auth_expo",
+      "label": "ref_better_auth_expo",
+      "_origin": "semantic",
+      "community": 30,
+      "community_name": "app.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_better_auth_expo",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "apps_api_src_db_database",
+      "label": "apps_api_src_db_database",
+      "_origin": "semantic",
+      "community": 31,
+      "community_name": "access.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "apps_api_src_db_database",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "apps_api_src_db_poolclient",
+      "label": "apps_api_src_db_poolclient",
+      "_origin": "semantic",
+      "community": 31,
+      "community_name": "access.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "apps_api_src_db_poolclient",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_crypto",
+      "label": "ref_node_crypto",
+      "_origin": "semantic",
+      "community": 31,
+      "community_name": "access.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_crypto",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "apps_mobile_src_transaction_import_notificationdraft",
+      "label": "apps_mobile_src_transaction_import_notificationdraft",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "reports.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "apps_mobile_src_transaction_import_notificationdraft",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "packages_contracts_dist_index_notificationdraft",
+      "label": "packages_contracts_dist_index_notificationdraft",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "reports.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "packages_contracts_dist_index_notificationdraft",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "packages_contracts_dist_index_validdate",
+      "label": "packages_contracts_dist_index_validdate",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "reports.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "packages_contracts_dist_index_validdate",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "packages_contracts_dist_index_validmoney",
+      "label": "packages_contracts_dist_index_validmoney",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "reports.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "packages_contracts_dist_index_validmoney",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_assert",
+      "label": "ref_node_assert",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "reports.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_assert",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_test",
+      "label": "ref_node_test",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "reports.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_test",
       "source_file": "",
       "type": "external"
     }
@@ -8405,7 +8500,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L119",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -8417,7 +8512,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L166",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -8429,7 +8524,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L166",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -8441,7 +8536,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L186",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -8453,7 +8548,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L242",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -8465,19 +8560,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L251",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_api_src_app_createapp",
-      "target": "apps_api_src_auth_createauth",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/api/src/app.ts",
-      "source_location": "L33",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -8489,7 +8572,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L377",
+      "source_location": "L385",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_auth_createauth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -8501,7 +8596,67 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L575",
+      "source_location": "L583",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_public_pages_homepage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_public_pages_sendpublicpage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_public_pages_privacypage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_public_pages_termspage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app_createapp",
+      "target": "apps_api_src_public_pages_accountdeletionpage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -8513,7 +8668,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L119",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -9138,6 +9293,54 @@
       "context": "call",
       "source_file": "apps/api/src/households.ts",
       "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages_accountdeletionpage",
+      "target": "apps_api_src_public_pages_page",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages_homepage",
+      "target": "apps_api_src_public_pages_page",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages_privacypage",
+      "target": "apps_api_src_public_pages_page",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages_termspage",
+      "target": "apps_api_src_public_pages_page",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -12341,7 +12544,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L115",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -12798,6 +13001,66 @@
       "context": "import",
       "source_file": "apps/api/src/app.ts",
       "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_public_pages_accountdeletionpage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_public_pages_homepage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_public_pages_privacypage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_public_pages_sendpublicpage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
+      "target": "apps_api_src_public_pages_termspage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -16931,6 +17194,18 @@
     },
     {
       "source": "apps_api_src_app",
+      "target": "apps_api_src_public_pages",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/app.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_app",
       "target": "ref_fastify_rate_limit",
       "relation": "imports_from",
       "_origin": "ast",
@@ -17317,6 +17592,19 @@
       "context": "import",
       "source_file": "apps/api/src/migrate.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "ref_fastify",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L1",
+      "type_only": true,
       "weight": 1.0
     },
     {
@@ -20746,7 +21034,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/api/src/app.ts",
-      "source_location": "L21",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -21165,6 +21453,72 @@
       "confidence_score": 1.0,
       "source_file": "apps/api/src/migrate.ts",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "apps_api_src_public_pages_sendpublicpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "apps_api_src_public_pages_homepage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "apps_api_src_public_pages_privacypage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "apps_api_src_public_pages_termspage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "apps_api_src_public_pages_accountdeletionpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_api_src_public_pages",
+      "target": "apps_api_src_public_pages_page",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/api/src/public-pages.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -23584,7 +23938,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/DEPLOYMENT-VPS.md",
-      "source_location": "L105",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -23644,13 +23998,24 @@
     },
     {
       "source": "docs_deployment_vps_deployment_pilot_di_vps_dengan_traefik",
-      "target": "docs_deployment_vps_deploy_otomatis_dari_github",
+      "target": "docs_deployment_vps_halaman_publik_dan_verifikasi_gmail",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/DEPLOYMENT-VPS.md",
       "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_deployment_vps_deployment_pilot_di_vps_dengan_traefik",
+      "target": "docs_deployment_vps_deploy_otomatis_dari_github",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/DEPLOYMENT-VPS.md",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -27130,5 +27495,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "45cf3d8c1671f9024a9244caf86d8ca51a681920"
+  "built_at_commit": "fdb6a77072605cc1734633314a7a722e2cbabc6e"
 }

@@ -29,7 +29,8 @@
   "27": "Paket Desain — Ruang Bersama",
   "28": "Panduan Desain — Cash Flow",
   "29": "Operasi Cash Flow",
-  "30": "(tabs)/_layout.tsx",
+  "30": "app.ts",
+  "31": "access.ts",
   "32": "Status implementasi Cash Flow",
   "33": "Cash Flow",
   "34": "Riset Sumber Publik untuk Impor Notifikasi Transaksi",
@@ -39,5 +40,8 @@
   "38": "PRODUCT.md",
   "39": "Riset Export Statement Provider untuk Impor Transaksi",
   "40": "css.d.ts",
-  "43": "Usulan Impor Notifikasi Transaksi Gmail"
+  "41": "reports.ts",
+  "42": "gmail.ts",
+  "43": "Usulan Impor Notifikasi Transaksi Gmail",
+  "44": "server.ts"
 }
