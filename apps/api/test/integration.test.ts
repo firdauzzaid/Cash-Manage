@@ -472,7 +472,6 @@ test(
           a.cookie,
           "POST",
           `/me/gmail/candidates/${second}/reject`,
-          {},
         );
         assert.equal(rejected.statusCode, 200, rejected.body);
         assert.equal(
@@ -484,10 +483,95 @@ test(
           ).rows[0].status,
           "rejected",
         );
+        const disconnected = await call(a.cookie, "DELETE", "/me/gmail");
+        assert.equal(disconnected.statusCode, 200, disconnected.body);
+        assert.deepEqual(disconnected.json(), { disconnected: true });
+        assert.equal(
+          (
+            await admin.query(
+              "SELECT count(*)::int AS count FROM gmail_connections WHERE id=$1",
+              [connection],
+            )
+          ).rows[0].count,
+          0,
+        );
+        assert.equal(
+          (
+            await admin.query(
+              "SELECT count(*)::int AS count FROM gmail_candidates WHERE connection_id=$1",
+              [connection],
+            )
+          ).rows[0].count,
+          0,
+        );
         await admin.query(
           "UPDATE transactions SET deleted_at=now() WHERE id=$1",
           [candidates.rows[0].transaction_id],
         );
+      },
+    );
+    await t.test(
+      "disconnect prevents an in-flight Gmail OAuth callback from reconnecting",
+      async () => {
+        const started = await call(a.cookie, "POST", "/me/gmail/authorization");
+        assert.equal(started.statusCode, 200, started.body);
+        const state = new URL(
+          started.json().authorization_url,
+        ).searchParams.get("state");
+        assert.ok(state);
+        const originalFetch = globalThis.fetch;
+        let tokenRequested!: () => void,
+          releaseToken!: (response: Response) => void;
+        const requested = new Promise<void>((resolve) => {
+            tokenRequested = resolve;
+          }),
+          token = new Promise<Response>((resolve) => {
+            releaseToken = resolve;
+          });
+        globalThis.fetch = (async (url: string | URL) => {
+          if (String(url).includes("oauth2.googleapis.com/token")) {
+            tokenRequested();
+            return token;
+          }
+          return new Response(
+            JSON.stringify({ emailAddress: "gmail@example.test" }),
+          );
+        }) as typeof fetch;
+        try {
+          const callback = call(
+            "",
+            "GET",
+            `/v1/gmail/oauth/callback?state=${encodeURIComponent(state!)}&code=test`,
+          );
+          await requested;
+          const disconnected = await call(a.cookie, "DELETE", "/me/gmail");
+          assert.equal(disconnected.statusCode, 200, disconnected.body);
+          releaseToken(
+            new Response(
+              JSON.stringify({
+                access_token: "access",
+                refresh_token: "refresh",
+              }),
+            ),
+          );
+          const completed = await callback;
+          assert.equal(completed.statusCode, 302, completed.body);
+          assert.equal(
+            completed.headers.location,
+            "cashflow://profile?gmail=failed",
+          );
+          assert.equal(
+            (
+              await admin.query(
+                "SELECT count(*)::int AS count FROM gmail_connections WHERE profile_id=$1",
+                [a.profile],
+              )
+            ).rows[0].count,
+            0,
+          );
+        } finally {
+          globalThis.fetch = originalFetch;
+        }
       },
     );
     await t.test("an OAuth state is claimed only once", async () => {
@@ -527,6 +611,70 @@ test(
         globalThis.fetch = originalFetch;
       }
     });
+    await t.test(
+      "disconnect stops Gmail sync before it reads more messages",
+      async () => {
+        const originalFetch = globalThis.fetch;
+        try {
+          const started = await beginGmailAuthorization(pool, gmail, a.profile);
+          const state = new URL(started.authorization_url).searchParams.get(
+            "state",
+          );
+          assert.ok(state);
+          globalThis.fetch = (async (url: string | URL) =>
+            String(url).includes("oauth2.googleapis.com/token")
+              ? new Response(
+                  JSON.stringify({
+                    access_token: "access",
+                    refresh_token: "refresh",
+                  }),
+                )
+              : new Response(
+                  JSON.stringify({ emailAddress: "gmail@example.test" }),
+                )) as typeof fetch;
+          await finishGmailAuthorization(pool, gmail, state!, "code");
+
+          let labelsRequested!: () => void,
+            releaseLabels!: (response: Response) => void,
+            listRequests = 0;
+          const requested = new Promise<void>((resolve) => {
+              labelsRequested = resolve;
+            }),
+            labels = new Promise<Response>((resolve) => {
+              releaseLabels = resolve;
+            });
+          globalThis.fetch = (async (url: string | URL) => {
+            const value = String(url);
+            if (value.includes("oauth2.googleapis.com/token"))
+              return new Response(JSON.stringify({ access_token: "access" }));
+            if (value.endsWith("/labels")) {
+              labelsRequested();
+              return labels;
+            }
+            if (value.includes("/messages?")) {
+              listRequests++;
+              return new Response(JSON.stringify({ messages: [] }));
+            }
+            throw new Error(`Unexpected Gmail request: ${value}`);
+          }) as typeof fetch;
+          const syncing = call(a.cookie, "POST", "/me/gmail/sync");
+          await requested;
+          const disconnected = await call(a.cookie, "DELETE", "/me/gmail");
+          assert.equal(disconnected.statusCode, 200, disconnected.body);
+          releaseLabels(
+            new Response(
+              JSON.stringify({ labels: [{ id: "label", name: "Cash Flow" }] }),
+            ),
+          );
+          const synced = await syncing;
+          assert.equal(synced.statusCode, 200, synced.body);
+          assert.deepEqual(synced.json(), { created: 0 });
+          assert.equal(listRequests, 0);
+        } finally {
+          globalThis.fetch = originalFetch;
+        }
+      },
+    );
     await t.test(
       "concurrent edits detect conflict; deletion changes all derived figures atomically",
       async () => {

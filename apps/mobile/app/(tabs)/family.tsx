@@ -91,6 +91,7 @@ function Family() {
     [confirmName, setConfirmName] = useState(""),
     [link, setLink] = useState(""),
     [sharing, setSharing] = useState(false),
+    [section, setSection] = useState<"members" | "settings" | null>(null),
     [shareMessage, setShareMessage] = useState<{
       text: string;
       error: boolean;
@@ -125,7 +126,7 @@ function Family() {
     }
   }
   return (
-    <Screen title={h.name}>
+    <Screen title="Keluarga">
       <Card style={{ backgroundColor: c.hero }}>
         <Text
           accessibilityRole="header"
@@ -150,60 +151,94 @@ function Family() {
           keuangan keluarga ini.
         </Text>
       </Card>
-      <View style={styles.row}>
-        <Button
-          label="Ganti / tambah keluarga"
-          secondary
-          onPress={() => select(null)}
-        />
+      <View style={{ gap: 12 }}>
+        <Button label="Ganti keluarga" secondary onPress={() => select(null)} />
         <Button
           label="Akun saya"
           secondary
           onPress={() => router.push("/profile")}
         />
       </View>
-      <View style={{ gap: 3 }}>
-        <Copy muted size={12}>
-          ORANG DI DALAM RUANG INI
-        </Copy>
-        <Title>Anggota keluarga</Title>
+      <View style={{ gap: 12 }}>
+        <Title>Kelola keluarga</Title>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: c.border,
+            borderRadius: 16,
+            overflow: "hidden",
+            backgroundColor: c.surface,
+          }}
+        >
+          <ManagementLink
+            label="Anggota & undangan"
+            description="Lihat anggota dan kelola undangan keluarga."
+            icon="people-outline"
+            onPress={() => setSection("members")}
+          />
+          <ManagementLink
+            label={
+              h.role === "owner"
+                ? "Pengaturan keluarga"
+                : "Keanggotaan keluarga"
+            }
+            description={
+              h.role === "owner"
+                ? "Ubah nama atau nonaktifkan keluarga."
+                : "Keluar dari keluarga ini bila diperlukan."
+            }
+            icon="settings-outline"
+            onPress={() => setSection("settings")}
+            last
+          />
+        </View>
       </View>
-      <LoadState
-        loading={members.isPending}
-        error={members.error}
-        retry={members.refetch}
-        stale={!!members.data}
-      />
-      {members.data?.map((m) => (
-        <Card key={m.id}>
-          <Copy bold>
-            {m.display_name}
-            {m.profile_id === me!.id ? " · Anda" : ""}
-          </Copy>
-          <Copy muted>
-            {m.role === "owner" ? "Pemilik keluarga" : "Anggota"}
-          </Copy>
-          {h.role === "owner" && m.role !== "owner" && (
-            <>
-              <Action
-                label="Alihkan kepemilikan"
-                path={`/households/${h.id}/transfer-owner`}
-                payload={{ member_id: m.id, expected_version: m.version }}
-                question={`Jadikan ${m.display_name} pemilik? Anda akan menjadi anggota dan tidak lagi mengelola anggota atau undangan.`}
-                destructive
-              />
-              <Action
-                label="Cabut akses anggota"
-                path={`/households/${h.id}/revoke-member`}
-                payload={{ member_id: m.id, expected_version: m.version }}
-                question={`Cabut akses ${m.display_name}? Histori tetap disimpan. Data yang telah diekspor tidak dapat ditarik kembali.`}
-                destructive
-              />
-            </>
-          )}
-        </Card>
-      ))}
-      {h.role === "owner" && (
+      {section === "members" && (
+        <>
+          <View style={{ gap: 3 }}>
+            <Copy muted size={12}>
+              ORANG DI DALAM RUANG INI
+            </Copy>
+            <Title>Anggota keluarga</Title>
+          </View>
+          <LoadState
+            loading={members.isPending}
+            error={members.error}
+            retry={members.refetch}
+            stale={!!members.data}
+          />
+          {members.data?.map((m) => (
+            <Card key={m.id}>
+              <Copy bold>
+                {m.display_name}
+                {m.profile_id === me!.id ? " · Anda" : ""}
+              </Copy>
+              <Copy muted>
+                {m.role === "owner" ? "Pemilik keluarga" : "Anggota"}
+              </Copy>
+              {h.role === "owner" && m.role !== "owner" && (
+                <>
+                  <Action
+                    label="Alihkan kepemilikan"
+                    path={`/households/${h.id}/transfer-owner`}
+                    payload={{ member_id: m.id, expected_version: m.version }}
+                    question={`Jadikan ${m.display_name} pemilik? Anda akan menjadi anggota dan tidak lagi mengelola anggota atau undangan.`}
+                    destructive
+                  />
+                  <Action
+                    label="Cabut akses anggota"
+                    path={`/households/${h.id}/revoke-member`}
+                    payload={{ member_id: m.id, expected_version: m.version }}
+                    question={`Cabut akses ${m.display_name}? Histori tetap disimpan. Data yang telah diekspor tidak dapat ditarik kembali.`}
+                    destructive
+                  />
+                </>
+              )}
+            </Card>
+          ))}
+        </>
+      )}
+      {h.role === "owner" && section === "members" && (
         <>
           <View style={styles.section}>
             <Title>Undang anggota</Title>
@@ -306,29 +341,31 @@ function Family() {
                 </Card>
               ))}
           </View>
-          <View style={styles.section}>
-            <Title>Pengaturan keluarga</Title>
-            <Field
-              label="Nama keluarga"
-              value={name}
-              onChangeText={setName}
-              maxLength={80}
-            />
-            <Action
-              label="Simpan nama keluarga"
-              path={`/households/${h.id}/rename`}
-              payload={{ name, expected_version: h.version }}
-            />
-            <Copy muted>
-              Zona waktu {h.timezone} · Mata uang {h.currency}
-            </Copy>
-          </View>
         </>
       )}
+      {h.role === "owner" && section === "settings" && (
+        <View style={styles.section}>
+          <Title>Pengaturan keluarga</Title>
+          <Field
+            label="Nama keluarga"
+            value={name}
+            onChangeText={setName}
+            maxLength={80}
+          />
+          <Action
+            label="Simpan nama keluarga"
+            path={`/households/${h.id}/rename`}
+            payload={{ name, expected_version: h.version }}
+          />
+          <Copy muted>
+            Zona waktu {h.timezone} · Mata uang {h.currency}
+          </Copy>
+        </View>
+      )}
       <View style={styles.section}>
-        <Title>Kelola keuangan</Title>
+        <Title>Rekening & kategori</Title>
         <Copy muted>
-          Atur data yang dipakai bersama sebelum dan saat mencatat transaksi.
+          Atur data yang dipakai bersama saat mencatat transaksi.
         </Copy>
         <View
           style={{
@@ -361,12 +398,22 @@ function Family() {
               })
             }
           />
-          <ManagementLink
-            label="Laporan & ekspor CSV"
-            description="Tinjau ringkasan dan bagikan data terfilter."
-            icon="bar-chart-outline"
-            onPress={() => router.push("/report")}
-          />
+        </View>
+      </View>
+      <View style={styles.section}>
+        <Title>Riwayat</Title>
+        <Copy muted>
+          Telusuri perubahan penting yang terjadi dalam keluarga.
+        </Copy>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: c.border,
+            borderRadius: 16,
+            overflow: "hidden",
+            backgroundColor: c.surface,
+          }}
+        >
           <ManagementLink
             label="Riwayat perubahan"
             description="Lihat perubahan yang telah tercatat."
@@ -376,48 +423,50 @@ function Family() {
           />
         </View>
       </View>
-      <View style={styles.section}>
-        {h.role === "member" ? (
-          <Action
-            label="Keluar dari keluarga"
-            path={`/households/${h.id}/leave`}
-            payload={{}}
-            question="Akses Anda berakhir. Catatan yang sudah dibagikan tetap tersimpan."
-            destructive
-            done={() => select(null)}
-          />
-        ) : (
-          <>
-            <Title>Hapus ruang keluarga</Title>
-            <Copy muted>
-              Seluruh anggota kehilangan akses. Catatan akan dinonaktifkan dan
-              tidak dapat dipulihkan melalui aplikasi. Ini berbeda dari
-              menghapus akun Anda.
-            </Copy>
-            <Field
-              label={`Ketik nama keluarga: ${h.name}`}
-              value={confirmName}
-              onChangeText={setConfirmName}
+      {section === "settings" && (
+        <View style={styles.section}>
+          {h.role === "member" ? (
+            <Action
+              label="Keluar dari keluarga"
+              path={`/households/${h.id}/leave`}
+              payload={{}}
+              question="Akses Anda berakhir. Catatan yang sudah dibagikan tetap tersimpan."
+              destructive
+              done={() => select(null)}
             />
-            {confirmName === h.name && (
-              <Action
-                label="Hapus keluarga ini"
-                path={`/households/${h.id}/delete`}
-                payload={{
-                  confirm_name: confirmName,
-                  expected_version: h.version,
-                }}
-                question="Nonaktifkan keluarga ini untuk seluruh anggota?"
-                destructive
-                done={async () => {
-                  select(null);
-                  await refresh();
-                }}
+          ) : (
+            <>
+              <Title>Hapus ruang keluarga</Title>
+              <Copy muted>
+                Seluruh anggota kehilangan akses. Catatan akan dinonaktifkan dan
+                tidak dapat dipulihkan melalui aplikasi. Ini berbeda dari
+                menghapus akun Anda.
+              </Copy>
+              <Field
+                label={`Ketik nama keluarga: ${h.name}`}
+                value={confirmName}
+                onChangeText={setConfirmName}
               />
-            )}
-          </>
-        )}
-      </View>
+              {confirmName === h.name && (
+                <Action
+                  label="Hapus keluarga ini"
+                  path={`/households/${h.id}/delete`}
+                  payload={{
+                    confirm_name: confirmName,
+                    expected_version: h.version,
+                  }}
+                  question="Nonaktifkan keluarga ini untuk seluruh anggota?"
+                  destructive
+                  done={async () => {
+                    select(null);
+                    await refresh();
+                  }}
+                />
+              )}
+            </>
+          )}
+        </View>
+      )}
     </Screen>
   );
 }

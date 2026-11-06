@@ -214,7 +214,7 @@ function TransactionForm() {
           <Button
             secondary
             icon="document-text-outline"
-            label="Isi dari notifikasi"
+            label="Impor dari notifikasi (opsional)"
             disabled={s.locked}
             onPress={() => {
               setImportOpen((open) => !open);

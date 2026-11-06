@@ -172,6 +172,8 @@ function Home() {
     summary.data?.categories ?? [],
     5,
   );
+  const hasAccounts = !!summary.data?.accounts.length;
+  const hasTransactions = !!transactions.data?.items.length;
   return (
     <SafeAreaView
       edges={["top", "left", "right"]}
@@ -241,36 +243,6 @@ function Home() {
                 <Ionicons name="chevron-down" size={14} color={c.onHero} />
               </View>
             </Pressable>
-            <View style={{ flexDirection: "row", gap: 4 }}>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Anggota household"
-                onPress={() => router.push("/(tabs)/family")}
-                style={({ pressed }) => ({
-                  width: 42,
-                  height: 42,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  opacity: pressed ? 0.65 : 1,
-                })}
-              >
-                <Ionicons name="people-outline" size={22} color={c.onHero} />
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Profil saya"
-                onPress={() => router.push("/profile")}
-                style={({ pressed }) => ({
-                  width: 42,
-                  height: 42,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  opacity: pressed ? 0.65 : 1,
-                })}
-              >
-                <Ionicons name="settings-outline" size={21} color={c.onHero} />
-              </Pressable>
-            </View>
           </View>
           <Period
             month={month}
@@ -324,8 +296,29 @@ function Home() {
                 {money(summary.data.balance_minor)}
               </Text>
               <Text style={{ color: c.onHero, opacity: 0.66, fontSize: 13 }}>
-                Total seluruh rekening household
+                Total seluruh rekening keluarga
               </Text>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Buka laporan dan ekspor"
+                onPress={() => router.push("/report")}
+                style={({ pressed }) => ({
+                  alignSelf: "flex-start",
+                  minHeight: 44,
+                  paddingVertical: 10,
+                  paddingHorizontal: 12,
+                  marginTop: 6,
+                  borderRadius: 12,
+                  backgroundColor: c.soft,
+                  opacity: pressed ? 0.8 : 1,
+                })}
+              >
+                <Text
+                  style={{ color: c.primary, fontSize: 14, fontWeight: "700" }}
+                >
+                  Laporan & ekspor
+                </Text>
+              </Pressable>
             </View>
           ) : null}
         </View>
@@ -354,7 +347,35 @@ function Home() {
               terakhir.
             </Notice>
           )}
-          {summary.data && (
+          {summary.data && !hasAccounts && (
+            <Card
+              style={{
+                gap: 12,
+                borderWidth: 1,
+                borderColor: c.border,
+                shadowOpacity: 0,
+              }}
+            >
+              <Copy bold size={20}>
+                Mulai mencatat keuangan
+              </Copy>
+              <Copy muted>
+                Tambahkan rekening pertama. Kategori bawaan sudah siap saat Anda
+                mencatat pemasukan atau pengeluaran.
+              </Copy>
+              <Button
+                label="Tambah rekening pertama"
+                icon="add-outline"
+                onPress={() =>
+                  router.push({
+                    pathname: "/manage",
+                    params: { type: "accounts", create: "1" },
+                  })
+                }
+              />
+            </Card>
+          )}
+          {summary.data && hasAccounts && (
             <View style={{ flexDirection: "row", gap: 16 }}>
               <CashFlowColumn
                 label="PEMASUKAN"
@@ -373,102 +394,172 @@ function Home() {
               />
             </View>
           )}
-          <View style={{ gap: 12 }}>
-            <SectionTitle
-              title="Anggaran bulan ini"
-              action={
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Lihat semua anggaran"
-                  onPress={() => router.push("/(tabs)/budgets")}
-                >
-                  <Copy bold size={13}>
-                    Lihat semua
-                  </Copy>
-                </Pressable>
-              }
-            />
-            <LoadState
-              loading={budgets.isPending}
-              error={budgets.error}
-              retry={budgets.refetch}
-              stale={!!budgets.data}
-            />
-            {budgets.data &&
-              (budgets.data.length ? (
-                <View
-                  style={{
-                    padding: 16,
-                    gap: 12,
-                    borderRadius: 14,
-                    borderWidth: 1,
-                    borderColor: c.border,
-                    backgroundColor: c.surface,
-                  }}
-                >
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      gap: 12,
-                    }}
+          {!!transactions.data && hasAccounts && !hasTransactions && (
+            <Card
+              style={{
+                gap: 12,
+                borderWidth: 1,
+                borderColor: c.border,
+                shadowOpacity: 0,
+              }}
+            >
+              <Copy bold size={20}>
+                Rekening sudah siap
+              </Copy>
+              <Copy muted>
+                Catat transaksi pertama untuk mulai melihat arus kas dan
+                anggaran keluarga.
+              </Copy>
+              <Button
+                label="Catat transaksi pertama"
+                icon="add-outline"
+                onPress={() => router.push("/transaction")}
+              />
+            </Card>
+          )}
+          {hasAccounts && (
+            <View style={{ gap: 12 }}>
+              <SectionTitle
+                title="Anggaran bulan ini"
+                action={
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Lihat semua anggaran"
+                    onPress={() => router.push("/(tabs)/budgets")}
                   >
-                    <Copy muted size={13}>
-                      {budgets.data.length} kategori direncanakan
+                    <Copy bold size={13}>
+                      Lihat semua
                     </Copy>
-                    <Text
-                      style={{
-                        color: c.text,
-                        flex: 1,
-                        textAlign: "right",
-                        fontSize: 14,
-                        lineHeight: 20,
-                        fontWeight: "700",
-                        fontVariant: ["tabular-nums"],
-                      }}
-                    >
-                      {money(budgetUsed.toString())} /{" "}
-                      {money(budgetLimit.toString())}
-                    </Text>
-                  </View>
+                  </Pressable>
+                }
+              />
+              <LoadState
+                loading={budgets.isPending}
+                error={budgets.error}
+                retry={budgets.refetch}
+                stale={!!budgets.data}
+              />
+              {budgets.data &&
+                (budgets.data.length ? (
                   <View
-                    accessibilityRole="progressbar"
-                    accessibilityValue={{
-                      min: 0,
-                      max: 100,
-                      now: budgetPercent,
-                      text: `${budgetPercent}% terpakai`,
-                    }}
                     style={{
-                      height: 8,
-                      borderRadius: 4,
-                      overflow: "hidden",
-                      backgroundColor: c.soft,
+                      padding: 16,
+                      gap: 12,
+                      borderRadius: 14,
+                      borderWidth: 1,
+                      borderColor: c.border,
+                      backgroundColor: c.surface,
                     }}
                   >
                     <View
                       style={{
-                        height: 8,
-                        width: `${budgetPercent}%`,
-                        backgroundColor: c.primary,
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        gap: 12,
                       }}
-                    />
+                    >
+                      <Copy muted size={13}>
+                        {budgets.data.length} kategori direncanakan
+                      </Copy>
+                      <Text
+                        style={{
+                          color: c.text,
+                          flex: 1,
+                          textAlign: "right",
+                          fontSize: 14,
+                          lineHeight: 20,
+                          fontWeight: "700",
+                          fontVariant: ["tabular-nums"],
+                        }}
+                      >
+                        {money(budgetUsed.toString())} /{" "}
+                        {money(budgetLimit.toString())}
+                      </Text>
+                    </View>
+                    <View
+                      accessibilityRole="progressbar"
+                      accessibilityValue={{
+                        min: 0,
+                        max: 100,
+                        now: budgetPercent,
+                        text: `${budgetPercent}% terpakai`,
+                      }}
+                      style={{
+                        height: 8,
+                        borderRadius: 4,
+                        overflow: "hidden",
+                        backgroundColor: c.soft,
+                      }}
+                    >
+                      <View
+                        style={{
+                          height: 8,
+                          width: `${budgetPercent}%`,
+                          backgroundColor: c.primary,
+                        }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Copy muted size={12}>
+                        {budgetPercent}% terpakai
+                      </Copy>
+                      <Copy muted size={12}>
+                        Sisa {money((budgetLimit - budgetUsed).toString())}
+                      </Copy>
+                    </View>
                   </View>
-                  <View
+                ) : (
+                  <Card
                     style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
+                      shadowOpacity: 0,
+                      borderWidth: 1,
+                      borderColor: c.border,
                     }}
                   >
-                    <Copy muted size={12}>
-                      {budgetPercent}% terpakai
+                    <Copy muted>Belum ada anggaran untuk periode ini.</Copy>
+                    <Button
+                      label="Buat anggaran"
+                      secondary
+                      icon="add-outline"
+                      onPress={() =>
+                        router.push({
+                          pathname: "/manage",
+                          params: { type: "budgets", create: "1", month },
+                        })
+                      }
+                    />
+                  </Card>
+                ))}
+            </View>
+          )}
+          {hasAccounts && (
+            <View style={{ gap: 12 }}>
+              <SectionTitle
+                title="Transaksi terbaru"
+                action={
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Lihat semua transaksi"
+                    onPress={() => router.push("/(tabs)/transactions")}
+                  >
+                    <Copy bold size={13}>
+                      Lihat semua
                     </Copy>
-                    <Copy muted size={12}>
-                      Sisa {money((budgetLimit - budgetUsed).toString())}
-                    </Copy>
-                  </View>
-                </View>
-              ) : (
+                  </Pressable>
+                }
+              />
+              <LoadState
+                loading={transactions.isPending}
+                error={transactions.error}
+                retry={transactions.refetch}
+                stale={!!transactions.data}
+              />
+              {transactions.data?.items.length === 0 ? (
                 <Card
                   style={{
                     shadowOpacity: 0,
@@ -476,187 +567,140 @@ function Home() {
                     borderColor: c.border,
                   }}
                 >
-                  <Copy muted>Belum ada anggaran untuk periode ini.</Copy>
+                  <Copy muted>Belum ada transaksi pada periode ini.</Copy>
+                </Card>
+              ) : (
+                <View style={{ borderTopWidth: 1, borderTopColor: c.border }}>
+                  {transactions.data?.items.slice(0, 4).map((item) => (
+                    <TransactionRow key={item.id} item={item} />
+                  ))}
+                </View>
+              )}
+            </View>
+          )}
+          {hasAccounts && (
+            <View style={{ gap: 12 }}>
+              <SectionTitle
+                title="Rekening"
+                action={
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Kelola rekening"
+                    onPress={() =>
+                      router.push({
+                        pathname: "/manage",
+                        params: { type: "accounts" },
+                      })
+                    }
+                  >
+                    <Copy bold size={13}>
+                      Kelola
+                    </Copy>
+                  </Pressable>
+                }
+              />
+              {summary.data?.accounts.length === 0 ? (
+                <Card
+                  style={{
+                    shadowOpacity: 0,
+                    borderWidth: 1,
+                    borderColor: c.border,
+                  }}
+                >
+                  <Copy>
+                    Mulai dengan rekening pertama untuk melihat saldo yang
+                    tercatat.
+                  </Copy>
                   <Button
-                    label="Buat anggaran"
-                    secondary
+                    label="Tambah rekening"
                     icon="add-outline"
                     onPress={() =>
                       router.push({
                         pathname: "/manage",
-                        params: { type: "budgets", create: "1", month },
+                        params: { type: "accounts", create: "1" },
                       })
                     }
                   />
                 </Card>
-              ))}
-          </View>
-          <View style={{ gap: 12 }}>
-            <SectionTitle
-              title="Transaksi terbaru"
-              action={
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Lihat semua transaksi"
-                  onPress={() => router.push("/(tabs)/transactions")}
+              ) : (
+                <View
+                  style={{
+                    paddingHorizontal: 16,
+                    borderRadius: 14,
+                    borderWidth: 1,
+                    borderColor: c.border,
+                    backgroundColor: c.surface,
+                  }}
                 >
-                  <Copy bold size={13}>
-                    Lihat semua
-                  </Copy>
-                </Pressable>
-              }
-            />
-            <LoadState
-              loading={transactions.isPending}
-              error={transactions.error}
-              retry={transactions.refetch}
-              stale={!!transactions.data}
-            />
-            {transactions.data?.items.length === 0 ? (
-              <Card
-                style={{
-                  shadowOpacity: 0,
-                  borderWidth: 1,
-                  borderColor: c.border,
-                }}
-              >
-                <Copy muted>Belum ada transaksi pada periode ini.</Copy>
-              </Card>
-            ) : (
-              <View style={{ borderTopWidth: 1, borderTopColor: c.border }}>
-                {transactions.data?.items.slice(0, 4).map((item) => (
-                  <TransactionRow key={item.id} item={item} />
-                ))}
-              </View>
-            )}
-          </View>
-          <View style={{ gap: 12 }}>
-            <SectionTitle
-              title="Rekening"
-              action={
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Kelola rekening"
-                  onPress={() =>
-                    router.push({
-                      pathname: "/manage",
-                      params: { type: "accounts" },
-                    })
-                  }
-                >
-                  <Copy bold size={13}>
-                    Kelola
-                  </Copy>
-                </Pressable>
-              }
-            />
-            {summary.data?.accounts.length === 0 ? (
-              <Card
-                style={{
-                  shadowOpacity: 0,
-                  borderWidth: 1,
-                  borderColor: c.border,
-                }}
-              >
-                <Copy>
-                  Mulai dengan rekening pertama untuk melihat saldo yang
-                  tercatat.
-                </Copy>
-                <Button
-                  label="Tambah rekening"
-                  icon="add-outline"
-                  onPress={() =>
-                    router.push({
-                      pathname: "/manage",
-                      params: { type: "accounts", create: "1" },
-                    })
-                  }
-                />
-              </Card>
-            ) : (
-              <View
-                style={{
-                  paddingHorizontal: 16,
-                  borderRadius: 14,
-                  borderWidth: 1,
-                  borderColor: c.border,
-                  backgroundColor: c.surface,
-                }}
-              >
-                {summary.data?.accounts.map((account, index) => (
-                  <View
-                    key={account.id}
-                    style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: 12,
-                      paddingVertical: 13,
-                      borderTopWidth: index ? 1 : 0,
-                      borderTopColor: c.border,
-                    }}
-                  >
+                  {summary.data?.accounts.map((account, index) => (
                     <View
+                      key={account.id}
                       style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        gap: 10,
-                        flex: 1,
-                        minWidth: 0,
+                        justifyContent: "space-between",
+                        gap: 12,
+                        paddingVertical: 13,
+                        borderTopWidth: index ? 1 : 0,
+                        borderTopColor: c.border,
                       }}
                     >
-                      <IconTile
-                        name={
-                          account.kind === "cash"
-                            ? "cash-outline"
-                            : account.kind === "ewallet"
-                              ? "phone-portrait-outline"
-                              : "business-outline"
-                        }
-                      />
-                      <View style={{ flex: 1, minWidth: 0 }}>
-                        <Text
-                          numberOfLines={1}
-                          style={{
-                            color: c.text,
-                            fontSize: 15,
-                            fontWeight: "700",
-                          }}
-                        >
-                          {account.name}
-                        </Text>
-                        <Copy muted size={12}>
-                          {account.archived_at
-                            ? "Diarsipkan"
-                            : account.kind === "cash"
-                              ? "Tunai"
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: 10,
+                          flex: 1,
+                          minWidth: 0,
+                        }}
+                      >
+                        <IconTile
+                          name={
+                            account.kind === "cash"
+                              ? "cash-outline"
                               : account.kind === "ewallet"
-                                ? "Dompet digital"
-                                : "Bank"}
-                        </Copy>
+                                ? "phone-portrait-outline"
+                                : "business-outline"
+                          }
+                        />
+                        <View style={{ flex: 1, minWidth: 0 }}>
+                          <Text
+                            numberOfLines={1}
+                            style={{
+                              color: c.text,
+                              fontSize: 15,
+                              fontWeight: "700",
+                            }}
+                          >
+                            {account.name}
+                          </Text>
+                          <Copy muted size={12}>
+                            {account.archived_at
+                              ? "Diarsipkan"
+                              : account.kind === "cash"
+                                ? "Tunai"
+                                : account.kind === "ewallet"
+                                  ? "Dompet digital"
+                                  : "Bank"}
+                          </Copy>
+                        </View>
                       </View>
+                      <Text
+                        style={{
+                          color: c.text,
+                          fontSize: 14,
+                          fontWeight: "700",
+                          fontVariant: ["tabular-nums"],
+                        }}
+                      >
+                        {money(account.balance_minor)}
+                      </Text>
                     </View>
-                    <Text
-                      style={{
-                        color: c.text,
-                        fontSize: 14,
-                        fontWeight: "700",
-                        fontVariant: ["tabular-nums"],
-                      }}
-                    >
-                      {money(account.balance_minor)}
-                    </Text>
-                  </View>
-                ))}
-              </View>
-            )}
-          </View>
-          <Button
-            label="Lihat laporan & ekspor"
-            secondary
-            icon="analytics-outline"
-            onPress={() => router.push("/report")}
-          />
+                  ))}
+                </View>
+              )}
+            </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -161,16 +161,13 @@ export async function finishGmailAuthorization(
   state: string,
   code: string,
 ) {
-  const pending = await transaction(pool, async (db) => {
-    const claimed = (
-      await db.query(
-        "DELETE FROM gmail_oauth_states WHERE state_hash=$1 AND expires_at>now() RETURNING *",
-        [digest(state)],
-      )
-    ).rows[0];
-    if (!claimed) throw new Error("GMAIL_OAUTH_STATE_INVALID");
-    return claimed;
-  });
+  const pending = (
+    await pool.query(
+      "SELECT * FROM gmail_oauth_states WHERE state_hash=$1 AND expires_at>now()",
+      [digest(state)],
+    )
+  ).rows[0];
+  if (!pending) throw new Error("GMAIL_OAUTH_STATE_INVALID");
   const tokens = await tokenRequest(
     {
       code,
@@ -180,24 +177,35 @@ export async function finishGmailAuthorization(
     },
     config,
   );
-  if (!tokens.refresh_token) throw new Error("GMAIL_REFRESH_TOKEN_MISSING");
+  const refreshToken = tokens.refresh_token;
+  if (!refreshToken) throw new Error("GMAIL_REFRESH_TOKEN_MISSING");
   const profile = await gmail<{ emailAddress?: string }>(
     tokens.access_token,
     "/profile",
   );
-  if (!profile.emailAddress) throw new Error("GMAIL_PROFILE_UNAVAILABLE");
-  await pool.query(
-    `INSERT INTO gmail_connections(id,profile_id,gmail_address,refresh_token_ciphertext,label_name)
-     VALUES($1,$2,$3,$4,$5)
-     ON CONFLICT(profile_id) DO UPDATE SET gmail_address=EXCLUDED.gmail_address,refresh_token_ciphertext=EXCLUDED.refresh_token_ciphertext,label_name=EXCLUDED.label_name,status='active',last_error_code=NULL,updated_at=now()`,
-    [
-      randomUUID(),
-      pending.profile_id,
-      profile.emailAddress,
-      encrypt(tokens.refresh_token, config),
-      config.labelName,
-    ],
-  );
+  const gmailAddress = profile.emailAddress;
+  if (!gmailAddress) throw new Error("GMAIL_PROFILE_UNAVAILABLE");
+  await transaction(pool, async (db) => {
+    const claimed = (
+      await db.query(
+        "DELETE FROM gmail_oauth_states WHERE state_hash=$1 AND expires_at>now() RETURNING profile_id",
+        [digest(state)],
+      )
+    ).rows[0];
+    if (!claimed) throw new Error("GMAIL_OAUTH_STATE_INVALID");
+    await db.query(
+      `INSERT INTO gmail_connections(id,profile_id,gmail_address,refresh_token_ciphertext,label_name)
+       VALUES($1,$2,$3,$4,$5)
+       ON CONFLICT(profile_id) DO UPDATE SET gmail_address=EXCLUDED.gmail_address,refresh_token_ciphertext=EXCLUDED.refresh_token_ciphertext,label_name=EXCLUDED.label_name,status='active',last_error_code=NULL,updated_at=now()`,
+      [
+        randomUUID(),
+        claimed.profile_id,
+        gmailAddress,
+        encrypt(refreshToken, config),
+        config.labelName,
+      ],
+    );
+  });
 }
 
 type GmailConnection = {
@@ -205,6 +213,15 @@ type GmailConnection = {
   refresh_token_ciphertext: string;
   label_name: string;
 };
+
+async function connectionActive(pool: Database, id: string) {
+  return !!(
+    await pool.query(
+      "SELECT 1 FROM gmail_connections WHERE id=$1 AND status IN ('active','error')",
+      [id],
+    )
+  ).rows[0];
+}
 
 export async function syncGmailConnection(
   pool: Database,
@@ -226,10 +243,12 @@ export async function syncGmailConnection(
       },
       config,
     );
+    if (!(await connectionActive(pool, id))) return { created: 0 };
     const labels = await gmail<{ labels?: { id: string; name: string }[] }>(
       tokens.access_token,
       "/labels",
     );
+    if (!(await connectionActive(pool, id))) return { created: 0 };
     const label = labels.labels?.find(
       (item) => item.name === connection.label_name,
     );
@@ -246,6 +265,7 @@ export async function syncGmailConnection(
     );
     let created = 0;
     for (const item of list.messages ?? []) {
+      if (!(await connectionActive(pool, id))) return { created: 0 };
       const message = await gmail<{
         id: string;
         snippet?: string;
@@ -260,6 +280,7 @@ export async function syncGmailConnection(
         )?.value ?? "";
       const draft = notificationDraft(`${subject}\n${message.snippet ?? ""}`);
       if (draft.blocked || !draft.amount_minor) continue;
+      if (!(await connectionActive(pool, id))) return { created: 0 };
       const result = await pool.query(
         "INSERT INTO gmail_candidates(id,connection_id,gmail_message_id,amount_minor,occurred_on,note) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(connection_id,gmail_message_id) DO NOTHING",
         [
@@ -273,6 +294,7 @@ export async function syncGmailConnection(
       );
       created += result.rowCount ?? 0;
     }
+    if (!(await connectionActive(pool, id))) return { created: 0 };
     await pool.query(
       "UPDATE gmail_connections SET status='active',last_synced_at=now(),last_error_code=NULL,updated_at=now() WHERE id=$1",
       [id],

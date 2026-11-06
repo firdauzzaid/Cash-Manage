@@ -39,12 +39,16 @@ type GmailCandidate = {
   occurred_on: string | null;
   note: string;
 };
+type GmailMessage = {
+  text: string;
+  tone: "error" | "info" | "success";
+};
 
 export default function Profile() {
   const { me, household, select, signout } = useApp(),
     [password, setPassword] = useState(""),
     [requested, setRequested] = useState(false),
-    [gmailMessage, setGmailMessage] = useState<string | null>(null),
+    [gmailMessage, setGmailMessage] = useState<GmailMessage | null>(null),
     [gmailBusy, setGmailBusy] = useState(false),
     { gmail } = useLocalSearchParams<{ gmail?: string }>(),
     c = useColors();
@@ -72,15 +76,23 @@ export default function Profile() {
       await gmailCandidates.refetch();
       setGmailMessage(
         result.type === "success" || gmail === "connected"
-          ? "Gmail terhubung. Buat label Cash Flow di Gmail, lalu sinkronkan untuk mencari notifikasi yang diberi label tersebut."
-          : "Koneksi Gmail belum selesai. Anda dapat mencoba lagi.",
+          ? {
+              text: "Gmail terhubung. Buat label Cash Flow di Gmail, lalu sinkronkan untuk mencari notifikasi yang diberi label tersebut.",
+              tone: "success",
+            }
+          : {
+              text: "Koneksi Gmail belum selesai. Anda dapat mencoba lagi.",
+              tone: "info",
+            },
       );
     } catch (error) {
-      setGmailMessage(
-        error instanceof Error
-          ? error.message
-          : "Gmail belum dapat dihubungkan.",
-      );
+      setGmailMessage({
+        text:
+          error instanceof Error
+            ? error.message
+            : "Gmail belum dapat dihubungkan.",
+        tone: "error",
+      });
     } finally {
       setGmailBusy(false);
     }
@@ -95,19 +107,33 @@ export default function Profile() {
       await Promise.all([gmailStatus.refetch(), gmailCandidates.refetch()]);
       setGmailMessage(
         result.created
-          ? `${result.created} kandidat transaksi baru ditemukan. Periksa sebelum disimpan.`
+          ? {
+              text: `${result.created} kandidat transaksi baru ditemukan. Periksa sebelum disimpan.`,
+              tone: "success",
+            }
           : result.reason === "LABEL_NOT_FOUND"
-            ? "Label Cash Flow belum ditemukan. Buat label tersebut di Gmail, lalu coba lagi."
+            ? {
+                text: "Label Cash Flow belum ditemukan. Buat label tersebut di Gmail, lalu coba lagi.",
+                tone: "info",
+              }
             : result.reason === "SYNC_FAILED"
-              ? "Gmail belum dapat disinkronkan. Coba lagi atau hubungkan ulang Gmail."
-              : "Belum ada notifikasi baru yang dapat dibaca.",
+              ? {
+                  text: "Gmail belum dapat disinkronkan. Coba lagi atau hubungkan ulang Gmail.",
+                  tone: "error",
+                }
+              : {
+                  text: "Belum ada notifikasi baru yang dapat dibaca.",
+                  tone: "info",
+                },
       );
     } catch (error) {
-      setGmailMessage(
-        error instanceof Error
-          ? error.message
-          : "Sinkronisasi Gmail belum berhasil.",
-      );
+      setGmailMessage({
+        text:
+          error instanceof Error
+            ? error.message
+            : "Sinkronisasi Gmail belum berhasil.",
+        tone: "error",
+      });
     } finally {
       setGmailBusy(false);
     }
@@ -129,13 +155,15 @@ export default function Profile() {
         headers: { "Idempotency-Key": Crypto.randomUUID() },
       });
       await gmailCandidates.refetch();
-      setGmailMessage("Kandidat diabaikan.");
+      setGmailMessage({ text: "Kandidat diabaikan.", tone: "success" });
     } catch (error) {
-      setGmailMessage(
-        error instanceof Error
-          ? error.message
-          : "Kandidat belum dapat diabaikan.",
-      );
+      setGmailMessage({
+        text:
+          error instanceof Error
+            ? error.message
+            : "Kandidat belum dapat diabaikan.",
+        tone: "error",
+      });
     } finally {
       setGmailBusy(false);
     }
@@ -157,15 +185,18 @@ export default function Profile() {
         headers: { "Idempotency-Key": Crypto.randomUUID() },
       });
       await Promise.all([gmailStatus.refetch(), gmailCandidates.refetch()]);
-      setGmailMessage(
-        "Gmail diputuskan dan kandidat yang belum ditinjau dihapus.",
-      );
+      setGmailMessage({
+        text: "Gmail diputuskan dan kandidat yang belum ditinjau dihapus.",
+        tone: "success",
+      });
     } catch (error) {
-      setGmailMessage(
-        error instanceof Error
-          ? error.message
-          : "Gmail belum dapat diputuskan.",
-      );
+      setGmailMessage({
+        text:
+          error instanceof Error
+            ? error.message
+            : "Gmail belum dapat diputuskan.",
+        tone: "error",
+      });
     } finally {
       setGmailBusy(false);
     }
@@ -178,6 +209,9 @@ export default function Profile() {
     );
   return (
     <Screen title="Akun saya">
+      <View style={styles.section}>
+        <SectionTitle title="Akun" />
+      </View>
       <Card style={{ backgroundColor: c.hero }}>
         <View style={styles.row}>
           <IconTile name="person-outline" />
@@ -202,7 +236,7 @@ export default function Profile() {
         </Text>
       </Card>
       <Button
-        label="Pilih atau buat keluarga lain"
+        label="Ganti keluarga"
         secondary
         icon="people-outline"
         onPress={() => {
@@ -224,7 +258,14 @@ export default function Profile() {
           Gmail hanya membaca email yang Anda beri label {'"'}Cash Flow{'"'}.
           Notifikasi tidak pernah langsung menjadi transaksi.
         </Copy>
-        {gmailMessage && <Notice>{gmailMessage}</Notice>}
+        {gmailMessage && (
+          <Notice
+            error={gmailMessage.tone === "error"}
+            success={gmailMessage.tone === "success"}
+          >
+            {gmailMessage.text}
+          </Notice>
+        )}
         {gmailStatus.isError && (
           <Notice error>Koneksi Gmail belum tersedia. Coba lagi nanti.</Notice>
         )}

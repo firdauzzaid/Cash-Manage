@@ -154,14 +154,16 @@ export async function createApp(
   }
   const params = (req: FastifyRequest) => req.params as Record<string, string>;
   const query = (req: FastifyRequest) => req.query as v.Body;
-  const mutationSchema = {
-    body: { type: "object", maxProperties: 24, additionalProperties: true },
-    headers: {
+  const mutationHeaders = {
       type: "object",
       required: ["idempotency-key"],
       properties: { "idempotency-key": { type: "string", format: "uuid" } },
     },
-  };
+    mutationSchema = {
+      body: { type: "object", maxProperties: 24, additionalProperties: true },
+      headers: mutationHeaders,
+    },
+    bodylessMutationSchema = { headers: mutationHeaders };
   const gmail = () => {
     if (!config.gmail)
       fail(503, "GMAIL_UNAVAILABLE", "Koneksi Gmail belum dikonfigurasi.");
@@ -252,7 +254,7 @@ export async function createApp(
   );
   app.post(
     "/me/gmail/candidates/:id/reject",
-    { schema: mutationSchema },
+    { schema: bodylessMutationSchema },
     async (req) => {
       const a = await actor(req),
         id = v.uuid(params(req).id);
@@ -279,7 +281,7 @@ export async function createApp(
       );
     },
   );
-  app.delete("/me/gmail", { schema: mutationSchema }, async (req) => {
+  app.delete("/me/gmail", { schema: bodylessMutationSchema }, async (req) => {
     const a = await actor(req);
     return mutate(
       pool,
@@ -289,6 +291,10 @@ export async function createApp(
       "DELETE /me/gmail",
       {},
       async (ctx) => {
+        await ctx.db.query(
+          "DELETE FROM gmail_oauth_states WHERE profile_id=$1",
+          [a.id],
+        );
         await ctx.db.query(
           "DELETE FROM gmail_connections WHERE profile_id=$1",
           [a.id],

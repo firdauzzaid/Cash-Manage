@@ -230,7 +230,9 @@ function Manage() {
         <Copy muted>
           {type === "categories"
             ? "Kategori aktif dapat dipilih saat mencatat transaksi. Arsipkan bila tidak lagi digunakan tanpa menghapus histori."
-            : "Tambah, tinjau, atau arsipkan data yang dipakai bersama keluarga."}
+            : type === "accounts"
+              ? "Rekening yang diarsipkan tidak dapat dipilih untuk transaksi baru. Histori dan saldo tetap tersimpan."
+              : "Tambah, tinjau, atau hapus anggaran keluarga."}
         </Copy>
         <Button
           label={`Tambah ${label}`}

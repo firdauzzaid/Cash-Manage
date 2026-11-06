@@ -1,14 +1,14 @@
 import React from "react";
 import { Tabs, router } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, useWindowDimensions } from "react-native";
 import { useColors } from "../../src/ui";
 
 const tabItems = {
   home: { label: "Beranda", icon: "home-outline" },
   transactions: { label: "Transaksi", icon: "list-outline" },
   budgets: { label: "Anggaran", icon: "pie-chart-outline" },
-  family: { label: "Anggota", icon: "people-outline" },
+  family: { label: "Keluarga", icon: "people-outline" },
 } as const;
 
 type HouseholdTabBarProps = Parameters<
@@ -20,7 +20,9 @@ function HouseholdTabBar({
   navigateToTab,
   insets,
 }: HouseholdTabBarProps) {
-  const c = useColors();
+  const c = useColors(),
+    { width } = useWindowDimensions(),
+    horizontalInset = Math.max(4, (width - 720) / 2 + 4);
   const tab = (route: (typeof state.routes)[number]) => {
     const item = tabItems[route.name as keyof typeof tabItems];
     const focused = state.routes[state.index].key === route.key;
@@ -69,7 +71,7 @@ function HouseholdTabBar({
         backgroundColor: c.surface,
         borderTopWidth: 1,
         borderTopColor: c.border,
-        paddingHorizontal: 4,
+        paddingHorizontal: horizontalInset,
       }}
     >
       {tab(home)}
@@ -176,7 +178,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="family"
         options={{
-          title: "Anggota",
+          title: "Keluarga",
           tabBarIcon: ({ focused, size }) => (
             <Ionicons
               name="people-outline"
