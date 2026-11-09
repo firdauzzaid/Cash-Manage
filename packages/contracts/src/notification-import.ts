@@ -41,7 +41,7 @@ export function notificationDraft(message: string): NotificationDraft {
   if (blocked) return { blocked: true };
   const amounts = [
     ...message.matchAll(
-      /\b(?:rp|idr)\s*\.?\s*(\d{1,3}(?:[.\s]\d{3})+|\d+)\b/gi,
+      /\b(?:total(?:\s+(?:pembayaran|transaksi|tagihan))?|nominal(?:\s+pembayaran)?|jumlah(?:\s+(?:pembayaran|transaksi))?|nilai(?:\s+transaksi)?|dibayar)\s*(?::|=|-)?\s*(?:rp|idr)\s*\.?\s*(\d{1,3}(?:[.\s]\d{3})+|\d+)\b/gi,
     ),
   ].map((match) => match[1].replace(/\D/g, ""));
   const uniqueAmounts = [...new Set(amounts)];

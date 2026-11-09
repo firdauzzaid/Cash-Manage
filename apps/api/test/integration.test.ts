@@ -716,7 +716,9 @@ test(
               );
               assert.equal(value.includes("labelIds"), false);
               return new Response(
-                JSON.stringify({ messages: [{ id: "payment" }] }),
+                JSON.stringify({
+                  messages: [{ id: "payment" }, { id: "not-a-receipt" }],
+                }),
               );
             }
             if (value.includes("/history?")) {
@@ -755,13 +757,31 @@ test(
                 }),
               );
             }
+            if (value.includes("/messages/not-a-receipt?")) {
+              return new Response(
+                JSON.stringify({
+                  id: "not-a-receipt",
+                  payload: {
+                    mimeType: "text/plain",
+                    headers: [
+                      { name: "Subject", value: "Informasi transaksi" },
+                    ],
+                    body: {
+                      data: Buffer.from(
+                        "Saldo promosi Anda: Rp30. Tidak ada pembayaran.",
+                      ).toString("base64url"),
+                    },
+                  },
+                }),
+              );
+            }
             throw new Error(`Unexpected Gmail request: ${value}`);
           }) as typeof fetch;
           const first = await call(a.cookie, "POST", "/me/gmail/sync");
           assert.equal(first.statusCode, 200, first.body);
           assert.deepEqual(first.json(), {
             created: 1,
-            scanned: 1,
+            scanned: 2,
             history_complete: true,
           });
           const candidates = await call(

@@ -49,5 +49,6 @@
   "47": "002_permissions.sql",
   "48": "seed-demo.sql",
   "49": "devDependencies",
-  "50": "008_gmail_body_parser_rescan.sql"
+  "50": "008_gmail_body_parser_rescan.sql",
+  "51": "009_gmail_amount_parser_rescan.sql"
 }

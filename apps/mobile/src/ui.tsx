@@ -326,6 +326,8 @@ export function Button({
   danger = false,
   disabled = false,
   icon,
+  compact = false,
+  style,
 }: {
   label: string;
   accessibilityLabel?: string;
@@ -334,6 +336,8 @@ export function Button({
   danger?: boolean;
   disabled?: boolean;
   icon?: React.ComponentProps<typeof Ionicons>["name"];
+  compact?: boolean;
+  style?: ViewStyle;
 }) {
   const c = useColors();
   const backgroundColor = danger ? c.dangerBg : secondary ? c.soft : c.primary;
@@ -347,6 +351,12 @@ export function Button({
       onPress={onPress}
       style={({ pressed }) => [
         styles.button,
+        compact && {
+          minHeight: 44,
+          paddingVertical: 10,
+          paddingHorizontal: 12,
+        },
+        style,
         {
           backgroundColor,
           opacity: disabled ? 0.42 : pressed ? 0.88 : 1,

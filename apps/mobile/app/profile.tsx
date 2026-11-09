@@ -64,6 +64,8 @@ export default function Profile() {
     queryFn: () => request<GmailCandidate[]>("/me/gmail/candidates"),
     enabled: !!me && !!gmailStatus.data?.connected,
   });
+  const pendingCandidates =
+    gmailCandidates.data?.length ?? gmailStatus.data?.candidates ?? 0;
   const connectGmail = async () => {
     setGmailBusy(true);
     try {
@@ -323,6 +325,16 @@ export default function Profile() {
                 email yang sesuai pola transaksi telah diperiksa.
               </Notice>
             )}
+            {gmailStatus.data.history_complete &&
+              (gmailStatus.data.history_checked_count ?? 0) > 0 && (
+                <Notice>
+                  Histori Gmail selesai:{" "}
+                  {gmailStatus.data.history_checked_count} email sesuai
+                  pencarian diperiksa. Hanya email dengan format nominal
+                  pembayaran yang dikenali menjadi kandidat; {pendingCandidates}{" "}
+                  masih perlu ditinjau.
+                </Notice>
+              )}
             {gmailStatus.data.status === "error" && (
               <>
                 <Notice error>
@@ -358,43 +370,64 @@ export default function Profile() {
             />
             {!!gmailCandidates.data?.length && (
               <View style={{ gap: 10 }}>
-                <SectionTitle title="Perlu ditinjau" />
-                {gmailCandidates.data.map((candidate) => (
-                  <View key={candidate.id} style={{ gap: 6 }}>
-                    <Copy>
-                      {money(candidate.amount_minor)} ·{" "}
-                      {candidate.occurred_on ?? "Tanggal belum terbaca"}
-                    </Copy>
+                <SectionTitle
+                  title={`${pendingCandidates} kandidat perlu ditinjau`}
+                />
+                {gmailCandidates.data.map((candidate, index) => (
+                  <View
+                    key={candidate.id}
+                    style={{
+                      gap: 10,
+                      paddingTop: index ? 14 : 2,
+                      borderTopWidth: index ? 1 : 0,
+                      borderTopColor: c.border,
+                    }}
+                  >
+                    <View style={styles.between}>
+                      <Copy bold>{money(candidate.amount_minor)}</Copy>
+                      <Copy muted size={14}>
+                        {candidate.occurred_on ?? "Tanggal belum terbaca"}
+                      </Copy>
+                    </View>
                     <Copy muted size={14}>
-                      {candidate.note || "Nama transaksi belum terbaca"}
+                      {candidate.note ||
+                        "Detail belum terbaca — lengkapi saat mencatat."}
                     </Copy>
-                    <Button
-                      secondary
-                      label="Tinjau & catat"
-                      disabled={gmailBusy}
-                      onPress={() =>
-                        router.push({
-                          pathname: "/transaction",
-                          params: {
-                            candidate_id: candidate.id,
-                            candidate_amount_minor: candidate.amount_minor,
-                            ...(candidate.occurred_on
-                              ? { candidate_occurred_on: candidate.occurred_on }
-                              : {}),
-                            ...(candidate.note
-                              ? { candidate_note: candidate.note }
-                              : {}),
-                          },
-                        })
-                      }
-                    />
-                    <Button
-                      secondary
-                      danger
-                      label="Abaikan kandidat"
-                      disabled={gmailBusy}
-                      onPress={() => void rejectCandidate(candidate.id)}
-                    />
+                    <View style={styles.row}>
+                      <Button
+                        compact
+                        label="Tinjau & catat"
+                        style={{ flex: 1 }}
+                        disabled={gmailBusy}
+                        onPress={() =>
+                          router.push({
+                            pathname: "/transaction",
+                            params: {
+                              candidate_id: candidate.id,
+                              candidate_amount_minor: candidate.amount_minor,
+                              ...(candidate.occurred_on
+                                ? {
+                                    candidate_occurred_on:
+                                      candidate.occurred_on,
+                                  }
+                                : {}),
+                              ...(candidate.note
+                                ? { candidate_note: candidate.note }
+                                : {}),
+                            },
+                          })
+                        }
+                      />
+                      <Button
+                        compact
+                        secondary
+                        danger
+                        label="Abaikan"
+                        style={{ flex: 1 }}
+                        disabled={gmailBusy}
+                        onPress={() => void rejectCandidate(candidate.id)}
+                      />
+                    </View>
                   </View>
                 ))}
               </View>

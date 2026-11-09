@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "apps/api/test/integration.test.ts": {
-    "mtime": 1794214392.9352167,
-    "seen": 1794214413.489365,
-    "ast_hash": "3a4389f28a0fcaa0749c57aff7b1bc3d",
+    "mtime": 1794217136.3294945,
+    "seen": 1794217283.6607437,
+    "ast_hash": "9e102b05c075b78d09f8a31f04d2e4b4",
     "semantic_hash": ""
   },
   "apps/api/tsconfig.json": {
@@ -402,9 +402,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/profile.tsx": {
-    "mtime": 1794214255.3680735,
-    "seen": 1794214413.4894114,
-    "ast_hash": "c65af910798679aff4cda190b9423c4a",
+    "mtime": 1794217616.801141,
+    "seen": 1794217642.5569546,
+    "ast_hash": "01d06fb30f471ffb29058a1bb81ee59a",
     "semantic_hash": ""
   },
   "apps/mobile/app/report.tsx": {
@@ -498,9 +498,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/src/ui.tsx": {
-    "mtime": 1794192663.5753603,
-    "seen": 1794193086.6444647,
-    "ast_hash": "a9f0672b51dfecc3f46a2a6298dbe0c3",
+    "mtime": 1794216481.4604716,
+    "seen": 1794216597.722431,
+    "ast_hash": "e4ec65dc88da2c35685dae0ebe4b6d7d",
     "semantic_hash": ""
   },
   "apps/mobile/src/welcome.tsx": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "docs/GMAIL-TRANSACTION-IMPORT.md": {
-    "mtime": 1794214382.4944973,
-    "seen": 1794214413.4896123,
-    "ast_hash": "c2b90d99595c8d6e34308fdc95bbd324",
+    "mtime": 1794217268.458084,
+    "seen": 1794217283.6608658,
+    "ast_hash": "2e4d3d0077abcc9303530f566b6c05a5",
     "semantic_hash": ""
   },
   "apps/mobile/src/transaction-import.test.ts": {
@@ -780,9 +780,9 @@
     "semantic_hash": ""
   },
   "packages/contracts/src/notification-import.ts": {
-    "mtime": 1794214393.0190673,
-    "seen": 1794214413.4895327,
-    "ast_hash": "3e538d08fe12d067de7cf27a160165bf",
+    "mtime": 1794217136.3284886,
+    "seen": 1794217283.660828,
+    "ast_hash": "b61a877cf4ba38361eb25ecaf5ff9b67",
     "semantic_hash": ""
   },
   "apps/api/src/public-pages.ts": {
@@ -813,6 +813,12 @@
     "mtime": 1794214197.9804122,
     "seen": 1794214413.4895196,
     "ast_hash": "f886e3063da5e1f7e9cff6da3d4c720e",
+    "semantic_hash": ""
+  },
+  "migrations/009_gmail_amount_parser_rescan.sql": {
+    "mtime": 1794217227.3454113,
+    "seen": 1794217283.6608214,
+    "ast_hash": "85350236c34525552279039fb2aa7324",
     "semantic_hash": ""
   }
 }

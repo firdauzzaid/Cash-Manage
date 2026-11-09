@@ -1093,7 +1093,7 @@
       "file_type": "code",
       "norm_label": "amountfield()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L446"
+      "source_location": "L456"
     },
     {
       "id": "apps_mobile_src_ui_button",
@@ -1129,7 +1129,7 @@
       "file_type": "code",
       "norm_label": "choice()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L478"
+      "source_location": "L488"
     },
     {
       "id": "apps_mobile_src_ui_confirm",
@@ -1141,7 +1141,7 @@
       "file_type": "code",
       "norm_label": "confirm()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L951"
+      "source_location": "L961"
     },
     {
       "id": "apps_mobile_src_ui_copy",
@@ -1165,7 +1165,7 @@
       "file_type": "code",
       "norm_label": "datefield()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L661"
+      "source_location": "L671"
     },
     {
       "id": "apps_mobile_src_ui_feedbackbanner",
@@ -1177,7 +1177,7 @@
       "file_type": "code",
       "norm_label": "feedbackbanner()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L817"
+      "source_location": "L827"
     },
     {
       "id": "apps_mobile_src_ui_field",
@@ -1189,7 +1189,7 @@
       "file_type": "code",
       "norm_label": "field()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L374"
+      "source_location": "L384"
     },
     {
       "id": "apps_mobile_src_ui_icontile",
@@ -1225,7 +1225,7 @@
       "file_type": "code",
       "norm_label": "loading()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L878"
+      "source_location": "L888"
     },
     {
       "id": "apps_mobile_src_ui_loadstate",
@@ -1237,7 +1237,7 @@
       "file_type": "code",
       "norm_label": "loadstate()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L889"
+      "source_location": "L899"
     },
     {
       "id": "apps_mobile_src_ui_notice",
@@ -1249,7 +1249,7 @@
       "file_type": "code",
       "norm_label": "notice()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L781"
+      "source_location": "L791"
     },
     {
       "id": "apps_mobile_src_ui_savestate",
@@ -1261,7 +1261,7 @@
       "file_type": "code",
       "norm_label": "savestate()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L919"
+      "source_location": "L929"
     },
     {
       "id": "apps_mobile_src_ui_screen",
@@ -1309,7 +1309,7 @@
       "file_type": "code",
       "norm_label": "timefield()",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L722"
+      "source_location": "L732"
     },
     {
       "id": "apps_mobile_src_ui_title",
@@ -6254,7 +6254,7 @@
       "node_kind": "heading",
       "norm_label": "batas rekomendasi",
       "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
-      "source_location": "L48"
+      "source_location": "L49"
     },
     {
       "id": "docs_gmail_transaction_import_implikasi_gmail",
@@ -6290,7 +6290,7 @@
       "node_kind": "heading",
       "norm_label": "kriteria penerimaan sebelum rilis",
       "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
-      "source_location": "L40"
+      "source_location": "L41"
     },
     {
       "id": "docs_gmail_transaction_import_rancangan_teknis_bila_tahap_koneksi_gmail_disetujui",
@@ -7396,6 +7396,17 @@
       "file_type": "code",
       "norm_label": "008_gmail_body_parser_rescan.sql",
       "source_file": "migrations/008_gmail_body_parser_rescan.sql",
+      "source_location": null
+    },
+    {
+      "id": "migrations_009_gmail_amount_parser_rescan",
+      "label": "009_gmail_amount_parser_rescan.sql",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "009_gmail_amount_parser_rescan.sql",
+      "file_type": "code",
+      "norm_label": "009_gmail_amount_parser_rescan.sql",
+      "source_file": "migrations/009_gmail_amount_parser_rescan.sql",
       "source_location": null
     },
     {
@@ -10646,7 +10657,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L169",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -10658,7 +10669,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L232",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -10670,7 +10681,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L233",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -10682,7 +10693,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L239",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -10694,7 +10705,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L241",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -10706,7 +10717,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L243",
+      "source_location": "L245",
       "weight": 1.0
     },
     {
@@ -10718,7 +10729,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L264",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -10730,7 +10741,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L283",
+      "source_location": "L285",
       "weight": 1.0
     },
     {
@@ -10742,7 +10753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L289",
+      "source_location": "L291",
       "weight": 1.0
     },
     {
@@ -10754,7 +10765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L425",
+      "source_location": "L458",
       "weight": 1.0
     },
     {
@@ -10766,7 +10777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/app/profile.tsx",
-      "source_location": "L432",
+      "source_location": "L465",
       "weight": 1.0
     },
     {
@@ -12578,7 +12589,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L460",
+      "source_location": "L470",
       "weight": 1.0
     },
     {
@@ -12590,7 +12601,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L338",
+      "source_location": "L342",
       "weight": 1.0
     },
     {
@@ -12614,7 +12625,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L501",
+      "source_location": "L511",
       "weight": 1.0
     },
     {
@@ -12626,7 +12637,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L567",
+      "source_location": "L577",
       "weight": 1.0
     },
     {
@@ -12638,7 +12649,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L616",
+      "source_location": "L626",
       "weight": 1.0
     },
     {
@@ -12650,7 +12661,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L628",
+      "source_location": "L638",
       "weight": 1.0
     },
     {
@@ -12662,7 +12673,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L644",
+      "source_location": "L654",
       "weight": 1.0
     },
     {
@@ -12674,7 +12685,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L958",
+      "source_location": "L968",
       "weight": 1.0
     },
     {
@@ -12698,7 +12709,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L673",
+      "source_location": "L683",
       "weight": 1.0
     },
     {
@@ -12710,7 +12721,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L676",
+      "source_location": "L686",
       "weight": 1.0
     },
     {
@@ -12722,7 +12733,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L686",
+      "source_location": "L696",
       "weight": 1.0
     },
     {
@@ -12734,7 +12745,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L826",
+      "source_location": "L836",
       "weight": 1.0
     },
     {
@@ -12746,7 +12757,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L387",
+      "source_location": "L397",
       "weight": 1.0
     },
     {
@@ -12758,7 +12769,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L403",
+      "source_location": "L413",
       "weight": 1.0
     },
     {
@@ -12770,7 +12781,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L438",
+      "source_location": "L448",
       "weight": 1.0
     },
     {
@@ -12806,7 +12817,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L879",
+      "source_location": "L889",
       "weight": 1.0
     },
     {
@@ -12818,7 +12829,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L883",
+      "source_location": "L893",
       "weight": 1.0
     },
     {
@@ -12830,7 +12841,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L901",
+      "source_location": "L911",
       "weight": 1.0
     },
     {
@@ -12842,7 +12853,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L904",
+      "source_location": "L914",
       "weight": 1.0
     },
     {
@@ -12854,7 +12865,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L909",
+      "source_location": "L919",
       "weight": 1.0
     },
     {
@@ -12866,7 +12877,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L786",
+      "source_location": "L796",
       "weight": 1.0
     },
     {
@@ -12878,7 +12889,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L931",
+      "source_location": "L941",
       "weight": 1.0
     },
     {
@@ -12890,7 +12901,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L937",
+      "source_location": "L947",
       "weight": 1.0
     },
     {
@@ -12950,7 +12961,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L734",
+      "source_location": "L744",
       "weight": 1.0
     },
     {
@@ -12962,7 +12973,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L737",
+      "source_location": "L747",
       "weight": 1.0
     },
     {
@@ -12974,7 +12985,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L748",
+      "source_location": "L758",
       "weight": 1.0
     },
     {
@@ -24009,7 +24020,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L374",
+      "source_location": "L384",
       "weight": 1.0
     },
     {
@@ -24031,7 +24042,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L446",
+      "source_location": "L456",
       "weight": 1.0
     },
     {
@@ -24042,7 +24053,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L478",
+      "source_location": "L488",
       "weight": 1.0
     },
     {
@@ -24064,7 +24075,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L661",
+      "source_location": "L671",
       "weight": 1.0
     },
     {
@@ -24075,7 +24086,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L722",
+      "source_location": "L732",
       "weight": 1.0
     },
     {
@@ -24086,7 +24097,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L781",
+      "source_location": "L791",
       "weight": 1.0
     },
     {
@@ -24097,7 +24108,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L817",
+      "source_location": "L827",
       "weight": 1.0
     },
     {
@@ -24108,7 +24119,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L878",
+      "source_location": "L888",
       "weight": 1.0
     },
     {
@@ -24119,7 +24130,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L889",
+      "source_location": "L899",
       "weight": 1.0
     },
     {
@@ -24130,7 +24141,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L919",
+      "source_location": "L929",
       "weight": 1.0
     },
     {
@@ -24141,7 +24152,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/mobile/src/ui.tsx",
-      "source_location": "L951",
+      "source_location": "L961",
       "weight": 1.0
     },
     {
@@ -24933,7 +24944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -24944,7 +24955,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/GMAIL-TRANSACTION-IMPORT.md",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -28314,5 +28325,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4b5fd676eb4b4ac7fb799f65c91d3bc1d36e985d"
+  "built_at_commit": "18172b50d7777cc967cb6d3e73a4f80cc6233752"
 }

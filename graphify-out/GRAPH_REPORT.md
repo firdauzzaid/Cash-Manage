@@ -1,17 +1,17 @@
 # Graph Report - cash-flow  (2026-11-09)
 
 ## Corpus Check
-- 112 files · ~851,456 words
+- 113 files · ~851,670 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 4, .example 2, .css 1)
 
 ## Summary
-- 740 nodes · 1694 edges · 51 communities (40 shown, 11 thin omitted)
+- 741 nodes · 1694 edges · 52 communities (40 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4b5fd676`
+- Built from commit: `18172b50`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -90,7 +90,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (51 total, 11 thin omitted)
+## Communities (52 total, 12 thin omitted)
 
 ### Community 0 - "ui.tsx"
 Cohesion: 0.07
@@ -254,8 +254,8 @@ Nodes (5): Cash Flow, Menjalankan lokal, Pemeriksaan, Pratinjau browser, Struktu
 
 ## Knowledge Gaps
 - **325 isolated node(s):** `name`, `version`, `private`, `type`, `build` (+320 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 362 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 363 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -263,7 +263,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Desain Database — Cash Flow` connect `Desain Database — Cash Flow` to `fail`, `README.md`?**
   _High betweenness centrality (0.202) - this node is a cross-community bridge._
 - **Why does `3. Konvensi` connect `fail` to `Desain Database — Cash Flow`?**
-  _High betweenness centrality (0.191) - this node is a cross-community bridge._
+  _High betweenness centrality (0.190) - this node is a cross-community bridge._
 - **Why does `uuid()` connect `fail` to `access.ts`?**
   _High betweenness centrality (0.126) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `private` to the rest of the system?**
