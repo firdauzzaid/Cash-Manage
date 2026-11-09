@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "apps/api/test/integration.test.ts": {
-    "mtime": 1794198203.2677298,
-    "seen": 1794198245.0928452,
-    "ast_hash": "232be439a3ef53de469c278d1a22a4e2",
+    "mtime": 1794214392.9352167,
+    "seen": 1794214413.489365,
+    "ast_hash": "3a4389f28a0fcaa0749c57aff7b1bc3d",
     "semantic_hash": ""
   },
   "apps/api/tsconfig.json": {
@@ -402,9 +402,9 @@
     "semantic_hash": ""
   },
   "apps/mobile/app/profile.tsx": {
-    "mtime": 1794198101.3535478,
-    "seen": 1794198245.0928679,
-    "ast_hash": "c7659fd88d1ab859b0d4ffb6d11a4f1f",
+    "mtime": 1794214255.3680735,
+    "seen": 1794214413.4894114,
+    "ast_hash": "c65af910798679aff4cda190b9423c4a",
     "semantic_hash": ""
   },
   "apps/mobile/app/report.tsx": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "docs/GMAIL-TRANSACTION-IMPORT.md": {
-    "mtime": 1794198211.7693467,
-    "seen": 1794198245.0929658,
-    "ast_hash": "ede758f699c9e5f5215042e687a6290d",
+    "mtime": 1794214382.4944973,
+    "seen": 1794214413.4896123,
+    "ast_hash": "c2b90d99595c8d6e34308fdc95bbd324",
     "semantic_hash": ""
   },
   "apps/mobile/src/transaction-import.test.ts": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "apps/api/src/gmail.ts": {
-    "mtime": 1794198101.1510758,
-    "seen": 1794198245.0928302,
-    "ast_hash": "280fb14a5c689e13ae1ad25999f25d91",
+    "mtime": 1794214197.9804122,
+    "seen": 1794214413.4893334,
+    "ast_hash": "5fa1a9ccd0a25dc2cdbef8a993473f30",
     "semantic_hash": ""
   },
   "migrations/004_gmail_import.sql": {
@@ -780,15 +780,15 @@
     "semantic_hash": ""
   },
   "packages/contracts/src/notification-import.ts": {
-    "mtime": 1793343835.6953745,
-    "seen": 1793344338.0185335,
-    "ast_hash": "e035403ba4a38a4a7cb4bdbbe3bf9292",
+    "mtime": 1794214393.0190673,
+    "seen": 1794214413.4895327,
+    "ast_hash": "3e538d08fe12d067de7cf27a160165bf",
     "semantic_hash": ""
   },
   "apps/api/src/public-pages.ts": {
-    "mtime": 1794196568.4325123,
-    "seen": 1794197019.6853516,
-    "ast_hash": "6616e3ea5e1090298201be73dcc8022f",
+    "mtime": 1794214286.1864169,
+    "seen": 1794214413.4893486,
+    "ast_hash": "7d87fdb003915861e6bb5a84ff0cb52e",
     "semantic_hash": ""
   },
   "migrations/005_category_tools_and_transaction_time.sql": {
@@ -807,6 +807,12 @@
     "mtime": 1794197696.0996122,
     "seen": 1794198245.0929198,
     "ast_hash": "3145a9a64444e3a132df315002e16c40",
+    "semantic_hash": ""
+  },
+  "migrations/008_gmail_body_parser_rescan.sql": {
+    "mtime": 1794214197.9804122,
+    "seen": 1794214413.4895196,
+    "ast_hash": "f886e3063da5e1f7e9cff6da3d4c720e",
     "semantic_hash": ""
   }
 }

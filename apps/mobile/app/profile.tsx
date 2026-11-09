@@ -281,9 +281,9 @@ export default function Profile() {
       </View>
       <Card>
         <Copy>
-          Gmail mencari email yang tampak seperti notifikasi transaksi. Isi
-          lengkap email tidak disimpan dan hasilnya tidak pernah langsung
-          menjadi transaksi.
+          Gmail memproses sementara teks email yang tampak seperti notifikasi
+          transaksi. Isi lengkap email tidak disimpan dan hasilnya tidak pernah
+          langsung menjadi transaksi.
         </Copy>
         {gmailMessage && (
           <Notice

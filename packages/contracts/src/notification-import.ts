@@ -14,6 +14,21 @@ function date(year: number, month: number, day: number) {
     : undefined;
 }
 
+const indonesianMonths: Record<string, number> = {
+  januari: 1,
+  februari: 2,
+  maret: 3,
+  april: 4,
+  mei: 5,
+  juni: 6,
+  juli: 7,
+  agustus: 8,
+  september: 9,
+  oktober: 10,
+  november: 11,
+  desember: 12,
+};
+
 export function notificationDraft(message: string): NotificationDraft {
   const blocked =
     /\bstatus(?:\s+transaksi)?\s*[:=-]?\s*(?:gagal|failed|pending|dibatalkan|batal|cancelled|canceled|kedaluwarsa|expired)\b/i.test(
@@ -32,14 +47,23 @@ export function notificationDraft(message: string): NotificationDraft {
   const uniqueAmounts = [...new Set(amounts)];
   const ymd = message.match(/\b(20\d{2})[-/](\d{1,2})[-/](\d{1,2})\b/);
   const dmy = message.match(/\b(\d{1,2})[-/](\d{1,2})[-/](20\d{2})\b/);
+  const indonesianDate = message.match(
+    /\b(\d{1,2})\s+(januari|februari|maret|april|mei|juni|juli|agustus|september|oktober|november|desember)\s+(20\d{2})\b/i,
+  );
   const merchant = message.match(
-    /(?:merchant|nama\s+toko|toko)\s*[:=-]\s*([^\r\n]+)/i,
+    /(?:merchant|nama\s+toko|toko|produk)\s*(?::|=|-|\r?\n)\s*([^\r\n]+)/i,
   )?.[1];
   const occurred_on = ymd
     ? date(Number(ymd[1]), Number(ymd[2]), Number(ymd[3]))
     : dmy
       ? date(Number(dmy[3]), Number(dmy[2]), Number(dmy[1]))
-      : undefined;
+      : indonesianDate
+        ? date(
+            Number(indonesianDate[3]),
+            indonesianMonths[indonesianDate[2].toLowerCase()],
+            Number(indonesianDate[1]),
+          )
+        : undefined;
   const note = merchant?.replace(/\s+/g, " ").trim().slice(0, 120);
   return {
     ...(uniqueAmounts.length === 1 ? { amount_minor: uniqueAmounts[0] } : {}),

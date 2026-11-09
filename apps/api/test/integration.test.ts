@@ -733,17 +733,28 @@ test(
                 }),
               );
             }
-            if (value.includes("/messages/payment?"))
+            if (value.includes("/messages/payment?")) {
+              assert.equal(new URL(value).searchParams.get("format"), "full");
               return new Response(
                 JSON.stringify({
                   id: "payment",
-                  snippet:
-                    "Transaksi berhasil Rp125.000 2026-01-10 merchant: Warung",
                   payload: {
-                    headers: [{ name: "Subject", value: "Transfer berhasil" }],
+                    mimeType: "text/html",
+                    headers: [
+                      {
+                        name: "Subject",
+                        value: "Pembelian pulsa berhasil",
+                      },
+                    ],
+                    body: {
+                      data: Buffer.from(
+                        "<div>Produk</div><div>Pulsa prabayar</div><div>Waktu Proses</div><div>06 November 2026, 12:37 WIB</div><div>Total Pembayaran</div><div>Rp6.200</div>",
+                      ).toString("base64url"),
+                    },
                   },
                 }),
               );
+            }
             throw new Error(`Unexpected Gmail request: ${value}`);
           }) as typeof fetch;
           const first = await call(a.cookie, "POST", "/me/gmail/sync");
@@ -760,7 +771,9 @@ test(
           );
           assert.equal(candidates.statusCode, 200, candidates.body);
           assert.equal(candidates.json().length, 1);
-          assert.equal(candidates.json()[0].amount_minor, "125000");
+          assert.equal(candidates.json()[0].amount_minor, "6200");
+          assert.equal(candidates.json()[0].occurred_on, "2026-11-06");
+          assert.equal(candidates.json()[0].note, "Pulsa prabayar");
 
           const second = await call(a.cookie, "POST", "/me/gmail/sync");
           assert.equal(second.statusCode, 200, second.body);

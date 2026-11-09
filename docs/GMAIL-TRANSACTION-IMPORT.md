@@ -29,7 +29,7 @@ Pengguna memberi consent -> Backend menyimpan refresh token terenkripsi
 ```
 
 - OAuth dilakukan melalui browser sistem ke backend HTTPS; mobile tidak menyimpan client secret atau refresh token. Simpan refresh token terenkripsi per koneksi, dengan key yang dikelola terpisah; batasi akses runtime dan jangan masukkan body email/token ke log, audit, analytics, atau ekspor.
-- Implementasi menyimpan hanya ID pesan Gmail, ID koneksi, `historyId`, cursor halaman, progres histori, kandidat hasil parser, dan kode error aman. Sistem mengambil metadata subjek/cuplikannya untuk parsing lalu tidak menyimpan salinan penuh isi email.
+- Implementasi menyimpan hanya ID pesan Gmail, ID koneksi, `historyId`, cursor halaman, progres histori, kandidat hasil parser, dan kode error aman. Sistem memproses sementara subjek, cuplikan, serta teks/plain atau HTML email yang cocok untuk parsing; lampiran dan salinan penuh isi email tidak disimpan.
 - Sediakan layar _Kelola koneksi_: status, daftar sender yang aktif, sinkronisasi manual, cabut akses, dan hapus data impor. Saat revoke/hapus akun, revoke token ke Google lalu hapus token, state sinkronisasi, dan data mentah/draf sesuai kebijakan retensi. Kegagalan token tidak boleh memengaruhi transaksi yang sudah disimpan.
 - Draf hanya boleh terlihat oleh pembuatnya hingga dikonfirmasi. Setelah disimpan, gunakan endpoint transaksi saat ini agar membership, rekening/kategori satu household, `Idempotency-Key`, versioning, serta audit yang sudah ada tetap berlaku.
 

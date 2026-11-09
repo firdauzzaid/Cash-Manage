@@ -252,6 +252,39 @@ async function connectionActive(pool: Database, id: string) {
   ).rows[0];
 }
 
+type GmailPayload = {
+  mimeType?: string;
+  body?: { data?: string };
+  parts?: GmailPayload[];
+  headers?: { name: string; value: string }[];
+};
+
+function messageText(payload?: GmailPayload) {
+  const plain: string[] = [],
+    html: string[] = [];
+  const collect = (part?: GmailPayload) => {
+    if (!part) return;
+    if (part.body?.data) {
+      const text = Buffer.from(part.body.data, "base64url")
+        .toString("utf8")
+        .slice(0, 64000);
+      if (part.mimeType === "text/html") html.push(text);
+      else if (part.mimeType === "text/plain") plain.push(text);
+    }
+    for (const child of part.parts ?? []) collect(child);
+  };
+  collect(payload);
+  const source = plain.length ? plain.join("\n") : html.join("\n");
+  return source
+    .replace(/<\/(?:div|p|tr|li|td|th|br)[^>]*>/gi, "\n")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&(nbsp|amp);/gi, (_, entity: string) =>
+      entity.toLowerCase() === "nbsp" ? " " : "&",
+    )
+    .replace(/\n{3,}/g, "\n\n")
+    .slice(0, 64000);
+}
+
 async function processGmailMessages(
   pool: Database,
   id: string,
@@ -265,16 +298,15 @@ async function processGmailMessages(
     const message = await gmail<{
       id: string;
       snippet?: string;
-      payload?: { headers?: { name: string; value: string }[] };
-    }>(
-      accessToken,
-      `/messages/${encodeURIComponent(messageId)}?format=metadata&metadataHeaders=Subject`,
-    );
+      payload?: GmailPayload;
+    }>(accessToken, `/messages/${encodeURIComponent(messageId)}?format=full`);
     const subject =
       message.payload?.headers?.find(
         (header) => header.name.toLowerCase() === "subject",
       )?.value ?? "";
-    const draft = notificationDraft(`${subject}\n${message.snippet ?? ""}`);
+    const draft = notificationDraft(
+      `${subject}\n${message.snippet ?? ""}\n${messageText(message.payload)}`,
+    );
     if (draft.blocked || !draft.amount_minor) continue;
     if (!(await connectionActive(pool, id)))
       return { created: 0, scanned: 0, active: false };
