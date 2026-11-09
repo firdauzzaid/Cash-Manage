@@ -29,7 +29,6 @@ test(
       clientId: "test-client",
       redirectURL: "https://cashflow.example/v1/gmail/oauth/callback",
       encryptionKey: randomBytes(32),
-      labelName: "Cash Flow",
       mobileReturnURL: "cashflow://profile",
     };
     const { app } = await createApp(
@@ -431,7 +430,12 @@ test(
         );
         const sync = await call(a.cookie, "POST", "/me/gmail/sync");
         assert.equal(sync.statusCode, 200, sync.body);
-        assert.deepEqual(sync.json(), { created: 0, reason: "SYNC_FAILED" });
+        assert.deepEqual(sync.json(), {
+          created: 0,
+          scanned: 0,
+          history_complete: false,
+          reason: "SYNC_FAILED",
+        });
         for (const id of [first, second])
           await admin.query(
             "INSERT INTO gmail_candidates(id,connection_id,gmail_message_id,amount_minor,occurred_on,note) VALUES($1,$2,$3,$4,$5,$6)",
@@ -630,30 +634,30 @@ test(
                   }),
                 )
               : new Response(
-                  JSON.stringify({ emailAddress: "gmail@example.test" }),
+                  JSON.stringify({
+                    emailAddress: "gmail@example.test",
+                    historyId: "100",
+                  }),
                 )) as typeof fetch;
           await finishGmailAuthorization(pool, gmail, state!, "code");
 
-          let labelsRequested!: () => void,
-            releaseLabels!: (response: Response) => void,
+          let messagesRequested!: () => void,
+            releaseMessages!: (response: Response) => void,
             listRequests = 0;
           const requested = new Promise<void>((resolve) => {
-              labelsRequested = resolve;
+              messagesRequested = resolve;
             }),
-            labels = new Promise<Response>((resolve) => {
-              releaseLabels = resolve;
+            messages = new Promise<Response>((resolve) => {
+              releaseMessages = resolve;
             });
           globalThis.fetch = (async (url: string | URL) => {
             const value = String(url);
             if (value.includes("oauth2.googleapis.com/token"))
               return new Response(JSON.stringify({ access_token: "access" }));
-            if (value.endsWith("/labels")) {
-              labelsRequested();
-              return labels;
-            }
             if (value.includes("/messages?")) {
               listRequests++;
-              return new Response(JSON.stringify({ messages: [] }));
+              messagesRequested();
+              return messages;
             }
             throw new Error(`Unexpected Gmail request: ${value}`);
           }) as typeof fetch;
@@ -661,15 +665,210 @@ test(
           await requested;
           const disconnected = await call(a.cookie, "DELETE", "/me/gmail");
           assert.equal(disconnected.statusCode, 200, disconnected.body);
-          releaseLabels(
-            new Response(
-              JSON.stringify({ labels: [{ id: "label", name: "Cash Flow" }] }),
-            ),
-          );
+          releaseMessages(new Response(JSON.stringify({ messages: [] })));
           const synced = await syncing;
           assert.equal(synced.statusCode, 200, synced.body);
-          assert.deepEqual(synced.json(), { created: 0 });
-          assert.equal(listRequests, 0);
+          assert.deepEqual(synced.json(), {
+            created: 0,
+            scanned: 0,
+            history_complete: false,
+          });
+          assert.equal(listRequests, 1);
+        } finally {
+          globalThis.fetch = originalFetch;
+        }
+      },
+    );
+    await t.test(
+      "automatic Gmail detection scans transaction-like emails without labels and deduplicates them",
+      async () => {
+        const originalFetch = globalThis.fetch;
+        try {
+          const started = await beginGmailAuthorization(pool, gmail, a.profile);
+          const state = new URL(started.authorization_url).searchParams.get(
+            "state",
+          );
+          assert.ok(state);
+          globalThis.fetch = (async (url: string | URL) =>
+            String(url).includes("oauth2.googleapis.com/token")
+              ? new Response(
+                  JSON.stringify({
+                    access_token: "access",
+                    refresh_token: "refresh",
+                  }),
+                )
+              : new Response(
+                  JSON.stringify({
+                    emailAddress: "gmail@example.test",
+                    historyId: "100",
+                  }),
+                )) as typeof fetch;
+          await finishGmailAuthorization(pool, gmail, state!, "code");
+
+          globalThis.fetch = (async (url: string | URL) => {
+            const value = String(url);
+            if (value.includes("oauth2.googleapis.com/token"))
+              return new Response(JSON.stringify({ access_token: "access" }));
+            if (value.includes("/messages?")) {
+              assert.equal(
+                new URL(value).searchParams.get("q"),
+                "{Rp IDR} {transaksi pembayaran transfer debit kredit qris}",
+              );
+              assert.equal(value.includes("labelIds"), false);
+              return new Response(
+                JSON.stringify({ messages: [{ id: "payment" }] }),
+              );
+            }
+            if (value.includes("/history?")) {
+              assert.equal(
+                new URL(value).searchParams.get("startHistoryId"),
+                "100",
+              );
+              return new Response(
+                JSON.stringify({
+                  history: [
+                    { messagesAdded: [{ message: { id: "payment" } }] },
+                  ],
+                  historyId: "101",
+                }),
+              );
+            }
+            if (value.includes("/messages/payment?"))
+              return new Response(
+                JSON.stringify({
+                  id: "payment",
+                  snippet:
+                    "Transaksi berhasil Rp125.000 2026-01-10 merchant: Warung",
+                  payload: {
+                    headers: [{ name: "Subject", value: "Transfer berhasil" }],
+                  },
+                }),
+              );
+            throw new Error(`Unexpected Gmail request: ${value}`);
+          }) as typeof fetch;
+          const first = await call(a.cookie, "POST", "/me/gmail/sync");
+          assert.equal(first.statusCode, 200, first.body);
+          assert.deepEqual(first.json(), {
+            created: 1,
+            scanned: 1,
+            history_complete: true,
+          });
+          const candidates = await call(
+            a.cookie,
+            "GET",
+            "/me/gmail/candidates",
+          );
+          assert.equal(candidates.statusCode, 200, candidates.body);
+          assert.equal(candidates.json().length, 1);
+          assert.equal(candidates.json()[0].amount_minor, "125000");
+
+          const second = await call(a.cookie, "POST", "/me/gmail/sync");
+          assert.equal(second.statusCode, 200, second.body);
+          assert.equal(second.json().created, 0);
+          assert.equal(
+            (await call(a.cookie, "GET", "/me/gmail/candidates")).json().length,
+            1,
+          );
+        } finally {
+          globalThis.fetch = originalFetch;
+        }
+      },
+    );
+    await t.test(
+      "Gmail reports a revoked consent distinctly from a generic sync failure",
+      async () => {
+        const originalFetch = globalThis.fetch;
+        try {
+          const started = await beginGmailAuthorization(pool, gmail, b.profile);
+          const state = new URL(started.authorization_url).searchParams.get(
+            "state",
+          );
+          assert.ok(state);
+          globalThis.fetch = (async (url: string | URL) =>
+            String(url).includes("oauth2.googleapis.com/token")
+              ? new Response(
+                  JSON.stringify({
+                    access_token: "access",
+                    refresh_token: "refresh",
+                  }),
+                )
+              : new Response(
+                  JSON.stringify({
+                    emailAddress: "gmail@example.test",
+                    historyId: "200",
+                  }),
+                )) as typeof fetch;
+          await finishGmailAuthorization(pool, gmail, state!, "code");
+          globalThis.fetch = (async () =>
+            new Response(JSON.stringify({ error: "invalid_grant" }), {
+              status: 400,
+            })) as typeof fetch;
+          const sync = await call(b.cookie, "POST", "/me/gmail/sync");
+          assert.deepEqual(sync.json(), {
+            created: 0,
+            scanned: 0,
+            history_complete: false,
+            reason: "TOKEN_REVOKED",
+          });
+          assert.equal(
+            (await call(b.cookie, "GET", "/me/gmail")).json().last_error_code,
+            "TOKEN_REVOKED",
+          );
+        } finally {
+          globalThis.fetch = originalFetch;
+        }
+      },
+    );
+    await t.test(
+      "an expired Gmail history cursor safely restarts the full history scan",
+      async () => {
+        const originalFetch = globalThis.fetch;
+        try {
+          const started = await beginGmailAuthorization(
+            pool,
+            gmail,
+            outsider.profile,
+          );
+          const state = new URL(started.authorization_url).searchParams.get(
+            "state",
+          );
+          assert.ok(state);
+          globalThis.fetch = (async (url: string | URL) =>
+            String(url).includes("oauth2.googleapis.com/token")
+              ? new Response(
+                  JSON.stringify({
+                    access_token: "access",
+                    refresh_token: "refresh",
+                  }),
+                )
+              : new Response(
+                  JSON.stringify({
+                    emailAddress: "gmail@example.test",
+                    historyId: "300",
+                  }),
+                )) as typeof fetch;
+          await finishGmailAuthorization(pool, gmail, state!, "code");
+          globalThis.fetch = (async (url: string | URL) =>
+            String(url).includes("oauth2.googleapis.com/token")
+              ? new Response(JSON.stringify({ access_token: "access" }))
+              : new Response(JSON.stringify({ messages: [] }))) as typeof fetch;
+          assert.equal(
+            (await call(outsider.cookie, "POST", "/me/gmail/sync")).statusCode,
+            200,
+          );
+          globalThis.fetch = (async (url: string | URL) =>
+            String(url).includes("oauth2.googleapis.com/token")
+              ? new Response(JSON.stringify({ access_token: "access" }))
+              : new Response(JSON.stringify({ error: "history expired" }), {
+                  status: 404,
+                })) as typeof fetch;
+          const sync = await call(outsider.cookie, "POST", "/me/gmail/sync");
+          assert.deepEqual(sync.json(), {
+            created: 0,
+            scanned: 0,
+            history_complete: false,
+            reason: "HISTORY_EXPIRED",
+          });
         } finally {
           globalThis.fetch = originalFetch;
         }
@@ -980,6 +1179,212 @@ test(
         );
         assert.equal(history.statusCode, 200, history.body);
         assert.equal(history.json().category_id, categoryId);
+      },
+    );
+    await t.test(
+      "category tools move transactions without moving budgets and protect referenced categories",
+      async () => {
+        const sourceCategory = (
+          await call(b.cookie, "POST", path + "/categories", {
+            name: "Makan lama",
+            kind: "expense",
+          })
+        ).json().id;
+        const targetCategory = (
+          await call(b.cookie, "POST", path + "/categories", {
+            name: "Makan baru",
+            kind: "expense",
+          })
+        ).json().id;
+        const transaction = (
+          await call(b.cookie, "POST", path + "/transactions", {
+            type: "expense",
+            account_id: source,
+            category_id: sourceCategory,
+            amount_minor: "100",
+            occurred_on: on,
+          })
+        ).json().id;
+        const budget = await call(b.cookie, "POST", path + "/budgets", {
+          category_id: sourceCategory,
+          month_start: "2026-01-01",
+          limit_minor: "500",
+        });
+        assert.equal(budget.statusCode, 200, budget.body);
+        const moved = await call(
+          b.cookie,
+          "POST",
+          path + "/categories/" + sourceCategory + "/reclassify",
+          { expected_version: 1, target_category_id: targetCategory },
+        );
+        assert.equal(moved.statusCode, 200, moved.body);
+        assert.equal(moved.json().transaction_count, 1);
+        assert.equal(
+          (
+            await call(b.cookie, "GET", path + "/transactions/" + transaction)
+          ).json().category_id,
+          targetCategory,
+        );
+        const audit = await call(b.cookie, "GET", path + "/audit");
+        const transactionAudit = audit
+          .json()
+          .items.find(
+            (item: any) =>
+              item.entity_type === "transaction" &&
+              item.entity_id === transaction &&
+              item.action === "reclassified",
+          );
+        assert.deepEqual(transactionAudit.changes.fields, [
+          { label: "Kategori", before: "Makan lama", after: "Makan baru" },
+        ]);
+        assert.equal(
+          (await call(b.cookie, "GET", path + "/budgets?month=2026-01-01"))
+            .json()
+            .find((item: any) => item.id === budget.json().id).category_id,
+          sourceCategory,
+        );
+        const protectedDelete = await call(
+          b.cookie,
+          "POST",
+          path + "/categories/" + sourceCategory + "/delete-permanently",
+          { expected_version: 2 },
+        );
+        assert.equal(protectedDelete.statusCode, 409, protectedDelete.body);
+        assert.equal(protectedDelete.json().code, "CATEGORY_IN_USE");
+        const emptyCategory = (
+          await call(b.cookie, "POST", path + "/categories", {
+            name: "Kosong sementara",
+            kind: "expense",
+          })
+        ).json();
+        const deleted = await call(
+          b.cookie,
+          "POST",
+          path + "/categories/" + emptyCategory.id + "/delete-permanently",
+          { expected_version: emptyCategory.version },
+        );
+        assert.equal(deleted.statusCode, 200, deleted.body);
+      },
+    );
+    await t.test(
+      "transaction time orders same-day records and appears in exports",
+      async () => {
+        const timedCategory = (
+          await call(b.cookie, "POST", path + "/categories", {
+            name: "Waktu transaksi",
+            kind: "income",
+          })
+        ).json().id;
+        const early = (
+          await call(b.cookie, "POST", path + "/transactions", {
+            type: "income",
+            account_id: source,
+            category_id: timedCategory,
+            amount_minor: "11",
+            occurred_on: on,
+            occurred_time: "08:15",
+          })
+        ).json().id;
+        const late = (
+          await call(b.cookie, "POST", path + "/transactions", {
+            type: "income",
+            account_id: source,
+            category_id: timedCategory,
+            amount_minor: "12",
+            occurred_on: on,
+            occurred_time: "18:45",
+          })
+        ).json().id;
+        const listed = await call(
+          b.cookie,
+          "GET",
+          path + "/transactions" + range + "&category_id=" + timedCategory,
+        );
+        assert.equal(listed.statusCode, 200, listed.body);
+        assert.deepEqual(
+          listed.json().items.map((item: any) => item.id),
+          [late, early],
+        );
+        assert.ok(listed.json().items[0].occurred_at);
+        const exported = await call(
+          b.cookie,
+          "GET",
+          path + "/export" + range + "&category_id=" + timedCategory,
+        );
+        assert.equal(exported.statusCode, 200, exported.body);
+        assert.match(exported.body, /"Waktu"/);
+        assert.match(exported.body, /"18:45"/);
+      },
+    );
+    await t.test(
+      "a legacy transaction cursor continues in time order",
+      async () => {
+        const category = (
+          await call(b.cookie, "POST", path + "/categories", {
+            name: "Cursor lama",
+            kind: "income",
+          })
+        ).json().id;
+        for (const occurred_time of [
+          "08:00",
+          "09:00",
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+        ])
+          assert.equal(
+            (
+              await call(b.cookie, "POST", path + "/transactions", {
+                type: "income",
+                account_id: source,
+                category_id: category,
+                amount_minor: "1",
+                occurred_on: on,
+                occurred_time,
+              })
+            ).statusCode,
+            200,
+          );
+        const ordered = (
+          await call(
+            b.cookie,
+            "GET",
+            path + "/transactions" + range + "&category_id=" + category,
+          )
+        ).json().items;
+        let cursor: any, expected: any;
+        for (let newer = 0; newer < ordered.length && !cursor; newer++)
+          for (let older = newer + 1; older < ordered.length; older++)
+            if (ordered[older].id > ordered[newer].id) {
+              cursor = ordered[newer];
+              expected = ordered[older];
+              break;
+            }
+        assert.ok(
+          cursor && expected,
+          "expected UUID order to differ from time",
+        );
+        const legacyCursor = Buffer.from(
+          JSON.stringify({ date: cursor.occurred_on, id: cursor.id }),
+        ).toString("base64url");
+        const continued = await call(
+          b.cookie,
+          "GET",
+          path +
+            "/transactions" +
+            range +
+            "&category_id=" +
+            category +
+            "&cursor=" +
+            encodeURIComponent(legacyCursor),
+        );
+        assert.equal(continued.statusCode, 200, continued.body);
+        assert.ok(
+          continued.json().items.some((item: any) => item.id === expected.id),
+        );
       },
     );
     await t.test(

@@ -572,7 +572,11 @@ function Home() {
               ) : (
                 <View style={{ borderTopWidth: 1, borderTopColor: c.border }}>
                   {transactions.data?.items.slice(0, 4).map((item) => (
-                    <TransactionRow key={item.id} item={item} />
+                    <TransactionRow
+                      key={item.id}
+                      item={item}
+                      timezone={household!.timezone}
+                    />
                   ))}
                 </View>
               )}

@@ -27,10 +27,12 @@ type GmailStatus = {
   available: boolean;
   connected: boolean;
   gmail_address?: string;
-  label_name?: string;
   status?: "active" | "revoked" | "error";
   last_synced_at?: string | null;
   last_error_code?: string | null;
+  history_complete?: boolean;
+  history_checked_count?: number;
+  history_total_estimate?: number | null;
   candidates: number;
 };
 type GmailCandidate = {
@@ -77,7 +79,7 @@ export default function Profile() {
       setGmailMessage(
         result.type === "success" || gmail === "connected"
           ? {
-              text: "Gmail terhubung. Buat label Cash Flow di Gmail, lalu sinkronkan untuk mencari notifikasi yang diberi label tersebut.",
+              text: "Gmail terhubung. Cash Flow mulai memeriksa email yang tampak seperti notifikasi transaksi.",
               tone: "success",
             }
           : {
@@ -102,29 +104,53 @@ export default function Profile() {
     try {
       const result = await request<{
         created: number;
-        reason?: "LABEL_NOT_FOUND" | "SYNC_FAILED";
+        scanned: number;
+        history_complete: boolean;
+        reason?:
+          | "TOKEN_REVOKED"
+          | "RATE_LIMITED"
+          | "GOOGLE_UNAVAILABLE"
+          | "HISTORY_EXPIRED"
+          | "SYNC_FAILED";
       }>("/me/gmail/sync", { method: "POST" });
       await Promise.all([gmailStatus.refetch(), gmailCandidates.refetch()]);
       setGmailMessage(
         result.created
           ? {
-              text: `${result.created} kandidat transaksi baru ditemukan. Periksa sebelum disimpan.`,
+              text: `${result.created} kandidat transaksi ditemukan dari ${result.scanned} email. Periksa sebelum disimpan.`,
               tone: "success",
             }
-          : result.reason === "LABEL_NOT_FOUND"
+          : result.reason === "TOKEN_REVOKED"
             ? {
-                text: "Label Cash Flow belum ditemukan. Buat label tersebut di Gmail, lalu coba lagi.",
-                tone: "info",
+                text: "Izin Gmail sudah tidak berlaku. Hubungkan ulang Gmail untuk melanjutkan pencarian.",
+                tone: "error",
               }
-            : result.reason === "SYNC_FAILED"
+            : result.reason === "RATE_LIMITED"
               ? {
-                  text: "Gmail belum dapat disinkronkan. Coba lagi atau hubungkan ulang Gmail.",
-                  tone: "error",
-                }
-              : {
-                  text: "Belum ada notifikasi baru yang dapat dibaca.",
+                  text: "Gmail membatasi pencarian sementara. Tunggu beberapa menit, lalu coba lagi.",
                   tone: "info",
-                },
+                }
+              : result.reason === "GOOGLE_UNAVAILABLE"
+                ? {
+                    text: "Layanan Gmail sedang tidak tersedia. Coba sinkronkan lagi nanti.",
+                    tone: "info",
+                  }
+                : result.reason === "HISTORY_EXPIRED"
+                  ? {
+                      text: "Riwayat Gmail sudah terlalu lama. Cash Flow akan memulai pencarian histori lagi.",
+                      tone: "info",
+                    }
+                  : result.reason === "SYNC_FAILED"
+                    ? {
+                        text: "Gmail belum dapat disinkronkan. Coba lagi atau hubungkan ulang Gmail.",
+                        tone: "error",
+                      }
+                    : {
+                        text: result.history_complete
+                          ? "Belum ada email transaksi baru yang dapat dibaca."
+                          : `${result.scanned} email diperiksa. Sinkronkan lagi untuk melanjutkan histori.`,
+                        tone: "info",
+                      },
       );
     } catch (error) {
       setGmailMessage({
@@ -255,8 +281,9 @@ export default function Profile() {
       </View>
       <Card>
         <Copy>
-          Gmail hanya membaca email yang Anda beri label {'"'}Cash Flow{'"'}.
-          Notifikasi tidak pernah langsung menjadi transaksi.
+          Gmail mencari email yang tampak seperti notifikasi transaksi. Isi
+          lengkap email tidak disimpan dan hasilnya tidak pernah langsung
+          menjadi transaksi.
         </Copy>
         {gmailMessage && (
           <Notice
@@ -283,15 +310,24 @@ export default function Profile() {
         ) : (
           <>
             <Copy muted size={14}>
-              Terhubung ke {gmailStatus.data.gmail_address} · Label:{" "}
-              {gmailStatus.data.label_name}
+              Terhubung ke {gmailStatus.data.gmail_address} · Deteksi transaksi
+              otomatis
             </Copy>
+            {gmailStatus.data.history_complete === false && (
+              <Notice>
+                Memindai histori Gmail:{" "}
+                {gmailStatus.data.history_checked_count ?? 0}
+                {gmailStatus.data.history_total_estimate
+                  ? ` dari sekitar ${gmailStatus.data.history_total_estimate}`
+                  : ""}{" "}
+                email yang sesuai pola transaksi telah diperiksa.
+              </Notice>
+            )}
             {gmailStatus.data.status === "error" && (
               <>
                 <Notice error>
-                  {gmailStatus.data.last_error_code === "LABEL_NOT_FOUND"
-                    ? "Label Cash Flow belum ditemukan di Gmail. Buat label tersebut, lalu coba sinkronkan lagi."
-                    : "Sinkronisasi Gmail gagal. Coba sinkronkan lagi atau hubungkan ulang Gmail."}
+                  Sinkronisasi Gmail gagal. Coba sinkronkan lagi atau hubungkan
+                  ulang Gmail.
                 </Notice>
                 <Button
                   secondary
@@ -303,7 +339,11 @@ export default function Profile() {
             )}
             <Button
               secondary
-              label="Cari notifikasi baru"
+              label={
+                gmailStatus.data.history_complete
+                  ? "Cari email transaksi baru"
+                  : "Lanjutkan pencarian histori"
+              }
               icon="sync-outline"
               disabled={gmailStatus.isFetching || gmailBusy}
               onPress={() => void syncGmail()}

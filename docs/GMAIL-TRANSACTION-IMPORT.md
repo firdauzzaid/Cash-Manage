@@ -1,6 +1,6 @@
 # Usulan Impor Notifikasi Transaksi Gmail
 
-Status: analisis desain, belum diimplementasikan. Dokumen ini tidak memperluas scope MVP tanpa persetujuan produk dan compliance.
+Status: implementasi pilot tersedia atas persetujuan produk. Koneksi Gmail tetap fitur opt-in, kandidat selalu memerlukan tinjauan pengguna, dan verifikasi compliance Google masih menjadi release gate.
 
 ## Keputusan
 
@@ -8,8 +8,8 @@ Secara teknis fitur ini dapat dibuat, tetapi Gmail **bukan sumber kebenaran tran
 
 Rekomendasi produk adalah bertahap:
 
-1. Tambahkan dahulu tindakan *"Buat transaksi dari notifikasi"* secara manual: pengguna menyalin/berbagi isi notifikasi dan aplikasi mengisi nominal, tanggal, merchant, serta catatan bila dapat dikenali; pengguna memilih rekening/kategori lalu menekan Simpan. Ini memberi manfaat yang sama pada iOS dan Android tanpa memberikan akses kotak masuk.
-2. Validasi parser melalui daftar pengirim/template yang didukung (misalnya tiap e-wallet/bank), dengan tampilan *"perlu ditinjau"* bila nilai atau tipe tidak pasti. Jangan memakai AI untuk membuat transaksi final tanpa konfirmasi.
+1. Tambahkan dahulu tindakan _"Buat transaksi dari notifikasi"_ secara manual: pengguna menyalin/berbagi isi notifikasi dan aplikasi mengisi nominal, tanggal, merchant, serta catatan bila dapat dikenali; pengguna memilih rekening/kategori lalu menekan Simpan. Ini memberi manfaat yang sama pada iOS dan Android tanpa memberikan akses kotak masuk.
+2. Validasi parser melalui daftar pengirim/template yang didukung (misalnya tiap e-wallet/bank), dengan tampilan _"perlu ditinjau"_ bila nilai atau tipe tidak pasti. Jangan memakai AI untuk membuat transaksi final tanpa konfirmasi.
 3. Hanya bila penggunaan langkah 1 terbukti bernilai, tawarkan koneksi Gmail sebagai fitur opt-in terpisah. Hubungkan ke profil pengguna, bukan langsung ke household, karena satu inbox dapat berisi informasi yang tidak pantas dibagikan otomatis kepada anggota household lain.
 
 ## Implikasi Gmail
@@ -22,17 +22,18 @@ Pada aplikasi publik, scope restricted membutuhkan verifikasi OAuth. Bila data r
 
 ```text
 Pengguna memberi consent -> Backend menyimpan refresh token terenkripsi
--> Gmail mendeteksi email baru -> worker hanya memilih sender/label yang didukung
--> parser menghasilkan draf + tingkat keyakinan -> pengguna meninjau dan menyimpan
+-> worker memindai histori query transaksi secara bertahap
+-> Gmail History API mengambil email baru sejak cursor terakhir
+-> parser menghasilkan kandidat -> pengguna meninjau dan menyimpan
 -> endpoint transaksi yang ada melakukan validasi household, idempotency, audit
 ```
 
 - OAuth dilakukan melalui browser sistem ke backend HTTPS; mobile tidak menyimpan client secret atau refresh token. Simpan refresh token terenkripsi per koneksi, dengan key yang dikelola terpisah; batasi akses runtime dan jangan masukkan body email/token ke log, audit, analytics, atau ekspor.
-- Simpan hanya data minimum untuk deduplikasi dan sinkronisasi: ID pesan Gmail, ID koneksi, `historyId`, waktu diproses, fingerprint hasil parser, status draf, dan error aman. Hapus raw email/body sesudah parsing, kecuali pengguna secara eksplisit meminta lampiran bukti dengan kebijakan retensi terpisah.
-- Sediakan layar *Kelola koneksi*: status, daftar sender yang aktif, sinkronisasi manual, cabut akses, dan hapus data impor. Saat revoke/hapus akun, revoke token ke Google lalu hapus token, state sinkronisasi, dan data mentah/draf sesuai kebijakan retensi. Kegagalan token tidak boleh memengaruhi transaksi yang sudah disimpan.
+- Implementasi menyimpan hanya ID pesan Gmail, ID koneksi, `historyId`, cursor halaman, progres histori, kandidat hasil parser, dan kode error aman. Sistem mengambil metadata subjek/cuplikannya untuk parsing lalu tidak menyimpan salinan penuh isi email.
+- Sediakan layar _Kelola koneksi_: status, daftar sender yang aktif, sinkronisasi manual, cabut akses, dan hapus data impor. Saat revoke/hapus akun, revoke token ke Google lalu hapus token, state sinkronisasi, dan data mentah/draf sesuai kebijakan retensi. Kegagalan token tidak boleh memengaruhi transaksi yang sudah disimpan.
 - Draf hanya boleh terlihat oleh pembuatnya hingga dikonfirmasi. Setelah disimpan, gunakan endpoint transaksi saat ini agar membership, rekening/kategori satu household, `Idempotency-Key`, versioning, serta audit yang sudah ada tetap berlaku.
 
-Untuk otomatisasi server, Gmail menyediakan `users.watch` ke Google Cloud Pub/Sub; notifikasi kemudian harus diproses memakai `history.list`, bukan dianggap sebagai detail transaksi. Watch perlu diperbarui minimal tiap tujuh hari (direkomendasikan harian), dan `historyId` yang kedaluwarsa dapat mengembalikan 404 sehingga sistem harus melakukan sync penuh yang dibatasi filter. Ini menambah Google Cloud project, Pub/Sub, endpoint webhook HTTPS, pekerjaan pembaruan watch, monitoring, dan recovery. [Gmail push notifications](https://developers.google.com/workspace/gmail/api/guides/push), [sinkronisasi Gmail](https://developers.google.com/workspace/gmail/api/guides/sync)
+Implementasi pilot melakukan polling `history.list` setiap 15 menit setelah histori awal selesai. Cursor `historyId` yang kedaluwarsa (404) memulai pemindaian histori penuh kembali. `users.watch` dan Pub/Sub tetap opsi peningkatan bila latensi 15 menit tidak lagi memadai; notifikasi push harus tetap diproses dengan `history.list`, bukan dianggap detail transaksi. [Gmail push notifications](https://developers.google.com/workspace/gmail/api/guides/push), [sinkronisasi Gmail](https://developers.google.com/workspace/gmail/api/guides/sync)
 
 Untuk pilot kecil, lebih sederhana gunakan tombol **Sinkronkan sekarang** atau polling server terbatas setelah consent, kemudian baru gunakan `watch` ketika kebutuhan otomatis benar-benar terbukti. Query Gmail dapat mempersempit pemindaian berdasarkan sender, tanggal, atau label, namun tetap perlu parser dan deduplikasi di sisi aplikasi. [Filtering Gmail](https://developers.google.com/workspace/gmail/api/guides/filtering)
 
@@ -42,7 +43,7 @@ Untuk pilot kecil, lebih sederhana gunakan tombol **Sinkronkan sekarang** atau p
 - Satu email yang diproses ulang hanya menghasilkan satu draf/transaksi; perubahan status refund atau pembatalan tidak menimpa transaksi awal diam-diam.
 - Pengguna dapat cabut koneksi dan menghapus data impor; token dan isi email tidak muncul di log, crash report, atau backup yang tidak terenkripsi.
 - Household B tidak dapat membaca draf, koneksi, maupun hasil impor milik pengguna/household A.
-- Uji template nyata untuk tiap provider yang didukung, beserta nominal negatif/biaya, transfer antar rekening, refund, thread duplikat, token revoked, `historyId` 404, dan webhook/poll retry.
+- Uji template nyata untuk tiap provider yang didukung, beserta nominal negatif/biaya, transfer antar rekening, refund, thread duplikat, token revoked, `historyId` 404, dan polling retry. Query generik saat ini bersifat konservatif; template provider belum dapat diklaim didukung sebelum corpus pengujian tersedia.
 
 ## Batas rekomendasi
 

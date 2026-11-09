@@ -104,6 +104,110 @@ export async function saveCategory(ctx: Context, b: v.Body, id?: string) {
   );
   return { id: rid, version: (old?.version ?? 0) + 1 };
 }
+export async function reclassifyCategory(
+  ctx: Context,
+  id: string,
+  b: v.Body,
+  merge = false,
+) {
+  const source = await existing(
+      ctx,
+      "categories",
+      id,
+      v.version(b.expected_version),
+    ),
+    targetId = v.uuid(b.target_category_id);
+  if (targetId === id)
+    fail(400, "CATEGORY_TARGET", "Pilih kategori tujuan yang berbeda.");
+  const target = await reference(
+    ctx,
+    "categories",
+    targetId,
+    undefined,
+    source.kind,
+  );
+  const moved = await ctx.db.query(
+    `WITH affected AS (
+      SELECT id,category_id AS previous_category_id,fee_category_id AS previous_fee_category_id
+      FROM transactions
+      WHERE household_id=$1 AND deleted_at IS NULL AND (category_id=$2 OR fee_category_id=$2)
+      FOR UPDATE
+    )
+    UPDATE transactions t SET category_id=CASE WHEN t.category_id=$2 THEN $3 ELSE t.category_id END,
+      fee_category_id=CASE WHEN t.fee_category_id=$2 THEN $3 ELSE t.fee_category_id END,
+      updated_by=$4,updated_at=now(),version=t.version+1
+    FROM affected
+    WHERE t.id=affected.id
+    RETURNING t.id,affected.previous_category_id,affected.previous_fee_category_id`,
+    [ctx.household.id, id, targetId, ctx.actor.id],
+  );
+  for (const transaction of moved.rows)
+    await audit(ctx, "transaction", transaction.id, "reclassified", {
+      fields: [
+        ...(transaction.previous_category_id === id
+          ? [{ label: "Kategori", before: source.name, after: target.name }]
+          : []),
+        ...(transaction.previous_fee_category_id === id
+          ? [
+              {
+                label: "Kategori biaya",
+                before: source.name,
+                after: target.name,
+              },
+            ]
+          : []),
+      ],
+      category_reclassification: true,
+    });
+  await ctx.db.query(
+    `UPDATE categories SET ${merge ? "archived_at=now()," : ""}version=version+1 WHERE household_id=$1 AND id=$2`,
+    [ctx.household.id, id],
+  );
+  await audit(ctx, "category", id, merge ? "merged" : "reclassified", {
+    target_category_id: targetId,
+    target_name: target.name,
+    transaction_count: moved.rowCount ?? 0,
+    budgets_moved: false,
+  });
+  return {
+    id,
+    version: source.version + 1,
+    transaction_count: moved.rowCount ?? 0,
+  };
+}
+export async function deleteCategoryPermanently(
+  ctx: Context,
+  id: string,
+  b: v.Body,
+) {
+  const category = await existing(
+    ctx,
+    "categories",
+    id,
+    v.version(b.expected_version),
+  );
+  const usage = await ctx.db.query(
+    `SELECT EXISTS(SELECT 1 FROM transactions WHERE household_id=$1 AND (category_id=$2 OR fee_category_id=$2)) AS has_transactions,
+      EXISTS(SELECT 1 FROM budgets WHERE household_id=$1 AND category_id=$2) AS has_budgets`,
+    [ctx.household.id, id],
+  );
+  if (usage.rows[0].has_transactions || usage.rows[0].has_budgets)
+    fail(
+      409,
+      "CATEGORY_IN_USE",
+      "Kategori yang memiliki transaksi atau anggaran tidak dapat dihapus permanen.",
+    );
+  await ctx.db.query("DELETE FROM categories WHERE household_id=$1 AND id=$2", [
+    ctx.household.id,
+    id,
+  ]);
+  await audit(ctx, "category", id, "deleted", {
+    name: category.name,
+    kind: category.kind,
+    previous_version: category.version,
+  });
+  return { id, version: category.version + 1 };
+}
 async function reference(
   ctx: Context,
   table: "financial_accounts" | "categories",
@@ -128,7 +232,7 @@ async function reference(
 async function transactionNames(ctx: Context, id: string) {
   return (
     await ctx.db.query(
-      `SELECT t.type,t.amount_minor,t.fee_minor,t.occurred_on,t.note,
+      `SELECT t.type,t.amount_minor,t.fee_minor,t.occurred_on,t.occurred_at,t.note,
         a.name AS account_name,d.name AS destination_name,c.name AS category_name,fc.name AS fee_category_name
       FROM transactions t
       JOIN financial_accounts a ON a.id=t.account_id AND a.household_id=t.household_id
@@ -152,6 +256,7 @@ export async function saveTransaction(ctx: Context, b: v.Body, id?: string) {
   const amount = v.amount(b.amount_minor),
     fee = v.amount(b.fee_minor ?? "0", false, true),
     on = v.date(b.occurred_on),
+    time = v.optionalTime(b.occurred_time),
     note = v.text(b.note ?? "", 500, true);
   if (on > today(ctx.household.timezone))
     fail(400, "FUTURE_DATE", "Transaksi tidak boleh bertanggal di masa depan.");
@@ -230,17 +335,19 @@ export async function saveTransaction(ctx: Context, b: v.Body, id?: string) {
       fee,
       feeCategory,
       on,
+      time ?? null,
       note,
       ctx.actor.id,
+      ctx.household.timezone,
     ];
   if (old)
     await ctx.db.query(
-      "UPDATE transactions SET type=$3,account_id=$4,destination_account_id=$5,category_id=$6,amount_minor=$7,fee_minor=$8,fee_category_id=$9,occurred_on=$10,note=$11,updated_by=$12,updated_at=now(),version=version+1 WHERE household_id=$1 AND id=$2",
-      values,
+      "UPDATE transactions SET type=$3,account_id=$4,destination_account_id=$5,category_id=$6,amount_minor=$7,fee_minor=$8,fee_category_id=$9,occurred_on=$10,occurred_at=CASE WHEN $15 THEN occurred_at WHEN $11::time IS NULL THEN NULL ELSE ($10::date+$11::time) AT TIME ZONE $14 END,note=$12,updated_by=$13,updated_at=now(),version=version+1 WHERE household_id=$1 AND id=$2",
+      [...values, time === undefined],
     );
   else
     await ctx.db.query(
-      "INSERT INTO transactions(household_id,id,type,account_id,destination_account_id,category_id,amount_minor,fee_minor,fee_category_id,occurred_on,note,created_by,updated_by) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$12)",
+      "INSERT INTO transactions(household_id,id,type,account_id,destination_account_id,category_id,amount_minor,fee_minor,fee_category_id,occurred_on,occurred_at,note,created_by,updated_by) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,CASE WHEN $11::time IS NULL THEN NULL ELSE ($10::date+$11::time) AT TIME ZONE $14 END,$12,$13,$13)",
       values,
     );
   const fields = [
@@ -298,6 +405,7 @@ export async function saveTransaction(ctx: Context, b: v.Body, id?: string) {
     fee_minor: fee,
     fee_category_id: feeCategory,
     occurred_on: on,
+    occurred_time: time ?? null,
     note_changed: old ? old.note !== note : note !== "",
     fields,
   });

@@ -21,6 +21,7 @@ import {
   DateField,
   Field,
   LoadState,
+  Notice,
   SaveState,
   Screen,
   Title,
@@ -156,6 +157,7 @@ function Manage() {
     }),
     [version, setVersion] = useState(1),
     [done, setDone] = useState(false),
+    [targetCategoryId, setTargetCategoryId] = useState(""),
     initial = useRef("");
   const row = q.data?.find((x) => x.id === params.id);
   function load(r: any) {
@@ -205,6 +207,16 @@ function Manage() {
     type !== "budgets" &&
     !!(row as Account | Category | undefined)?.archived_at;
   const categoryItems = (q.data ?? []) as Category[];
+  const category = row as Category | undefined;
+  const categoryTargets =
+    type === "categories" && category
+      ? (categories.data ?? []).filter(
+          (item) =>
+            item.id !== category.id &&
+            item.kind === category.kind &&
+            !item.archived_at,
+        )
+      : [];
   if (q.isPending || categories.isPending || q.error || categories.error)
     return (
       <Screen>
@@ -400,6 +412,107 @@ function Manage() {
           )
         }
       />
+      {params.id && type === "categories" && (
+        <>
+          <Title>Kelola histori transaksi</Title>
+          <Copy muted>
+            Pindahkan transaksi aktif ke kategori lain dengan jenis yang sama.
+            Anggaran tidak dipindahkan otomatis.
+          </Copy>
+          {categoryTargets.length ? (
+            <>
+              <Choice
+                label="Kategori tujuan"
+                value={targetCategoryId}
+                onChange={setTargetCategoryId}
+                options={categoryTargets.map((item) => ({
+                  id: item.id,
+                  name: item.name,
+                }))}
+                disabled={save.locked}
+              />
+              <Button
+                secondary
+                label="Reklasifikasi transaksi"
+                disabled={save.locked || !targetCategoryId}
+                onPress={async () => {
+                  if (
+                    await confirm(
+                      "Reklasifikasi transaksi?",
+                      "Transaksi aktif akan dipindahkan. Kategori dan anggaran sumber tetap ada.",
+                      "Reklasifikasi transaksi",
+                    )
+                  )
+                    void save.save(
+                      `/households/${household!.id}/categories/${params.id}/reclassify`,
+                      {
+                        expected_version: version,
+                        target_category_id: targetCategoryId,
+                      },
+                      "POST",
+                      () => setDone(true),
+                      "Transaksi berhasil direklasifikasi.",
+                    );
+                }}
+              />
+              <Button
+                label="Gabungkan kategori"
+                disabled={save.locked || !targetCategoryId}
+                onPress={async () => {
+                  if (
+                    await confirm(
+                      "Gabungkan kategori?",
+                      "Transaksi aktif dipindahkan lalu kategori ini dinonaktifkan. Anggaran tetap pada kategori ini.",
+                      "Gabungkan kategori",
+                      true,
+                    )
+                  )
+                    void save.save(
+                      `/households/${household!.id}/categories/${params.id}/merge`,
+                      {
+                        expected_version: version,
+                        target_category_id: targetCategoryId,
+                      },
+                      "POST",
+                      () => setDone(true),
+                      "Kategori berhasil digabungkan.",
+                    );
+                }}
+              />
+            </>
+          ) : (
+            <Notice>
+              Tambahkan atau aktifkan kategori{" "}
+              {category?.kind === "expense" ? "pengeluaran" : "pemasukan"} lain
+              untuk memindahkan transaksi.
+            </Notice>
+          )}
+          {category?.transaction_count === 0 && category.budget_count === 0 && (
+            <Button
+              danger
+              label="Hapus kategori permanen"
+              disabled={save.locked}
+              onPress={async () => {
+                if (
+                  await confirm(
+                    "Hapus kategori permanen?",
+                    "Kategori ini tidak memiliki transaksi atau anggaran dan tidak dapat dipulihkan setelah dihapus.",
+                    "Hapus kategori permanen",
+                    true,
+                  )
+                )
+                  void save.save(
+                    `/households/${household!.id}/categories/${params.id}/delete-permanently`,
+                    { expected_version: version },
+                    "POST",
+                    () => setDone(true),
+                    "Kategori berhasil dihapus permanen.",
+                  );
+              }}
+            />
+          )}
+        </>
+      )}
       {save.error && params.id && (
         <Button
           label="Buang isian & muat versi terbaru"

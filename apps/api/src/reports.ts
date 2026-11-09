@@ -103,16 +103,29 @@ export async function transactions(ctx: Context, q: v.Body, exporting = false) {
     } catch {
       fail(400, "INVALID_CURSOR", "Posisi halaman tidak valid.");
     }
-    values.push(v.date(c.date), v.uuid(c.id));
-    where += ` AND (t.occurred_on,t.id)<($${values.length - 1}::date,$${values.length}::uuid)`;
+    if (c.time === undefined) {
+      const legacy = (
+        await ctx.db.query(
+          "SELECT occurred_on,COALESCE(occurred_at,created_at) AS order_at FROM transactions WHERE household_id=$1 AND id=$2",
+          [ctx.household.id, v.uuid(c.id)],
+        )
+      ).rows[0];
+      if (!legacy || legacy.occurred_on !== v.date(c.date))
+        fail(400, "INVALID_CURSOR", "Posisi halaman tidak valid.");
+      values.push(legacy.occurred_on, legacy.order_at, v.uuid(c.id));
+      where += ` AND (t.occurred_on,COALESCE(t.occurred_at,t.created_at),t.id)<($${values.length - 2}::date,$${values.length - 1}::timestamptz,$${values.length}::uuid)`;
+    } else {
+      values.push(v.date(c.date), v.timestamp(c.time), v.uuid(c.id));
+      where += ` AND (t.occurred_on,COALESCE(t.occurred_at,t.created_at),t.id)<($${values.length - 2}::date,$${values.length - 1}::timestamptz,$${values.length}::uuid)`;
+    }
   }
   const limit = exporting ? 50001 : 51;
   const rows = (
     await ctx.db.query(
-      `SELECT t.*,p.display_name AS actor_name,a.name AS account_name,d.name AS destination_name,c.name AS category_name,fc.name AS fee_category_name
+      `SELECT t.*,COALESCE(t.occurred_at,t.created_at) AS order_at,p.display_name AS actor_name,a.name AS account_name,d.name AS destination_name,c.name AS category_name,fc.name AS fee_category_name
     FROM transactions t JOIN profiles p ON p.id=t.created_by JOIN financial_accounts a ON a.id=t.account_id
     LEFT JOIN financial_accounts d ON d.id=t.destination_account_id LEFT JOIN categories c ON c.id=t.category_id LEFT JOIN categories fc ON fc.id=t.fee_category_id
-    WHERE ${where} ORDER BY t.occurred_on DESC,t.id DESC LIMIT ${limit}`,
+    WHERE ${where} ORDER BY t.occurred_on DESC,COALESCE(t.occurred_at,t.created_at) DESC,t.id DESC LIMIT ${limit}`,
       values,
     )
   ).rows;
@@ -129,10 +142,14 @@ export async function transactions(ctx: Context, q: v.Body, exporting = false) {
     items = rows.slice(0, 50),
     last = items.at(-1);
   return {
-    items,
+    items: items.map(({ order_at: _orderAt, ...item }) => item),
     next_cursor: more
       ? Buffer.from(
-          JSON.stringify({ date: last.occurred_on, id: last.id }),
+          JSON.stringify({
+            date: last.occurred_on,
+            time: last.order_at.toISOString(),
+            id: last.id,
+          }),
         ).toString("base64url")
       : null,
   };
@@ -146,6 +163,7 @@ export async function csv(ctx: Context, q: v.Body) {
   const { items } = await transactions(ctx, q, true);
   const header = [
     "Tanggal",
+    "Waktu",
     "Jenis",
     "Rekening",
     "Tujuan",
@@ -169,6 +187,14 @@ export async function csv(ctx: Context, q: v.Body) {
           : "0";
     return [
       t.occurred_on,
+      t.occurred_at
+        ? new Intl.DateTimeFormat("en-GB", {
+            timeZone: ctx.household.timezone,
+            hour: "2-digit",
+            minute: "2-digit",
+            hourCycle: "h23",
+          }).format(new Date(t.occurred_at))
+        : "",
       t.type,
       t.account_name,
       t.destination_name,

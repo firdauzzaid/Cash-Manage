@@ -82,6 +82,8 @@ API juga menyajikan halaman publik yang diperlukan untuk OAuth Google:
 
 Masukkan tiga URL pertama ke Google Auth Platform → Branding sebagai homepage, privacy policy, dan terms. Authorized domain tetap `kotagedejewellery.tech`, tanpa path. Kebijakan privasi menjanjikan retensi backup maksimal 90 hari; sebelum publik, jadwalkan backup terenkripsi ke penyimpanan di luar VPS dan hapus backup yang lebih lama dari batas tersebut.
 
+Sebelum mengaktifkan deteksi transaksi Gmail tanpa label manual, perbarui Google Auth Platform agar justification, demo video, dan consent screen menjelaskan pemindaian metadata email untuk kandidat transaksi. `gmail.readonly` adalah restricted scope; jangan membuka akses publik sebelum proses verifikasi dan, bila diwajibkan Google, security assessment selesai. Uji cabut izin, rate limit, kegagalan Google, dan pemulihan `historyId` kedaluwarsa pada akun uji.
+
 ## Deploy otomatis dari GitHub
 
 Workflow `.github/workflows/deploy-production.yml` berjalan pada setiap push ke branch `main`. Ia memasang dependency, menjalankan typecheck dan pemeriksaan format, lalu menyalin source ke VPS dengan SSH/rsync. Environment `.env`, backup, dan artefak build lokal dikecualikan dari salinan.

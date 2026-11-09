@@ -28,10 +28,24 @@ import {
   Notice,
   SaveState,
   Screen,
+  TimeField,
   Title,
   confirm,
 } from "../src/ui";
-const fields = (t: Transaction): TransactionInput => ({
+function timeAt(timestamp: string | null, timezone: string) {
+  return timestamp
+    ? new Intl.DateTimeFormat("en-GB", {
+        timeZone: timezone,
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23",
+      }).format(new Date(timestamp))
+    : "";
+}
+function currentTime(timezone: string) {
+  return timeAt(new Date().toISOString(), timezone);
+}
+const fields = (t: Transaction, timezone: string): TransactionInput => ({
   type: t.type,
   account_id: t.account_id,
   destination_account_id: t.destination_account_id,
@@ -40,6 +54,7 @@ const fields = (t: Transaction): TransactionInput => ({
   fee_minor: t.fee_minor,
   fee_category_id: t.fee_category_id,
   occurred_on: t.occurred_on,
+  occurred_time: timeAt(t.occurred_at, timezone),
   note: t.note,
 });
 function TransactionForm() {
@@ -81,6 +96,7 @@ function TransactionForm() {
     fee_minor: "0",
     fee_category_id: null,
     occurred_on: candidateOccurredOn ?? today(household!.timezone),
+    occurred_time: currentTime(household!.timezone),
     note: candidateNote ?? "",
   });
   const detail = useQuery({
@@ -92,7 +108,7 @@ function TransactionForm() {
   });
   useEffect(() => {
     if (id && detail.data && !initial.current) {
-      const f = fields(detail.data);
+      const f = fields(detail.data, household!.timezone);
       setForm(f);
       setVersion(detail.data.version);
       initial.current = JSON.stringify(f);
@@ -294,28 +310,15 @@ function TransactionForm() {
               }))
             }
           />
+          {form.type === "transfer" && <Title>Jumlah transfer</Title>}
           <AmountField
             label={form.type === "transfer" ? "Nominal transfer" : "Nominal"}
             value={form.amount_minor}
             onChange={(n) => set("amount_minor", n)}
             disabled={s.locked}
           />
-          <Choice
-            label={form.type === "transfer" ? "Dari rekening" : "Rekening"}
-            value={form.account_id}
-            options={activeAccounts}
-            onChange={(n) => set("account_id", n)}
-            disabled={s.locked}
-          />
           {form.type === "transfer" ? (
             <>
-              <Choice
-                label="Ke rekening"
-                value={form.destination_account_id ?? ""}
-                options={activeAccounts.filter((x) => x.id !== form.account_id)}
-                onChange={(n) => set("destination_account_id", n)}
-                disabled={s.locked}
-              />
               <AmountField
                 label="Biaya transfer"
                 value={form.fee_minor}
@@ -355,6 +358,21 @@ function TransactionForm() {
                   )}
                 </>
               )}
+              <Title>Dari & ke rekening</Title>
+              <Choice
+                label="Dari rekening"
+                value={form.account_id}
+                options={activeAccounts}
+                onChange={(n) => set("account_id", n)}
+                disabled={s.locked}
+              />
+              <Choice
+                label="Ke rekening"
+                value={form.destination_account_id ?? ""}
+                options={activeAccounts.filter((x) => x.id !== form.account_id)}
+                onChange={(n) => set("destination_account_id", n)}
+                disabled={s.locked}
+              />
               <Copy muted>
                 Pokok transfer tidak dihitung sebagai pemasukan atau
                 pengeluaran. Biaya mengurangi rekening asal.
@@ -374,6 +392,13 @@ function TransactionForm() {
             </>
           ) : (
             <>
+              <Choice
+                label="Rekening"
+                value={form.account_id}
+                options={activeAccounts}
+                onChange={(n) => set("account_id", n)}
+                disabled={s.locked}
+              />
               <Choice
                 label="Kategori"
                 value={form.category_id ?? ""}
@@ -411,6 +436,12 @@ function TransactionForm() {
               set("occurred_on", n);
               setCandidateDateConfirmed(true);
             }}
+            disabled={s.locked}
+          />
+          <TimeField
+            label="Jam transaksi"
+            value={form.occurred_time}
+            onChange={(n) => set("occurred_time", n)}
             disabled={s.locked}
           />
           {candidateId && !candidateDateConfirmed && (
@@ -478,9 +509,11 @@ function TransactionForm() {
                 secondary
                 label="Muat versi server"
                 onPress={() => {
-                  setForm(fields(conflict));
+                  setForm(fields(conflict, household!.timezone));
                   setVersion(conflict.version);
-                  initial.current = JSON.stringify(fields(conflict));
+                  initial.current = JSON.stringify(
+                    fields(conflict, household!.timezone),
+                  );
                   s.reset();
                 }}
               />

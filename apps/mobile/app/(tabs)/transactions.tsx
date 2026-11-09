@@ -57,7 +57,9 @@ function Transactions() {
         ref={list}
         data={q.data?.pages.flatMap((p) => p.items) ?? []}
         keyExtractor={(x) => x.id}
-        renderItem={({ item }) => <TransactionRow item={item} />}
+        renderItem={({ item }) => (
+          <TransactionRow item={item} timezone={household!.timezone} />
+        )}
         contentContainerStyle={{
           padding: 20,
           paddingBottom: 100,

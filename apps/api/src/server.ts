@@ -50,7 +50,12 @@ const gmailTimer = setInterval(
     if (syncingGmail || !config.gmail) return;
     syncingGmail = true;
     try {
-      await syncGmailConnections(pool, config.gmail);
+      const result = await syncGmailConnections(pool, config.gmail);
+      if (result.failures.length)
+        app.log.warn(
+          { gmail_failure_codes: result.failures },
+          "Gmail synchronization completed with failures",
+        );
     } catch {
       app.log.error("Gmail synchronization failed");
     } finally {

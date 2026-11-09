@@ -40,6 +40,22 @@ export function date(v: unknown): string {
   if (!validDate(v)) fail(400, "INVALID_DATE", "Tanggal tidak valid.");
   return v;
 }
+export function optionalTime(v: unknown): string | null | undefined {
+  if (v === undefined) return undefined;
+  if (v === null || v === "") return null;
+  if (typeof v !== "string" || !/^([01]\d|2[0-3]):[0-5]\d$/.test(v))
+    fail(400, "INVALID_TIME", "Jam transaksi tidak valid.");
+  return v;
+}
+export function timestamp(v: unknown): string {
+  if (
+    typeof v !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}T/.test(v) ||
+    Number.isNaN(Date.parse(v))
+  )
+    fail(400, "INVALID_CURSOR", "Posisi halaman tidak valid.");
+  return v;
+}
 export function version(v: unknown): number {
   if (!Number.isSafeInteger(v) || Number(v) < 1)
     fail(400, "INVALID_VERSION", "Versi perubahan diperlukan.");

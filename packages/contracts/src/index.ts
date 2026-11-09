@@ -20,6 +20,8 @@ export type Category = Versioned & {
   name: string;
   kind: "income" | "expense";
   archived_at: string | null;
+  transaction_count: number;
+  budget_count: number;
 };
 export type Transaction = Versioned & {
   type: Kind;
@@ -30,6 +32,7 @@ export type Transaction = Versioned & {
   fee_minor: string;
   fee_category_id: string | null;
   occurred_on: string;
+  occurred_at: string | null;
   note: string;
   created_by: string;
   actor_name: string;
@@ -84,6 +87,7 @@ export type TransactionInput = {
   fee_minor: string;
   fee_category_id: string | null;
   occurred_on: string;
+  occurred_time: string;
   note: string;
 };
 

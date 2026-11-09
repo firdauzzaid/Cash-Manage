@@ -14,13 +14,34 @@ export type GmailConfig = {
   clientSecret?: string;
   redirectURL: string;
   encryptionKey: Buffer;
-  labelName: string;
   mobileReturnURL: string;
 };
 export type GmailSyncResult = {
   created: number;
-  reason?: "LABEL_NOT_FOUND" | "SYNC_FAILED";
+  scanned: number;
+  history_complete: boolean;
+  reason?: GmailFailureCode;
 };
+export type GmailFailureCode =
+  | "TOKEN_REVOKED"
+  | "RATE_LIMITED"
+  | "GOOGLE_UNAVAILABLE"
+  | "HISTORY_EXPIRED"
+  | "SYNC_FAILED";
+
+class GmailError extends Error {
+  constructor(readonly code: GmailFailureCode) {
+    super(code);
+  }
+}
+
+function failureCode(status: number, history = false): GmailFailureCode {
+  if (history && status === 404) return "HISTORY_EXPIRED";
+  if (status === 400 || status === 401) return "TOKEN_REVOKED";
+  if (status === 429) return "RATE_LIMITED";
+  if (status >= 500) return "GOOGLE_UNAVAILABLE";
+  return "SYNC_FAILED";
+}
 
 function secret(value: string) {
   const key = Buffer.from(value, "base64");
@@ -47,7 +68,6 @@ export function gmailConfigFromEnv(): GmailConfig | undefined {
       : {}),
     redirectURL,
     encryptionKey: secret(key),
-    labelName: process.env.GMAIL_LABEL_NAME?.trim() || "Cash Flow",
     mobileReturnURL:
       process.env.GMAIL_MOBILE_RETURN_URL?.trim() || "cashflow://profile",
   };
@@ -136,14 +156,14 @@ async function tokenRequest(
     refresh_token?: string;
   } | null;
   if (!response.ok || !result?.access_token)
-    throw new Error("GMAIL_TOKEN_EXCHANGE_FAILED");
+    throw new GmailError(failureCode(response.status));
   return {
     access_token: result.access_token,
     ...(result.refresh_token ? { refresh_token: result.refresh_token } : {}),
   };
 }
 
-async function gmail<T>(accessToken: string, path: string) {
+async function gmail<T>(accessToken: string, path: string, history = false) {
   const response = await fetch(
     "https://gmail.googleapis.com/gmail/v1/users/me" + path,
     {
@@ -151,7 +171,7 @@ async function gmail<T>(accessToken: string, path: string) {
       signal: AbortSignal.timeout(15000),
     },
   );
-  if (!response.ok) throw new Error("GMAIL_API_FAILED");
+  if (!response.ok) throw new GmailError(failureCode(response.status, history));
   return (await response.json()) as T;
 }
 
@@ -179,7 +199,7 @@ export async function finishGmailAuthorization(
   );
   const refreshToken = tokens.refresh_token;
   if (!refreshToken) throw new Error("GMAIL_REFRESH_TOKEN_MISSING");
-  const profile = await gmail<{ emailAddress?: string }>(
+  const profile = await gmail<{ emailAddress?: string; historyId?: string }>(
     tokens.access_token,
     "/profile",
   );
@@ -194,15 +214,16 @@ export async function finishGmailAuthorization(
     ).rows[0];
     if (!claimed) throw new Error("GMAIL_OAUTH_STATE_INVALID");
     await db.query(
-      `INSERT INTO gmail_connections(id,profile_id,gmail_address,refresh_token_ciphertext,label_name)
-       VALUES($1,$2,$3,$4,$5)
-       ON CONFLICT(profile_id) DO UPDATE SET gmail_address=EXCLUDED.gmail_address,refresh_token_ciphertext=EXCLUDED.refresh_token_ciphertext,label_name=EXCLUDED.label_name,status='active',last_error_code=NULL,updated_at=now()`,
+      `INSERT INTO gmail_connections(id,profile_id,gmail_address,refresh_token_ciphertext,label_name,history_id)
+       VALUES($1,$2,$3,$4,$5,$6)
+       ON CONFLICT(profile_id) DO UPDATE SET gmail_address=EXCLUDED.gmail_address,refresh_token_ciphertext=EXCLUDED.refresh_token_ciphertext,label_name=EXCLUDED.label_name,status='active',last_error_code=NULL,history_page_token=NULL,history_delta_page_token=NULL,history_complete=false,history_checked_count=0,history_total_estimate=NULL,history_id=EXCLUDED.history_id,updated_at=now()`,
       [
         randomUUID(),
         claimed.profile_id,
         gmailAddress,
         encrypt(refreshToken, config),
-        config.labelName,
+        "Deteksi otomatis",
+        profile.historyId ?? null,
       ],
     );
   });
@@ -211,8 +232,16 @@ export async function finishGmailAuthorization(
 type GmailConnection = {
   id: string;
   refresh_token_ciphertext: string;
-  label_name: string;
+  history_page_token: string | null;
+  history_delta_page_token: string | null;
+  history_complete: boolean;
+  history_checked_count: number;
+  history_total_estimate: number | null;
+  history_id: string | null;
 };
+
+const transactionSearch =
+  "{Rp IDR} {transaksi pembayaran transfer debit kredit qris}";
 
 async function connectionActive(pool: Database, id: string) {
   return !!(
@@ -223,6 +252,52 @@ async function connectionActive(pool: Database, id: string) {
   ).rows[0];
 }
 
+async function processGmailMessages(
+  pool: Database,
+  id: string,
+  accessToken: string,
+  ids: string[],
+) {
+  let created = 0;
+  for (const messageId of ids) {
+    if (!(await connectionActive(pool, id)))
+      return { created: 0, scanned: 0, active: false };
+    const message = await gmail<{
+      id: string;
+      snippet?: string;
+      payload?: { headers?: { name: string; value: string }[] };
+    }>(
+      accessToken,
+      `/messages/${encodeURIComponent(messageId)}?format=metadata&metadataHeaders=Subject`,
+    );
+    const subject =
+      message.payload?.headers?.find(
+        (header) => header.name.toLowerCase() === "subject",
+      )?.value ?? "";
+    const draft = notificationDraft(`${subject}\n${message.snippet ?? ""}`);
+    if (draft.blocked || !draft.amount_minor) continue;
+    if (!(await connectionActive(pool, id)))
+      return { created: 0, scanned: 0, active: false };
+    const result = await pool.query(
+      "INSERT INTO gmail_candidates(id,connection_id,gmail_message_id,amount_minor,occurred_on,note) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(connection_id,gmail_message_id) DO NOTHING",
+      [
+        randomUUID(),
+        id,
+        message.id,
+        draft.amount_minor,
+        draft.occurred_on ?? null,
+        draft.note ?? "",
+      ],
+    );
+    created += result.rowCount ?? 0;
+  }
+  return {
+    created,
+    scanned: ids.length,
+    active: await connectionActive(pool, id),
+  };
+}
+
 export async function syncGmailConnection(
   pool: Database,
   config: GmailConfig,
@@ -230,11 +305,11 @@ export async function syncGmailConnection(
 ): Promise<GmailSyncResult> {
   const connection = (
     await pool.query(
-      "SELECT id,refresh_token_ciphertext,label_name FROM gmail_connections WHERE id=$1 AND status IN ('active','error')",
+      "SELECT id,refresh_token_ciphertext,history_page_token,history_delta_page_token,history_complete,history_checked_count,history_total_estimate,history_id FROM gmail_connections WHERE id=$1 AND status IN ('active','error')",
       [id],
     )
   ).rows[0] as GmailConnection | undefined;
-  if (!connection) return { created: 0 };
+  if (!connection) return { created: 0, scanned: 0, history_complete: false };
   try {
     const tokens = await tokenRequest(
       {
@@ -243,69 +318,129 @@ export async function syncGmailConnection(
       },
       config,
     );
-    if (!(await connectionActive(pool, id))) return { created: 0 };
-    const labels = await gmail<{ labels?: { id: string; name: string }[] }>(
-      tokens.access_token,
-      "/labels",
-    );
-    if (!(await connectionActive(pool, id))) return { created: 0 };
-    const label = labels.labels?.find(
-      (item) => item.name === connection.label_name,
-    );
-    if (!label) {
-      await pool.query(
-        "UPDATE gmail_connections SET status='error',last_error_code='LABEL_NOT_FOUND',updated_at=now() WHERE id=$1",
-        [id],
-      );
-      return { created: 0, reason: "LABEL_NOT_FOUND" };
-    }
-    const list = await gmail<{ messages?: { id: string }[] }>(
-      tokens.access_token,
-      `/messages?labelIds=${encodeURIComponent(label.id)}&maxResults=50`,
-    );
-    let created = 0;
-    for (const item of list.messages ?? []) {
-      if (!(await connectionActive(pool, id))) return { created: 0 };
-      const message = await gmail<{
-        id: string;
-        snippet?: string;
-        payload?: { headers?: { name: string; value: string }[] };
-      }>(
+    if (!(await connectionActive(pool, id)))
+      return { created: 0, scanned: 0, history_complete: false };
+    if (!connection.history_complete) {
+      let historyId = connection.history_id;
+      if (!historyId) {
+        const profile = await gmail<{ historyId?: string }>(
+          tokens.access_token,
+          "/profile",
+        );
+        historyId = profile.historyId ?? null;
+        if (!historyId) throw new GmailError("SYNC_FAILED");
+        await pool.query(
+          "UPDATE gmail_connections SET history_id=$2,updated_at=now() WHERE id=$1",
+          [id, historyId],
+        );
+      }
+      const query = new URLSearchParams({
+        maxResults: "50",
+        q: transactionSearch,
+        ...(connection.history_page_token
+          ? { pageToken: connection.history_page_token }
+          : {}),
+      });
+      const list = await gmail<{
+        messages?: { id: string }[];
+        nextPageToken?: string;
+        resultSizeEstimate?: number;
+      }>(tokens.access_token, `/messages?${query}`);
+      const result = await processGmailMessages(
+        pool,
+        id,
         tokens.access_token,
-        `/messages/${encodeURIComponent(item.id)}?format=metadata&metadataHeaders=Subject`,
+        (list.messages ?? []).map((message) => message.id),
       );
-      const subject =
-        message.payload?.headers?.find(
-          (header) => header.name.toLowerCase() === "subject",
-        )?.value ?? "";
-      const draft = notificationDraft(`${subject}\n${message.snippet ?? ""}`);
-      if (draft.blocked || !draft.amount_minor) continue;
-      if (!(await connectionActive(pool, id))) return { created: 0 };
-      const result = await pool.query(
-        "INSERT INTO gmail_candidates(id,connection_id,gmail_message_id,amount_minor,occurred_on,note) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(connection_id,gmail_message_id) DO NOTHING",
+      if (!result.active)
+        return { created: 0, scanned: 0, history_complete: false };
+      const historyComplete = !list.nextPageToken;
+      await pool.query(
+        `UPDATE gmail_connections SET status='active',last_synced_at=now(),last_error_code=NULL,
+          history_page_token=$2,history_complete=$3,history_id=$4,
+          history_checked_count=history_checked_count+$5,
+          history_total_estimate=COALESCE($6,history_total_estimate),updated_at=now() WHERE id=$1`,
         [
-          randomUUID(),
           id,
-          message.id,
-          draft.amount_minor,
-          draft.occurred_on ?? null,
-          draft.note ?? "",
+          historyComplete ? null : (list.nextPageToken ?? null),
+          historyComplete,
+          historyId,
+          result.scanned,
+          list.resultSizeEstimate ?? null,
         ],
       );
-      created += result.rowCount ?? 0;
+      return {
+        created: result.created,
+        scanned: result.scanned,
+        history_complete: historyComplete,
+      };
     }
-    if (!(await connectionActive(pool, id))) return { created: 0 };
-    await pool.query(
-      "UPDATE gmail_connections SET status='active',last_synced_at=now(),last_error_code=NULL,updated_at=now() WHERE id=$1",
-      [id],
+    if (!connection.history_id) throw new GmailError("HISTORY_EXPIRED");
+    const query = new URLSearchParams({
+      maxResults: "50",
+      startHistoryId: connection.history_id,
+      ...(connection.history_delta_page_token
+        ? { pageToken: connection.history_delta_page_token }
+        : {}),
+    });
+    const history = await gmail<{
+      history?: { messagesAdded?: { message?: { id?: string } }[] }[];
+      nextPageToken?: string;
+      historyId?: string;
+    }>(tokens.access_token, `/history?${query}`, true);
+    const ids = [
+      ...new Set(
+        (history.history ?? []).flatMap((entry) =>
+          (entry.messagesAdded ?? []).flatMap((added) =>
+            added.message?.id ? [added.message.id] : [],
+          ),
+        ),
+      ),
+    ];
+    const result = await processGmailMessages(
+      pool,
+      id,
+      tokens.access_token,
+      ids,
     );
-    return { created };
-  } catch {
+    if (!result.active)
+      return { created: 0, scanned: 0, history_complete: true };
+    const complete = !history.nextPageToken;
     await pool.query(
-      "UPDATE gmail_connections SET status='error',last_error_code='SYNC_FAILED',updated_at=now() WHERE id=$1",
-      [id],
+      `UPDATE gmail_connections SET status='active',last_synced_at=now(),last_error_code=NULL,
+        history_id=CASE WHEN $2 THEN COALESCE($3,history_id) ELSE history_id END,
+        history_delta_page_token=$4,updated_at=now() WHERE id=$1`,
+      [
+        id,
+        complete,
+        history.historyId ?? null,
+        complete ? null : (history.nextPageToken ?? null),
+      ],
     );
-    return { created: 0, reason: "SYNC_FAILED" };
+    return {
+      created: result.created,
+      scanned: result.scanned,
+      history_complete: true,
+    };
+  } catch (error) {
+    const reason = error instanceof GmailError ? error.code : "SYNC_FAILED";
+    if (reason === "HISTORY_EXPIRED") {
+      await pool.query(
+        "UPDATE gmail_connections SET status='active',last_error_code=$2,history_id=NULL,history_page_token=NULL,history_delta_page_token=NULL,history_complete=false,history_checked_count=0,history_total_estimate=NULL,updated_at=now() WHERE id=$1",
+        [id, reason],
+      );
+      return { created: 0, scanned: 0, history_complete: false, reason };
+    }
+    await pool.query(
+      "UPDATE gmail_connections SET status='error',last_error_code=$2,updated_at=now() WHERE id=$1",
+      [id, reason],
+    );
+    return {
+      created: 0,
+      scanned: 0,
+      history_complete: connection.history_complete,
+      reason,
+    };
   }
 }
 
@@ -319,7 +454,11 @@ export async function syncGmailConnections(
     )
   ).rows as { id: string }[];
   let created = 0;
-  for (const connection of connections)
-    created += (await syncGmailConnection(pool, config, connection.id)).created;
-  return { created };
+  const failures: GmailFailureCode[] = [];
+  for (const connection of connections) {
+    const result = await syncGmailConnection(pool, config, connection.id);
+    created += result.created;
+    if (result.reason) failures.push(result.reason);
+  }
+  return { created, failures: [...new Set(failures)] };
 }

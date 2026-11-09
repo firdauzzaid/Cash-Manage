@@ -719,6 +719,65 @@ export function DateField({
   );
 }
 
+export function TimeField({
+  label,
+  value,
+  onChange,
+  disabled = false,
+}: {
+  label: string;
+  value: string;
+  onChange: (s: string) => void;
+  disabled?: boolean;
+}) {
+  const [open, setOpen] = useState(false),
+    c = useColors();
+  if (Platform.OS === "web")
+    return (
+      <Field
+        label={label + " (JJ:MM)"}
+        value={value}
+        onChangeText={onChange}
+        editable={!disabled}
+        placeholder="Contoh: 09:30"
+      />
+    );
+  return (
+    <View style={{ gap: 7 }}>
+      <Text style={[styles.label, { color: c.text }]}>{label}</Text>
+      <Button
+        label={value || "Belum dicatat"}
+        accessibilityLabel={`${label}, ${value || "belum dicatat"}`}
+        secondary
+        icon="time-outline"
+        onPress={() => {
+          Keyboard.dismiss();
+          setOpen(true);
+        }}
+        disabled={disabled}
+      />
+      {open && (
+        <DateTimePicker
+          themeVariant={c.bg === "#0B1514" ? "dark" : "light"}
+          value={new Date("1970-01-01T" + (value || "00:00") + ":00")}
+          mode="time"
+          display={Platform.OS === "ios" ? "spinner" : "default"}
+          onChange={(event, d) => {
+            if (Platform.OS === "android") setOpen(false);
+            if (event.type === "set" && d)
+              onChange(
+                `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`,
+              );
+          }}
+        />
+      )}
+      {open && Platform.OS === "ios" && (
+        <Button label="Selesai memilih jam" onPress={() => setOpen(false)} />
+      )}
+    </View>
+  );
+}
+
 export function Notice({
   children,
   error = false,

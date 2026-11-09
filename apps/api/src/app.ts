@@ -209,7 +209,7 @@ export async function createApp(
       return { available: false, connected: false, candidates: 0 };
     const connection = (
       await pool.query(
-        "SELECT gmail_address,label_name,status,last_synced_at,last_error_code FROM gmail_connections WHERE profile_id=$1",
+        "SELECT gmail_address,status,last_synced_at,last_error_code,history_complete,history_checked_count,history_total_estimate FROM gmail_connections WHERE profile_id=$1",
         [a.id],
       )
     ).rows[0];
@@ -401,7 +401,10 @@ export async function createApp(
       if (resource === "categories")
         return (
           await ctx.db.query(
-            "SELECT * FROM categories WHERE household_id=$1 ORDER BY kind,name,id",
+            `SELECT c.*,
+              (SELECT count(*)::int FROM transactions t WHERE t.household_id=c.household_id AND (t.category_id=c.id OR t.fee_category_id=c.id)) AS transaction_count,
+              (SELECT count(*)::int FROM budgets b WHERE b.household_id=c.household_id AND b.category_id=c.id) AS budget_count
+            FROM categories c WHERE c.household_id=$1 ORDER BY c.kind,c.name,c.id`,
             [hid],
           )
         ).rows;
@@ -518,6 +521,33 @@ export async function createApp(
       );
     },
   );
+  for (const action of ["reclassify", "merge", "delete-permanently"] as const)
+    app.post(
+      `/households/:hid/categories/:id/${action}`,
+      { schema: mutationSchema },
+      async (req) => {
+        const a = await actor(req),
+          { hid, id } = params(req),
+          b = v.body(req.body);
+        return mutate(
+          pool,
+          a,
+          v.uuid(hid),
+          req.headers["idempotency-key"],
+          `POST /households/${hid}/categories/${id}/${action}`,
+          b,
+          (ctx) =>
+            action === "delete-permanently"
+              ? finance.deleteCategoryPermanently(ctx, v.uuid(id), b)
+              : finance.reclassifyCategory(
+                  ctx,
+                  v.uuid(id),
+                  b,
+                  action === "merge",
+                ),
+        );
+      },
+    );
   for (const method of ["POST", "PUT", "DELETE"] as const) {
     app.route({
       method,

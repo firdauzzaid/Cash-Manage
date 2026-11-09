@@ -7,12 +7,14 @@ import { Copy, IconTile, styles, useColors } from "./ui";
 
 export function TransactionRow({
   item,
+  timezone,
 }: {
   item: Transaction & {
     account_name?: string;
     destination_name?: string;
     category_name?: string;
   };
+  timezone: string;
 }) {
   const c = useColors();
   const transfer = item.type === "transfer",
@@ -28,7 +30,7 @@ export function TransactionRow({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${label}, ${money(item.amount_minor)}, ${item.occurred_on}, dicatat ${item.actor_name}`}
+      accessibilityLabel={`${label}, ${money(item.amount_minor)}, ${item.occurred_on}${item.occurred_at ? " " + new Intl.DateTimeFormat("id-ID", { timeZone: timezone, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(item.occurred_at)) : ""}, dicatat ${item.actor_name}`}
       onPress={() =>
         router.push({ pathname: "/transaction", params: { id: item.id } })
       }
@@ -84,6 +86,15 @@ export function TransactionRow({
               month: "short",
               timeZone: "UTC",
             }).format(new Date(item.occurred_on))}
+            {item.occurred_at
+              ? " · " +
+                new Intl.DateTimeFormat("id-ID", {
+                  timeZone: timezone,
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hourCycle: "h23",
+                }).format(new Date(item.occurred_at))
+              : ""}
           </Copy>
         </View>
       </View>

@@ -9,6 +9,7 @@ import { Button, Card, Copy, LoadState, Screen } from "../src/ui";
 const names: Record<string, string> = {
   created: "ditambahkan",
   updated: "diperbarui",
+  reclassified: "direklasifikasi",
   deleted: "dihapus",
   archived: "diarsipkan",
   renamed: "diubah namanya",
